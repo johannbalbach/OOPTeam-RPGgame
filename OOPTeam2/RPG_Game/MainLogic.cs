@@ -12,7 +12,7 @@ namespace OOPTeam2.RPG_Game
     {
         public MainLogic() 
         {
-            FoodMediator foodMediator = new FoodMediator();
+            /*FoodMediator foodMediator = new FoodMediator();
             foodMediator.IncreaseFood();
             foodMediator.ReactOnEating(foodMediator.water);
             foodMediator.ReactOnEating(foodMediator.water);
@@ -25,9 +25,23 @@ namespace OOPTeam2.RPG_Game
             Chinmail chinmail = new Chinmail(3, defaultProtectiveSkin);
             
             defaultProtectiveSkin.ApplyProtection(chinmail);
-            defaultProtectiveSkin.ApplyProtection(cloak); // где вывод
+            defaultProtectiveSkin.ApplyProtection(cloak); // где вывод - вывод падает после ошибки*/
             
+            Inventory inventory = new Inventory();
+            FoodMediator foodMediator = new FoodMediator();
+            List<Cloak> cloaks = new List<Cloak>();
+            List<Chinmail> chinmails = new List<Chinmail>();
+            List<Tree> trees = new List<Tree>();
+            List<MedicalLeaf> medicalLeaves = new List<MedicalLeaf>();
+            Bag bag = new Bag(inventory, foodMediator, cloaks, chinmails, trees, medicalLeaves);
+            inventory.AddBag(bag);
+            inventory.AddWeapon(new WeaponMediator(inventory));
             
+            Console.WriteLine("Inventory: ");
+            Console.WriteLine("Bags: " + inventory.bags[0].foodMediator.water.volume);
+            Console.WriteLine("Weapons: " + inventory.weapons[0].alienWand.isAvailableOnEarth);
+            
+
         }
     }
 }

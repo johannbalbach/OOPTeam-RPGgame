@@ -8,6 +8,7 @@ namespace OOPTeam2.RPG_Game.Models
     {
         private const int INIT_FOOD_COUNT = 3;
         public Meat meat { get; set; }
+        public Bag bag { get; set; }
         public Bread bread { get; set; }
         public Fruit fruit { get; set; }
         public Flower flower { get; set; }

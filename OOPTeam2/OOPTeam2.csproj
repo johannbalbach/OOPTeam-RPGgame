@@ -106,6 +106,8 @@
     <Compile Include="RPG_Game\Models\Foods\Meat.cs" />
     <Compile Include="RPG_Game\Models\Foods\Sausage.cs" />
     <Compile Include="RPG_Game\Models\Foods\Water.cs" />
+    <Compile Include="RPG_Game\Models\Inventory.cs" />
+    <Compile Include="RPG_Game\Models\MedicalLeaf.cs" />
     <Compile Include="RPG_Game\Models\Potions\EpicPotion.cs" />
     <Compile Include="RPG_Game\Models\Potions\HealingPotion.cs" />
     <Compile Include="RPG_Game\Models\Potions\Potion.cs" />
@@ -115,6 +117,7 @@
     <Compile Include="RPG_Game\Models\Swords\LevithanSword.cs" />
     <Compile Include="RPG_Game\Models\Swords\MaceSword.cs" />
     <Compile Include="RPG_Game\Models\Swords\Sword.cs" />
+    <Compile Include="RPG_Game\Models\Tree.cs" />
     <Compile Include="RPG_Game\Models\Wands\AlienWand.cs" />
     <Compile Include="RPG_Game\Models\Wands\ElvenWand.cs" />
     <Compile Include="RPG_Game\Models\Wands\Wand.cs" />
