@@ -93,10 +93,24 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="RPG_Game\MainLogic.cs" />
+    <Compile Include="RPG_Game\Models\Bag.cs" />
+    <Compile Include="RPG_Game\Models\Chinmail.cs" />
+    <Compile Include="RPG_Game\Models\Cloak.cs" />
+    <Compile Include="RPG_Game\Models\DefaultProtectiveSkin.cs" />
+    <Compile Include="RPG_Game\Models\FoodMediator.cs" />
+    <Compile Include="RPG_Game\Models\Foods\Bread.cs" />
+    <Compile Include="RPG_Game\Models\Foods\Butter.cs" />
+    <Compile Include="RPG_Game\Models\Foods\Flower.cs" />
+    <Compile Include="RPG_Game\Models\Foods\Food.cs" />
+    <Compile Include="RPG_Game\Models\Foods\Fruit.cs" />
+    <Compile Include="RPG_Game\Models\Foods\Meat.cs" />
+    <Compile Include="RPG_Game\Models\Foods\Sausage.cs" />
+    <Compile Include="RPG_Game\Models\Foods\Water.cs" />
     <Compile Include="RPG_Game\Models\Potions\EpicPotion.cs" />
     <Compile Include="RPG_Game\Models\Potions\HealingPotion.cs" />
     <Compile Include="RPG_Game\Models\Potions\Potion.cs" />
     <Compile Include="RPG_Game\Models\Potions\ToxicPotion.cs" />
+    <Compile Include="RPG_Game\Models\ProtectiveSkin.cs" />
     <Compile Include="RPG_Game\Models\Swords\KatanaSword.cs" />
     <Compile Include="RPG_Game\Models\Swords\LevithanSword.cs" />
     <Compile Include="RPG_Game\Models\Swords\MaceSword.cs" />
