@@ -6,11 +6,12 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
         private Random random;
         public double waitingTimeUsing { set; get; }
         
-        public WizardWand(double powerCoefficient, string description, bool isAvailable, double waitingTimeUsing) {
+        public WizardWand(double powerCoefficient, int agility, string description, bool isAvailable, double waitingTimeUsing) {
             this.powerCoefficient = powerCoefficient;
             this.description = description;
             this.isAvailable = isAvailable;
             this.waitingTimeUsing = waitingTimeUsing;
+            this.agility = agility;
             random = new Random();
         }
 
@@ -19,6 +20,10 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
                 return (int)(powerCoefficient * powerCoefficient);
             }
             return (int)(powerCoefficient / random.Next(1, 4));
+        }
+        
+        public void IncreaseAgility() {
+            agility += random.Next(1, 10);
         }
         
         public override void Drop() {

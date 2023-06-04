@@ -25,7 +25,7 @@ namespace OOPTeam2.RPG_Game.Models {
             epicPotion = new EpicPotion(5, "Hello epic potion", false, true, 2, 15);
             alienWand = new AlienWand(0.5, "Hello world alien", false, true);
             elvenWand = new ElvenWand(0.7, "Hello elven wand", false, 12);
-            wizardWand = new WizardWand(0.8, "Hello wizard wand", false, 15);
+            wizardWand = new WizardWand(0.8, 10, "Hello wizard wand", false, 15);
             
         }
         
