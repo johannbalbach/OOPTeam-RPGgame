@@ -30,7 +30,7 @@ namespace OOPTeam2
 
         public MainWindow()
         {
-            InitializeComponent();
+            //InitializeComponent();
 
             MainLogic mainLogic = new MainLogic();
 
@@ -60,7 +60,7 @@ namespace OOPTeam2
             }
 
             ContextSettings context = new ContextSettings { DepthBits = 24 };
-            renderWindow = new RenderWindow(DrawSurface.Handle, context);
+            //renderWindow = new RenderWindow(DrawSurface.Handle, context);
             renderWindow.MouseButtonPressed += RenderWindow_MouseButtonPressed;
             renderWindow.SetActive(true);
         }

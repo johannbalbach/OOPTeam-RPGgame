@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using namespace OOPTeam2;
 
-namespace OOPTeam2.RPG_Game
+namespace OOPTeam2.RPG_Game.Services
 {
     public abstract class Character
     {
@@ -36,7 +35,7 @@ namespace OOPTeam2.RPG_Game
             this.protectionBonus = protectionBonus;
             this.size = size;
         }
-
+        
         public abstract void talk() { }
 
         public abstract void move() { }

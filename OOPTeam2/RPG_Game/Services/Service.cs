@@ -8,5 +8,9 @@ namespace OOPTeam2.RPG_Game.Services
 {
     internal class Service
     {
+        public MainLogic() 
+        {
+            Console.WriteLine("hello world");
+        }
     }
 }

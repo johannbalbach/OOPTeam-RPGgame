@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using namespace OOPTeam2;
 
-namespace OOPTeam2.RPG_Game
+namespace OOPTeam2.RPG_Game.Services
 {
     public class GameCharacter: Character
     {
@@ -19,21 +18,21 @@ namespace OOPTeam2.RPG_Game
         {
 
         }
-
-        public GameCharacter(bool wasDied = false, bool isEnemy = true, int playTime = 0, double speed = 3.0f) : base() { }
+        public GameCharacter(Inventory inventory, bool wasDied = false, bool isEnemy = true, int playTime = 0, double speed = 3.0f)
         {
             this.playTime = playTime;
-            //this.inventory = inventory;
+            this.inventory = inventory;
             this.isEnemy = isEnemy;
             this.speed = speed;
             this.wasDied = wasDied;
         }
-
         public override void talk()
         {
             Console.WriteLine("I'm coming for you!");
         }
-        public override void move() { }
+        public override void move(string direction) {
+            this.position.Step(direction);
+        }
 
         public override void sleep() { }
 
