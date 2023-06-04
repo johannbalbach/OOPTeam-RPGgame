@@ -1,10 +1,8 @@
+using System;
 using System.Collections.Generic;
-using SFML.Graphics;
 
-namespace OOPTeam2.RPG_Game.Models
-{
-    public class Bag
-    {
+namespace OOPTeam2.RPG_Game.Models {
+    public class Bag {
         public Inventory inventory { set; get; }
         public FoodMediator foodMediator { set; get; }
         public List<Cloak> cloaks { set; get; }
@@ -22,11 +20,19 @@ namespace OOPTeam2.RPG_Game.Models
             this.medicalLeaves = medicalLeaves;
         }
         
-        public void CallAvatar() {
-            throw new System.NotImplementedException();
+        public bool CallAvatar() {
+            Random random = new Random();
+            int randomNumber = random.Next(0, 100);
+            if (randomNumber % 3 == 0) {
+                ReactOnAvatar();
+                return true;
+            }
+
+            return false;
         }
         
         private void ReactOnAvatar() {
+            // сюда в аргументы будет передаваться текущий персонаж и у него будет увеличиваться здоровье
             throw new System.NotImplementedException();
         }
     }

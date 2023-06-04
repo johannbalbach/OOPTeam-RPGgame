@@ -1,7 +1,5 @@
-namespace OOPTeam2.RPG_Game.Models
-{
-    public class DefaultProtectiveSkin
-    {
+namespace OOPTeam2.RPG_Game.Models {
+    public class DefaultProtectiveSkin {
         public void ApplyProtection(ProtectiveSkin skin) {
             skin.Use();
             skin.Protect();

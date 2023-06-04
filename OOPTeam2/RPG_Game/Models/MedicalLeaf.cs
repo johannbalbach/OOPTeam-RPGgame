@@ -1,9 +1,7 @@
 using System;
 
-namespace OOPTeam2.RPG_Game.Models
-{
-    public class MedicalLeaf
-    {
+namespace OOPTeam2.RPG_Game.Models {
+    public class MedicalLeaf {
         public int count { set; get; }
         public int healthPoints { set; get; }
         public Bag bag { set; get; }

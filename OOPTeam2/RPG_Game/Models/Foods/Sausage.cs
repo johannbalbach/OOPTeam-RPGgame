@@ -1,7 +1,5 @@
-namespace OOPTeam2.RPG_Game.Models.Foods
-{
-    public class Sausage: Food
-    {
+namespace OOPTeam2.RPG_Game.Models.Foods {
+    public class Sausage {
         public double size { set; get; }
         public FoodMediator foodMediator { get; set; }
         
@@ -10,7 +8,7 @@ namespace OOPTeam2.RPG_Game.Models.Foods
             this.foodMediator = foodMediator;
         }
 
-        public override void Eat() {
+        public void Feed() {
             if (size > 0) {
                 size -= 0.1;
             }

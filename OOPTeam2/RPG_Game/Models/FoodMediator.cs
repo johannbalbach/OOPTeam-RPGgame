@@ -1,11 +1,8 @@
 using System;
-using System.Collections.Generic;
 using OOPTeam2.RPG_Game.Models.Foods;
 
-namespace OOPTeam2.RPG_Game.Models
-{
-    public class FoodMediator
-    {
+namespace OOPTeam2.RPG_Game.Models {
+    public class FoodMediator {
         private const int INIT_FOOD_COUNT = 3;
         public Meat meat { get; set; }
         public Bag bag { get; set; }
@@ -36,16 +33,66 @@ namespace OOPTeam2.RPG_Game.Models
             sausage.size++;
         }
 
-        public void ReactOnEating(Food food) {
+        public void ReactOnEating(Bread bread) {
             try {
-                food.Eat();
+                bread.Eat();
             } catch (Exception e) {
-                Console.WriteLine(e.Message);
+                throw new Exception(e.Message);
+            }      
+        }
+        
+        public void ReactOnEating(Fruit fruit) {
+            try {
+                fruit.Eat();
+            } catch (Exception e) {
+                throw new Exception(e.Message);
+            }
+        }
+        
+        public void ReactOnEating(Flower flower) {
+            try {
+                flower.Smell();
+            } catch (Exception e) {
+                throw new Exception(e.Message);
+            }
+        }
+        
+        public void ReactOnEating(Water water) {
+            try {
+                water.Drink();
+            } catch (Exception e) {
+                throw new Exception(e.Message);
+            }
+        }
+        
+        public void ReactOnEating(Butter butter) {
+            try {
+                butter.Eat();
+            } catch (Exception e) {
+                throw new Exception(e.Message);
+            }
+        }
+        
+        public void ReactOnEating(Sausage sausage) {
+            try {
+                sausage.Feed();
+            } catch (Exception e) {
+                throw new Exception(e.Message);
+            }
+        }
+        
+        public void ReactOnEating(Meat meat) {
+            try {
+                meat.Feed();
+            } catch (Exception e) {
+                throw new Exception(e.Message);
             }
         }
         
         
-        
-        
+
+
+
+
     }
 }

@@ -1,7 +1,5 @@
-namespace OOPTeam2.RPG_Game.Models.Foods
-{
-    public class Meat: Food
-    {
+namespace OOPTeam2.RPG_Game.Models.Foods {
+public class Meat {
         public double kilos { get; set; }
         public FoodMediator foodMediator { get; set; }
         
@@ -10,7 +8,7 @@ namespace OOPTeam2.RPG_Game.Models.Foods
             this.foodMediator = foodMediator;
         }
         
-        public override void Eat() {
+        public void Feed() {
             if (kilos > 0) {
                 kilos -= 0.1;
             }

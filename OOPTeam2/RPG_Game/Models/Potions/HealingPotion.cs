@@ -1,13 +1,13 @@
-﻿namespace OOPTeam2.RPG_Game.Models.Potions
-{
-    public class HealingPotion: Potion
-    {
+﻿using System;
+
+namespace OOPTeam2.RPG_Game.Models.Potions {
+    public class HealingPotion: Potion {
+        private const int DOSE = 20;
         public int timeFromLastUsing { set; get; }
         public int timeHealing { set; get; }
         public int valueHealing { set; get; }
         
-        public HealingPotion(int volume, string description, bool isAvailable, int timeFromLastUsing, int timeHealing, int valueHealing)
-        {
+        public HealingPotion(int volume, string description, bool isAvailable, int timeFromLastUsing, int timeHealing, int valueHealing) {
             this.volume = volume;
             this.description = description;
             this.isAvailable = isAvailable;
@@ -16,19 +16,28 @@
             this.valueHealing = valueHealing;
         }
 
-        public override void Use()
-        {
-            throw new System.NotImplementedException();
+        public override bool Use() {
+            try {
+                Reduce();
+                // здесь должна быть логика восстановления здоровья
+                // нам передается игрок и мы увеличиваем его здоровье на DOSE
+                return true;
+            } catch (Exception e) {
+                Console.WriteLine(e);
+                return false;
+            }
         }
 
-        public override void Reduce()
-        {
-            throw new System.NotImplementedException();
+        public override void Reduce() {
+            if (volume >= DOSE) {
+                volume -= DOSE;
+            } else {
+                throw new Exception("Potion is over");
+            }
         }
         
-        public override void Increase()
-        {
-            throw new System.NotImplementedException();
+        public override void Increase() {
+            volume += DOSE;
         }
     }
 }

@@ -1,9 +1,8 @@
 ﻿using OOPTeam2.RPG_Game.Models.Potions;
 using OOPTeam2.RPG_Game.Models.Swords;
-using OOPTeam2.RPG_Game.Models.Wand;
+using OOPTeam2.RPG_Game.Models.Wands;
 
-namespace OOPTeam2.RPG_Game.Models
-{
+namespace OOPTeam2.RPG_Game.Models {
     public class WeaponMediator {
         public Inventory inventory { set; get; }
         public MaceSword maceSword { set; get; }
@@ -24,15 +23,44 @@ namespace OOPTeam2.RPG_Game.Models
             healingPotion = new HealingPotion(5, "Hello healing potion", false, 2, 2, 15);
             toxicPotion = new ToxicPotion(5, "Hello toxic potion", false, 2, 2);
             epicPotion = new EpicPotion(5, "Hello epic potion", false, true, 2, 15);
-            alienWand = new AlienWand(0.5, 0.5, "Hello alienWand", false, false);
-            elvenWand = new ElvenWand(0.8, 0.8, "Hello elven wand", false, 13);
-            wizardWand = new WizardWand(0.7, 0.7, "Hello wizard wand", false, 15);
+            alienWand = new AlienWand(0.5, "Hello world alien", false, true);
+            elvenWand = new ElvenWand(0.7, "Hello elven wand", false, 12);
+            wizardWand = new WizardWand(0.8, "Hello wizard wand", false, 15);
+            
+        }
+        
+        public int UseSword(Sword sword) {
+            return sword.Damage();
+        }
+        
+        public bool UsePotion(Potion potion) {
+            return potion.Use();
+        }
+        
+        public int UseWand(Wand wand) {
+            return wand.Use();
+        }
+        
+        public void DropSword(Sword sword) {
+            sword.Drop();
+        }
+        
+        public void ReducePotion(Potion potion) {
+            potion.Reduce();
+        }
+        
+        public void IncreasePotion(Potion potion) {
+            potion.Increase();
+        }
+        
+        public void DropWand(Wand wand) {
+            wand.Drop();
+        }
+        
+        public void ImpoveWand(Wand wand) {
+            wand.Improve();
         }
         
         
-        public void takeWeapon()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

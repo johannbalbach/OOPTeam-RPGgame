@@ -1,17 +1,14 @@
-namespace OOPTeam2.RPG_Game.Models.Foods
-{
-    public class Bread : Food
-    {
+namespace OOPTeam2.RPG_Game.Models.Foods {
+    public class Bread {
         public int count { get; set; }
         public FoodMediator foodMediator { get; set; }
         
         public Bread(FoodMediator foodMediator, int count) {
             this.count = count;
             this.foodMediator = foodMediator;
-            
         }
         
-        public override void Eat() {
+        public void Eat() {
             if (count > 0) {
                 count--;
             }

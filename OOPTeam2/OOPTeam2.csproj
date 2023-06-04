@@ -101,7 +101,6 @@
     <Compile Include="RPG_Game\Models\Foods\Bread.cs" />
     <Compile Include="RPG_Game\Models\Foods\Butter.cs" />
     <Compile Include="RPG_Game\Models\Foods\Flower.cs" />
-    <Compile Include="RPG_Game\Models\Foods\Food.cs" />
     <Compile Include="RPG_Game\Models\Foods\Fruit.cs" />
     <Compile Include="RPG_Game\Models\Foods\Meat.cs" />
     <Compile Include="RPG_Game\Models\Foods\Sausage.cs" />

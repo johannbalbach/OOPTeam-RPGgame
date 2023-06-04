@@ -1,9 +1,7 @@
 using System;
 
-namespace OOPTeam2.RPG_Game.Models.Foods
-{
-    public class Water: Food
-    {
+namespace OOPTeam2.RPG_Game.Models.Foods {
+    public class Water {
         public int volume { get; set; }
         public FoodMediator foodMediator { get; set; }
         
@@ -12,7 +10,7 @@ namespace OOPTeam2.RPG_Game.Models.Foods
             this.foodMediator = foodMediator;
         }
         
-        public override void Eat() {
+        public void Drink() {
             if (volume > 0) {
                 volume--;    
                 Console.WriteLine("You drank water." + "Remain: " + volume);

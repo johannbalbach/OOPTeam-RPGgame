@@ -1,7 +1,6 @@
 using System;
 
-namespace OOPTeam2.RPG_Game.Models
-{
+namespace OOPTeam2.RPG_Game.Models {
     public enum TreeLen {
         Small,
         Medium,

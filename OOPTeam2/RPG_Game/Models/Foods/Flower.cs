@@ -1,7 +1,5 @@
-namespace OOPTeam2.RPG_Game.Models.Foods
-{
-    public class Flower: Food
-    {
+namespace OOPTeam2.RPG_Game.Models.Foods {
+    public class Flower {
         public int beam { set; get; }
         public FoodMediator foodMediator { get; set; }
         
@@ -10,7 +8,7 @@ namespace OOPTeam2.RPG_Game.Models.Foods
             this.beam = beam;
         }
         
-        public override void Eat() {
+        public void Smell() {
             if (beam > 0) {
                 beam--;
             }

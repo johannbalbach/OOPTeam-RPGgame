@@ -1,7 +1,5 @@
-namespace OOPTeam2.RPG_Game.Models.Foods
-{
-    public class Butter: Food
-    {
+namespace OOPTeam2.RPG_Game.Models.Foods {
+    public class Butter {
         public int volume { set; get; }
         public FoodMediator foodMediator { get; set; }
         
@@ -10,7 +8,7 @@ namespace OOPTeam2.RPG_Game.Models.Foods
             this.volume = volume;
         }
         
-        public override void Eat() {
+        public void Eat() {
             if (volume > 0) {
                 volume--;    
             }

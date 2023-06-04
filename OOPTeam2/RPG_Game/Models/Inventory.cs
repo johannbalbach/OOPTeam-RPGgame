@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 
-namespace OOPTeam2.RPG_Game.Models
-{
-    public class Inventory
-    {
+namespace OOPTeam2.RPG_Game.Models {
+    public class Inventory {
         public List<Bag> bags { set; get; }
         public List<WeaponMediator> weapons { set; get; }
         
