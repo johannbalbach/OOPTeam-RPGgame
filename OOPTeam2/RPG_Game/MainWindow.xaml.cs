@@ -1,5 +1,7 @@
 ﻿using OOPTeam2.RPG_Game;
+using OOPTeam2.RPG_Game.View;
 using SFML.Graphics;
+using SFML.System;
 using SFML.Window;
 using System;
 using System.Collections.Generic;
@@ -25,8 +27,8 @@ namespace OOPTeam2
     public partial class MainWindow : System.Windows.Window
     {
         static RenderWindow renderWindow;
-        private readonly CircleShape circle;
         private readonly DispatcherTimer timer;
+        static PictureProvider pictureProvider = new PictureProvider();
 
         public MainWindow()
         {
@@ -34,7 +36,7 @@ namespace OOPTeam2
 
             MainLogic mainLogic = new MainLogic();
 
-            circle = new CircleShape(20) { FillColor = SFML.Graphics.Color.Magenta };
+
             CreateRenderWindow();
 
             TimeSpan refreshRate = new TimeSpan(0, 0, 0, 0, 1000 / 60);
@@ -48,7 +50,7 @@ namespace OOPTeam2
             renderWindow.DispatchEvents();
 
             renderWindow.Clear(SFML.Graphics.Color.Black);
-            renderWindow.Draw(circle);
+            renderWindow.Draw(pictureProvider.humanSprite);
             renderWindow.Display();
         }
         private void CreateRenderWindow()
@@ -72,7 +74,7 @@ namespace OOPTeam2
 
         private void RenderWindow_MouseButtonPressed(object sender, SFML.Window.MouseButtonEventArgs e)
         {
-            circle.FillColor = Color.White;
+
         }
     }
 }
