@@ -41,6 +41,7 @@ namespace OOPTeam2
             timer = new DispatcherTimer { Interval = refreshRate };
             timer.Tick += Timer_Tick;
             timer.Start();
+            Hide();
         }
 
         private void Timer_Tick(object sender, EventArgs e)

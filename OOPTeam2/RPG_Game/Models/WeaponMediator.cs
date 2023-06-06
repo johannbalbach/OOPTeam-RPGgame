@@ -20,9 +20,9 @@ namespace OOPTeam2.RPG_Game.Models {
             maceSword = new MaceSword(0.5, 0.5, 0.2, 2, false);
             levithanSword = new LevithanSword(0.8, 0.8, 0.5, 5, false);
             katanaSword = new KatanaSword(0.7, 0.7, 0.4, 4, false);
-            healingPotion = new HealingPotion(5, "Hello healing potion", false, 2, 2, 15);
-            toxicPotion = new ToxicPotion(5, "Hello toxic potion", false, 2, 2);
-            epicPotion = new EpicPotion(5, "Hello epic potion", false, true, 2, 15);
+            healingPotion = new HealingPotion(5, "Hello healing potion", false, 2, 2, 15, 10);
+            toxicPotion = new ToxicPotion(5, "Hello toxic potion", false, 2, 2, 10);
+            epicPotion = new EpicPotion(5, "Hello epic potion", false, true, 2, 15, 22);
             alienWand = new AlienWand(0.5, "Hello world alien", false, true);
             elvenWand = new ElvenWand(0.7, "Hello elven wand", false, 12);
             wizardWand = new WizardWand(0.8, 10, "Hello wizard wand", false, 15);

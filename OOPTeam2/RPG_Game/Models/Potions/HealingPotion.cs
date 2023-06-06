@@ -7,13 +7,14 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
         public int timeHealing { set; get; }
         public int valueHealing { set; get; }
         
-        public HealingPotion(int volume, string description, bool isAvailable, int timeFromLastUsing, int timeHealing, int valueHealing) {
+        public HealingPotion(int volume, string description, bool isAvailable, int timeFromLastUsing, int timeHealing, int valueHealing, int damage) {
             this.volume = volume;
             this.description = description;
             this.isAvailable = isAvailable;
             this.timeFromLastUsing = timeFromLastUsing;
             this.timeHealing = timeHealing;
             this.valueHealing = valueHealing;
+            this.damage = damage;
         }
 
         public override bool Use() {

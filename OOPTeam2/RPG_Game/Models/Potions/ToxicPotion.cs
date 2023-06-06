@@ -6,16 +6,19 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
         public int valueToxic { set; get; }
         public int coverageArea { set; get; }
         
-        public ToxicPotion(int volume, string description, bool isAvailable, int valueToxic, int coverageArea) {
+        public ToxicPotion(int volume, string description, bool isAvailable, int valueToxic, int coverageArea, int damage) {
             this.volume = volume;
             this.description = description;
             this.isAvailable = isAvailable;
             this.valueToxic = valueToxic;
             this.coverageArea = coverageArea;
+            this.damage = damage;
         }
 
         public override bool Use() {
             try {
+                // здесь должна быть логика восстановления здоровья
+                // нам передается игрок и мы увеличиваем его здоровье на DOSE
                 Reduce();
                 // должна быть логика заражения ячеек
                 return true;
