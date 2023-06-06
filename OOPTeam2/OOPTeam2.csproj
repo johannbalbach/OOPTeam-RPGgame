@@ -93,6 +93,19 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="RPG_Game\MainLogic.cs" />
+    <Compile Include="RPG_Game\Services\AliveObject.cs" />
+    <Compile Include="RPG_Game\Services\Bot.cs" />
+    <Compile Include="RPG_Game\Services\Character.cs" />
+    <Compile Include="RPG_Game\Services\Controller.cs" />
+    <Compile Include="RPG_Game\Services\GameCharacter.cs" />
+    <Compile Include="RPG_Game\Services\Map.cs" />
+    <Compile Include="RPG_Game\Services\Objects\Fence.cs" />
+    <Compile Include="RPG_Game\Services\Objects\Food.cs" />
+    <Compile Include="RPG_Game\Services\Objects\Stone.cs" />
+    <Compile Include="RPG_Game\Services\Player.cs" />
+    <Compile Include="RPG_Game\Services\Position.cs" />
+    <Compile Include="RPG_Game\Services\Service.cs" />
+    <Compile Include="RPG_Game\Services\StaticObject.cs" />
     <Compile Include="RPG_Game\View\SfmlDrawingSurface.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -138,7 +151,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RPG_Game\Models\" />
-    <Folder Include="RPG_Game\Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OOPTeam2.RPG_Game.Services;
 
 namespace OOPTeam2.RPG_Game
 {
@@ -10,7 +11,7 @@ namespace OOPTeam2.RPG_Game
     {
         public MainLogic() 
         {
-            Console.WriteLine("hello world");
+            Console.WriteLine("hello world132");
         }
     }
 }

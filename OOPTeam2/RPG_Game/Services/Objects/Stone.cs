@@ -7,6 +7,7 @@ namespace OOPTeam2.RPG_Game.Services.Objects
 {
     public class Stone
     {
-        
+        public Position position { get; set; }
+        public UInt32 drawID { get; private set; }
     }
 }

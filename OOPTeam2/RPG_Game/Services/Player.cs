@@ -7,8 +7,18 @@ namespace OOPTeam2.RPG_Game.Services
 {
     public class Player
     {
-        private ref GameCharacter managedCharacter = new GameCharacter();
-        private int attackDistance = 5;
+        public GameCharacter managedCharacter { get; private set; }
+
+        private const int talkCoefficcient = 10;
+        private const int playerSize = 10;
+        private const int randomMax = 100;
+        private const int attackDistance = 5;
+        private const int botSize = 10;
+
+        public Player(ref GameCharacter character)
+        {
+            this.managedCharacter = character;
+        }
 
         public bool inDistance(GameCharacter enemy){
             if ((managedCharacter.position.X - playerSize - attackDistance <= enemy.position.X + playerSize)
@@ -33,15 +43,23 @@ namespace OOPTeam2.RPG_Game.Services
                 this.DirtyTalk();
             }
             else{
-                if (enemy.position.X < managedCharacter.position.X){
-                    managedCharacter.move(managedCharacter.position.Step("left"));
-                }
-                else{
-                    managedCharacter.move(managedCharacter.position.Step("right"));
-                }
-                
                 this.DirtyTalk(talkCoefficcient/10);
             }
         }
+        public void MoveLeft()
+        {
+            if (true)//границы карты
+            {
+                managedCharacter.move("left");
+            }
+        }
+        public void MoveRightn()
+        {
+            if (true)//границы карты
+            {
+                managedCharacter.move("right");
+            }
+        }
+
     }
 }

@@ -11,9 +11,15 @@ namespace OOPTeam2.RPG_Game.Services
         public int X { get; private set; }
         public int Y { get; private set; }
 
-        public SetTwoPoint(int x, int y)
+        public Position(int x, int y)
         {
-            if (x is (< 1 or > 2000) || y is (< 1 or > 2000))///границы поля
+            X = x;
+            Y = y;
+        }
+
+        public void SetTwoPoint(int x, int y)
+        {
+            if ((x < 1 && x >2000) || (y < 1 && y > 2000))///границы поля
             {
                 throw new ArgumentException("Point must be in range 1 - 2000");//
             }
@@ -21,7 +27,7 @@ namespace OOPTeam2.RPG_Game.Services
             this.Y = y;
         }
 
-        public override bool Equals(object obj) => this.Equals(obj as TwoDPoint);
+        public override bool Equals(object obj) => this.Equals(obj as Position);
 
         public bool Equals(Position p)
         {
@@ -61,7 +67,6 @@ namespace OOPTeam2.RPG_Game.Services
                     this.Y = Y-1;
                     break;
             }
-            return this;
         }
     }
 }

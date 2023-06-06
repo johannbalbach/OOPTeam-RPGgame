@@ -8,27 +8,19 @@ namespace OOPTeam2.RPG_Game.Services
 {
     public class Bot
     {
-        private ref GameCharacter managedCharacter = new GameCharacter();
+        public GameCharacter managedCharacter { get; private set; }
         private double randomCoefficcient = 1 / 10000;//??
-        private int talkCoefficcient = 10;
-        private int playerSize = 10;
-        private int randomMax = 100;
-        private int attackDistance = 5;
-        private int botSize = 10;
+        private const int talkCoefficcient = 10;
+        private const int playerSize = 10;
+        private const int randomMax = 100;
+        private const int attackDistance = 5;
+        private const int botSize = 10;
 
         public Bot(ref GameCharacter character)
         {
             this.managedCharacter = character;
         }
 
-        private predict()
-        {
-            //??
-        }
-        public controlProcess() 
-        {
-            //??
-        }
         public bool inDistance(GameCharacter player){
             if ((managedCharacter.position.X - botSize - attackDistance <= player.position.X + playerSize)
             || (managedCharacter.position.X + botSize + attackDistance >= player.position.X - playerSize)){
@@ -62,6 +54,15 @@ namespace OOPTeam2.RPG_Game.Services
                 DirtyTalk(talkCoefficcient/10);
             }
         }
+        public void PrintName()
+        {
+            Console.WriteLine(managedCharacter.name);
+        }
     }
 }
-//Animater Controller
+
+//handler для игрока(лево право)
+//Map'у
+//ID для всех обьектов с текстуркой
+//Прописать объекты
+//Генератор челиков

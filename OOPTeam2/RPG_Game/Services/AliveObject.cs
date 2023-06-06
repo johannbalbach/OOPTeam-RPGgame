@@ -7,7 +7,7 @@ namespace OOPTeam2.RPG_Game.Services
 {
     public class AliveObject
     {
-        private Avatar avatar;
+/*        private Avatar avatar;
         private List<Butterfly> butterflies;
         private List<Birds> birds;
         private List<Worm> worms;
@@ -18,6 +18,6 @@ namespace OOPTeam2.RPG_Game.Services
         private List<OrksCharacter> orksCharacters;
 
         private List<ElvesCharacter> elvesCharacters;
-        private List<CnomeCharacters> gnomeCharacters;
+        private List<CnomeCharacters> gnomeCharacters;*/
     }
 }

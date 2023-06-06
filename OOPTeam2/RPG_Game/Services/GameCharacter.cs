@@ -9,19 +9,22 @@ namespace OOPTeam2.RPG_Game.Services
     public class GameCharacter: Character
     {
         protected int playTime;
-        protected Inventory inventory;
+        //protected Inventory inventory;
         protected bool isEnemy;
         protected double speed;
         protected bool wasDied;
-
+        public UInt32 drawID { get; private set; }
         public GameCharacter()
         {
 
         }
-        public GameCharacter(Inventory inventory, bool wasDied = false, bool isEnemy = true, int playTime = 0, double speed = 3.0f)
+        public GameCharacter(string name, Position position, int age = 0, string gender = "male", UInt32 skin = 0, bool wasDied = false, bool isEnemy = true, int playTime = 0, double speed = 3.0f): base()
         {
+            this.name = name;
+            this.position = position;
             this.playTime = playTime;
-            this.inventory = inventory;
+            this.position = position;
+            //this.inventory = inventory;
             this.isEnemy = isEnemy;
             this.speed = speed;
             this.wasDied = wasDied;
@@ -42,7 +45,7 @@ namespace OOPTeam2.RPG_Game.Services
 
         public override void hit(){ }
 
-        public override void appearance(){ }
+        public void appearance(){ }
     }
 
 }
