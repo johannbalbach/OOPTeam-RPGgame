@@ -28,15 +28,13 @@ namespace OOPTeam2
     {
         static RenderWindow renderWindow;
         private readonly DispatcherTimer timer;
-        static PictureProvider pictureProvider = new PictureProvider();
+        private static Drawer drawer = new Drawer();
 
         public MainWindow()
         {
             InitializeComponent();
 
             MainLogic mainLogic = new MainLogic();
-
-
             CreateRenderWindow();
 
             TimeSpan refreshRate = new TimeSpan(0, 0, 0, 0, 1000 / 60);
@@ -48,9 +46,8 @@ namespace OOPTeam2
         private void Timer_Tick(object sender, EventArgs e)
         {
             renderWindow.DispatchEvents();
-
             renderWindow.Clear(SFML.Graphics.Color.Black);
-            renderWindow.Draw(pictureProvider.humanSprite);
+            drawer.Draw();
             renderWindow.Display();
         }
         private void CreateRenderWindow()
@@ -65,6 +62,7 @@ namespace OOPTeam2
             renderWindow = new RenderWindow(DrawSurface.Handle, context);
             renderWindow.MouseButtonPressed += RenderWindow_MouseButtonPressed;
             renderWindow.SetActive(true);
+            drawer.SetRenderWindow(ref renderWindow);
         }
 
         private void DrawSurface_SizeChanged(object sender, EventArgs e)
