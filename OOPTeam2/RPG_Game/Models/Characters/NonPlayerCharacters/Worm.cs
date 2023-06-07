@@ -1,3 +1,5 @@
+using OOPTeam2.RPG_Game.Models.Foods;
+
 namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters {
     public class Worm: NonPlayerCharacter {
         
@@ -5,7 +7,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters {
             throw new System.NotImplementedException();
         }
         
-        public override void Move() {
+        public override void Move(Position position, string direction) {
             throw new System.NotImplementedException();
         }
         
@@ -13,7 +15,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters {
             throw new System.NotImplementedException();
         }
         
-        public override void Talk() {
+        public override string Talk() {
             throw new System.NotImplementedException();
         }
         
@@ -21,14 +23,10 @@ namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters {
             throw new System.NotImplementedException();
         }
         
-        public override void Eat() {
+        public override void Eat(Food food) {
             throw new System.NotImplementedException();
         }
-        
-        public override void ChangeWeapon() {
-            throw new System.NotImplementedException();
-        }
-        
+
         public override void GetApperance() {
             throw new System.NotImplementedException();
         }

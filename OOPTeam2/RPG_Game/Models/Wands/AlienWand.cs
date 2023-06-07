@@ -1,6 +1,9 @@
-﻿namespace OOPTeam2.RPG_Game.Models.Wands {
+﻿using System.Threading;
+
+namespace OOPTeam2.RPG_Game.Models.Wands {
     public class AlienWand: Wand {
         private const int WEAK_POWER = 2;
+        private const int DELAY_TIME = 3000;
         private const int IMPROVE_POWER = 10;
         public bool isAvailableOnEarth { set; get; }
         
@@ -12,6 +15,8 @@
         }
         
         public override int Use() {
+            // при использовании палочки заклинание должно вызывать задержку 
+            Thread.Sleep(DELAY_TIME);
             if (isAvailable && isAvailableOnEarth) {
                 return (int)(powerCoefficient * powerCoefficient);
             }
@@ -22,7 +27,7 @@
             if (isAvailable) {
                 isAvailable = false;
             }
-            // пояснение по игре: при этом на Земле палочка продолжает работать
+            // при этом на Земле палочка продолжает работать
         }
         
         public override void Improve() {

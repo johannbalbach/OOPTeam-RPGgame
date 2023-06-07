@@ -1,28 +1,37 @@
 using System.Collections.Generic;
 
 namespace OOPTeam2.RPG_Game.Models {
-    public class Inventory {
-        public List<Bag> bags { set; get; }
-        public List<WeaponMediator> weapons { set; get; }
+    public class Inventory
+    {
+        public List<Bag> bags;
+        public List<WeaponMediator> weapons;
         
         public Inventory() {
             bags = new List<Bag>();
             weapons = new List<WeaponMediator>();
         }
         
-        public void AddBag(Bag bag) {
+        public void SetBags(Bag bag) {
             bags.Add(bag);
         }
         
-        public void AddWeapon(WeaponMediator weapon) {
-            weapons.Add(weapon);
+        public List<Bag> GetBags() {
+            return bags;
         }
         
-        public void RemoveBag(Bag bag) {
+        public void DeleteBags(Bag bag) {
             bags.Remove(bag);
         }
         
-        public void RemoveWeapon(WeaponMediator weapon) {
+        public void SetWeapons(WeaponMediator weapon) {
+            weapons.Add(weapon);
+        }
+        
+        public List<WeaponMediator> GetWeapons() {
+            return weapons;
+        }
+        
+        public void DeleteWeapons(WeaponMediator weapon) {
             weapons.Remove(weapon);
         }
     }

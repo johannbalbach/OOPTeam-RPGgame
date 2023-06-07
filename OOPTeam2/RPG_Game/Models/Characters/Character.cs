@@ -1,3 +1,5 @@
+using OOPTeam2.RPG_Game.Models.Foods;
+
 namespace OOPTeam2.RPG_Game.Models.Characters {
     public abstract class Character {
         protected string name { get; set; }
@@ -9,11 +11,10 @@ namespace OOPTeam2.RPG_Game.Models.Characters {
         protected double protectionBonus { get; set; }
         protected int size { get; set; }
 
-        public abstract void Move();
+        public abstract void Move(Position position, string direction);
         public abstract void Hit();
-        public abstract void Talk();
+        public abstract string Talk();
         public abstract void Sleep();
-        public abstract void Eat();
-        public abstract void ChangeWeapon();
+        public abstract void Eat(Food food);
     }
 }

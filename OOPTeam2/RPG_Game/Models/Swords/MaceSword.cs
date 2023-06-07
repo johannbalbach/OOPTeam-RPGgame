@@ -12,7 +12,7 @@
         }
         
         public override int Damage() {
-            // пояснение по игре: если предки персонажа (его раса) владели техникой меча, то урон увеличивается
+            // если предки персонажа (его раса) владели техникой меча, то урон увеличивается
             if (isAvailable && quality > AVERAGE_QUALITY) {
                 return attack * BONUS_COEFFICIENT;
             }
@@ -20,7 +20,7 @@
         }
         
         public override void Drop() {
-            // пояснение по игре: если выкенешь меч - ПОТЕРЯЕШЬ ЕГО НАВСЕГДА!
+            // если выкенешь меч, то потеряешь его навсегда
             if (isAvailable) {
                 isAvailable = false;
             }

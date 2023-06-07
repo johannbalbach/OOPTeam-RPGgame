@@ -27,7 +27,7 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
         }
         
         public override void Drop() {
-            // пояснение по игре: если волшебная палочка были выброшена, магия персонажа изменяется от воли судьбы 
+            // если волшебная палочка были выброшена, магия персонажа изменяется от воли судьбы 
             if (isAvailable) {
                 int randomValue = random.Next(0, 100);
                 BONUS_MAGIC = randomValue;

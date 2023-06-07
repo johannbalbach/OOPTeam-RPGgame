@@ -17,23 +17,13 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
             this.damage = damage;
         }
         
-        public override bool Use() {
-            try {
-                // здесь должна быть логика восстановления здоровья
-                // нам передается игрок и мы увеличиваем его здоровье на DOSE
-                Reduce();
-                return true;    
-            } catch (Exception e) {
-                Console.WriteLine(e);
-                return false;
-            }
+        public override void Use() {
+            Reduce();
         }
         
         public override void Reduce() {
             if (volume >= BONUS) {
                 volume -= BONUS;
-            } else {
-                throw new Exception("Potion is over");
             }
         }
         

@@ -1,19 +1,14 @@
 namespace OOPTeam2.RPG_Game.Models.Foods {
-    public class Flower {
+    public class Flower: Food {
         public int beam { set; get; }
-        public FoodMediator foodMediator { get; set; }
-        
-        public Flower(FoodMediator foodMediator, int beam) {
-            this.foodMediator = foodMediator;
+
+        public Flower(int beam) {
             this.beam = beam;
         }
         
-        public void Smell() {
+        public override void Eat() {
             if (beam > 0) {
                 beam--;
-            }
-            else {
-                throw new System.Exception("Flower is over");
             }
         }
     }

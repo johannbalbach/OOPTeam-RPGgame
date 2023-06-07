@@ -1,19 +1,14 @@
 namespace OOPTeam2.RPG_Game.Models.Foods {
-    public class Sausage {
+    public class Sausage: Food {
         public double size { set; get; }
-        public FoodMediator foodMediator { get; set; }
-        
-        public Sausage(FoodMediator foodMediator, double size) {
+
+        public Sausage(double size) {
             this.size = size;
-            this.foodMediator = foodMediator;
         }
 
-        public void Feed() {
+        public override void Eat() {
             if (size > 0) {
                 size -= 0.1;
-            }
-            else {
-                System.Console.WriteLine("Sausage is over");
             }
         }
     }

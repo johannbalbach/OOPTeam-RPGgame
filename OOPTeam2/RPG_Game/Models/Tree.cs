@@ -9,20 +9,21 @@ namespace OOPTeam2.RPG_Game.Models {
     
     public class Tree {
         public TreeLen treeLen { get; set; }
-        public Bag bag { get; set; }
-        
-        
+
         public Tree(TreeLen treeLen) {
             this.treeLen = treeLen;
         }
         
-        public void Use() {
-            if (treeLen == TreeLen.Small) {
-                Console.WriteLine("You cut small tree");
-            } else if (treeLen == TreeLen.Medium) {
-                Console.WriteLine("You cut medium tree");
-            } else if (treeLen == TreeLen.Big) {
-                Console.WriteLine("You cut big tree");
+        public string Use() {
+            switch (treeLen) {
+                case TreeLen.Small:
+                    return "You cut small tree";
+                case TreeLen.Medium:
+                    return "You cut medium tree";
+                case TreeLen.Big:
+                    return "You cut big tree";
+                default:
+                    return "";
             }
         }
     }

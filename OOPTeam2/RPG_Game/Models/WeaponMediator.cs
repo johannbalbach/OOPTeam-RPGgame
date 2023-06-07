@@ -16,6 +16,7 @@ namespace OOPTeam2.RPG_Game.Models {
         public WizardWand wizardWand { set; get; }
 
         public WeaponMediator(Inventory inventory) {
+            // подумай какие значения в качестве инициализации будут логичными
             this.inventory = inventory;
             maceSword = new MaceSword(0.5, 0.5, 0.2, 2, false);
             levithanSword = new LevithanSword(0.8, 0.8, 0.5, 5, false);
@@ -33,8 +34,8 @@ namespace OOPTeam2.RPG_Game.Models {
             return sword.Damage();
         }
         
-        public bool UsePotion(Potion potion) {
-            return potion.Use();
+        public void UsePotion(Potion potion) { 
+            potion.Use();
         }
         
         public int UseWand(Wand wand) {
