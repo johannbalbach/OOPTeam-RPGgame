@@ -8,8 +8,8 @@ namespace OOPTeam2.RPG_Game.Services
 {
     public class StaticObject
     {
-        private List<Fence> fences;
-        private List<Stone> stones;
-        private List<Food> foods;
+        public List<Fence> fences {get; set;}
+        public List<Stone> stones { get; set; }
+        public List<Food> foods { get; set; }
     }
 }

@@ -9,37 +9,33 @@ namespace OOPTeam2.RPG_Game.Services
     public class Bot
     {
         public GameCharacter managedCharacter { get; private set; }
-        private double randomCoefficcient = 1 / 10000;//??
-        private const int talkCoefficcient = 10;
-        private const int playerSize = 10;
-        private const int randomMax = 100;
-        private const int attackDistance = 5;
-        private const int botSize = 10;
 
         public Bot(ref GameCharacter character)
         {
             this.managedCharacter = character;
         }
 
-        public bool inDistance(GameCharacter player){
-            if ((managedCharacter.position.X - botSize - attackDistance <= player.position.X + playerSize)
-            || (managedCharacter.position.X + botSize + attackDistance >= player.position.X - playerSize)){
+        public bool inDistance(ref GameCharacter player){
+            if ((managedCharacter.position.X - config.botSize - config.attackDistance <= player.position.X + config.playerSize)
+            || (managedCharacter.position.X + config.botSize + config.attackDistance >= player.position.X - config.playerSize)){
                 return true;
             }
             else{
                 return false;
             }
         }
-        public void DirtyTalk(int probability = talkCoefficcient){
-            Random rnd = new Random();
-            if (probability <=  rnd.Next(randomMax)){
+        public void DirtyTalk(int probability = config.talkProbability)
+        {
+            SingletonRand randomSingleton = SingletonRand.getInstance();
+            if (probability <= randomSingleton.Next(config.talkMax))
+            {
                 managedCharacter.talk();
             }
         }
 
-        public void Update(GameCharacter player)
+        public void Update(ref GameCharacter player)
         {
-            if (inDistance(player)){
+            if (inDistance(ref player)){
                 managedCharacter.hit();
                 DirtyTalk();
             }
@@ -51,7 +47,7 @@ namespace OOPTeam2.RPG_Game.Services
                     managedCharacter.move("right");
                 }
                 
-                DirtyTalk(talkCoefficcient/10);
+                DirtyTalk();
             }
         }
         public void PrintName()
@@ -61,8 +57,5 @@ namespace OOPTeam2.RPG_Game.Services
     }
 }
 
-//handler для игрока(лево право)
 //Map'у
-//ID для всех обьектов с текстуркой
-//Прописать объекты
 //Генератор челиков

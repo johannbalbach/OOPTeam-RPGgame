@@ -35,7 +35,6 @@ namespace OOPTeam2.RPG_Game.Services
             {
                 return false;
             }
-
             if (Object.ReferenceEquals(this, p))
             {
                 return true;

@@ -14,12 +14,12 @@ namespace OOPTeam2.RPG_Game.Services
         protected int age;
         protected string gender;
         protected int lifePoint;
-        protected UInt32 skin;
+        protected string skin;
         protected double damage;
         protected double protectionBonus;
         protected int size;
         
-        public Character(int age = 0, string gender = "male", UInt32 skin = 0, int size = 10,  int lifePoint = 100, double damage = 10.0, double protectionBonus = 7.0)
+        public Character(int age = 0, string gender = "male", string skin = "enemy", int size = 10,  int lifePoint = 100, double damage = 10.0, double protectionBonus = 7.0)
         {
             this.age = age;
             this.gender = gender;

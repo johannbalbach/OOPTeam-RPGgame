@@ -7,13 +7,13 @@ namespace OOPTeam2.RPG_Game.Services
         public GameCharacter nonSpawnCharacter;//??
         public Generator() { }//?? nonSpawn
 
-        public ref GameCharacter SpawnEnemyExcept(Position position)
+        public GameCharacter SpawnEnemyExcept(Position position)
         {
-            Random rnd = new Random();
+            SingletonRand rnd = SingletonRand.getInstance();
             int age = rnd.Next(0, 100);
             int sex = rnd.Next(0, 1);
             string gender, name = "";
-            UInt32 skinIndex = 0;
+            string skinIndex = "enemy";
             if (sex == 1)
                 gender = "male";
             else
@@ -25,48 +25,43 @@ namespace OOPTeam2.RPG_Game.Services
             {
                 case 0:
                     name = "WandEnemy";
-                    skinIndex = 1;//
+                    skinIndex = "WandCharacter";
                     break;
                 case 1:
                     name = "AlienEnemy";
-                    skinIndex = 2;//
+                    skinIndex = "AlienCharacter";
                     break;
                 case 2:
                     name = "HumanEnemy";
-                    skinIndex = 3;//
+                    skinIndex = "HumanCharacter";
                     break;
                 case 3:
                     name = "OrkEnemy";
-                    skinIndex = 4;//
+                    skinIndex = "OrkCharacter";
                     break;
                 case 4:
                     name = "ElvEnemy";
-                    skinIndex = 5;//
+                    skinIndex = "ElfCharacter";
                     break;
                 case 5:
                     name = "GnomeEnemy";
-                    skinIndex = 6;//
+                    skinIndex = "GnomeCharacter";
                     break;
             }
             GameCharacter enemy = new GameCharacter(name, spawnPosition, age, gender, skinIndex);
 
-            return enemy;////???????
+            return enemy;
         }
         private Position SpawnPlace(Position exception)
         {
             int x, y;
             y = exception.Y;
             Random rnd = new Random();
-            ///
-            const int playerSize = 10;
-            const int attackDistance = 5;
-            const int botSize = 10;
-            ///
 
             x = rnd.Next(1, 2000);//границы поля
 
-            while ((exception.X - botSize - attackDistance <= x + playerSize)
-             || (exception.X + botSize + attackDistance >= x - playerSize))
+            while ((exception.X - config.botSize - config.attackDistance <= x + config.playerSize)
+             || (exception.X + config.botSize + config.attackDistance >= x - config.playerSize))
             {
                 x = rnd.Next(1, 2000);//границы поля
             }

@@ -12,20 +12,22 @@ namespace OOPTeam2.RPG_Game.Services
     }
     public class Map: MapStorage
     {
-        //private Picture picture;
         private AliveObject aliveObjects;
         private StaticObject staticObjects;
         private Player player;
         private Generator generator;
+
+        ///
         private const int enemySpawnChance = 10;
+        private const int npcSpawnChance = 10;
         private const int randomMax = 100;
-        Random rnd;
+        ///
 
         public Map(GameCharacter PlayerCharacter)
         {
             aliveObjects = new AliveObject();
             staticObjects = new StaticObject();
-            //подгрузить карту(как?)
+            //подгрузить карту, достать дефолтные AliveObjects и StaticObjects
 
             player = new Player(ref PlayerCharacter);
             generator = new Generator();
@@ -33,13 +35,16 @@ namespace OOPTeam2.RPG_Game.Services
 
         public void Update()
         {
-            rnd = new Random();
+            SingletonRand rnd = SingletonRand.getInstance();
             if (enemySpawnChance <= rnd.Next(randomMax))
             {
-                generator.SpawnEnemyExcept(player.managedCharacter.position); //???????
+                aliveObjects.Enemies.Add(generator.SpawnEnemyExcept(player.managedCharacter.position));
             }
-            //Draw??? Нарушает ли принципы ООП? логика и отрисовка в одном месте
-            //chance -> generator
+            if (npcSpawnChance <= rnd.Next(randomMax))
+            {
+
+            }
+            //отрисовка
         }
         public void OnCreate(){}
 

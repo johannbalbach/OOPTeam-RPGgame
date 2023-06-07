@@ -9,41 +9,36 @@ namespace OOPTeam2.RPG_Game.Services
     {
         public GameCharacter managedCharacter { get; private set; }
 
-        private const int talkCoefficcient = 10;
-        private const int playerSize = 10;
-        private const int randomMax = 100;
-        private const int attackDistance = 5;
-        private const int botSize = 10;
-
         public Player(ref GameCharacter character)
         {
             this.managedCharacter = character;
         }
 
-        public bool inDistance(GameCharacter enemy){
-            if ((managedCharacter.position.X - playerSize - attackDistance <= enemy.position.X + playerSize)
-            || (managedCharacter.position.X + playerSize + attackDistance >= enemy.position.X - playerSize)){
+        public bool inDistance(ref GameCharacter enemy){
+            if ((managedCharacter.position.X - config.playerSize - config.attackDistance <= enemy.position.X + config.playerSize)
+            || (managedCharacter.position.X + config.playerSize + config.attackDistance >= enemy.position.X - config.playerSize)){
                 return true;
             }
             else{
                 return false;
             }
         }
-        public void DirtyTalk(int probability = talkCoefficcient){
-            Random rnd = new Random();
-            if (probability <=  rnd.Next(randomMax)){
+        public void DirtyTalk(int probability = config.talkProbability){
+            SingletonRand randomSingleton = SingletonRand.getInstance();
+            if (probability <= randomSingleton.Next(config.talkMax))
+            {
                 managedCharacter.talk();
             }
         }
 
-        public void Update(GameCharacter enemy)
+        public void Update(ref GameCharacter enemy)
         {
-            if (inDistance(enemy)){
+            if (inDistance(ref enemy)){
                 managedCharacter.hit();
                 this.DirtyTalk();
             }
             else{
-                this.DirtyTalk(talkCoefficcient/10);
+                this.DirtyTalk(config.talkProbability /10);
             }
         }
         public void MoveLeft()
@@ -53,7 +48,7 @@ namespace OOPTeam2.RPG_Game.Services
                 managedCharacter.move("left");
             }
         }
-        public void MoveRightn()
+        public void MoveRight()
         {
             if (true)//границы карты
             {

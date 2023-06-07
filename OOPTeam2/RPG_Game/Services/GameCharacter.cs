@@ -13,17 +13,20 @@ namespace OOPTeam2.RPG_Game.Services
         protected bool isEnemy;
         protected double speed;
         protected bool wasDied;
-        public UInt32 drawID { get; private set; }
+        public string drawID { get; private set; }
         public GameCharacter()
         {
 
         }
-        public GameCharacter(string name, Position position, int age = 0, string gender = "male", UInt32 skin = 0, bool wasDied = false, bool isEnemy = true, int playTime = 0, double speed = 3.0f): base()
+        public GameCharacter(string name, Position position, int age = 0, string gender = "male", string drawID = "enemy", bool wasDied = false, bool isEnemy = true, int playTime = 0, double speed = 3.0f): base()
         {
             this.name = name;
             this.position = position;
             this.playTime = playTime;
             this.position = position;
+            this.age = age;
+            this.gender = gender;
+            this.drawID = drawID;
             //this.inventory = inventory;
             this.isEnemy = isEnemy;
             this.speed = speed;
@@ -43,7 +46,11 @@ namespace OOPTeam2.RPG_Game.Services
 
         public override void changeWeapon() { }
 
-        public override void hit(){ }
+        public override void hit(){
+            //drawHit();//???
+            //произошел у
+
+        }
 
         public void appearance(){ }
     }

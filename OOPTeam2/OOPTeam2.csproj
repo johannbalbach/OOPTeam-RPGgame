@@ -96,7 +96,9 @@
     <Compile Include="RPG_Game\Services\AliveObject.cs" />
     <Compile Include="RPG_Game\Services\Bot.cs" />
     <Compile Include="RPG_Game\Services\Character.cs" />
-    <Compile Include="RPG_Game\Services\Controller.cs" />
+    <Compile Include="RPG_Game\Services\config.cs" />
+    <Compile Include="RPG_Game\Services\Random.cs" />
+    <Compile Include="RPG_Game\Services\Generator.cs" />
     <Compile Include="RPG_Game\Services\GameCharacter.cs" />
     <Compile Include="RPG_Game\Services\Map.cs" />
     <Compile Include="RPG_Game\Services\Objects\Fence.cs" />
@@ -104,7 +106,6 @@
     <Compile Include="RPG_Game\Services\Objects\Stone.cs" />
     <Compile Include="RPG_Game\Services\Player.cs" />
     <Compile Include="RPG_Game\Services\Position.cs" />
-    <Compile Include="RPG_Game\Services\Service.cs" />
     <Compile Include="RPG_Game\Services\StaticObject.cs" />
     <Compile Include="RPG_Game\View\SfmlDrawingSurface.cs">
       <SubType>Component</SubType>
