@@ -10,6 +10,10 @@ namespace OOPTeam2.RPG_Game.Models {
             this.healthPoints = healthPoints;
         }
         
+        public MedicalLeaf() {
+            
+        }
+        
         public string Use() {
             if (count > 0) {
                 count--;

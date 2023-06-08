@@ -6,7 +6,8 @@ using OOPTeam2.RPG_Game.Models.Wands;
 
 namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
     public class GameCharacter: Character {
-        private int TIME_SLEEP = 3000;
+        private const int TIME_SLEEP = 3000;
+        public int receivedDamage { get; set; }
         public int playTime { get; set; }
         public Inventory inventory { get; set; }
         public bool isEnemy { get; set; }
@@ -14,7 +15,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         public string skinId { get; set; }
 
         public GameCharacter() {
-            
+            inventory = new Inventory();
         }
 
         public GameCharacter(GameCharacter target) {
@@ -40,17 +41,21 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         public override void Move(Position position, Direction direction) {
             Step(position, direction);
         }
-
-        public override void Hit(Wand wand) {
-            wand.Use();
-        }
         
+
         public override void Hit(Sword sword) {
-            sword.Damage();
+            receivedDamage = inventory.weapons.UseSword(sword);
+            lifePoint -= receivedDamage;
         }
         
         public override void Hit(Potion potion) {
-            potion.Use();
+            receivedDamage = inventory.weapons.UsePotion(potion);
+            lifePoint -= receivedDamage;
+        }
+        
+        public override void Hit(Wand wand) {
+            receivedDamage = inventory.weapons.UseWand(wand);
+            lifePoint -= receivedDamage;
         }
 
         public override string Talk() {

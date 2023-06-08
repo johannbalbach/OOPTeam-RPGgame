@@ -13,7 +13,7 @@
             this.isAvailable = isAvailable;
         }
         
-        public override int Damage() {
+        public override int GetDamage() {
             if (isAvailable && agility > AVERAGE_AGILITY && quality > AVERAGE_QUALITY && weight < AVERAGE_WEIGHT) {
                 return attack * BONUS_COEFFICIENT;
             }

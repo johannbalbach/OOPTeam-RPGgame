@@ -8,6 +8,8 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         private string skinId;
         private int healthRegeneration;
         private int age;
+        private int lifePoint;
+        
         private string name;
         private Position position;
 
@@ -60,6 +62,11 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
             this.position = position;
             return this;
         }
+        
+        public GameCharacterBuilder WithLifePoint(int lifePoint) {
+            this.lifePoint = lifePoint;
+            return this;
+        }
 
         public GameCharacter Build() {
             GameCharacter gameCharacter = new GameCharacter();
@@ -73,6 +80,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
             gameCharacter.age = age;
             gameCharacter.name = name;
             gameCharacter.position = position;
+            gameCharacter.lifePoint = lifePoint;
             return gameCharacter;
         }
     }

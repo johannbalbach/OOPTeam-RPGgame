@@ -15,7 +15,7 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
             random = new Random();
         }
 
-        public override int Use() {
+        public override int GetHarm() {
             if (isAvailable) {
                 return (int)(powerCoefficient * powerCoefficient);
             }

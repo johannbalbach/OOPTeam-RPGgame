@@ -6,7 +6,7 @@
         public string description { set; get; }
         public bool isAvailable { set; get; }
         
-        public abstract void Use();
+        public abstract int GetHurt();
         public abstract void Increase();
         public abstract void Reduce();
     }

@@ -3,28 +3,12 @@ using System.Collections.Generic;
 using OOPTeam2.RPG_Game.Models;
 using OOPTeam2.RPG_Game.Models.Characters;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
+using OOPTeam2.RPG_Game.Models.Potions;
+using OOPTeam2.RPG_Game.Models.Swords;
 
 namespace OOPTeam2.RPG_Game {
     internal class MainLogic {
         public MainLogic() {
-            Inventory inventory = new Inventory();
-            List<FoodMediator> foodMediator = new List<FoodMediator>(); 
-            
-            foodMediator.Add(new FoodMediator());
-            List<Cloak> cloaks = new List<Cloak>();
-            List<Chinmail> chinmails = new List<Chinmail>();
-            
-            
-            List<Tree> trees = new List<Tree>();
-            List<MedicalLeaf> medicalLeaves = new List<MedicalLeaf>();
-            Bag bag = new Bag(foodMediator, cloaks, chinmails, trees, medicalLeaves);
-            inventory.SetBags(bag);
-            inventory.SetWeapons(new WeaponMediator(inventory));
-            
-            Console.WriteLine("Inventory: ");
-            Console.WriteLine("Bags: " + inventory.bags[0].foodMediator[0].bread.count);
-            Console.WriteLine("Weapons: " + inventory.weapons[0].katanaSword.attack);
-            
             DefaultProtectiveSkin defaultProtectiveSkin = new DefaultProtectiveSkin();
 
             Cloak cloak = new Cloak(true, true, 10, defaultProtectiveSkin);
@@ -34,10 +18,9 @@ namespace OOPTeam2.RPG_Game {
             Console.WriteLine(chinmail.count);
             defaultProtectiveSkin.ApplyProtection(chinmail);
             Console.WriteLine(chinmail.count);
-
+            
             GameCharacter gameCharacter = new GameCharacterBuilder()
                 .WithPlayTime(100)
-                .WithInventory(inventory)
                 .WithIsEnemy(false)
                 .WithIsAlive(true)
                 .WithSpeed(1.5)
@@ -45,10 +28,19 @@ namespace OOPTeam2.RPG_Game {
                 .WithHealthRegeneration(10)
                 .WithAge(25)
                 .WithName("John")
+                .WithLifePoint(13)
+                .WithInventory(new Inventory())
                 .WithPosition(new Position(0, 0))
                 .Build();
-            
+
+            gameCharacter.inventory.bags.chinmails.count = 10;
+            Console.WriteLine(gameCharacter.inventory.bags.foodMediator.bread.count + "---");
             gameCharacter.Sleep();
+            Console.WriteLine(gameCharacter.lifePoint);
+            gameCharacter.Hit(gameCharacter.inventory.weapons.katanaSword);
+            Console.WriteLine(gameCharacter.lifePoint);
+            gameCharacter.Hit(gameCharacter.inventory.weapons.katanaSword);
+            Console.WriteLine(gameCharacter.lifePoint);
         }
     }
 }

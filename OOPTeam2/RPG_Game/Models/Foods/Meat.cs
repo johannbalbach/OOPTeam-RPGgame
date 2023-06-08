@@ -7,7 +7,7 @@ public class Meat: Food {
         }
         
         public override void Eat() {
-            if (kilos > 0) {
+            if (kilos > 0.1) {
                 kilos -= 0.1;
             }
         }

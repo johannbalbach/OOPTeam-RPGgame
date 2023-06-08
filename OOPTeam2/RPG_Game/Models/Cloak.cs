@@ -11,6 +11,10 @@ namespace OOPTeam2.RPG_Game.Models {
             this.defaultProtectiveSkin = defaultProtectiveSkin;
             this.count = count;
         }
+
+        public Cloak() {
+            
+        }
         
         public void Use() {
             count--;

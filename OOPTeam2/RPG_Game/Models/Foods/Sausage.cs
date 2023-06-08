@@ -7,7 +7,7 @@ namespace OOPTeam2.RPG_Game.Models.Foods {
         }
 
         public override void Eat() {
-            if (size > 0) {
+            if (size > 0.1) {
                 size -= 0.1;
             }
         }

@@ -4,7 +4,6 @@ using OOPTeam2.RPG_Game.Models.Wands;
 
 namespace OOPTeam2.RPG_Game.Models {
     public class WeaponMediator {
-        public Inventory inventory { set; get; }
         public MaceSword maceSword { set; get; }
         public LevithanSword levithanSword { set; get; }
         public KatanaSword katanaSword { set; get; }
@@ -16,8 +15,7 @@ namespace OOPTeam2.RPG_Game.Models {
         public WizardWand wizardWand { set; get; }
 
         public WeaponMediator(Inventory inventory) {
-            // подумай какие значения в качестве инициализации будут логичными
-            this.inventory = inventory;
+            // /#1#/ подумай какие значения в качестве инициализации будут логичными
             maceSword = new MaceSword(0.5, 0.5, 0.2, 2, false);
             levithanSword = new LevithanSword(0.8, 0.8, 0.5, 5, false);
             katanaSword = new KatanaSword(0.7, 0.7, 0.4, 4, false);
@@ -27,19 +25,19 @@ namespace OOPTeam2.RPG_Game.Models {
             alienWand = new AlienWand(0.5, "Hello world alien", false, true);
             elvenWand = new ElvenWand(0.7, "Hello elven wand", false, 12);
             wizardWand = new WizardWand(0.8, 10, "Hello wizard wand", false, 15);
-            
+            inventory.weapons = this;
         }
-        
+
         public int UseSword(Sword sword) {
-            return sword.Damage();
+            return sword.GetDamage();
         }
         
-        public void UsePotion(Potion potion) { 
-            potion.Use();
+        public int UsePotion(Potion potion) { 
+            return potion.GetHurt();
         }
         
         public int UseWand(Wand wand) {
-            return wand.Use();
+            return wand.GetHarm();
         }
         
         public void DropSword(Sword sword) {

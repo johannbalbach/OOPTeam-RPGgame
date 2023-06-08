@@ -14,6 +14,10 @@ namespace OOPTeam2.RPG_Game.Models {
             this.treeLen = treeLen;
         }
         
+        public Tree() {
+            
+        }
+        
         public string Use() {
             switch (treeLen) {
                 case TreeLen.Small:

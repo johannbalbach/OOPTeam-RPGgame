@@ -12,6 +12,10 @@ namespace OOPTeam2.RPG_Game.Models {
             this.count = count;
         }
         
+        public Chinmail() {
+            
+        }
+        
         public void Use() {
             count--;
         }

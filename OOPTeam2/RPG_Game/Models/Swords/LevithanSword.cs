@@ -11,7 +11,7 @@
             this.isAvailable = isAvailable;
         }
         
-        public override int Damage() {
+        public override int GetDamage() {
             if (isAvailable && weight >= BONUS_WEIGHT) {
                 return attack * BONUS_COEFFICIENT;
             }

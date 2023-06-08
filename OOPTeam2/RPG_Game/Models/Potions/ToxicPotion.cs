@@ -15,8 +15,9 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
             this.damage = damage;
         }
 
-        public override void Use() {
+        public override int GetHurt() {
             Reduce();
+            return damage;
         }
         
         public override void Increase() {
@@ -26,8 +27,6 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
         public override void Reduce() {
             if (volume >= DAMAGE_HEALTH) {
                 volume -= DAMAGE_HEALTH;
-            } else {
-                throw new Exception("Potion is over");
             }
         }
     }

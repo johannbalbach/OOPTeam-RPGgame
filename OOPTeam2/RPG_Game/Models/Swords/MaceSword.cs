@@ -11,7 +11,7 @@
             this.isAvailable = isAvailable;
         }
         
-        public override int Damage() {
+        public override int GetDamage() {
             // если предки персонажа (его раса) владели техникой меча, то урон увеличивается
             if (isAvailable && quality > AVERAGE_QUALITY) {
                 return attack * BONUS_COEFFICIENT;

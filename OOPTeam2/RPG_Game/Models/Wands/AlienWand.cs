@@ -14,7 +14,7 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
             this.isAvailableOnEarth = isAvailableOnEarth;
         }
         
-        public override int Use() {
+        public override int GetHarm() {
             // при использовании палочки заклинание должно вызывать задержку 
             Thread.Sleep(DELAY_TIME);
             if (isAvailable && isAvailableOnEarth) {

@@ -17,8 +17,9 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
             this.damage = damage;
         }
 
-        public override void Use() {
+        public override int GetHurt() {
             Reduce();
+            return damage;
         }
 
         public override void Reduce() {

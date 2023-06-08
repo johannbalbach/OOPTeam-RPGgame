@@ -11,7 +11,7 @@
             this.lifePercentage = lifePercentage;
         }
 
-        public override int Use() {
+        public override int GetHarm() {
             if (isAvailable) {
                 lifePercentage -= WAND_COEFFICIENT;
                 return (int)powerCoefficient * lifePercentage / AVERAGE_POWER;

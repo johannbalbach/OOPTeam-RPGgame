@@ -5,7 +5,7 @@
         public string description { set; get; }
         public bool isAvailable { set; get; }
         
-        public abstract int Use();
+        public abstract int GetHarm();
         public abstract void Drop();
         public abstract void Improve();
     }
