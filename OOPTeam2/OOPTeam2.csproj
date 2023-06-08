@@ -107,6 +107,8 @@
     <Compile Include="RPG_Game\Services\Player.cs" />
     <Compile Include="RPG_Game\Services\Position.cs" />
     <Compile Include="RPG_Game\Services\StaticObject.cs" />
+    <Compile Include="RPG_Game\View\Drawer.cs" />
+    <Compile Include="RPG_Game\View\PictureProvider.cs" />
     <Compile Include="RPG_Game\View\SfmlDrawingSurface.cs">
       <SubType>Component</SubType>
     </Compile>
