@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace OOPTeam2.RPG_Game.Services
@@ -13,10 +14,12 @@ namespace OOPTeam2.RPG_Game.Services
         {
             this.managedCharacter = character;
         }
-
-        public bool inDistance(ref GameCharacter enemy){
-            if ((managedCharacter.position.X - config.playerSize - config.attackDistance <= enemy.position.X + config.playerSize)
-            || (managedCharacter.position.X + config.playerSize + config.attackDistance >= enemy.position.X - config.playerSize)){
+        public ref GameCharacter GetCharacter(){
+            return ref managedCharacter;
+        }
+        public bool inDistance(Position enemy){
+            if ((managedCharacter.position.X - config.playerSize - config.attackDistance <= enemy.X + config.playerSize)
+            || (managedCharacter.position.X + config.playerSize + config.attackDistance >= enemy.X - config.playerSize)){
                 return true;
             }
             else{
@@ -33,8 +36,8 @@ namespace OOPTeam2.RPG_Game.Services
 
         public void Update(ref GameCharacter enemy)
         {
-            if (inDistance(ref enemy)){
-                managedCharacter.hit();
+            if (inDistance(enemy.position)){
+                enemy.hit();
                 this.DirtyTalk();
             }
             else{

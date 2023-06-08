@@ -16,6 +16,7 @@ namespace OOPTeam2.RPG_Game.Services
         private StaticObject staticObjects;
         private Player player;
         private Generator generator;
+        private List<Bot> bots;
 
         ///
         private const int enemySpawnChance = 10;
@@ -33,17 +34,35 @@ namespace OOPTeam2.RPG_Game.Services
             generator = new Generator();
         }
 
-        public void Update()
+        public Player GetPlayer()
+        {
+            return player;
+        }
+
+        public void Update(Player player)
         {
             SingletonRand rnd = SingletonRand.getInstance();
-            if (enemySpawnChance <= rnd.Next(randomMax))
-            {
-                aliveObjects.Enemies.Add(generator.SpawnEnemyExcept(player.managedCharacter.position));
+            if (enemySpawnChance <= rnd.Next(randomMax)){
+                GameCharacter enemy = generator.SpawnEnemyExcept(player.managedCharacter.position);
+                aliveObjects.Enemies.Add(enemy);
+                Bot bot = new Bot(ref enemy);
+                bots.Add(bot);
             }
-            if (npcSpawnChance <= rnd.Next(randomMax))
-            {
+            if (npcSpawnChance <= rnd.Next(randomMax)){
 
             }
+            for (int i = 0; i<bots.Count; i++){
+                Position playerPos = player.managedCharacter.position;
+                bots[i].Update(player.GetCharacter());
+                
+                if ((playerPos.X - config.playerSize - config.attackDistance <= bots[i].managedCharacter.position.X + config.playerSize)
+                    || (playerPos.X + config.playerSize + config.attackDistance >= bots[i].managedCharacter.position.X - config.playerSize))
+                {
+
+                }
+
+            }
+            player.Update();
             //отрисовка
         }
         public void OnCreate(){}

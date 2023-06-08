@@ -41,7 +41,7 @@ namespace OOPTeam2.RPG_Game.Services
                     break;
                 case 4:
                     name = "ElvEnemy";
-                    skinIndex = "ElfCharacter";
+                    skinIndex = "ElfCharacter"; 
                     break;
                 case 5:
                     name = "GnomeEnemy";
@@ -49,7 +49,7 @@ namespace OOPTeam2.RPG_Game.Services
                     break;
             }
             GameCharacter enemy = new GameCharacter(name, spawnPosition, age, gender, skinIndex);
-
+            
             return enemy;
         }
         private Position SpawnPlace(Position exception)

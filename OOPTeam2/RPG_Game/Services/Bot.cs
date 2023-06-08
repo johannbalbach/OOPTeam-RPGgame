@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,9 +16,9 @@ namespace OOPTeam2.RPG_Game.Services
             this.managedCharacter = character;
         }
 
-        public bool inDistance(ref GameCharacter player){
-            if ((managedCharacter.position.X - config.botSize - config.attackDistance <= player.position.X + config.playerSize)
-            || (managedCharacter.position.X + config.botSize + config.attackDistance >= player.position.X - config.playerSize)){
+        public bool inDistance(Position player){
+            if ((managedCharacter.position.X - config.botSize - config.attackDistance <= player.X + config.playerSize)
+            || (managedCharacter.position.X + config.botSize + config.attackDistance >= player.X - config.playerSize)){
                 return true;
             }
             else{
@@ -35,8 +36,8 @@ namespace OOPTeam2.RPG_Game.Services
 
         public void Update(ref GameCharacter player)
         {
-            if (inDistance(ref player)){
-                managedCharacter.hit();
+            if (inDistance(player.position)){
+                player.hit();
                 DirtyTalk();
             }
             else{
