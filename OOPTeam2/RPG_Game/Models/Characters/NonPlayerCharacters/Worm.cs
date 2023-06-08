@@ -6,15 +6,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters {
         public Worm() {
             throw new System.NotImplementedException();
         }
-        
-        public override void Move(Position position, string direction) {
-            throw new System.NotImplementedException();
-        }
-        
-        public override void Hit() {
-            throw new System.NotImplementedException();
-        }
-        
+
         public override string Talk() {
             throw new System.NotImplementedException();
         }

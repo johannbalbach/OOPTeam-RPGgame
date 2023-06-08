@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using OOPTeam2.RPG_Game.Models;
+using OOPTeam2.RPG_Game.Models.Characters;
+using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 
 namespace OOPTeam2.RPG_Game {
     internal class MainLogic {
@@ -19,7 +21,6 @@ namespace OOPTeam2.RPG_Game {
             inventory.SetBags(bag);
             inventory.SetWeapons(new WeaponMediator(inventory));
             
-            
             Console.WriteLine("Inventory: ");
             Console.WriteLine("Bags: " + inventory.bags[0].foodMediator[0].bread.count);
             Console.WriteLine("Weapons: " + inventory.weapons[0].katanaSword.attack);
@@ -33,6 +34,21 @@ namespace OOPTeam2.RPG_Game {
             Console.WriteLine(chinmail.count);
             defaultProtectiveSkin.ApplyProtection(chinmail);
             Console.WriteLine(chinmail.count);
+
+            GameCharacter gameCharacter = new GameCharacterBuilder()
+                .WithPlayTime(100)
+                .WithInventory(inventory)
+                .WithIsEnemy(false)
+                .WithIsAlive(true)
+                .WithSpeed(1.5)
+                .WithSkinId("player_skin")
+                .WithHealthRegeneration(10)
+                .WithAge(25)
+                .WithName("John")
+                .WithPosition(new Position(0, 0))
+                .Build();
+            
+            gameCharacter.Sleep();
         }
     }
 }

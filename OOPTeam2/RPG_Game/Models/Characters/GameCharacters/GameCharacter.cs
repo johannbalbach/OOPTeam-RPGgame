@@ -1,6 +1,8 @@
-using System;
 using System.Threading.Tasks;
 using OOPTeam2.RPG_Game.Models.Foods;
+using OOPTeam2.RPG_Game.Models.Potions;
+using OOPTeam2.RPG_Game.Models.Swords;
+using OOPTeam2.RPG_Game.Models.Wands;
 
 namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
     public class GameCharacter: Character {
@@ -8,29 +10,47 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         public int playTime { get; set; }
         public Inventory inventory { get; set; }
         public bool isEnemy { get; set; }
-        public bool isAlive { get; set; }
         public double speed { get; set; }
-        public string drawId { get; set; }
-        
-        public GameCharacter(int playTime, Inventory inventory, bool isEnemy, bool isAlive, double speed, string drawId) {
-            this.playTime = playTime;
-            this.inventory = inventory;
-            this.isEnemy = isEnemy;
-            this.isAlive = isAlive;
-            this.speed = speed;
-            this.drawId = drawId;
-        }
-        
+        public string skinId { get; set; }
+
         public GameCharacter() {
             
         }
+
+        public GameCharacter(GameCharacter target) {
+            if (target != null) {
+                playTime = target.playTime;
+                inventory = target.inventory;
+                isEnemy = target.isEnemy;
+                isAlive = target.isAlive;
+                speed = target.speed;
+                skinId = target.skinId;
+                healthRegeneration = target.healthRegeneration;
+                age = target.age;
+                name = target.name;
+                position = target.position;
+            }
+        }
+
+        public override Character Clone() {
+            return new GameCharacter(this);
+        }
         
-        public override void Move(Position position, string direction) {
+        
+        public override void Move(Position position, Direction direction) {
             Step(position, direction);
         }
 
-        public override void Hit() {
-            throw new System.NotImplementedException();
+        public override void Hit(Wand wand) {
+            wand.Use();
+        }
+        
+        public override void Hit(Sword sword) {
+            sword.Damage();
+        }
+        
+        public override void Hit(Potion potion) {
+            potion.Use();
         }
 
         public override string Talk() {
@@ -42,29 +62,27 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         }
 
         public override void Eat(Food food) {
-            throw new System.NotImplementedException();
+            food.Eat();
+            lifePoint += healthRegeneration;
         }
 
-        public virtual void GetApperance() {
-            throw new System.NotImplementedException();
-        }
-        
-        public void Step(Position position, string direction){
+        public void Step(Position position, Direction direction){
             switch(direction){
-                case "left":
+                case Direction.Left:
                     position.x -= 1;
                     break;
-                case "right":
+                case Direction.Right:
                     position.x += 1;
                     break;
-                case "top":
+                case Direction.Top:
                     position.y += 1;
                     break;
-                case "down":
+                case Direction.Down:
                     position.y -= 1;
                     break;
             }
         }
+
 
     }
 }

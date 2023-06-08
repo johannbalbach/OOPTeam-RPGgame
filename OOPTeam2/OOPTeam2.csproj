@@ -95,10 +95,12 @@
     <Compile Include="RPG_Game\MainLogic.cs" />
     <Compile Include="RPG_Game\Models\Bag.cs" />
     <Compile Include="RPG_Game\Models\Characters\Character.cs" />
+    <Compile Include="RPG_Game\Models\Characters\Direction.cs" />
     <Compile Include="RPG_Game\Models\Characters\GameCharacters\AlienCharacter.cs" />
     <Compile Include="RPG_Game\Models\Characters\GameCharacters\CnomeCharacter.cs" />
     <Compile Include="RPG_Game\Models\Characters\GameCharacters\ElvesCharacter.cs" />
     <Compile Include="RPG_Game\Models\Characters\GameCharacters\GameCharacter.cs" />
+    <Compile Include="RPG_Game\Models\Characters\GameCharacters\GameCharacterBuilder.cs" />
     <Compile Include="RPG_Game\Models\Characters\GameCharacters\HumanCharacter.cs" />
     <Compile Include="RPG_Game\Models\Characters\GameCharacters\OrksCharacter.cs" />
     <Compile Include="RPG_Game\Models\Characters\GameCharacters\WandCharacter.cs" />
