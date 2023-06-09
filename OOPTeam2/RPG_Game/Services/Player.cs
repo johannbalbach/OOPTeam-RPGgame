@@ -10,7 +10,7 @@ namespace OOPTeam2.RPG_Game.Services
     {
         public GameCharacter managedCharacter { get; private set; }
 
-        public Player(ref GameCharacter character)
+        public Player(GameCharacter character)
         {
             this.managedCharacter = character;
         }

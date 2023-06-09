@@ -60,8 +60,8 @@ namespace OOPTeam2.RPG_Game.Services
 
             x = rnd.Next(1, 2000);//границы поля
 
-            while ((exception.X - config.botSize - config.attackDistance <= x + config.playerSize)
-             || (exception.X + config.botSize + config.attackDistance >= x - config.playerSize))
+            while (!(exception.X - config.botSize - config.attackDistance <= x + config.playerSize)
+             || !(exception.X + config.botSize + config.attackDistance >= x - config.playerSize))
             {
                 x = rnd.Next(1, 2000);//границы поля
             }

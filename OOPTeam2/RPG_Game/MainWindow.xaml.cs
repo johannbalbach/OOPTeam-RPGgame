@@ -31,16 +31,21 @@ namespace OOPTeam2
         private readonly DispatcherTimer timer;
         private static Drawer drawer;
         private static Map map;
-
+        Player player;
+        GameCharacter playerGameCharacter;
         public MainWindow()
         {
             InitializeComponent();
 
             MainLogic mainLogic = new MainLogic();
-            CreateRenderWindow();
 
-            map = new Map(new GameCharacter("Player", new Position(0, 0), 5, "male", "HumanCharacter", false, false));
+            playerGameCharacter = new GameCharacter("Player", new Position(30, 0), 5, "male", "HumanCharacter", false, false);
+            player = new Player(playerGameCharacter);
+            map = new Map(playerGameCharacter);
             drawer = new Drawer(map);
+
+
+            CreateRenderWindow();
 
             TimeSpan refreshRate = new TimeSpan(0, 0, 0, 0, 1000 / 60);
             timer = new DispatcherTimer { Interval = refreshRate };
@@ -52,6 +57,13 @@ namespace OOPTeam2
         {
             renderWindow.DispatchEvents();
             renderWindow.Clear(SFML.Graphics.Color.Black);
+
+            if (SFML.Window.Keyboard.IsKeyPressed(SFML.Window.Keyboard.Key.D))
+            {
+                player.MoveRight();
+            }
+
+            map.Update(player);
             drawer.Draw();
             renderWindow.Display();
         }
@@ -67,7 +79,7 @@ namespace OOPTeam2
             renderWindow = new RenderWindow(DrawSurface.Handle, context);
             renderWindow.MouseButtonPressed += RenderWindow_MouseButtonPressed;
             renderWindow.SetActive(true);
-            drawer.SetRenderWindow(ref renderWindow);
+            drawer.SetRenderWindow(renderWindow);
         }
 
         private void DrawSurface_SizeChanged(object sender, EventArgs e)
@@ -79,5 +91,7 @@ namespace OOPTeam2
         {
 
         }
+
+
     }
 }

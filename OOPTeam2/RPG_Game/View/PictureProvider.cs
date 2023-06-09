@@ -16,9 +16,9 @@ namespace OOPTeam2.RPG_Game.View
         {
             sprites.Add("HumanCharacter", new Sprite(new Texture("Assets/HumanCharacterTexture.png")));
             sprites.Add("AlienCharacter", new Sprite(new Texture("Assets/AlienCharacterTexture.png")));
-            sprites.Add("ElvesCharacter", new Sprite(new Texture("Assets/ElvesCharacterTexture.png")));
+            sprites.Add("ElfCharacter", new Sprite(new Texture("Assets/ElvesCharacterTexture.png")));
             sprites.Add("GnomeCharacter", new Sprite(new Texture("Assets/GnomeCharacterTexture.png")));
-            sprites.Add("OrksCharacter", new Sprite(new Texture("Assets/OrksCharacterTexture.png")));
+            sprites.Add("OrkCharacter", new Sprite(new Texture("Assets/OrksCharacterTexture.png")));
             sprites.Add("WandCharacter", new Sprite(new Texture("Assets/WandCharacterTexture.png")));
 
             sprites.Add("Avatar", new Sprite(new Texture("Assets/AvatarTexture.png")));
@@ -33,7 +33,7 @@ namespace OOPTeam2.RPG_Game.View
             }
             else
             {
-                throw new Exception("Sprite not exist");
+                throw new Exception($"Sprite with name {key} not exist");
             }
         }
     }

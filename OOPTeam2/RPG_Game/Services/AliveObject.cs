@@ -11,6 +11,6 @@ namespace OOPTeam2.RPG_Game.Services
         private List<Butterfly> butterflies;
         private List<Birds> birds;
         private List<Worm> worms;*/
-        public List<GameCharacter> Enemies { get; set; }
+        public List<GameCharacter> Enemies { get; set; } = new List<GameCharacter>();
     }
 }

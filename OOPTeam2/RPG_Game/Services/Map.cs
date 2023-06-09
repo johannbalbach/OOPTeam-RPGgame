@@ -7,11 +7,12 @@ namespace OOPTeam2.RPG_Game.Services
 {
     public class Map
     {
-        private AliveObject aliveObjects;
-        private StaticObject staticObjects;
-        private Player player;
+        public AliveObject aliveObjects { get; set; }
+        public StaticObject staticObjects { get; set; }
+        public Player player { get; }
+
         private Generator generator;
-        private List<Bot> bots;
+        private List<Bot> bots = new List<Bot>();
         private GameCharacter enemy;
 
         ///
@@ -26,13 +27,8 @@ namespace OOPTeam2.RPG_Game.Services
             staticObjects = new StaticObject();
             //подгрузить карту, достать дефолтные AliveObjects и StaticObjects
 
-            player = new Player(ref PlayerCharacter);
+            player = new Player(PlayerCharacter);
             generator = new Generator();
-        }
-
-        public Player GetPlayer()
-        {
-            return player;
         }
 
         public void Update(Player player)
@@ -40,10 +36,10 @@ namespace OOPTeam2.RPG_Game.Services
             SingletonRand rnd = SingletonRand.getInstance();
             if (enemySpawnChance <= rnd.Next(randomMax))
             {
-                GameCharacter enemy = generator.SpawnEnemyExcept(player.managedCharacter.position);
-                aliveObjects.Enemies.Add(enemy);
-                Bot bot = new Bot(ref enemy);
-                bots.Add(bot);
+                //GameCharacter enemy = generator.SpawnEnemyExcept(player.managedCharacter.position);
+                //aliveObjects.Enemies.Add(enemy);
+                //Bot bot = new Bot(ref enemy);
+                //bots.Add(bot);
             }
             if (npcSpawnChance <= rnd.Next(randomMax))
             {
