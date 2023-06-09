@@ -31,7 +31,6 @@ namespace OOPTeam2
         private static DispatcherTimer timer;
         private static Drawer drawer;
         private static Map map;
-        private static Player player;
         private static GameCharacter playerGameCharacter;
         private static InputDispatcher inputDispatcher;
         public MainWindow()
@@ -41,10 +40,9 @@ namespace OOPTeam2
             MainLogic mainLogic = new MainLogic();
 
             playerGameCharacter = new GameCharacter("Player", new Position(30, 0), 5, "male", "HumanCharacter", false, false);
-            player = new Player(playerGameCharacter);
             map = new Map(playerGameCharacter);
             drawer = new Drawer(map);
-            inputDispatcher = new InputDispatcher(player);
+            inputDispatcher = new InputDispatcher(map.player);
 
             CreateRenderWindow();
 
@@ -59,7 +57,7 @@ namespace OOPTeam2
             renderWindow.DispatchEvents();
             renderWindow.Clear(SFML.Graphics.Color.Black);
             inputDispatcher.DispathcInput();
-            map.Update(player);
+            map.Update();
             drawer.Draw();
             renderWindow.Display();
         }

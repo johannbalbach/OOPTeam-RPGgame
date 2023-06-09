@@ -19,7 +19,7 @@ namespace OOPTeam2.RPG_Game.Services
         {
             //���������� �����, ������� ��������� AliveObjects � StaticObjects
 
-            player = new Player(ref PlayerCharacter);
+            player = new Player(PlayerCharacter);
         }
 
         public Player GetPlayer()
