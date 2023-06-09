@@ -14,9 +14,6 @@ namespace OOPTeam2.RPG_Game.Services
         {
             this.managedCharacter = character;
         }
-        public ref GameCharacter GetCharacter(){
-            return ref managedCharacter;
-        }
         public bool inDistance(Position enemy){
             if ((managedCharacter.position.X - config.playerSize - config.attackDistance <= enemy.X + config.playerSize)
             || (managedCharacter.position.X + config.playerSize + config.attackDistance >= enemy.X - config.playerSize)){
@@ -34,7 +31,7 @@ namespace OOPTeam2.RPG_Game.Services
             }
         }
 
-        public void Update(ref GameCharacter enemy)
+        public void Update(GameCharacter enemy)
         {
             if (inDistance(enemy.position)){
                 enemy.hit();

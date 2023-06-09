@@ -34,7 +34,7 @@ namespace OOPTeam2.RPG_Game.Services
             }
         }
 
-        public void Update(ref GameCharacter player)
+        public void Update(GameCharacter player)
         {
             if (inDistance(player.position)){
                 player.hit();
