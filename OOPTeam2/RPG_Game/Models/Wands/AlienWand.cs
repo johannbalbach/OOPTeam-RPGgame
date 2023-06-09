@@ -2,7 +2,6 @@
 
 namespace OOPTeam2.RPG_Game.Models.Wands {
     public class AlienWand: Wand {
-        private const int DELAY_TIME = 3000;
         private const int IMPROVE_POWER = 10;
         public bool isAvailableOnEarth { set; get; }
         
@@ -16,7 +15,6 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
         
         public override int GetHarm() {
             // при использовании палочки заклинание должно вызывать задержку 
-            Thread.Sleep(DELAY_TIME);
             if (isAvailable && isAvailableOnEarth) {
                 return damage * damage;
             }

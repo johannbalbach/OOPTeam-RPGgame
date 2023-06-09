@@ -8,7 +8,6 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         private int healthRegeneration;
         private int age;
         private int lifePoint;
-        
         private string name;
         private Position position;
 
