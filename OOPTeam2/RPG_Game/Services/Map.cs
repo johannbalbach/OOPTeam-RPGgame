@@ -36,10 +36,10 @@ namespace OOPTeam2.RPG_Game.Services
             SingletonRand rnd = SingletonRand.getInstance();
             if (enemySpawnChance <= rnd.Next(randomMax))
             {
-                //GameCharacter enemy = generator.SpawnEnemyExcept(player.managedCharacter.position);
-                //aliveObjects.Enemies.Add(enemy);
-                //Bot bot = new Bot(ref enemy);
-                //bots.Add(bot);
+                GameCharacter enemy = generator.SpawnEnemyExcept(player.managedCharacter.position);
+                aliveObjects.Enemies.Add(enemy);
+                Bot bot = new Bot(ref enemy);
+                bots.Add(bot);
             }
             if (npcSpawnChance <= rnd.Next(randomMax))
             {

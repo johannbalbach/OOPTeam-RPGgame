@@ -27,12 +27,13 @@ namespace OOPTeam2
 
     public partial class MainWindow : System.Windows.Window
     {
-        static RenderWindow renderWindow;
-        private readonly DispatcherTimer timer;
+        private static RenderWindow renderWindow;
+        private static DispatcherTimer timer;
         private static Drawer drawer;
         private static Map map;
-        Player player;
-        GameCharacter playerGameCharacter;
+        private static Player player;
+        private static GameCharacter playerGameCharacter;
+        private static InputDispatcher inputDispatcher;
         public MainWindow()
         {
             InitializeComponent();
@@ -43,7 +44,7 @@ namespace OOPTeam2
             player = new Player(playerGameCharacter);
             map = new Map(playerGameCharacter);
             drawer = new Drawer(map);
-
+            inputDispatcher = new InputDispatcher(player);
 
             CreateRenderWindow();
 
@@ -57,12 +58,7 @@ namespace OOPTeam2
         {
             renderWindow.DispatchEvents();
             renderWindow.Clear(SFML.Graphics.Color.Black);
-
-            if (SFML.Window.Keyboard.IsKeyPressed(SFML.Window.Keyboard.Key.D))
-            {
-                player.MoveRight();
-            }
-
+            inputDispatcher.DispathcInput();
             map.Update(player);
             drawer.Draw();
             renderWindow.Display();
