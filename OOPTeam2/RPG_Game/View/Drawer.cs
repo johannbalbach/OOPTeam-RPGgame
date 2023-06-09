@@ -1,4 +1,5 @@
-﻿using SFML.Graphics;
+﻿using OOPTeam2.RPG_Game.Services;
+using SFML.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,12 @@ namespace OOPTeam2.RPG_Game.View
     {
         private PictureProvider pictureProvider = new PictureProvider();
         private RenderWindow window;
+        private Map map;
 
-        public Drawer() { } 
+        public Drawer(Map map) 
+        { 
+            this.map = map;
+        } 
 
         public void SetRenderWindow(ref RenderWindow window)
         {
@@ -22,8 +27,10 @@ namespace OOPTeam2.RPG_Game.View
 
         public void Draw()
         {
-            var s = pictureProvider.getSprite("HumanCharacter");
-            window.Draw(s);
+            foreach (var character in map.alive)
+            {
+
+            }
         }
     }
 }

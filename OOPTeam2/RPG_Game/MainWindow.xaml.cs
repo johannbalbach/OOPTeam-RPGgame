@@ -1,4 +1,5 @@
 ﻿using OOPTeam2.RPG_Game;
+using OOPTeam2.RPG_Game.Services;
 using OOPTeam2.RPG_Game.View;
 using SFML.Graphics;
 using SFML.System;
@@ -28,7 +29,8 @@ namespace OOPTeam2
     {
         static RenderWindow renderWindow;
         private readonly DispatcherTimer timer;
-        private static Drawer drawer = new Drawer();
+        private static Drawer drawer;
+        private static Map map;
 
         public MainWindow()
         {
@@ -36,6 +38,9 @@ namespace OOPTeam2
 
             MainLogic mainLogic = new MainLogic();
             CreateRenderWindow();
+
+            map = new Map(new GameCharacter("Player", new Position(0, 0), 5, "male", "HumanCharacter", false, false));
+            drawer = new Drawer(map);
 
             TimeSpan refreshRate = new TimeSpan(0, 0, 0, 0, 1000 / 60);
             timer = new DispatcherTimer { Interval = refreshRate };
