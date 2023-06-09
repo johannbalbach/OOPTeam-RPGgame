@@ -11,7 +11,11 @@ namespace OOPTeam2.RPG_Game
     {
         public MainLogic() 
         {
-            Console.WriteLine("hello world132");
+/*            Position playerPos = new Position(1000, 1000);
+            GameCharacter player = new GameCharacter("player", playerPos, 10, "male");
+            Map map = new Map(player);
+
+            map.Update();*/
         }
     }
 }

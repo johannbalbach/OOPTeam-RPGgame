@@ -7,27 +7,18 @@ namespace OOPTeam2.RPG_Game.Services
 {
     public class Map
     {
-        private AliveObject aliveObjects;
-        private StaticObject staticObjects;
+        private AliveObject aliveObjects = new AliveObject();
+        private StaticObject staticObjects = new StaticObject();
         private Player player;
-        private Generator generator;
-        private List<Bot> bots;
-        private GameCharacter enemy;
-
-        ///
-        private const int enemySpawnChance = 10;
-        private const int npcSpawnChance = 10;
-        private const int randomMax = 100;
-        ///
+        private Generator generator = new Generator();
+        private List<Bot> bots = new List<Bot>();
+        private GameCharacter closestEnemy = new GameCharacter();
 
         public Map(GameCharacter PlayerCharacter)
         {
-            aliveObjects = new AliveObject();
-            staticObjects = new StaticObject();
             //подгрузить карту, достать дефолтные AliveObjects и StaticObjects
 
             player = new Player(ref PlayerCharacter);
-            generator = new Generator();
         }
 
         public Player GetPlayer()
@@ -35,19 +26,14 @@ namespace OOPTeam2.RPG_Game.Services
             return player;
         }
 
-        public void Update(Player player)
+        public void Update()
         {
-            SingletonRand rnd = SingletonRand.getInstance();
-            if (enemySpawnChance <= rnd.Next(randomMax))
+            GameCharacter enemy = generator.SpawnEnemyExcept(player.managedCharacter.position);
+            if (enemy != null)
             {
-                GameCharacter enemy = generator.SpawnEnemyExcept(player.managedCharacter.position);
                 aliveObjects.Enemies.Add(enemy);
                 Bot bot = new Bot(ref enemy);
                 bots.Add(bot);
-            }
-            if (npcSpawnChance <= rnd.Next(randomMax))
-            {
-
             }
             for (int i = 0; i < bots.Count; i++)
             {
@@ -57,9 +43,9 @@ namespace OOPTeam2.RPG_Game.Services
                 if ((playerPos.X - config.playerSize - config.attackDistance <= bots[i].managedCharacter.position.X + config.playerSize)
                     || (playerPos.X + config.playerSize + config.attackDistance >= bots[i].managedCharacter.position.X - config.playerSize))
                 {
-                    enemy = bots[i].managedCharacter;
+                    closestEnemy = bots[i].managedCharacter;
                 }
-                player.Update(enemy);
+                player.Update(closestEnemy);
             }
 
 

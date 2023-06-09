@@ -11,5 +11,7 @@ namespace OOPTeam2.RPG_Game.Services
         public List<Fence> fences {get; set;}
         public List<Stone> stones { get; set; }
         public List<Food> foods { get; set; }
+
+        public StaticObject() { }
     }
 }
