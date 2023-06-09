@@ -31,35 +31,39 @@ namespace OOPTeam2
         private static DispatcherTimer timer;
         private static Drawer drawer;
         private static Map map;
-        private static GameCharacter playerGameCharacter;
         private static InputDispatcher inputDispatcher;
+        Clock cl;
         public MainWindow()
         {
             InitializeComponent();
 
             MainLogic mainLogic = new MainLogic();
 
-            playerGameCharacter = new GameCharacter("Player", new Position(30, 0), 5, "male", "HumanCharacter", false, false);
-            map = new Map(playerGameCharacter);
+            map = new Map(new GameCharacter("Player", new Position(30, 0), 5, "male", "HumanCharacter", false, false));
             drawer = new Drawer(map);
             inputDispatcher = new InputDispatcher(map.player);
 
             CreateRenderWindow();
 
-            TimeSpan refreshRate = new TimeSpan(0, 0, 0, 0, 1000 / 60);
+            TimeSpan refreshRate = new TimeSpan(0, 0, 0, 0, 16);
             timer = new DispatcherTimer { Interval = refreshRate };
-            timer.Tick += Timer_Tick;
+            timer.Tick += new EventHandler(Timer_Tick);
+            cl = new Clock();
             timer.Start();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            renderWindow.DispatchEvents();
-            renderWindow.Clear(SFML.Graphics.Color.Black);
-            inputDispatcher.DispathcInput();
-            map.Update();
-            drawer.Draw();
-            renderWindow.Display();
+            //renderWindow.DispatchEvents();
+            //renderWindow.Clear(SFML.Graphics.Color.Black);
+            //inputDispatcher.DispathcInput();
+            //map.Update();
+            //drawer.Draw();
+            //renderWindow.Display();
+            Console.WriteLine(cl.ElapsedTime.AsMilliseconds());
+            cl.Restart();
+
+            CommandManager.InvalidateRequerySuggested();
         }
         private void CreateRenderWindow()
         {

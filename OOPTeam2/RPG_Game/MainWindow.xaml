@@ -5,17 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OOPTeam2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="756" Width="1344">
+        <!--Title="MainWindow" Height="450" Width="800">-->
     <Grid>
-
-        <StackPanel Grid.Row="0">
-            <WindowsFormsHost Height="300">
-                <WindowsFormsHost.Child>
-                    <local:SfmlDrawingSurface x:Name="DrawSurface" SizeChanged="DrawSurface_SizeChanged"/>
-                </WindowsFormsHost.Child>
-            </WindowsFormsHost>
-            <TextBlock Text="dfsf"/>
-        </StackPanel>
-
+        <WindowsFormsHost>
+            <WindowsFormsHost.Child>
+                <local:SfmlDrawingSurface x:Name="DrawSurface" SizeChanged="DrawSurface_SizeChanged"/>
+            </WindowsFormsHost.Child>
+        </WindowsFormsHost>
     </Grid>
 </Window>
