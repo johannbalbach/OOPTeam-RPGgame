@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -33,6 +34,7 @@ namespace OOPTeam2
         private static Map map;
         private static InputDispatcher inputDispatcher;
         Clock cl;
+        Thread gameThread;
         public MainWindow()
         {
             InitializeComponent();
@@ -49,7 +51,28 @@ namespace OOPTeam2
             timer = new DispatcherTimer { Interval = refreshRate };
             timer.Tick += new EventHandler(Timer_Tick);
             cl = new Clock();
-            timer.Start();
+            //timer.Start();
+
+            //CompositionTarget.Rendering += Loop;
+
+            gameThread = new Thread(Loop);
+            gameThread.Start();
+            
+        }
+
+        private void Loop()
+        {
+            //while (true)
+            {
+                renderWindow.DispatchEvents();
+                renderWindow.Clear(SFML.Graphics.Color.Black);
+                inputDispatcher.DispathcInput();
+                map.Update();
+                drawer.Draw();
+                renderWindow.Display();
+                Console.WriteLine(cl.ElapsedTime.AsMilliseconds());
+                cl.Restart();
+            }
         }
 
         private void Timer_Tick(object sender, EventArgs e)
