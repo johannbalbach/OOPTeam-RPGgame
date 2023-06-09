@@ -9,7 +9,6 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
     public class GameCharacter: Character {
         private const int TIME_SLEEP = 3000;
         private const int TIME_FREEZING = 1000;
-        
         public int healthRegeneration { get; set; }
         public int receivedDamage { get; set; }
         public int playTime { get; set; }
@@ -53,15 +52,23 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
             Step(position, direction);
         }
         
-        public virtual void RestoreHealth() {
+        private void RestoreHealth() {
             lifePoint += healthRegeneration;
+        }
+        
+        public void UseMedicine() {
+            inventory.bags.medicalLeave.Use();
+            RestoreHealth();
         }
         
 
         public override async void Hit(Sword sword) {
-            receivedDamage = sword.GetDamage();
-            lifePoint -= receivedDamage;
-            await Task.Delay(TIME_FREEZING);
+            // меч способна отражать только кольчуга
+            receivedDamage = (sword.GetDamage() - inventory.bags.defaultProtectiveSkin.GetValueProtection(inventory.bags.chainmail));
+            if (receivedDamage > 0) {
+                lifePoint -= receivedDamage;
+                await Task.Delay(TIME_FREEZING);   
+            }
         }
         
         public override void Hit(Potion potion) {
@@ -76,8 +83,11 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         }
         
         public override void Hit(Wand wand) {
-            receivedDamage = wand.GetHarm();
-            lifePoint -= receivedDamage;
+            // палочку способна отражать только мантия 
+            receivedDamage = wand.GetHarm() - inventory.bags.defaultProtectiveSkin.GetValueProtection(inventory.bags.cloak);
+            if (receivedDamage > 0) {
+                lifePoint -= receivedDamage;
+            }
         }
 
         public override string Talk() {

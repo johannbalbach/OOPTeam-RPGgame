@@ -11,5 +11,6 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         public override async void Sleep() {
             await Task.Delay(TIME_SLEEP);
         }
+
     }
 }

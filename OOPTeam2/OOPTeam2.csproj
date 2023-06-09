@@ -109,7 +109,7 @@
     <Compile Include="RPG_Game\Models\Characters\NonPlayerCharacters\NonPlayerCharacter.cs" />
     <Compile Include="RPG_Game\Models\Characters\NonPlayerCharacters\Worm.cs" />
     <Compile Include="RPG_Game\Models\Characters\Position.cs" />
-    <Compile Include="RPG_Game\Models\Chinmail.cs" />
+    <Compile Include="RPG_Game\Models\ChainMail.cs" />
     <Compile Include="RPG_Game\Models\Cloak.cs" />
     <Compile Include="RPG_Game\Models\DefaultProtectiveSkin.cs" />
     <Compile Include="RPG_Game\Models\FoodMediator.cs" />

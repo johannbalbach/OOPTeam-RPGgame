@@ -6,8 +6,8 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
         private Random random;
         public double waitingTimeUsing { set; get; }
         
-        public WizardWand(int powerCoefficient, double agility, string description, bool isAvailable, double waitingTimeUsing) {
-            this.powerCoefficient = powerCoefficient;
+        public WizardWand(int damage, double agility, string description, bool isAvailable, double waitingTimeUsing) {
+            this.damage = damage;
             this.description = description;
             this.isAvailable = isAvailable;
             this.waitingTimeUsing = waitingTimeUsing;
@@ -17,9 +17,9 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
 
         public override int GetHarm() {
             if (isAvailable) {
-                return powerCoefficient * powerCoefficient;
+                return damage * damage;
             }
-            return powerCoefficient / random.Next(1, 4);
+            return damage / random.Next(1, 4);
         }
         
         public void IncreaseAgility() {
@@ -35,11 +35,11 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
         }
         
         public override void Improve() {
-            powerCoefficient += BONUS_MAGIC;
+            damage += BONUS_MAGIC;
         }
         
         public string getWandInfo() {
-            return $"Power coefficient: {powerCoefficient}\n" +
+            return $"Power coefficient: {damage}\n" +
                    $"Description: {description}\n" +
                    $"Is available: {isAvailable}\n" +
                    $"Waiting time using: {waitingTimeUsing}\n";

@@ -9,13 +9,8 @@ namespace OOPTeam2.RPG_Game {
             DefaultProtectiveSkin defaultProtectiveSkin = new DefaultProtectiveSkin();
 
             Cloak cloak = new Cloak(true, true, 10, defaultProtectiveSkin);
-            defaultProtectiveSkin.ApplyProtection(cloak);
-                
-            Chinmail chinmail = new Chinmail(2, 5, defaultProtectiveSkin);
-            Console.WriteLine(chinmail.count);
-            defaultProtectiveSkin.ApplyProtection(chinmail);
-            Console.WriteLine(chinmail.count);
-            
+            defaultProtectiveSkin.GetValueProtection(cloak);
+
             GameCharacter gameCharacter = new GameCharacterBuilder()
                 .WithPlayTime(100)
                 .WithIsEnemy(false)
@@ -29,16 +24,24 @@ namespace OOPTeam2.RPG_Game {
                 .WithPosition(new Position(0, 0))
                 .Build();
 
-            gameCharacter.inventory.bags.chinmails.count = 10;
-            Console.WriteLine(gameCharacter.inventory.bags.foodMediator.bread.count + "---");
+            gameCharacter.inventory.bags.chainmail.count = 10;
+            /*Console.WriteLine(gameCharacter.inventory.bags.foodMediator.bread.count);
             gameCharacter.Sleep();
             Console.WriteLine(gameCharacter.lifePoint);
             gameCharacter.Hit(gameCharacter.inventory.weapons.katanaSword); 
             Console.WriteLine(gameCharacter.lifePoint);
             gameCharacter.Hit(gameCharacter.inventory.weapons.katanaSword);
             Console.WriteLine(gameCharacter.lifePoint);
-            gameCharacter.RestoreHealth();
+            gameCharacter.UseMedicine();
+            Console.WriteLine(gameCharacter.lifePoint);*/
+            gameCharacter.inventory.weapons.alienWand.isAvailableOnEarth = true;
+            gameCharacter.inventory.weapons.alienWand.isAvailable = true;
             Console.WriteLine(gameCharacter.lifePoint);
+            gameCharacter.Hit(gameCharacter.inventory.weapons.alienWand);
+            Console.WriteLine(gameCharacter.lifePoint);
+            
+            gameCharacter.inventory.bags.chainmail.AddChinmail();
+            
         }
     }
 }

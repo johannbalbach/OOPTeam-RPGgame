@@ -3,18 +3,20 @@ using System;
 namespace OOPTeam2.RPG_Game.Models {
     public class Bag {
         public FoodMediator foodMediator { set; get; }
-        public Cloak cloaks { set; get; }
-        public Chinmail chinmails { set; get; }
-        public Tree trees { set; get; }
-        public MedicalLeaf medicalLeaves { set; get; }
+        public DefaultProtectiveSkin defaultProtectiveSkin { set; get; }
+        public Cloak cloak { set; get; }
+        public ChainMail chainmail { set; get; }
+        public Tree tree { set; get; }
+        public MedicalLeaf medicalLeave { set; get; }
 
         public Bag(Inventory inventory) {
             inventory.bags = this;
             foodMediator = new FoodMediator();
-            cloaks = new Cloak();
-            chinmails = new Chinmail();
-            trees = new Tree();
-            medicalLeaves = new MedicalLeaf();
+            cloak = new Cloak();
+            chainmail = new ChainMail();
+            tree = new Tree();
+            medicalLeave = new MedicalLeaf();
+            defaultProtectiveSkin = new DefaultProtectiveSkin();
         }
         
         public bool IsAvailableCallAvatar() {

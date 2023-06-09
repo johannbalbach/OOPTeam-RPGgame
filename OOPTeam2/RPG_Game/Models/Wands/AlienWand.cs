@@ -2,13 +2,12 @@
 
 namespace OOPTeam2.RPG_Game.Models.Wands {
     public class AlienWand: Wand {
-        private const int WEAK_POWER = 2;
         private const int DELAY_TIME = 3000;
         private const int IMPROVE_POWER = 10;
         public bool isAvailableOnEarth { set; get; }
         
-        public AlienWand(int powerCoefficient, string description, bool isAvailable, bool isAvailableOnEarth, double agility) {
-            this.powerCoefficient = powerCoefficient;
+        public AlienWand(int damage, string description, bool isAvailable, bool isAvailableOnEarth, double agility) {
+            this.damage = damage;
             this.description = description;
             this.isAvailable = isAvailable;
             this.isAvailableOnEarth = isAvailableOnEarth;
@@ -19,9 +18,9 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
             // при использовании палочки заклинание должно вызывать задержку 
             Thread.Sleep(DELAY_TIME);
             if (isAvailable && isAvailableOnEarth) {
-                return powerCoefficient * powerCoefficient;
+                return damage * damage;
             }
-            return powerCoefficient / WEAK_POWER;
+            return damage;
         }
         
         public override void Drop() {
@@ -33,7 +32,7 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
         
         public override void Improve() {
             if (isAvailableOnEarth) {
-                powerCoefficient += IMPROVE_POWER;
+                damage += IMPROVE_POWER;
             }
         }
         

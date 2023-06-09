@@ -1,5 +1,3 @@
-using System;
-
 namespace OOPTeam2.RPG_Game.Models {
     public class MedicalLeaf {
         public int count { set; get; }
@@ -14,17 +12,14 @@ namespace OOPTeam2.RPG_Game.Models {
             
         }
         
-        public string Use() {
+        public void Use() {
             if (count > 0) {
                 count--;
-                return "You used medical leaf. Remain: " + count;
             }
-            return "There is no medical leaf left!";
         }
-        
-        public string PickUp() {
-            count++;
-            return "You picked up medical leaf. Count: " + count;
+
+        public void PickUp(int count) {
+            this.count += count;
         }
     }
 }
