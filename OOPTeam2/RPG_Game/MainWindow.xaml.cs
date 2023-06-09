@@ -73,6 +73,7 @@ namespace OOPTeam2
                 Console.WriteLine(cl.ElapsedTime.AsMilliseconds());
                 cl.Restart();
             }
+
         }
 
         private void Timer_Tick(object sender, EventArgs e)
