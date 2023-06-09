@@ -19,7 +19,7 @@ namespace OOPTeam2.RPG_Game {
                 .WithHealthRegeneration(10)
                 .WithAge(25)
                 .WithName("John")
-                .WithLifePoint(13)
+                .WithLifePoint(100)
                 .WithInventory(new Inventory())
                 .WithPosition(new Position(0, 0))
                 .Build();
@@ -37,11 +37,13 @@ namespace OOPTeam2.RPG_Game {
             gameCharacter.inventory.weapons.alienWand.isAvailableOnEarth = true;
             gameCharacter.inventory.weapons.alienWand.isAvailable = true;
             Console.WriteLine(gameCharacter.lifePoint);
+            gameCharacter.inventory.weapons.alienWand.Improve();
             gameCharacter.Hit(gameCharacter.inventory.weapons.alienWand);
             Console.WriteLine(gameCharacter.lifePoint);
-            
+            gameCharacter.UseMedicine();
+            Console.WriteLine(gameCharacter.lifePoint);
             gameCharacter.inventory.bags.chainmail.AddChinmail();
-            
+            gameCharacter.inventory.weapons.elvenWand.Improve();
         }
     }
 }

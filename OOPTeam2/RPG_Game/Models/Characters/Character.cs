@@ -38,5 +38,13 @@ namespace OOPTeam2.RPG_Game.Models.Characters {
                     break;
             }
         }
+        
+        protected void NormalizeLifePoint() {
+            if (lifePoint > INIT_HEALTH) {
+                lifePoint = INIT_HEALTH;
+            } else if (lifePoint < 0) {
+                lifePoint = 0;
+            }
+        }
     }
 }

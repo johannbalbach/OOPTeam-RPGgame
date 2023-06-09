@@ -8,7 +8,7 @@ using OOPTeam2.RPG_Game.Models.Wands;
 namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
     public class GameCharacter: Character {
         private const int TIME_SLEEP = 3000;
-        private const int TIME_FREEZING = 1000;
+        private const int SWORD_FREEZE_DURATION = 1000;
         public int healthRegeneration { get; set; }
         public int receivedDamage { get; set; }
         public int playTime { get; set; }
@@ -64,11 +64,10 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
 
         public override async void Hit(Sword sword) {
             // меч способна отражать только кольчуга
-            receivedDamage = (sword.GetDamage() - inventory.bags.defaultProtectiveSkin.GetValueProtection(inventory.bags.chainmail));
-            if (receivedDamage > 0) {
-                lifePoint -= receivedDamage;
-                await Task.Delay(TIME_FREEZING);   
-            }
+            receivedDamage = CalculateReceivedDamage(sword);
+            ApplyDamage(receivedDamage);
+            NormalizeLifePoint();
+            await Task.Delay(SWORD_FREEZE_DURATION);
         }
         
         public override void Hit(Potion potion) {
@@ -81,12 +80,32 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
             }
             
         }
-        
+
         public override void Hit(Wand wand) {
+            receivedDamage = CalculateReceivedDamage(wand);
+            ApplyDamage(receivedDamage);
+            NormalizeLifePoint();
+        }
+        
+        private int CalculateReceivedDamage(Wand wand) {
             // палочку способна отражать только мантия 
-            receivedDamage = wand.GetHarm() - inventory.bags.defaultProtectiveSkin.GetValueProtection(inventory.bags.cloak);
-            if (receivedDamage > 0) {
-                lifePoint -= receivedDamage;
+            int damage = wand.GetHarm() - inventory.bags.defaultProtectiveSkin.GetValueProtection(inventory.bags.cloak);
+            return Math.Max(0, damage);
+        }
+        
+        private void ApplyDamage(int damage) {
+            lifePoint -= damage;
+        }
+        
+        private int CalculateReceivedDamage(Sword sword) {
+            int damage = sword.GetDamage() - inventory.bags.defaultProtectiveSkin.GetValueProtection(inventory.bags.chainmail);
+            return Math.Max(0, damage);
+        }
+        
+
+        public void FetchHelpingAvatar() {
+            if (inventory.bags.IsAvailableCallAvatar()) {
+                lifePoint = INIT_HEALTH;
             }
         }
 

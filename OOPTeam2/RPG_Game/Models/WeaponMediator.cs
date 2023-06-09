@@ -16,19 +16,19 @@ namespace OOPTeam2.RPG_Game.Models {
 
         public WeaponMediator(Inventory inventory) {
             // /#1#/ подумай какие значения в качестве инициализации будут логичными
-            maceSword = new MaceSword(6.3, 0.3, 0.5, 3, false);
+            maceSword = new MaceSword(6.3, 0.3, 0.5, 2, false);
             levithanSword = new LevithanSword(3.2, 0.37, 0.5, 2, false);
             katanaSword = new KatanaSword(2.5, 0.4, 0.5, 2, false);
             healingPotion = new HealingPotion(10, "Cure Elixir", false, 2);
             toxicPotion = new ToxicPotion(5, "Laxative", false, 15);
             epicPotion = new EpicPotion(6, "Mystic Elixir", false, 2, 10);
             alienWand = new AlienWand(3, "Arcane", false, false, 0.55);
-            elvenWand = new ElvenWand(1,"Luminary", false, 12, 0.45);
+            elvenWand = new ElvenWand(1,"Luminary", false,  0.45);
             wizardWand = new WizardWand(2, 0.6, "Celestial", false, 15);
             inventory.weapons = this;
         }
 
-        public int UseSword(Sword sword) {
+        /*public int UseSword(Sword sword) {
             return sword.GetDamage();
         }
         
@@ -58,6 +58,6 @@ namespace OOPTeam2.RPG_Game.Models {
         
         public void ImpoveWand(Wand wand) {
             wand.Improve();
-        }
+        }*/
     }
 }

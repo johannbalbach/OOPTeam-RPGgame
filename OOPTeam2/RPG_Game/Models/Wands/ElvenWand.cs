@@ -1,28 +1,36 @@
-﻿namespace OOPTeam2.RPG_Game.Models.Wands {
+﻿using System;
+
+namespace OOPTeam2.RPG_Game.Models.Wands {
     public class ElvenWand : Wand {
         private const int WAND_COEFFICIENT = 10;
-        private const int AVERAGE_POWER = 50;
+        private const int INIT_CAPACITY = 30;
         public int lifePercentage { set; get; }
 
-        public ElvenWand(int damage, string description, bool isAvailable, int lifePercentage, double agility) {
+        public ElvenWand(int damage, string description, bool isAvailable, double agility) {
             this.damage = damage;
             this.description = description;
             this.isAvailable = isAvailable;
-            this.lifePercentage = lifePercentage;
+            lifePercentage = INIT_CAPACITY;
             this.agility = agility;
         }
 
         public override int GetHarm() {
             if (isAvailable) {
                 lifePercentage -= WAND_COEFFICIENT;
-                return damage * lifePercentage / AVERAGE_POWER;
+                return CalculateDamage();
             }
             return damage;
         }
-
+        
+        private int CalculateDamage() {
+            int adjustedDamage = damage * damage;
+            int adjustedLifePercentage = lifePercentage / WAND_COEFFICIENT;
+            int result = adjustedDamage / adjustedLifePercentage;
+            return result;
+        }
+        
         public override void Drop() {
             if (isAvailable) {
-                lifePercentage = AVERAGE_POWER;
                 isAvailable = false;    
             }
         }
