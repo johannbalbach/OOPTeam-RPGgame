@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using OOPTeam2.RPG_Game.Models.Foods;
 using OOPTeam2.RPG_Game.Models.Potions;
@@ -7,6 +8,9 @@ using OOPTeam2.RPG_Game.Models.Wands;
 namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
     public class GameCharacter: Character {
         private const int TIME_SLEEP = 3000;
+        private const int TIME_FREEZING = 1000;
+        
+        public int healthRegeneration { get; set; }
         public int receivedDamage { get; set; }
         public int playTime { get; set; }
         public Inventory inventory { get; set; }
@@ -16,6 +20,14 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
 
         public GameCharacter() {
             inventory = new Inventory();
+            lifePoint = INIT_HEALTH;
+        }
+
+        public GameCharacter(int age, string name) {
+            this.age = age;
+            this.name = name;
+            inventory = new Inventory();
+            lifePoint = INIT_HEALTH;
         }
 
         public GameCharacter(GameCharacter target) {
@@ -23,13 +35,12 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
                 playTime = target.playTime;
                 inventory = target.inventory;
                 isEnemy = target.isEnemy;
-                isAlive = target.isAlive;
                 speed = target.speed;
                 skinId = target.skinId;
-                healthRegeneration = target.healthRegeneration;
                 age = target.age;
                 name = target.name;
                 position = target.position;
+                healthRegeneration = target.healthRegeneration;
             }
         }
 
@@ -42,19 +53,30 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
             Step(position, direction);
         }
         
+        public virtual void RestoreHealth() {
+            lifePoint += healthRegeneration;
+        }
+        
 
-        public override void Hit(Sword sword) {
-            receivedDamage = inventory.weapons.UseSword(sword);
+        public override async void Hit(Sword sword) {
+            receivedDamage = sword.GetDamage();
             lifePoint -= receivedDamage;
+            await Task.Delay(TIME_FREEZING);
         }
         
         public override void Hit(Potion potion) {
-            receivedDamage = inventory.weapons.UsePotion(potion);
-            lifePoint -= receivedDamage;
+            if (potion is HealingPotion) {
+                lifePoint += ((HealingPotion) potion).valueHealing;
+            }
+            else {
+                receivedDamage = potion.GetHurt();
+                lifePoint -= receivedDamage;    
+            }
+            
         }
         
         public override void Hit(Wand wand) {
-            receivedDamage = inventory.weapons.UseWand(wand);
+            receivedDamage = wand.GetHarm();
             lifePoint -= receivedDamage;
         }
 
@@ -68,26 +90,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
 
         public override void Eat(Food food) {
             food.Eat();
-            lifePoint += healthRegeneration;
+            lifePoint += (healthRegeneration * food.power);
         }
-
-        public void Step(Position position, Direction direction){
-            switch(direction){
-                case Direction.Left:
-                    position.x -= 1;
-                    break;
-                case Direction.Right:
-                    position.x += 1;
-                    break;
-                case Direction.Top:
-                    position.y += 1;
-                    break;
-                case Direction.Down:
-                    position.y -= 1;
-                    break;
-            }
-        }
-
-
     }
 }

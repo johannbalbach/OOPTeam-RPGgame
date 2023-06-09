@@ -4,25 +4,28 @@
         private const int AVERAGE_POWER = 50;
         public int lifePercentage { set; get; }
 
-        public ElvenWand(double powerCoefficient, string description, bool isAvailable, int lifePercentage) {
+        public ElvenWand(int powerCoefficient, string description, bool isAvailable, int lifePercentage, double agility) {
             this.powerCoefficient = powerCoefficient;
             this.description = description;
             this.isAvailable = isAvailable;
             this.lifePercentage = lifePercentage;
+            this.agility = agility;
         }
 
         public override int GetHarm() {
             if (isAvailable) {
                 lifePercentage -= WAND_COEFFICIENT;
-                return (int)powerCoefficient * lifePercentage / AVERAGE_POWER;
+                return powerCoefficient * lifePercentage / AVERAGE_POWER;
             }
 
-            return (int)powerCoefficient;
+            return powerCoefficient;
         }
 
         public override void Drop() {
-            lifePercentage = AVERAGE_POWER;
-            isAvailable = false;
+            if (isAvailable) {
+                lifePercentage = AVERAGE_POWER;
+                isAvailable = false;    
+            }
         }
 
         public override void Improve() {

@@ -16,15 +16,15 @@ namespace OOPTeam2.RPG_Game.Models {
 
         public WeaponMediator(Inventory inventory) {
             // /#1#/ подумай какие значения в качестве инициализации будут логичными
-            maceSword = new MaceSword(0.5, 0.5, 0.2, 2, false);
-            levithanSword = new LevithanSword(0.8, 0.8, 0.5, 5, false);
-            katanaSword = new KatanaSword(0.7, 0.7, 0.4, 4, false);
-            healingPotion = new HealingPotion(5, "Hello healing potion", false, 2, 2, 15, 10);
-            toxicPotion = new ToxicPotion(5, "Hello toxic potion", false, 2, 2, 10);
-            epicPotion = new EpicPotion(5, "Hello epic potion", false, true, 2, 15, 22);
-            alienWand = new AlienWand(0.5, "Hello world alien", false, true);
-            elvenWand = new ElvenWand(0.7, "Hello elven wand", false, 12);
-            wizardWand = new WizardWand(0.8, 10, "Hello wizard wand", false, 15);
+            maceSword = new MaceSword(6.3, 0.3, 0.5, 3, false);
+            levithanSword = new LevithanSword(3.2, 0.37, 0.5, 2, false);
+            katanaSword = new KatanaSword(2.5, 0.4, 0.5, 2, false);
+            healingPotion = new HealingPotion(10, "Cure Elixir", false, 2);
+            toxicPotion = new ToxicPotion(5, "Laxative", false, 15);
+            epicPotion = new EpicPotion(6, "Mystic Elixir", false, 2, 10);
+            alienWand = new AlienWand(3, "Arcane", false, false, 0.55);
+            elvenWand = new ElvenWand(1,"Luminary", false, 12, 0.45);
+            wizardWand = new WizardWand(2, 0.6, "Celestial", false, 15);
             inventory.weapons = this;
         }
 
@@ -59,7 +59,5 @@ namespace OOPTeam2.RPG_Game.Models {
         public void ImpoveWand(Wand wand) {
             wand.Improve();
         }
-        
-        
     }
 }

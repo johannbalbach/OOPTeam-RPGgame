@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using OOPTeam2.RPG_Game.Models;
 using OOPTeam2.RPG_Game.Models.Characters;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
-using OOPTeam2.RPG_Game.Models.Potions;
-using OOPTeam2.RPG_Game.Models.Swords;
 
 namespace OOPTeam2.RPG_Game {
     internal class MainLogic {
@@ -22,7 +19,6 @@ namespace OOPTeam2.RPG_Game {
             GameCharacter gameCharacter = new GameCharacterBuilder()
                 .WithPlayTime(100)
                 .WithIsEnemy(false)
-                .WithIsAlive(true)
                 .WithSpeed(1.5)
                 .WithSkinId("player_skin")
                 .WithHealthRegeneration(10)
@@ -37,9 +33,11 @@ namespace OOPTeam2.RPG_Game {
             Console.WriteLine(gameCharacter.inventory.bags.foodMediator.bread.count + "---");
             gameCharacter.Sleep();
             Console.WriteLine(gameCharacter.lifePoint);
-            gameCharacter.Hit(gameCharacter.inventory.weapons.katanaSword);
+            gameCharacter.Hit(gameCharacter.inventory.weapons.katanaSword); 
             Console.WriteLine(gameCharacter.lifePoint);
             gameCharacter.Hit(gameCharacter.inventory.weapons.katanaSword);
+            Console.WriteLine(gameCharacter.lifePoint);
+            gameCharacter.RestoreHealth();
             Console.WriteLine(gameCharacter.lifePoint);
         }
     }

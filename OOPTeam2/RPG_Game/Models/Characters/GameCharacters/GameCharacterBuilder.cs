@@ -3,7 +3,6 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         private int playTime;
         private Inventory inventory;
         private bool isEnemy;
-        private bool isAlive;
         private double speed;
         private string skinId;
         private int healthRegeneration;
@@ -25,11 +24,6 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
 
         public GameCharacterBuilder WithIsEnemy(bool isEnemy) {
             this.isEnemy = isEnemy;
-            return this;
-        }
-
-        public GameCharacterBuilder WithIsAlive(bool isAlive) {
-            this.isAlive = isAlive;
             return this;
         }
 
@@ -73,7 +67,6 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
             gameCharacter.playTime = playTime;
             gameCharacter.inventory = inventory;
             gameCharacter.isEnemy = isEnemy;
-            gameCharacter.isAlive = isAlive;
             gameCharacter.speed = speed;
             gameCharacter.skinId = skinId;
             gameCharacter.healthRegeneration = healthRegeneration;

@@ -7,20 +7,21 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
         private const int IMPROVE_POWER = 10;
         public bool isAvailableOnEarth { set; get; }
         
-        public AlienWand(double powerCoefficient, string description, bool isAvailable, bool isAvailableOnEarth) {
+        public AlienWand(int powerCoefficient, string description, bool isAvailable, bool isAvailableOnEarth, double agility) {
             this.powerCoefficient = powerCoefficient;
             this.description = description;
             this.isAvailable = isAvailable;
             this.isAvailableOnEarth = isAvailableOnEarth;
+            this.agility = agility;
         }
         
         public override int GetHarm() {
             // при использовании палочки заклинание должно вызывать задержку 
             Thread.Sleep(DELAY_TIME);
             if (isAvailable && isAvailableOnEarth) {
-                return (int)(powerCoefficient * powerCoefficient);
+                return powerCoefficient * powerCoefficient;
             }
-            return (int)(powerCoefficient / WEAK_POWER);
+            return powerCoefficient / WEAK_POWER;
         }
         
         public override void Drop() {
