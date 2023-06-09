@@ -7,16 +7,17 @@ namespace OOPTeam2.RPG_Game.Services
 {
     public class Map
     {
-        private AliveObject aliveObjects = new AliveObject();
-        private StaticObject staticObjects = new StaticObject();
-        private Player player;
+        public AliveObject aliveObjects { get; set; } = new AliveObject();
+        public StaticObject staticObjects { get; set; } = new StaticObject();
+        public Player player { get; }
         private Generator generator = new Generator();
         private List<Bot> bots = new List<Bot>();
         private GameCharacter closestEnemy = new GameCharacter();
 
+
         public Map(GameCharacter PlayerCharacter)
         {
-            //подгрузить карту, достать дефолтные AliveObjects и StaticObjects
+            //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ AliveObjects пїЅ StaticObjects
 
             player = new Player(ref PlayerCharacter);
         }
@@ -49,7 +50,7 @@ namespace OOPTeam2.RPG_Game.Services
             }
 
 
-            //отрисовка
+            //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         }
         public void OnCreate() { }
 

@@ -27,20 +27,26 @@ namespace OOPTeam2
 
     public partial class MainWindow : System.Windows.Window
     {
-        static RenderWindow renderWindow;
-        private readonly DispatcherTimer timer;
+        private static RenderWindow renderWindow;
+        private static DispatcherTimer timer;
         private static Drawer drawer;
         private static Map map;
-
+        private static Player player;
+        private static GameCharacter playerGameCharacter;
+        private static InputDispatcher inputDispatcher;
         public MainWindow()
         {
             InitializeComponent();
 
             MainLogic mainLogic = new MainLogic();
-            CreateRenderWindow();
 
-            map = new Map(new GameCharacter("Player", new Position(0, 0), 5, "male", "HumanCharacter", false, false));
+            playerGameCharacter = new GameCharacter("Player", new Position(30, 0), 5, "male", "HumanCharacter", false, false);
+            player = new Player(playerGameCharacter);
+            map = new Map(playerGameCharacter);
             drawer = new Drawer(map);
+            inputDispatcher = new InputDispatcher(player);
+
+            CreateRenderWindow();
 
             TimeSpan refreshRate = new TimeSpan(0, 0, 0, 0, 1000 / 60);
             timer = new DispatcherTimer { Interval = refreshRate };
@@ -52,6 +58,8 @@ namespace OOPTeam2
         {
             renderWindow.DispatchEvents();
             renderWindow.Clear(SFML.Graphics.Color.Black);
+            inputDispatcher.DispathcInput();
+            map.Update(player);
             drawer.Draw();
             renderWindow.Display();
         }
@@ -67,7 +75,7 @@ namespace OOPTeam2
             renderWindow = new RenderWindow(DrawSurface.Handle, context);
             renderWindow.MouseButtonPressed += RenderWindow_MouseButtonPressed;
             renderWindow.SetActive(true);
-            drawer.SetRenderWindow(ref renderWindow);
+            drawer.SetRenderWindow(renderWindow);
         }
 
         private void DrawSurface_SizeChanged(object sender, EventArgs e)
@@ -79,5 +87,7 @@ namespace OOPTeam2
         {
 
         }
+
+
     }
 }
