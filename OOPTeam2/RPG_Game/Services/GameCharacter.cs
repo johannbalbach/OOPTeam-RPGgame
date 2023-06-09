@@ -34,7 +34,7 @@ namespace OOPTeam2.RPG_Game.Services
         }
         public override void talk()
         {
-            Console.WriteLine("I'm coming for you!");
+            //Console.WriteLine("I'm coming for you!");
         }
         public override void move(string direction) {
             this.position.Step(direction);

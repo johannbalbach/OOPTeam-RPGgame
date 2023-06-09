@@ -10,16 +10,23 @@ namespace OOPTeam2.RPG_Game.Services
         public AliveObject aliveObjects { get; set; } = new AliveObject();
         public StaticObject staticObjects { get; set; } = new StaticObject();
         public Player player { get; }
+
+        static Position pos = new Position(1000, 1200);
+        public GameCharacter avatar = new GameCharacter("avatar", pos, 10);
+        private AvatarController avatarController;
+
+
         private Generator generator = new Generator();
         private List<Bot> bots = new List<Bot>();
         private GameCharacter closestEnemy = new GameCharacter();
-
+        
 
         public Map(GameCharacter PlayerCharacter)
         {
             //���������� �����, ������� ��������� AliveObjects � StaticObjects
 
             player = new Player(PlayerCharacter);
+            avatarController = new AvatarController(ref avatar);
         }
 
         public Player GetPlayer()
@@ -48,7 +55,7 @@ namespace OOPTeam2.RPG_Game.Services
                 }
                 player.Update(closestEnemy);
             }
-
+            avatarController.Update(player.managedCharacter);
 
             //���������
         }

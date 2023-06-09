@@ -15,12 +15,12 @@ namespace OOPTeam2.RPG_Game.Services
             this.managedCharacter = character;
         }
         public bool inDistance(Position enemy){
-            if ((managedCharacter.position.X - config.playerSize - config.attackDistance <= enemy.X + config.playerSize)
-            || (managedCharacter.position.X + config.playerSize + config.attackDistance >= enemy.X - config.playerSize)){
-                return true;
+            if ((managedCharacter.position.X - config.playerSize - config.attackDistance >= enemy.X + config.playerSize)
+            || (managedCharacter.position.X + config.playerSize + config.attackDistance <= enemy.X - config.playerSize)){
+                return false;
             }
             else{
-                return false;
+                return true;
             }
         }
         public void DirtyTalk(int probability = config.talkProbability){
@@ -38,6 +38,7 @@ namespace OOPTeam2.RPG_Game.Services
                 this.DirtyTalk();
             }
             else{
+                //Console.WriteLine("movePlayer");
                 this.DirtyTalk(config.talkProbability /10);
             }
         }

@@ -7,8 +7,8 @@ namespace OOPTeam2.RPG_Game.Services
         public GameCharacter nonSpawnCharacter;//??
         public Generator() { }//?? nonSpawn
 
-        private const int enemySpawnChance = 10;
-        private const int npcSpawnChance = 10;
+        private const int enemySpawnChance = 1;
+        private const int npcSpawnChance = 1;
         private const int randomMax = 100;
 
         public GameCharacter SpawnEnemyExcept(Position position)

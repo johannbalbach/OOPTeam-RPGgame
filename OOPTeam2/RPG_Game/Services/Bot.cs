@@ -17,12 +17,12 @@ namespace OOPTeam2.RPG_Game.Services
         }
 
         public bool inDistance(Position player){
-            if ((managedCharacter.position.X - config.botSize - config.attackDistance <= player.X + config.playerSize)
-            || (managedCharacter.position.X + config.botSize + config.attackDistance >= player.X - config.playerSize)){
-                return true;
+            if ((managedCharacter.position.X - config.botSize - config.attackDistance >= player.X + config.playerSize)
+            || (managedCharacter.position.X + config.botSize + config.attackDistance <= player.X - config.playerSize)){
+                return false;
             }
             else{
-                return false;
+                return true;
             }
         }
         public void DirtyTalk(int probability = config.talkProbability)
@@ -41,6 +41,7 @@ namespace OOPTeam2.RPG_Game.Services
                 DirtyTalk();
             }
             else{
+                //Console.WriteLine("moveBot");
                 if (player.position.X < managedCharacter.position.X){
                     managedCharacter.move("left");
                 }
@@ -50,10 +51,6 @@ namespace OOPTeam2.RPG_Game.Services
                 
                 DirtyTalk();
             }
-        }
-        public void PrintName()
-        {
-            Console.WriteLine(managedCharacter.name);
         }
     }
 }

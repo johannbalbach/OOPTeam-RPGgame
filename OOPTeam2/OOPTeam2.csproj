@@ -97,6 +97,7 @@
     <Compile Include="RPG_Game\Services\AliveObject.cs" />
     <Compile Include="RPG_Game\Services\Bot.cs" />
     <Compile Include="RPG_Game\Services\Character.cs" />
+    <Compile Include="RPG_Game\Services\AvatarController.cs" />
     <Compile Include="RPG_Game\Services\config.cs" />
     <Compile Include="RPG_Game\Services\Random.cs" />
     <Compile Include="RPG_Game\Services\Generator.cs" />
