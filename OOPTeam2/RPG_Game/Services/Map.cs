@@ -36,13 +36,13 @@ namespace OOPTeam2.RPG_Game.Services
 
         public void Update()
         {
-            GameCharacter enemy = generator.SpawnEnemyExcept(player.managedCharacter.position);
-            if (enemy != null)
-            {
-                aliveObjects.Enemies.Add(enemy);
-                Bot bot = new Bot(ref enemy);
-                bots.Add(bot);
-            }
+            //GameCharacter enemy = generator.SpawnEnemyExcept(player.managedCharacter.position);
+            //if (enemy != null)
+            //{
+            //    aliveObjects.Enemies.Add(enemy);
+            //    Bot bot = new Bot(ref enemy);
+            //    bots.Add(bot);
+            //}
             for (int i = 0; i < bots.Count; i++)
             {
                 Position playerPos = player.managedCharacter.position;
