@@ -51,12 +51,12 @@ namespace OOPTeam2
             timer = new DispatcherTimer { Interval = refreshRate };
             timer.Tick += new EventHandler(Timer_Tick);
             cl = new Clock();
-            //timer.Start();
+            timer.Start();
 
             //CompositionTarget.Rendering += Loop;
 
-            gameThread = new Thread(Loop);
-            gameThread.Start();
+            //gameThread = new Thread(Loop);
+            //gameThread.Start();
             
         }
 
@@ -77,12 +77,12 @@ namespace OOPTeam2
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            //renderWindow.DispatchEvents();
-            //renderWindow.Clear(SFML.Graphics.Color.Black);
-            //inputDispatcher.DispathcInput();
-            //map.Update();
-            //drawer.Draw();
-            //renderWindow.Display();
+            renderWindow.DispatchEvents();
+            renderWindow.Clear(SFML.Graphics.Color.Black);
+            inputDispatcher.DispathcInput();
+            map.Update();
+            drawer.Draw();
+            renderWindow.Display();
             Console.WriteLine(cl.ElapsedTime.AsMilliseconds());
             cl.Restart();
 
