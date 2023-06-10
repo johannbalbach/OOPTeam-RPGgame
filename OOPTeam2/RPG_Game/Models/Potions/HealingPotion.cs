@@ -1,8 +1,7 @@
-﻿using System;
+﻿using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
 
 namespace OOPTeam2.RPG_Game.Models.Potions {
     public class HealingPotion: Potion {
-        private const int DOSE = 20;
         public int valueHealing { set; get; }
         
         public HealingPotion(int volume, string description, bool isAvailable, int valueHealing) {
@@ -10,7 +9,12 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
             this.description = description;
             this.isAvailable = isAvailable;
             this.valueHealing = valueHealing;
-            damage = 0;
+        }
+        
+        public HealingPotion() {
+            volume = HEALING_POTION_VOLUME;
+            description = HEALING_POTION_DESCRIPTION;
+            valueHealing = HEALING_POTION_VALUE_HEALING;
         }
 
         public override int GetHurt() {
@@ -19,13 +23,13 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
         }
 
         public override void Reduce() {
-            if (volume >= DOSE) {
-                volume -= DOSE;
+            if (volume >= HEALING_POTION_DOSE) {
+                volume -= HEALING_POTION_DOSE;
             }
         }
         
         public override void Increase() {
-            volume += DOSE;
+            volume += HEALING_POTION_DOSE;
         }
     }
 }

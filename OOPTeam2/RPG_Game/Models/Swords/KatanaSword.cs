@@ -1,10 +1,7 @@
-﻿namespace OOPTeam2.RPG_Game.Models.Swords {
+﻿using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
+
+namespace OOPTeam2.RPG_Game.Models.Swords {
     public class KatanaSword : Sword {
-        private const int BONUS_COEFFICIENT = 4;
-        private const double AVERAGE_AGILITY = 0.5;
-        private const double AVERAGE_QUALITY = 0.65;
-        private const int AVERAGE_WEIGHT = 5;
-        
         public KatanaSword(double weight, double agility, double quality, int attack, bool isAvailable) {
             this.weight = weight;
             this.agility = agility;
@@ -13,17 +10,25 @@
             this.isAvailable = isAvailable;
         }
         
+        public KatanaSword() {
+            weight = KATANA_SWORD_WEIGHT;
+            agility = KATANA_SWORD_AGILITY;
+            quality = KATANA_SWORD_QUALITY;
+            attack = KATANA_SWORD_ATTACK;
+        }
+        
         public override int GetDamage() {
-            if (isAvailable && agility > AVERAGE_AGILITY && quality > AVERAGE_QUALITY && weight < AVERAGE_WEIGHT) {
-                return attack * BONUS_COEFFICIENT;
+            if (isAvailable && agility > KATANA_SWORD_AVERAGE_AGILITY 
+                            && quality > KATANA_SWORD_AVERAGE_QUALITY && weight < KATANA_SWORD_AVERAGE_WEIGHT) {
+                return attack * KATANA_SWORD_BONUS_COEFFICIENT;
             }
             return attack;
         }
 
         public override void Drop() {
-            // Если выкенешь меч, то потеряешь его навсегда
-            // Но если выкинешь снова - ТО ВОЗЬМЕШЬ ЕГО СНОВА!
-            isAvailable = !isAvailable;
+            if (isAvailable) {
+                isAvailable = false;
+            }
         }
     }
 }

@@ -1,8 +1,7 @@
-﻿using System;
+﻿using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
 
 namespace OOPTeam2.RPG_Game.Models.Potions {
     public class EpicPotion: Potion {
-        private const int BONUS = 10;
         public int bonusPercent { set; get; }
         
         public EpicPotion(int volume, string description, bool isAvailable, int bonusPercent, int damage) {
@@ -13,19 +12,26 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
             this.damage = damage;
         }
         
+        public EpicPotion() {
+            volume = EPIC_POTION_VOLUME;
+            description = EPIC_POTION_DESCRIPTION;
+            bonusPercent = EPIC_POTION_BONUS_PERCENT;
+            damage = EPIC_POTION_DAMAGE;
+        }
+        
         public override int GetHurt() {
             Reduce();
             return damage * bonusPercent;
         }
         
         public override void Reduce() {
-            if (volume >= BONUS) {
-                volume -= BONUS;
+            if (volume >= EPIC_POTION_VOLUME) {
+                volume -= EPIC_POTION_VOLUME;
             }
         }
         
         public override void Increase() {
-            bonusPercent += BONUS;
+            bonusPercent += EPIC_POTION_IMPROVING;
         }
     }
 }

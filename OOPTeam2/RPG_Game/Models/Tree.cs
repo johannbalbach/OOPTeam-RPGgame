@@ -21,13 +21,13 @@ namespace OOPTeam2.RPG_Game.Models {
         public string Use() {
             switch (treeLen) {
                 case TreeLen.Small:
-                    return "You cut small tree";
+                    return "You take small tree";
                 case TreeLen.Medium:
-                    return "You cut medium tree";
+                    return "You take medium tree";
                 case TreeLen.Big:
-                    return "You cut big tree";
+                    return "You take big tree";
                 default:
-                    return "";
+                    return "You take undefined tree";
             }
         }
     }

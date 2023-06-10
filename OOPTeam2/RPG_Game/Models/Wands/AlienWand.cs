@@ -1,8 +1,8 @@
-﻿using System.Threading;
+﻿using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
 
 namespace OOPTeam2.RPG_Game.Models.Wands {
+
     public class AlienWand: Wand {
-        private const int IMPROVE_POWER = 10;
         public bool isAvailableOnEarth { set; get; }
         
         public AlienWand(int damage, string description, bool isAvailable, bool isAvailableOnEarth, double agility) {
@@ -11,6 +11,12 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
             this.isAvailable = isAvailable;
             this.isAvailableOnEarth = isAvailableOnEarth;
             this.agility = agility;
+        }
+        
+        public AlienWand() {
+            damage = ALIEN_WAND_DAMAGE;
+            description = ALIEN_WAND_DESCRIPTION;
+            agility = ALIEN_WAND_AGILITY;
         }
         
         public override int GetHarm() {
@@ -30,7 +36,7 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
         
         public override void Improve() {
             if (isAvailableOnEarth) {
-                damage += IMPROVE_POWER;
+                damage += ALIEN_WAND_IMPROVE_POWER;
             }
         }
         

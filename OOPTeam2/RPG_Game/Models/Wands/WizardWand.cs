@@ -1,9 +1,9 @@
-﻿using System;
+﻿using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
+using OOPTeam2.RPG_Game.Services;
 
 namespace OOPTeam2.RPG_Game.Models.Wands {
     public class WizardWand : Wand {
-        private int BONUS_MAGIC = 10;
-        private Random random;
+        private SingletonRand random { set; get; }
         public double waitingTimeUsing { set; get; }
         
         public WizardWand(int damage, double agility, string description, bool isAvailable, double waitingTimeUsing) {
@@ -12,7 +12,7 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
             this.isAvailable = isAvailable;
             this.waitingTimeUsing = waitingTimeUsing;
             this.agility = agility;
-            random = new Random();
+            random = SingletonRand.GetInstance();
         }
 
         public override int GetHarm() {
@@ -27,15 +27,13 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
         }
         
         public override void Drop() {
-            // если волшебная палочка были выброшена, магия персонажа изменяется от воли судьбы 
             if (isAvailable) {
-                int randomValue = random.Next(0, 100);
-                BONUS_MAGIC = randomValue;
+                isAvailable = false;
             }
         }
         
         public override void Improve() {
-            damage += BONUS_MAGIC;
+            damage += WIZARD_WAND_BONUS_MAGIC;
         }
         
         public string getWandInfo() {

@@ -86,7 +86,8 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         
         private int CalculateReceivedDamage(Wand wand) {
             // палочку способна отражать только мантия 
-            int damage = wand.GetHarm() - inventory.bags.defaultProtectiveSkin.GetValueProtection(inventory.bags.cloak);
+            int damage = wand.GetHarm() - 
+                         inventory.bags.defaultProtectiveSkin.GetValueProtection(inventory.bags.cloak);
             return Math.Max(0, damage);
         }
         
@@ -95,7 +96,8 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         }
         
         private int CalculateReceivedDamage(Sword sword) {
-            int damage = sword.GetDamage() - inventory.bags.defaultProtectiveSkin.GetValueProtection(inventory.bags.chainmail);
+            int damage = sword.GetDamage() - 
+                         inventory.bags.defaultProtectiveSkin.GetValueProtection(inventory.bags.chainmail);
             return Math.Max(0, damage);
         }
         

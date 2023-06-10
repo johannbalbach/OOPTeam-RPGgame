@@ -1,15 +1,15 @@
 using System;
-using OOPTeam2.RPG_Game.Models.Foods;
 using OOPTeam2.RPG_Game.Models.Potions;
 using OOPTeam2.RPG_Game.Models.Swords;
 using OOPTeam2.RPG_Game.Models.Wands;
+using OOPTeam2.RPG_Game.Services;
 
 namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters {
     public class Avatar: NonPlayerCharacter {
-        private Random random;
+        private SingletonRand random { set; get; }
         public Avatar() {
             lifePoint = Int32.MaxValue;
-            random = new Random();
+            random = SingletonRand.GetInstance();
         }
 
         public override string Talk() {

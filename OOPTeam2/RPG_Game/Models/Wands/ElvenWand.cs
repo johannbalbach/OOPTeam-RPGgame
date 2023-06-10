@@ -1,22 +1,27 @@
-﻿using System;
+﻿using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
 
 namespace OOPTeam2.RPG_Game.Models.Wands {
     public class ElvenWand : Wand {
-        private const int WAND_COEFFICIENT = 10;
-        private const int INIT_CAPACITY = 30;
         public int lifePercentage { set; get; }
 
         public ElvenWand(int damage, string description, bool isAvailable, double agility) {
             this.damage = damage;
             this.description = description;
             this.isAvailable = isAvailable;
-            lifePercentage = INIT_CAPACITY;
             this.agility = agility;
+            lifePercentage = ELVEN_WAND_CAPACITY;
+        }
+
+        public ElvenWand() {
+            damage = ELVEN_WAND_DAMAGE;
+            description = ELVEN_WAND_DESCRIPTION;
+            lifePercentage = ELVEN_WAND_CAPACITY;
+            agility = ELVEN_WAND_AGILITY;
         }
 
         public override int GetHarm() {
             if (isAvailable) {
-                lifePercentage -= WAND_COEFFICIENT;
+                lifePercentage -= ELVEN_WAND_COEFFICIENT;
                 return CalculateDamage();
             }
             return damage;
@@ -24,7 +29,7 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
         
         private int CalculateDamage() {
             int adjustedDamage = damage * damage;
-            int adjustedLifePercentage = lifePercentage / WAND_COEFFICIENT;
+            int adjustedLifePercentage = lifePercentage / ELVEN_WAND_COEFFICIENT;
             int result = adjustedDamage / adjustedLifePercentage;
             return result;
         }
@@ -37,7 +42,7 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
 
         public override void Improve() {
             if (isAvailable) {
-                lifePercentage += WAND_COEFFICIENT;
+                lifePercentage += ELVEN_WAND_COEFFICIENT;
             }
         }
 
