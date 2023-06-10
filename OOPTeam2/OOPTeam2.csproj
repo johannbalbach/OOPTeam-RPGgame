@@ -94,21 +94,19 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="RPG_Game\MainLogic.cs" />
-    <Compile Include="RPG_Game\Services\AliveObject.cs" />
-    <Compile Include="RPG_Game\Services\Bot.cs" />
-    <Compile Include="RPG_Game\Services\Character.cs" />
-    <Compile Include="RPG_Game\Services\AvatarController.cs" />
+    <Compile Include="RPG_Game\Services\Map\AliveObject.cs" />
+    <Compile Include="RPG_Game\Services\Controller\Bot.cs" />
+    <Compile Include="RPG_Game\Services\Controller\AvatarController.cs" />
+    <Compile Include="RPG_Game\Services\Race.cs" />
     <Compile Include="RPG_Game\Services\config.cs" />
     <Compile Include="RPG_Game\Services\Random.cs" />
-    <Compile Include="RPG_Game\Services\Generator.cs" />
-    <Compile Include="RPG_Game\Services\GameCharacter.cs" />
-    <Compile Include="RPG_Game\Services\Map.cs" />
-    <Compile Include="RPG_Game\Services\Objects\Fence.cs" />
-    <Compile Include="RPG_Game\Services\Objects\Food.cs" />
-    <Compile Include="RPG_Game\Services\Objects\Stone.cs" />
-    <Compile Include="RPG_Game\Services\Player.cs" />
-    <Compile Include="RPG_Game\Services\Position.cs" />
-    <Compile Include="RPG_Game\Services\StaticObject.cs" />
+    <Compile Include="RPG_Game\Services\Map\Generator.cs" />
+    <Compile Include="RPG_Game\Services\Map\Map.cs" />
+    <Compile Include="RPG_Game\Services\Map\defaultObjects\Fence.cs" />
+    <Compile Include="RPG_Game\Services\Map\defaultObjects\Food.cs" />
+    <Compile Include="RPG_Game\Services\Map\defaultObjects\Stone.cs" />
+    <Compile Include="RPG_Game\Services\Controller\Player.cs" />
+    <Compile Include="RPG_Game\Services\Map\StaticObject.cs" />
     <Compile Include="RPG_Game\View\Drawer.cs" />
     <Compile Include="RPG_Game\View\InputDispatcher.cs" />
     <Compile Include="RPG_Game\View\PictureProvider.cs" />
@@ -200,11 +198,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-
-    <Folder Include="RPG_Game\Models\" />
-
-    <Folder Include="RPG_Game\Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

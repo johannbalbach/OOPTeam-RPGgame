@@ -1,4 +1,8 @@
 ﻿using System;
+using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
+using OOPTeam2.RPG_Game.Models.Characters;
+using System.Runtime.InteropServices;
+using System.Xml.Linq;
 
 namespace OOPTeam2.RPG_Game.Services
 {
@@ -11,22 +15,21 @@ namespace OOPTeam2.RPG_Game.Services
         private const int npcSpawnChance = 1;
         private const int randomMax = 100;
 
-        public GameCharacter SpawnEnemyExcept(Position position)
+        public GameCharacter SpawnEnemyExcept(Position position, Race race)
         {
             SingletonRand rnd = SingletonRand.getInstance();
             if (enemySpawnChance <= rnd.Next(randomMax))
             {
                 int age = rnd.Next(0, 100);
-                int sex = rnd.Next(0, 1);
-                string gender, name = "";
-                string skinIndex = "enemy";
-                if (sex == 1)
-                    gender = "male";
-                else
-                    gender = "female";
+                string name ="", skinIndex = "";
                 Position spawnPosition = SpawnPlace(position);
 
+                
                 int enemyType = rnd.Next(0, 5);
+                while (enemyType == (int)race)
+                {
+                    enemyType = rnd.Next(0, 5);
+                }
                 switch (enemyType)
                 {
                     case 0:
@@ -54,7 +57,7 @@ namespace OOPTeam2.RPG_Game.Services
                         skinIndex = "GnomeCharacter";
                         break;
                 }
-                GameCharacter enemy = new GameCharacter(name, spawnPosition, age, gender, skinIndex);
+                GameCharacter enemy = new GameCharacter(CreateEnemy(name, spawnPosition, age, skinIndex));
                 return enemy;
             }
             else
@@ -63,19 +66,27 @@ namespace OOPTeam2.RPG_Game.Services
         private Position SpawnPlace(Position exception)
         {
             int x, y;
-            y = exception.Y;
+            y = exception.y;
             Random rnd = new Random();
 
             x = rnd.Next(1, 2000);//границы поля
 
 
-            while (!((exception.X - config.playerSize - config.attackDistance >= x + config.botSize) || (exception.X + config.playerSize + config.attackDistance <= x - config.botSize)))
+            while (!((exception.x - config.playerSize - config.attackDistance >= x + config.botSize) || (exception.x + config.playerSize + config.attackDistance <= x - config.botSize)))
             {
                 x = rnd.Next(1, 2000);//границы поля
             }
             Position position = new Position(x, y);
             return position;
         }
-
+        private GameCharacter CreateEnemy(string name, Position spawnPosition, int age, string skinIndex)
+        {
+            GameCharacterBuilder enemy = new GameCharacterBuilder();
+            enemy.WithPosition(spawnPosition);
+            enemy.WithName(name);
+            enemy.WithAge(age);
+            enemy.WithSkinId(skinIndex);
+            return enemy.Build();
+        }
     }
 }

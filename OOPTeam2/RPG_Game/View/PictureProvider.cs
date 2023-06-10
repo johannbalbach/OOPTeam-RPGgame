@@ -22,7 +22,6 @@ namespace OOPTeam2.RPG_Game.View
             sprites.Add("WandCharacter", new Sprite(new Texture("Assets/WandCharacterTexture.png")));
 
             sprites.Add("Avatar", new Sprite(new Texture("Assets/AvatarTexture.png")));
-
         }
 
         public Sprite getSprite(String key)

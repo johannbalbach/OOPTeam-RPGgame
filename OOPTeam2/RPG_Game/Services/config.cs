@@ -13,5 +13,6 @@ namespace OOPTeam2.RPG_Game.Services
         public const int botSize = 10;
         public const int talkProbability = 10;
         public const int talkMax = 100;
+        public const int avatarDistance = 70;
     }
 }

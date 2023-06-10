@@ -3,38 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
+using OOPTeam2.RPG_Game.Models.Characters;
 
 namespace OOPTeam2.RPG_Game.Services
 {
     public class Player
     {
         public GameCharacter managedCharacter { get; private set; }
+        public Race race { get; private set; }
 
-        public Player(GameCharacter character)
+        public Player(GameCharacter character, Race race)
         {
             this.managedCharacter = character;
+            this.race = race;
         }
-        public bool inDistance(Position enemy){
-            if ((managedCharacter.position.X - config.playerSize - config.attackDistance >= enemy.X + config.playerSize)
-            || (managedCharacter.position.X + config.playerSize + config.attackDistance <= enemy.X - config.playerSize)){
+        private bool inDistance(Position enemy){
+            if ((managedCharacter.position.x - config.playerSize - config.attackDistance >= enemy.x + config.playerSize)
+            || (managedCharacter.position.x + config.playerSize + config.attackDistance <= enemy.x - config.playerSize)){
                 return false;
             }
             else{
                 return true;
             }
         }
-        public void DirtyTalk(int probability = config.talkProbability){
+        private void DirtyTalk(int probability = config.talkProbability){
             SingletonRand randomSingleton = SingletonRand.getInstance();
             if (probability <= randomSingleton.Next(config.talkMax))
             {
-                managedCharacter.talk();
+                managedCharacter.Talk();
             }
         }
 
         public void Update(GameCharacter enemy)
         {
             if (inDistance(enemy.position)){
-                enemy.hit();
+                //enemy.Hit();
                 this.DirtyTalk();
             }
             else{
@@ -46,14 +50,14 @@ namespace OOPTeam2.RPG_Game.Services
         {
             if (true)//границы карты
             {
-                managedCharacter.move("left");
+                managedCharacter.Move(managedCharacter.position, Direction.Left);
             }
         }
         public void MoveRight()
         {
             if (true)//границы карты
             {
-                managedCharacter.move("right");
+                managedCharacter.Move(managedCharacter.position, Direction.Right);
             }
         }
 

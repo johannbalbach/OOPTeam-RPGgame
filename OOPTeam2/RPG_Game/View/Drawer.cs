@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using OOPTeam2.RPG_Game.Models.Characters;
+using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
+using OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters;
 
 namespace OOPTeam2.RPG_Game.View
 {
@@ -28,14 +31,14 @@ namespace OOPTeam2.RPG_Game.View
 
         public void Draw()
         {
-            Sprite playerCharactersprite = pictureProvider.getSprite(map.player.managedCharacter.drawID);
-            playerCharactersprite.Position = new Vector2f(map.player.managedCharacter.position.X, map.player.managedCharacter.position.Y);
+            Sprite playerCharactersprite = pictureProvider.getSprite(map.player.managedCharacter.skinId);
+            playerCharactersprite.Position = new Vector2f(map.player.managedCharacter.position.x, map.player.managedCharacter.position.y);
             window.Draw(playerCharactersprite);
 
             foreach (GameCharacter character in map.aliveObjects.Enemies)
             {
-                Sprite sprite = pictureProvider.getSprite(character.drawID);
-                sprite.Position = new Vector2f(character.position.X, character.position.Y);
+                Sprite sprite = pictureProvider.getSprite(character.skinId);
+                sprite.Position = new Vector2f(character.position.x, character.position.y);
                 window.Draw(sprite);
             }
         }

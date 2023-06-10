@@ -1,4 +1,5 @@
 ﻿using OOPTeam2.RPG_Game;
+using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 using OOPTeam2.RPG_Game.Services;
 using OOPTeam2.RPG_Game.View;
 using SFML.Graphics;
@@ -20,6 +21,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using OOPTeam2.RPG_Game.Models.Characters;
+using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
+using OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters;
 
 using Color = SFML.Graphics.Color;
 
@@ -40,8 +44,15 @@ namespace OOPTeam2
             InitializeComponent();
 
             MainLogic mainLogic = new MainLogic();
-
-            map = new Map(new GameCharacter("Player", new Position(30, 0), 5, "male", "HumanCharacter", false, false));
+            ///
+            GameCharacterBuilder enemy = new GameCharacterBuilder();
+            enemy.WithPosition(new Position(30, 0));
+            enemy.WithName("player");
+            enemy.WithAge(0);
+            enemy.WithSkinId("HumanCharacter");
+            enemy.WithIsEnemy(false);
+            ///
+            map = new Map(enemy.Build(), Race.HumanCharacter);
             drawer = new Drawer(map);
             inputDispatcher = new InputDispatcher(map.player);
 
@@ -84,8 +95,6 @@ namespace OOPTeam2
             map.Update();
             drawer.Draw();
             renderWindow.Display();
-            Console.WriteLine(cl.ElapsedTime.AsMilliseconds());
-            cl.Restart();
 
             CommandManager.InvalidateRequerySuggested();
         }
