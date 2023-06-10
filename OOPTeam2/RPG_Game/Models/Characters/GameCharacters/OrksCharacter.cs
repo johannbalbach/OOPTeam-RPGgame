@@ -1,11 +1,13 @@
 using System.Threading.Tasks;
 using OOPTeam2.RPG_Game.Models.Foods;
+using OOPTeam2.RPG_Game.Models;
 
 namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
     public class OrksCharacter: GameCharacter {
+        private CharacterReply text = new CharacterReply(TextEnum.OrksText);
         private const int TIME_SLEEP = 7000;
         public override string Talk() {
-            return "Me crush puny humans! Orcs strong! Orcs conquer all!";
+            return text.GetText();
         }
         
         public override async void Sleep() {

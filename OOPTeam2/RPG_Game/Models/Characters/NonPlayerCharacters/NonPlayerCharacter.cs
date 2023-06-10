@@ -28,17 +28,19 @@ namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters{
             return new NonPlayerCharacter(this);
         }
 
-        public override async void Hit(Potion potion) {
-            await Task.Delay(FREEZING_TIME);
+        public override bool Hit(Potion potion) {
             lifePoint = 0;
+            return true;
         }
         
-        public override void Hit(Sword sword) {
+        public override bool Hit(Sword sword) {
             lifePoint -= sword.GetDamage();
+            return true;
         }
         
-        public override void Hit(Wand wand) {
+        public override bool Hit(Wand wand) {
             lifePoint = 0;
+            return true;
         }
 
         public override string Talk() {

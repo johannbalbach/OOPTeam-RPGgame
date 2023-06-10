@@ -60,14 +60,15 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         }
         
 
-        public override void Hit(Sword sword) {
+        public override bool Hit(Sword sword) {
             // меч способна отражать только кольчуга
             receivedDamage = CalculateReceivedDamage(sword);
             ApplyDamage(receivedDamage);
             NormalizeLifePoint();
+            return true;
         }
         
-        public override void Hit(Potion potion) {
+        public override bool Hit(Potion potion) {
             if (potion is HealingPotion) {
                 lifePoint += ((HealingPotion) potion).valueHealing;
             }
@@ -75,13 +76,16 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
                 receivedDamage = potion.GetHurt();
                 lifePoint -= receivedDamage;    
             }
-            
+
+            return true;
+
         }
 
-        public override void Hit(Wand wand) {
+        public override bool Hit(Wand wand) {
             receivedDamage = CalculateReceivedDamage(wand);
             ApplyDamage(receivedDamage);
             NormalizeLifePoint();
+            return true;
         }
         
         private int CalculateReceivedDamage(Wand wand) {

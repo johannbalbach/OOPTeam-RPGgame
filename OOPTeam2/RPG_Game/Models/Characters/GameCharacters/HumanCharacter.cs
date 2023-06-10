@@ -3,9 +3,10 @@ using OOPTeam2.RPG_Game.Models.Foods;
 
 namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
     public class HumanCharacter: GameCharacter {
+        private CharacterReply text = new CharacterReply(TextEnum.HumansText);
+        
         public override string Talk() {
-            return
-                "We strive for knowledge and progress, exploring the wonders of the world and creating a better future for all.";
+            return text.GetText();
         }
 
         public override void Eat(Food food) {

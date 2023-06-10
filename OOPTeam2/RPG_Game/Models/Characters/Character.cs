@@ -14,9 +14,9 @@ namespace OOPTeam2.RPG_Game.Models.Characters {
         protected const int INIT_HEALTH = 100;
 
         public abstract void Move(Position position, Direction direction);
-        public abstract void Hit(Potion potion);
-        public abstract void Hit(Sword sword);
-        public abstract void Hit(Wand wand);
+        public abstract bool Hit(Potion potion);
+        public abstract bool Hit(Sword sword);
+        public abstract bool Hit(Wand wand);
         public abstract string Talk();
         public abstract void Sleep();
         public abstract void Eat(Food food);

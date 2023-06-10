@@ -16,19 +16,24 @@ namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters {
             return "I am the Avatar, the master of the skies and the wielder of immense magic!";
         }
 
-        public override void Hit(Sword sword) {
+        public override bool Hit(Sword sword) {
             int chanceToHit = random.Next(0, 1);
+            
             if (chanceToHit == 1) {
                 lifePoint -= sword.GetDamage();
+                return true;
             }
+            return false;
         }
 
-        public override void Hit(Potion potion) {
+        public override bool Hit(Potion potion) {
             // Аватар не может быть отравлен
+            return false;
         }
 
-        public override void Hit(Wand wand) {
+        public override bool Hit(Wand wand) {
             lifePoint -= wand.GetHarm();
+            return true;
         }
         
         public void RestoreHealth() {
