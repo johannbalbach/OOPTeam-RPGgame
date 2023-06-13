@@ -58,6 +58,7 @@ namespace OOPTeam2.RPG_Game.Services
                         break;
                 }
                 GameCharacter enemy = new GameCharacter(CreateEnemy(name, spawnPosition, age, skinIndex));
+                
                 return enemy;
             }
             else
@@ -67,16 +68,17 @@ namespace OOPTeam2.RPG_Game.Services
         {
             int x, y;
             y = exception.y;
-            Random rnd = new Random();
+            SingletonRand rnd = SingletonRand.getInstance();
 
             x = rnd.Next(1, 2000);//границы поля
+            
 
-
-            while (!((exception.x - config.playerSize - config.attackDistance >= x + config.botSize) || (exception.x + config.playerSize + config.attackDistance <= x - config.botSize)))
+            while (config.InDistance(exception, x))
             {
                 x = rnd.Next(1, 2000);//границы поля
             }
             Position position = new Position(x, y);
+
             return position;
         }
         private GameCharacter CreateEnemy(string name, Position spawnPosition, int age, string skinIndex)

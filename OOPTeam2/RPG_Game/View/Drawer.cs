@@ -41,6 +41,10 @@ namespace OOPTeam2.RPG_Game.View
                 sprite.Position = new Vector2f(character.position.x, character.position.y);
                 window.Draw(sprite);
             }
+
+            Sprite avatarSprite = pictureProvider.getSprite(map.avatarController.avatar.skinId);
+            avatarSprite.Position = new Vector2f(map.avatarController.avatar.position.x, map.avatarController.avatar.position.y);
+            window.Draw(avatarSprite);
         }
     }
 }

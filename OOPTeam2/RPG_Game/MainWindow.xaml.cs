@@ -46,7 +46,7 @@ namespace OOPTeam2
             MainLogic mainLogic = new MainLogic();
             ///
             GameCharacterBuilder enemy = new GameCharacterBuilder();
-            enemy.WithPosition(new Position(30, 0));
+            enemy.WithPosition(new Position(100, 100));
             enemy.WithName("player");
             enemy.WithAge(0);
             enemy.WithSkinId("HumanCharacter");

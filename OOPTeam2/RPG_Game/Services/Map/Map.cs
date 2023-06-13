@@ -26,12 +26,8 @@ namespace OOPTeam2.RPG_Game.Services
 
             player = new Player(PlayerCharacter, race);
             Avatar avatar = new Avatar(); // Avatar("avatar", Position(PlayerCharacter.position.x, PlayerCharacter.position.y + config.avatarDistance))
+            avatar.position = new Position(100, 130);
             avatarController = new AvatarController(ref avatar);
-        }
-
-        public Player GetPlayer()
-        {
-            return player;
         }
 
         public void Update()

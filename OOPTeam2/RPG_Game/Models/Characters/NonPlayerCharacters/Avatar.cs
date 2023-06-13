@@ -8,6 +8,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters {
     public class Avatar: NonPlayerCharacter {
         private Random random;
         public Avatar() {
+            this.skinId = "Avatar";
             lifePoint = Int32.MaxValue;
             random = new Random();
         }

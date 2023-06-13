@@ -19,15 +19,6 @@ namespace OOPTeam2.RPG_Game.Services
             this.managedCharacter = character;
         }
 
-        private bool inDistance(Position player){
-            if ((managedCharacter.position.x - config.botSize - config.attackDistance >= player.x + config.playerSize)
-            || (managedCharacter.position.x + config.botSize + config.attackDistance <= player.x - config.playerSize)){
-                return false;
-            }
-            else{
-                return true;
-            }
-        }
         private void DirtyTalk(int probability = config.talkProbability)
         {
             SingletonRand randomSingleton = SingletonRand.getInstance();
@@ -39,7 +30,7 @@ namespace OOPTeam2.RPG_Game.Services
 
         public void Update(GameCharacter player)
         {
-            if (inDistance(player.position)){
+            if (config.InDistance(player.position, managedCharacter.position)){
                 //player.Hit();
                 DirtyTalk();
             }

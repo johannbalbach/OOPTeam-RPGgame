@@ -6,6 +6,8 @@ using OOPTeam2.RPG_Game.Models.Wands;
 
 namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters{
     public class NonPlayerCharacter: Character {
+        public string skinId { get; set; }
+
         public NonPlayerCharacter() {
             lifePoint = INIT_HEALTH;
         }
