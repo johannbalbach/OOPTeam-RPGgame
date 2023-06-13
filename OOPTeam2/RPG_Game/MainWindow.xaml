@@ -8,6 +8,8 @@
         Title="MainWindow" Height="756" Width="1344">
         <!--Title="MainWindow" Height="450" Width="800">-->
     <Grid>
+        <Frame x:Name="windowFrame">
+        </Frame>
         <WindowsFormsHost>
             <WindowsFormsHost.Child>
                 <local:SfmlDrawingSurface x:Name="DrawSurface" SizeChanged="DrawSurface_SizeChanged"/>

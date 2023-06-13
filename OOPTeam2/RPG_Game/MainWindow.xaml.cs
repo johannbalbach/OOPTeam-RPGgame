@@ -49,7 +49,34 @@ namespace OOPTeam2
             timer = new DispatcherTimer { Interval = refreshRate };
             timer.Tick += new EventHandler(Timer_Tick);
             cl = new Clock();
+<<<<<<< Updated upstream
             timer.Start();
+=======
+            //timer.Start();
+
+            Task.Run(Loop);
+        }
+
+        private void Loop()
+        {
+            while (true)
+            {
+                cl.Restart();
+
+                Dispatcher.Invoke(() =>
+                {
+                    renderWindow.DispatchEvents();
+                    renderWindow.Clear(SFML.Graphics.Color.Black);
+                    inputDispatcher.DispathcInput();
+                    map.Update();
+                    drawer.Draw();
+                    renderWindow.Display();
+                    
+                });
+
+                Thread.Sleep(16);
+            }
+>>>>>>> Stashed changes
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -89,7 +116,5 @@ namespace OOPTeam2
         {
 
         }
-
-
     }
 }
