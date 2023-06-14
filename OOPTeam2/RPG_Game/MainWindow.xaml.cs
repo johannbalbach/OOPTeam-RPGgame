@@ -24,6 +24,7 @@ using System.Windows.Threading;
 using OOPTeam2.RPG_Game.Models.Characters;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 using OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters;
+using OOPTeam2.RPG_Game.Services.Map;
 
 namespace OOPTeam2
 {
@@ -34,28 +35,29 @@ namespace OOPTeam2
         private static Drawer drawer;
         private static Map map;
         private static InputDispatcher inputDispatcher;
+
+        GameCharacterBuilder player = new GameCharacterBuilder()
+            .WithPosition(new Position(0, 0))
+            .WithName("player")
+            .WithAge(0)
+            .WithSkinId("HumanCharacter")
+            .WithIsEnemy(false);
+
         public MainWindow()
         {
             InitializeComponent();
 
             MainLogic mainLogic = new MainLogic();
-            ///
-            GameCharacterBuilder enemy = new GameCharacterBuilder();
-            enemy.WithPosition(new Position(100, 100));
-            enemy.WithName("player");
-            enemy.WithAge(0);
-            enemy.WithSkinId("HumanCharacter");
-            enemy.WithIsEnemy(false);
-            ///
-            map = new Map(enemy.Build(), Race.HumanCharacter);
+            map = new Map(player.Build(), Race.HumanCharacter);
             drawer = new Drawer(map);
             inputDispatcher = new InputDispatcher(map.player);
+
             CreateRenderWindow();
         }
 
         private void createMap()
         {
-            map = new Map(new GameCharacter(20, "Player"), Race.HumanCharacter);
+            map = new Map(player.Build(), Race.HumanCharacter);
             drawer = new Drawer(map);
             inputDispatcher = new InputDispatcher(map.player);
             CreateRenderWindow();
@@ -74,7 +76,6 @@ namespace OOPTeam2
                     map.Update();
                     drawer.Draw();
                     renderWindow.Display();
-                    
                 });
 
                 Thread.Sleep(16);

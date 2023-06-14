@@ -13,7 +13,7 @@ namespace OOPTeam2.RPG_Game.Services
 
         private const int enemySpawnChance = 1;
         private const int npcSpawnChance = 1;
-        private const int randomMax = 100;
+        private const int randomMax = 10000000;
 
         public GameCharacter SpawnEnemyExcept(Position position, Race race)
         {

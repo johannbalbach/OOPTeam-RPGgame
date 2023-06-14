@@ -6,7 +6,7 @@ using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 using OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters;
 using OOPTeam2.RPG_Game.Models.Characters;
 
-namespace OOPTeam2.RPG_Game.Services
+namespace OOPTeam2.RPG_Game.Services.Map
 {
     public class Map
     {
@@ -28,6 +28,9 @@ namespace OOPTeam2.RPG_Game.Services
             Avatar avatar = new Avatar(); // Avatar("avatar", Position(PlayerCharacter.position.x, PlayerCharacter.position.y + config.avatarDistance))
             avatar.position = new Position(100, 130);
             avatarController = new AvatarController(ref avatar);
+
+            WorldGenerator worldGenerator = new WorldGenerator(staticObjects);
+            worldGenerator.CreateWorld();
         }
 
         public void Update()
