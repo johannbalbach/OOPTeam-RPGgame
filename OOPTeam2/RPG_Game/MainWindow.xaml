@@ -8,10 +8,39 @@
         Title="MainWindow" Height="756" Width="1344">
         <!--Title="MainWindow" Height="450" Width="800">-->
     <Grid>
-        <WindowsFormsHost>
-            <WindowsFormsHost.Child>
-                <local:SfmlDrawingSurface x:Name="DrawSurface" SizeChanged="DrawSurface_SizeChanged"/>
-            </WindowsFormsHost.Child>
-        </WindowsFormsHost>
+        <StackPanel Orientation="Vertical" Height="756">
+            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
+                <TextBlock VerticalAlignment="Center">Выбери нацию:</TextBlock>
+                <ComboBox x:Name="chooseComboBox" Height="auto" Margin="5" SelectionChanged="chooseComboBox_SelectionChanged">
+                    <ComboBoxItem>
+                        <TextBlock Text="Human"/>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock Text="Alien"/>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock Text="Elf"/>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock Text="Gnome"/>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock Text="Ork"/>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock Text="Wand"/>
+                    </ComboBoxItem>
+                </ComboBox>
+                <Button x:Name="createButton" Click="createButton_Click">Начать</Button>
+            </StackPanel>
+
+            <WindowsFormsHost Height="726">
+                <WindowsFormsHost.Child>
+                    <local:SfmlDrawingSurface x:Name="DrawSurface" SizeChanged="DrawSurface_SizeChanged"/>
+                </WindowsFormsHost.Child>
+            </WindowsFormsHost>
+            
+        </StackPanel>
+        
     </Grid>
 </Window>

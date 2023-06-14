@@ -29,11 +29,21 @@ namespace OOPTeam2.RPG_Game.View
             this.window = window;
         }
 
+        private void updateViewPos()
+        {
+            Vector2f playerPos = new Vector2f(map.player.managedCharacter.position.X, map.player.managedCharacter.position.Y);
+            Vector2f viewSize = window.GetView().Size;
+            window.SetView(new SFML.Graphics.View(playerPos, viewSize));
+        }
+
         public void Draw()
         {
-            Sprite playerCharactersprite = pictureProvider.getSprite(map.player.managedCharacter.skinId);
-            playerCharactersprite.Position = new Vector2f(map.player.managedCharacter.position.x, map.player.managedCharacter.position.y);
-            window.Draw(playerCharactersprite);
+
+            updateViewPos();
+
+            Sprite playerCharacterSprite = pictureProvider.getSprite(map.player.managedCharacter.skinId);
+            playerCharacterSprite.Position = new Vector2f(map.player.managedCharacter.position.x, map.player.managedCharacter.position.y);
+            window.Draw(playerCharacterSprite);
 
             foreach (GameCharacter character in map.aliveObjects.Enemies)
             {

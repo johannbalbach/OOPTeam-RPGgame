@@ -25,20 +25,15 @@ using OOPTeam2.RPG_Game.Models.Characters;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 using OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters;
 
-using Color = SFML.Graphics.Color;
-
 namespace OOPTeam2
 {
 
     public partial class MainWindow : System.Windows.Window
     {
         private static RenderWindow renderWindow;
-        private static DispatcherTimer timer;
         private static Drawer drawer;
         private static Map map;
         private static InputDispatcher inputDispatcher;
-        Clock cl;
-        Thread gameThread;
         public MainWindow()
         {
             InitializeComponent();
@@ -55,49 +50,37 @@ namespace OOPTeam2
             map = new Map(enemy.Build(), Race.HumanCharacter);
             drawer = new Drawer(map);
             inputDispatcher = new InputDispatcher(map.player);
-
             CreateRenderWindow();
+        }
 
-            TimeSpan refreshRate = new TimeSpan(0, 0, 0, 0, 16);
-            timer = new DispatcherTimer { Interval = refreshRate };
-            timer.Tick += new EventHandler(Timer_Tick);
-            cl = new Clock();
-            timer.Start();
-
-            //CompositionTarget.Rendering += Loop;
-
-            //gameThread = new Thread(Loop);
-            //gameThread.Start();
-            
+        private void createMap()
+        {
+            map = new Map(new GameCharacter("Player", new Position(30, 0), 5, "male", "HumanCharacter", false, false));
+            drawer = new Drawer(map);
+            inputDispatcher = new InputDispatcher(map.player);
+            CreateRenderWindow();
+            Task.Run(Loop);
         }
 
         private void Loop()
         {
-            //while (true)
+            while (true)
             {
-                renderWindow.DispatchEvents();
-                renderWindow.Clear(SFML.Graphics.Color.Black);
-                inputDispatcher.DispathcInput();
-                map.Update();
-                drawer.Draw();
-                renderWindow.Display();
-                Console.WriteLine(cl.ElapsedTime.AsMilliseconds());
-                cl.Restart();
+                Dispatcher.Invoke(() =>
+                {
+                    renderWindow.DispatchEvents();
+                    renderWindow.Clear(SFML.Graphics.Color.Black);
+                    inputDispatcher.DispathcInput();
+                    map.Update();
+                    drawer.Draw();
+                    renderWindow.Display();
+                    
+                });
+
+                Thread.Sleep(16);
             }
-
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            renderWindow.DispatchEvents();
-            renderWindow.Clear(SFML.Graphics.Color.Black);
-            inputDispatcher.DispathcInput();
-            map.Update();
-            drawer.Draw();
-            renderWindow.Display();
-
-            CommandManager.InvalidateRequerySuggested();
-        }
         private void CreateRenderWindow()
         {
             if (renderWindow != null)
@@ -113,16 +96,39 @@ namespace OOPTeam2
             drawer.SetRenderWindow(renderWindow);
         }
 
-        private void DrawSurface_SizeChanged(object sender, EventArgs e)
-        {
-            CreateRenderWindow();
-        }
-
         private void RenderWindow_MouseButtonPressed(object sender, SFML.Window.MouseButtonEventArgs e)
         {
 
         }
 
+        private void DrawSurface_SizeChanged(object sender, EventArgs e)
+        {
+            CreateRenderWindow();
+        }
 
+        private void chooseComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (chooseComboBox.SelectedIndex)
+            {
+                case 0:
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3: 
+                    break;
+                case 4:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void createButton_Click(object sender, RoutedEventArgs e)
+        {
+            createMap();
+            createButton.IsEnabled = false; 
+        }
     }
 }
