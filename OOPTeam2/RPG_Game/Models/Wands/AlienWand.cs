@@ -1,4 +1,6 @@
-﻿using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
+﻿using System.Collections.Generic;
+using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
+using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
 
 namespace OOPTeam2.RPG_Game.Models.Wands {
 
@@ -11,22 +13,37 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
             this.isAvailable = isAvailable;
             this.isAvailableOnEarth = isAvailableOnEarth;
             this.agility = agility;
+            possibleOwners = new List<CharacterRace> { 
+                CharacterRace.AlienCharacter
+            };
         }
         
         public AlienWand() {
             damage = ALIEN_WAND_DAMAGE;
             description = ALIEN_WAND_DESCRIPTION;
             agility = ALIEN_WAND_AGILITY;
+            isAvailable = true;
+            isAvailableOnEarth = true;
+            possibleOwners = new List<CharacterRace> { 
+                CharacterRace.AlienCharacter
+            };
         }
         
-        public override int GetHarm() {
+        public override int GetHarm(CharacterRace characterRace) {
             // при использовании палочки заклинание должно вызывать задержку 
-            if (isAvailable && isAvailableOnEarth) {
+            if (isAvailable && possibleOwners.Contains(characterRace)) {
+                return CalculateDamage();
+            }
+            return damage;
+        }
+
+        private int CalculateDamage() {
+            if (isAvailableOnEarth) {
                 return damage * damage;
             }
             return damage;
         }
-        
+
         public override void Drop() {
             if (isAvailable) {
                 isAvailable = false;

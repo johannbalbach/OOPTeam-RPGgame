@@ -1,4 +1,6 @@
-﻿using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
+﻿using System.Collections.Generic;
+using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
+using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
 
 namespace OOPTeam2.RPG_Game.Models.Wands {
     public class ElvenWand : Wand {
@@ -10,6 +12,9 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
             this.isAvailable = isAvailable;
             this.agility = agility;
             lifePercentage = ELVEN_WAND_CAPACITY;
+            possibleOwners = new List<CharacterRace> { 
+                CharacterRace.ElvesCharacter
+            };
         }
 
         public ElvenWand() {
@@ -17,14 +22,18 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
             description = ELVEN_WAND_DESCRIPTION;
             lifePercentage = ELVEN_WAND_CAPACITY;
             agility = ELVEN_WAND_AGILITY;
+            isAvailable = true;
+            possibleOwners = new List<CharacterRace> { 
+                CharacterRace.AlienCharacter
+            };
         }
 
-        public override int GetHarm() {
-            if (isAvailable) {
+        public override int GetHarm(CharacterRace characterRace) {
+            if (isAvailable && possibleOwners.Contains(characterRace)) {
                 lifePercentage -= ELVEN_WAND_COEFFICIENT;
                 return CalculateDamage();
             }
-            return damage;
+            return 0;
         }
         
         private int CalculateDamage() {
@@ -50,6 +59,7 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
             return $"Power coefficient: {damage}\n" +
                    $"Description: {description}\n" +
                    $"Is available: {isAvailable}\n" +
+                   $"Agility: {agility}\n" +
                    $"Life percentage: {lifePercentage}\n";
         }
     }

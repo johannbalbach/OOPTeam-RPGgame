@@ -48,7 +48,11 @@ namespace OOPTeam2.RPG_Game.Models {
         public const string ELVEN_WAND_DESCRIPTION = "Luminary";
         public const int ELVEN_WAND_COEFFICIENT = 10;
         public const int ELVEN_WAND_CAPACITY = 30;
-
+        
         public const int WIZARD_WAND_BONUS_MAGIC = 10;
+        public const int WIZARD_WAND_DAMAGE = 2;
+        public const double WIZARD_WAND_AGILITY = 0.6;
+        public const string WIZARD_WAND_DESCRIPTION = "Celestial";
+        
     }
 }

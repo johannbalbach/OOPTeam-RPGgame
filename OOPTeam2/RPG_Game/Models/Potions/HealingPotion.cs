@@ -6,10 +6,9 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
     public class HealingPotion: Potion {
         public int valueHealing { set; get; }
         
-        public HealingPotion(int volume, string description, bool isAvailable, int valueHealing) {
+        public HealingPotion(int volume, string description, int valueHealing) {
             this.volume = volume;
             this.description = description;
-            this.isAvailable = isAvailable;
             this.valueHealing = valueHealing;
             possibleOwners = new List<CharacterRace> { 
                 CharacterRace.HumanCharacter,
@@ -33,15 +32,20 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
             typePotion = TypePotion.HealingPotion;
         }
 
-        public override int GetHurt(CharacterRace batterCharacterRace) {
-            Reduce();
-            return damage;
+        public override int GetHurt(CharacterRace characterRace) {
+            if (possibleOwners.Contains(characterRace) && IsEnoughVolume()) {
+                Reduce();
+                return valueHealing;
+            }
+            return 0;
+        }
+        
+        public override bool IsEnoughVolume() {
+            return volume >= HEALING_POTION_DOSE;
         }
 
         public override void Reduce() {
-            if (volume >= HEALING_POTION_DOSE) {
-                volume -= HEALING_POTION_DOSE;
-            }
+            volume -= HEALING_POTION_DOSE;
         }
         
         public override void Increase() {

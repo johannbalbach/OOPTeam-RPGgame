@@ -4,10 +4,12 @@ using OOPTeam2.RPG_Game.Models;
 
 namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
     public class OrksCharacter: GameCharacter {
-        private const CharacterRace orks = CharacterRace.OrksCharacter;
-        private CharacterReply text = new CharacterReply(TextEnum.OrksText);
         private const int TIME_SLEEP = 7000;
-        
+
+        public OrksCharacter() {
+            characterRace = CharacterRace.OrksCharacter;
+            text = new CharacterReply(TextEnum.OrksText);
+        }
         public override string Talk() {
             return text.GetText();
         }
@@ -17,7 +19,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         }
         
         public override void Eat(Food food) {
-            if (food.IsEatable(orks)) {
+            if (food.IsEatable(characterRace) && food.IsSufficientQuantity()) {
                 food.Eat();
             }
         }

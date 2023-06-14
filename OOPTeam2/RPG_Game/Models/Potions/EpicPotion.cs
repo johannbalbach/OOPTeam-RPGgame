@@ -6,10 +6,9 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
     public class EpicPotion: Potion {
         public int bonusPercent { set; get; }
         
-        public EpicPotion(int volume, string description, bool isAvailable, int bonusPercent, int damage) {
+        public EpicPotion(int volume, string description, int bonusPercent, int damage) {
             this.volume = volume;
             this.description = description;
-            this.isAvailable = isAvailable;
             this.bonusPercent = bonusPercent;
             this.damage = damage;
             possibleOwners = new List<CharacterRace> { 
@@ -34,21 +33,21 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
             };
             typePotion = TypePotion.EpicPotion;
         }
-        
-        
-        
-        public override int GetHurt(CharacterRace batterCharacterRace) {
-            if (possibleOwners.Contains(batterCharacterRace)) {
+
+        public override int GetHurt(CharacterRace characterRace) {
+            if (possibleOwners.Contains(characterRace) && IsEnoughVolume()) {
                 Reduce();
                 return damage * bonusPercent;
             }
             return 0;
         }
-        
+
+        public override bool IsEnoughVolume() {
+            return volume >= EPIC_POTION_VOLUME;
+        }
+
         public override void Reduce() {
-            if (volume >= EPIC_POTION_VOLUME) {
-                volume -= EPIC_POTION_VOLUME;
-            }
+            volume -= EPIC_POTION_VOLUME;
         }
         
         public override void Increase() {

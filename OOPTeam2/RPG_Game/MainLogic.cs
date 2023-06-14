@@ -26,7 +26,7 @@ namespace OOPTeam2.RPG_Game {
             gameCharacter.inventory.weapons.alienWand.isAvailable = true;
             Console.WriteLine(gameCharacter.lifePoint);
             gameCharacter.inventory.weapons.alienWand.Improve();
-            gameCharacter.Hit(gameCharacter.inventory.weapons.alienWand);
+            gameCharacter.Hit(gameCharacter.inventory.weapons.alienWand, CharacterRace.ElvesCharacter);
             Console.WriteLine(gameCharacter.lifePoint);
             gameCharacter.UseMedicine();
             Console.WriteLine(gameCharacter.lifePoint);

@@ -1,4 +1,6 @@
 using System.Threading.Tasks;
+using System.Windows.Media.TextFormatting;
+using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 using OOPTeam2.RPG_Game.Models.Foods;
 using OOPTeam2.RPG_Game.Models.Potions;
 using OOPTeam2.RPG_Game.Models.Swords;
@@ -9,6 +11,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters{
         
         public NonPlayerCharacter() {
             lifePoint = INIT_HEALTH;
+            text = new CharacterReply();
         }
         
         public NonPlayerCharacter(NonPlayerCharacter target) {
@@ -16,6 +19,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters{
                 age = target.age;
                 name = target.name;
                 position = target.position;
+                text = new CharacterReply();
             }
         }
         
@@ -32,18 +36,18 @@ namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters{
             return true;
         }
         
-        public override bool Hit(Sword sword) {
-            lifePoint -= sword.GetDamage();
+        public override bool Hit(Sword sword, CharacterRace characterRace) {
+            lifePoint -= sword.GetDamage(characterRace);
             return true;
         }
         
-        public override bool Hit(Wand wand) {
+        public override bool Hit(Wand wand, CharacterRace characterRace) {
             lifePoint = 0;
             return true;
         }
 
         public override string Talk() {
-            return "Hello, player! I'm NPC!";
+            return text.GetText();
         }
 
         public override void Sleep() {

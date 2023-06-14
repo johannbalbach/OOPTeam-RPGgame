@@ -3,11 +3,11 @@ using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
 
 namespace OOPTeam2.RPG_Game.Models.Potions {
+    
     public class ToxicPotion: Potion {
-        public ToxicPotion(int volume, string description, bool isAvailable, int damage) {
+        public ToxicPotion(int volume, string description, int damage) {
             this.volume = volume;
             this.description = description;
-            this.isAvailable = isAvailable;
             this.damage = damage;
             possibleOwners = new List<CharacterRace> { 
                 CharacterRace.HumanCharacter,
@@ -31,9 +31,16 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
             typePotion = TypePotion.ToxicPotion;
         }
 
-        public override int GetHurt(CharacterRace batterCharacterRace) {
-            Reduce();
-            return damage;
+        public override int GetHurt(CharacterRace characterRace) {
+            if (possibleOwners.Contains(characterRace) && IsEnoughVolume()) {
+                Reduce();
+                return damage;
+            }
+            return 0;
+        }
+
+        public override bool IsEnoughVolume() {
+            return volume >= TOXIC_POTION_VOLUME;
         }
         
         public override void Increase() {
@@ -41,9 +48,7 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
         }
 
         public override void Reduce() {
-            if (volume >= TOXIC_POTION_DAMAGE_HEALTH) {
-                volume -= TOXIC_POTION_DAMAGE_HEALTH;
-            }
+            volume -= TOXIC_POTION_DAMAGE_HEALTH;
         }
     }
 }

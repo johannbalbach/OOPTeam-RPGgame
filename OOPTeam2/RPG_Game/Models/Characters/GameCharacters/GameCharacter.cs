@@ -43,6 +43,8 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
                 position = target.position;
                 healthRegeneration = target.healthRegeneration;
                 characterRace = target.characterRace;
+                lifePoint = target.lifePoint;
+                receivedDamage = target.receivedDamage;
             }
         }
 
@@ -59,14 +61,16 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         }
         
         public void UseMedicine() {
-            inventory.bags.medicalLeave.Use();
-            RestoreHealth();
+            if (inventory.bags.medicalLeave.IsAvailable()) {
+                inventory.bags.medicalLeave.Use();
+                RestoreHealth();   
+                NormalizeLifePoint();
+            }
         }
-        
 
-        public override bool Hit(Sword sword) {
+        public override bool Hit(Sword sword, CharacterRace characterRace) {
             // меч способна отражать только кольчуга
-            receivedDamage = CalculateReceivedDamage(sword);
+            receivedDamage = sword.GetDamage(characterRace) - inventory.GetChainmailDefenseBonus();;
             ApplyDamage(receivedDamage);
             NormalizeLifePoint();
             return true;
@@ -82,28 +86,18 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
             return true;
         }
 
-        public override bool Hit(Wand wand) {
-            receivedDamage = CalculateReceivedDamage(wand);
+        public override bool Hit(Wand wand, CharacterRace characterRace) {
+            receivedDamage = wand.GetHarm(characterRace) - inventory.GetCloakDefenseBonus();
             ApplyDamage(receivedDamage);
             NormalizeLifePoint();
             return true;
         }
-        
-        private int CalculateReceivedDamage(Wand wand) {
-            // палочку способна отражать только мантия 
-            int damage = wand.GetHarm() - inventory.GetCloakDefenseBonus();
-            return Math.Max(0, damage);
-        }
-        
+
         private void ApplyDamage(int damage) {
-            lifePoint -= damage;
+            if (damage > 0) {
+                lifePoint -= damage;    
+            }
         }
-        
-        private int CalculateReceivedDamage(Sword sword) {
-            int damage = sword.GetDamage() - inventory.GetChainmailDefenseBonus();
-            return Math.Max(0, damage);
-        }
-        
 
         public void FetchHelpingAvatar() {
             if (inventory.bags.IsAvailableCallAvatar()) {
@@ -112,7 +106,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         }
 
         public override string Talk() {
-            return "Hello, I am a game character!";
+            return text.GetText();
         }
 
         public override async void Sleep() {
@@ -120,8 +114,10 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         }
 
         public override void Eat(Food food) {
-            food.Eat();
-            lifePoint += (healthRegeneration * food.power);
+            if (food.IsSufficientQuantity()) {
+                food.Eat();
+                lifePoint += (healthRegeneration * food.power);
+            }
         }
     }
 }

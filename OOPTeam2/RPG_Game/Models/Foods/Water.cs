@@ -9,13 +9,15 @@ namespace OOPTeam2.RPG_Game.Models.Foods {
         }
         
         public override void Eat() {
-            if (volume > 0) {
-                volume--;
-            }
+            volume--;
         }
 
         public override bool IsEatable(CharacterRace characterRace) {
             return characterRace == CharacterRace.WizardCharacter || characterRace == CharacterRace.HumanCharacter;
+        }
+        
+        public override bool IsSufficientQuantity() {
+            return volume > 0;
         }
     }
 }

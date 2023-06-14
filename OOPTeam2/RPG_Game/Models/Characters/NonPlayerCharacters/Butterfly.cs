@@ -2,8 +2,13 @@ using OOPTeam2.RPG_Game.Models.Foods;
 
 namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters {
     public class Butterfly: NonPlayerCharacter {
+        
+        public Butterfly() {
+            text = new CharacterReply(TextEnum.ButterflyText);
+        }
+        
         public override string Talk() {
-            return "Flutter, flutter...";
+            return text.GetText();
         }
     }
 }

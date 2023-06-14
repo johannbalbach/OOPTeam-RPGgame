@@ -5,5 +5,6 @@ namespace OOPTeam2.RPG_Game.Models.Foods {
         public int power { get; set; }
         public abstract void Eat();
         public abstract bool IsEatable(CharacterRace characterRace);
+        public abstract bool IsSufficientQuantity();
     }
 }

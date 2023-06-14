@@ -12,10 +12,12 @@ namespace OOPTeam2.RPG_Game.Models {
             
         }
         
+        public bool IsAvailable() {
+            return count > 0;
+        }
+        
         public void Use() {
-            if (count > 0) {
-                count--;
-            }
+            count--;
         }
 
         public void PickUp(int count) {

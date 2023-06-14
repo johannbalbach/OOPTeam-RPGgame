@@ -22,8 +22,8 @@ namespace OOPTeam2.RPG_Game.Models {
             toxicPotion = new ToxicPotion();
             epicPotion = new EpicPotion();
             alienWand = new AlienWand();
-            elvenWand = new ElvenWand(1,"Luminary", false,  0.45);
-            wizardWand = new WizardWand(2, 0.6, "Celestial", false, 15);
+            elvenWand = new ElvenWand();
+            wizardWand = new WizardWand();
             inventory.weapons = this;
         }
     }
