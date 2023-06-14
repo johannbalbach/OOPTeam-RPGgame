@@ -55,7 +55,7 @@ namespace OOPTeam2
 
         private void createMap()
         {
-            map = new Map(new GameCharacter("Player", new Position(30, 0), 5, "male", "HumanCharacter", false, false));
+            map = new Map(new GameCharacter(20, "Player"), Race.HumanCharacter);
             drawer = new Drawer(map);
             inputDispatcher = new InputDispatcher(map.player);
             CreateRenderWindow();

@@ -31,7 +31,7 @@ namespace OOPTeam2.RPG_Game.View
 
         private void updateViewPos()
         {
-            Vector2f playerPos = new Vector2f(map.player.managedCharacter.position.X, map.player.managedCharacter.position.Y);
+            Vector2f playerPos = new Vector2f(map.player.managedCharacter.position.x, map.player.managedCharacter.position.y);
             Vector2f viewSize = window.GetView().Size;
             window.SetView(new SFML.Graphics.View(playerPos, viewSize));
         }
