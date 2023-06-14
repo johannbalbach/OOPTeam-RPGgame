@@ -7,6 +7,11 @@ namespace OOPTeam2.RPG_Game.Models.Foods {
         public Flower(int beam) {
             this.beam = beam;
         }
+
+        public Flower(int beam, int power) {
+            this.beam = beam;
+            this.power = power;
+        }
         
         public override void Eat() {
             beam--;

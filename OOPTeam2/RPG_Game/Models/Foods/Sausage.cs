@@ -8,6 +8,11 @@ namespace OOPTeam2.RPG_Game.Models.Foods {
         public Sausage(double size) {
             this.size = size;
         }
+        
+        public Sausage(double size, int power) {
+            this.size = size;
+            this.power = power;
+        }
 
         public override void Eat() { 
             size -= MIN_DOSE;

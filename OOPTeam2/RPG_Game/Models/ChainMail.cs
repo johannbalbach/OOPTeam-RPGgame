@@ -27,6 +27,5 @@ namespace OOPTeam2.RPG_Game.Models {
         public void AddChinmail() {
             count++;
         }
-        
     }
 }

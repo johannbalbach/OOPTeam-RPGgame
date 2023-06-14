@@ -8,6 +8,11 @@ namespace OOPTeam2.RPG_Game.Models.Foods {
             this.count = count;
         }
         
+        public Fruit(int count, int power) {
+            this.count = count;
+            this.power = power;
+        }
+        
         public override void Eat() {
             count--;
         }

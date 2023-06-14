@@ -20,6 +20,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters {
         }
 
         public override bool Hit(Sword sword, CharacterRace characterRace) {
+            // с вероятностью 50% удар в аватара будет отражён тайной силой 
             int chanceToHit = random.Next(0, 1);
             if (chanceToHit == 1) {
                 lifePoint -= sword.GetDamage(characterRace);

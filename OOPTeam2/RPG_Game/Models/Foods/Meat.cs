@@ -9,6 +9,11 @@ public class Meat: Food {
         public Meat(double kilos) {
             this.kilos = kilos;
         }
+        
+        public Meat(double kilos, int power) {
+            this.kilos = kilos;
+            this.power = power;
+        }
 
         public override void Eat() {
             kilos -= MIN_DOSE;

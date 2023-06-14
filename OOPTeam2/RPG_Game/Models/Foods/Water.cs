@@ -8,6 +8,11 @@ namespace OOPTeam2.RPG_Game.Models.Foods {
             this.volume = volume;
         }
         
+        public Water(int volume, int power) {
+            this.volume = volume;
+            this.power = power;
+        }
+        
         public override void Eat() {
             volume--;
         }

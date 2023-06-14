@@ -38,9 +38,8 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
         
         private int CalculateDamage() {
             int adjustedDamage = damage * damage;
-            int adjustedLifePercentage = lifePercentage / ELVEN_WAND_COEFFICIENT;
-            int result = adjustedDamage / adjustedLifePercentage;
-            return result;
+            int adjustedLife = lifePercentage / ELVEN_WAND_COEFFICIENT;
+            return adjustedDamage / adjustedLife;
         }
         
         public override void Drop() {

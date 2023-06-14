@@ -1,5 +1,4 @@
 namespace OOPTeam2.RPG_Game.Models {
-    
     public enum TextEnum {
         ElvesText,
         OrksText,

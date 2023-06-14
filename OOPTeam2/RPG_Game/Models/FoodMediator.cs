@@ -1,4 +1,3 @@
-using System;
 using OOPTeam2.RPG_Game.Models.Foods;
 
 namespace OOPTeam2.RPG_Game.Models {
