@@ -16,18 +16,12 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
             };
         }
         
-        public LevithanSword() {
-            weight = LEVITHAN_SWORD_WEIGHT;
-            agility = LEVITHAN_SWORD_AGILITY;
-            quality = LEVITHAN_SWORD_QUALITY;
-            attack = LEVITHAN_SWORD_ATTACK;
-            possibleOwners = new List<CharacterRace> { 
-                CharacterRace.ElvesCharacter,
-                CharacterRace.HumanCharacter
-            };
+        public LevithanSword() : this (LEVITHAN_SWORD_WEIGHT, LEVITHAN_SWORD_AGILITY, 
+                LEVITHAN_SWORD_QUALITY, LEVITHAN_SWORD_ATTACK, true) {
+            
         }
         
-        public override int GetDamage(CharacterRace characterRace) {
+        public override int ToDamage(CharacterRace characterRace) {
             if (isAvailable && possibleOwners.Contains(characterRace)) {
                 return CalculateDamage();
             }
@@ -41,7 +35,7 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
             return attack;
         }
 
-        public override void Boost() {
+        public override void Improve() {
             quality += LEVITHAN_SWORD_BONUS_COEFFICIENT;
             weight -= LEVITHAN_SWORD_BONUS_WEIGHT;
         }

@@ -6,13 +6,11 @@ using OOPTeam2.RPG_Game.Services;
 namespace OOPTeam2.RPG_Game.Models.Wands {
     public class WizardWand : Wand {
         private SingletonRand random { set; get; }
-        public double waitingTimeUsing { set; get; }
-        
-        public WizardWand(int damage, double agility, string description, bool isAvailable, double waitingTimeUsing) {
+
+        public WizardWand(int damage, double agility, string description, bool isAvailable) {
             this.damage = damage;
             this.description = description;
             this.isAvailable = isAvailable;
-            this.waitingTimeUsing = waitingTimeUsing;
             this.agility = agility;
             random = SingletonRand.GetInstance();
             possibleOwners = new List<CharacterRace> { 
@@ -20,17 +18,11 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
             };
         }
         
-        public WizardWand() {
-            damage = WIZARD_WAND_DAMAGE;
-            description = WIZARD_WAND_DESCRIPTION;
-            agility = WIZARD_WAND_AGILITY;
-            random = SingletonRand.GetInstance();
-            possibleOwners = new List<CharacterRace> { 
-                CharacterRace.WizardCharacter
-            };
+        public WizardWand() : this (WIZARD_WAND_DAMAGE, WIZARD_WAND_AGILITY, WIZARD_WAND_DESCRIPTION, true) {
+            
         }
 
-        public override int GetHarm(CharacterRace characterRace) {
+        public override int ToDamage(CharacterRace characterRace) {
             if (isAvailable && possibleOwners.Contains(characterRace)) {
                 return damage * damage;
             }

@@ -9,10 +9,10 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
         public int attack { set; get; }
         public bool isAvailable { set; get; }
         public List<CharacterRace> possibleOwners { set; get; }
-
-        public abstract int GetDamage(CharacterRace characterRace);
+        
+        public abstract int ToDamage(CharacterRace characterRace);
         public abstract void Drop();
-        public abstract void Boost();
+        public abstract void Improve();
         public abstract int CalculateDamage();
     }
 }

@@ -19,20 +19,12 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
             typePotion = TypePotion.HealingPotion;
         }
         
-        public HealingPotion() {
-            volume = HEALING_POTION_VOLUME;
-            description = HEALING_POTION_DESCRIPTION;
-            valueHealing = HEALING_POTION_VALUE_HEALING;
-            possibleOwners = new List<CharacterRace> { 
-                CharacterRace.HumanCharacter,
-                CharacterRace.AlienCharacter,
-                CharacterRace.ElvesCharacter,
-                CharacterRace.GnomeCharacter
-            };
-            typePotion = TypePotion.HealingPotion;
+        public HealingPotion() : this (HEALING_POTION_VOLUME, 
+            HEALING_POTION_DESCRIPTION, HEALING_POTION_VALUE_HEALING)  {
+            
         }
 
-        public override int GetHurt(CharacterRace characterRace) {
+        public override int ToDamage(CharacterRace characterRace) {
             if (possibleOwners.Contains(characterRace) && IsEnoughVolume()) {
                 Reduce();
                 return valueHealing;
@@ -47,8 +39,12 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
         public override void Reduce() {
             volume -= HEALING_POTION_DOSE;
         }
-        
-        public override void Increase() {
+
+        public override void Drop() {
+            volume = 0;
+        }
+
+        public override void Improve() {
             volume += HEALING_POTION_DOSE;
         }
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using OOPTeam2.RPG_Game.Models.Foods;
 using OOPTeam2.RPG_Game.Models.Potions;
@@ -20,14 +21,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
             inventory = new Inventory();
             lifePoint = INIT_HEALTH;
             characterRace = CharacterRace.UnknownCharacter;
-        }
-
-        public GameCharacter(int age, string name) {
-            this.age = age;
-            this.name = name;
-            inventory = new Inventory();
-            lifePoint = INIT_HEALTH;
-            characterRace = CharacterRace.UnknownCharacter;
+            text = new CharacterReply();
         }
 
         public GameCharacter(GameCharacter target) {
@@ -74,23 +68,23 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
 
         public override bool Hit(Sword sword, CharacterRace characterRace) {
             // меч способна отражать только кольчуга
-            receivedDamage = sword.GetDamage(characterRace) - inventory.GetChainmailDefenseBonus();;
+            receivedDamage = sword.ToDamage(characterRace) - inventory.GetChainmailDefenseBonus();
             handleDamage(receivedDamage);
             return true;
         }
         
-        public override bool Hit(Potion potion) {
+        public override bool Hit(Potion potion, CharacterRace characterRace) {
             if (potion.typePotion == TypePotion.HealingPotion) {
                 lifePoint += ((HealingPotion) potion).valueHealing;
             } else {
-                receivedDamage = potion.GetHurt(characterRace);
+                receivedDamage = potion.ToDamage(characterRace);
                 handleDamage(receivedDamage);
             }
             return true;
         }
 
         public override bool Hit(Wand wand, CharacterRace characterRace) {
-            receivedDamage = wand.GetHarm(characterRace) - inventory.GetCloakDefenseBonus();
+            receivedDamage = wand.ToDamage(characterRace) - inventory.GetCloakDefenseBonus();
             handleDamage(receivedDamage);
             return true;
         }

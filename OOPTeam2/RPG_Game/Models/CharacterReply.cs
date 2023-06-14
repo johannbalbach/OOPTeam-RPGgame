@@ -7,8 +7,6 @@ namespace OOPTeam2.RPG_Game.Models {
         GnomesText,
         AliensText,
         AvatarText,
-        ButterflyText,
-        WormText
     }
     
     public class CharacterReply {
@@ -21,7 +19,7 @@ namespace OOPTeam2.RPG_Game.Models {
         public CharacterReply() {
             
         }
-    
+        
         public string GetText() {
             switch (key) {
                 case TextEnum.ElvesText:
@@ -38,12 +36,8 @@ namespace OOPTeam2.RPG_Game.Models {
                     return "We are the humans. We possess great diversity and adaptability. Our ambition and resilience drive us forward.";
                 case TextEnum.AvatarText:
                     return "I am the Avatar, the master of the skies and the wielder of immense magic!";
-                case TextEnum.ButterflyText:
-                    return "Flutter, flutter...";
-                case TextEnum.WormText:
-                    return "Squirm, squirm...";
                 default:
-                    return "I'm a unknown character. Fear me!";
+                    return "I'm a character. Fear me!";
             }
         }
     }

@@ -31,13 +31,13 @@ namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters{
             return new NonPlayerCharacter(this);
         }
 
-        public override bool Hit(Potion potion) {
+        public override bool Hit(Potion potion, CharacterRace characterRace) {
             lifePoint = 0;
             return true;
         }
         
         public override bool Hit(Sword sword, CharacterRace characterRace) {
-            lifePoint -= sword.GetDamage(characterRace);
+            lifePoint -= sword.ToDamage(characterRace);
             return true;
         }
         

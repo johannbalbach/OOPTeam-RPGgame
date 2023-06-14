@@ -18,20 +18,11 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
             typePotion = TypePotion.ToxicPotion;
         }
         
-        public ToxicPotion() {
-            volume = TOXIC_POTION_VOLUME;
-            description = TOXIC_POTION_DESCRIPTION;
-            damage = TOXIC_POTION_DAMAGE;
-            possibleOwners = new List<CharacterRace> { 
-                CharacterRace.HumanCharacter,
-                CharacterRace.AlienCharacter,
-                CharacterRace.ElvesCharacter,
-                CharacterRace.GnomeCharacter
-            };
-            typePotion = TypePotion.ToxicPotion;
+        public ToxicPotion() : this (TOXIC_POTION_VOLUME, TOXIC_POTION_DESCRIPTION, TOXIC_POTION_DAMAGE) {
+            
         }
 
-        public override int GetHurt(CharacterRace characterRace) {
+        public override int ToDamage(CharacterRace characterRace) {
             if (possibleOwners.Contains(characterRace) && IsEnoughVolume()) {
                 Reduce();
                 return damage;
@@ -43,7 +34,11 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
             return volume >= TOXIC_POTION_VOLUME;
         }
         
-        public override void Increase() {
+        public override void Drop() {
+            volume = 0;
+        }
+        
+        public override void Improve() {
             volume += TOXIC_POTION_DAMAGE_HEALTH;
         }
 

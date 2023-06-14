@@ -4,7 +4,7 @@ using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
 
 namespace OOPTeam2.RPG_Game.Models.Swords {
     public class MaceSword : Sword {
-        public MaceSword(double weight, double agility, double quality, bool isAvailable, int attack) {
+        public MaceSword(double weight, double agility, double quality, int attack, bool isAvailable) {
             this.weight = weight;
             this.agility = agility;
             this.quality = quality;
@@ -15,17 +15,12 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
             };
         }
 
-        public MaceSword() {
-            weight = MACE_SWORD_WEIGHT;
-            agility = MACE_SWORD_AGILITY;
-            quality = MACE_SWORD_QUALITY;
-            attack = MACE_SWORD_ATTACK;
-            possibleOwners = new List<CharacterRace> { 
-                CharacterRace.OrksCharacter,
-            };
+        public MaceSword() : this (MACE_SWORD_WEIGHT, MACE_SWORD_AGILITY, 
+                MACE_SWORD_QUALITY, MACE_SWORD_ATTACK, true) {
+            
         }
         
-        public override int GetDamage(CharacterRace characterRace) {
+        public override int ToDamage(CharacterRace characterRace) {
             // если предки персонажа (его раса) владели техникой меча, то урон увеличивается
             if (possibleOwners.Contains(characterRace) && isAvailable) {
                 return CalculateDamage();
@@ -39,7 +34,7 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
             }
             return attack;
         }
-        
+
         public override void Drop() {
             // если выкенешь меч, то потеряешь его навсегда
             if (isAvailable) {
@@ -47,7 +42,7 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
             }
         }
 
-        public override void Boost() {
+        public override void Improve() {
             attack += MACE_SWORD_BONUS_COEFFICIENT;
         }
     }

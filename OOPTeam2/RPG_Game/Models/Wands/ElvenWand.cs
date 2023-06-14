@@ -6,29 +6,23 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
     public class ElvenWand : Wand {
         public int lifePercentage { set; get; }
 
-        public ElvenWand(int damage, string description, bool isAvailable, double agility) {
+        public ElvenWand(int damage, string description, double agility, int lifePercentage, bool isAvailable) {
             this.damage = damage;
             this.description = description;
             this.isAvailable = isAvailable;
             this.agility = agility;
-            lifePercentage = ELVEN_WAND_CAPACITY;
+            this.lifePercentage = lifePercentage;
             possibleOwners = new List<CharacterRace> { 
                 CharacterRace.ElvesCharacter
             };
         }
 
-        public ElvenWand() {
-            damage = ELVEN_WAND_DAMAGE;
-            description = ELVEN_WAND_DESCRIPTION;
-            lifePercentage = ELVEN_WAND_CAPACITY;
-            agility = ELVEN_WAND_AGILITY;
-            isAvailable = true;
-            possibleOwners = new List<CharacterRace> { 
-                CharacterRace.AlienCharacter
-            };
+        public ElvenWand() : this (ELVEN_WAND_DAMAGE, ELVEN_WAND_DESCRIPTION, ELVEN_WAND_AGILITY, 
+            ELVEN_WAND_CAPACITY, true) {
+            
         }
 
-        public override int GetHarm(CharacterRace characterRace) {
+        public override int ToDamage(CharacterRace characterRace) {
             if (isAvailable && possibleOwners.Contains(characterRace)) {
                 lifePercentage -= ELVEN_WAND_COEFFICIENT;
                 return CalculateDamage();

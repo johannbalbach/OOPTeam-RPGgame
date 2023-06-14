@@ -8,10 +8,11 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
         public string description { set; get; }
         public TypePotion typePotion { set; get; }
         public List<CharacterRace> possibleOwners { set; get; }
-
-        public abstract int GetHurt(CharacterRace batterCharacterRace);
-        public abstract void Increase();
+        
         public abstract void Reduce();
         public abstract bool IsEnoughVolume();
+        public abstract int ToDamage(CharacterRace characterRace);
+        public abstract void Drop();
+        public abstract void Improve();
     }
 }

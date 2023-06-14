@@ -23,19 +23,19 @@ namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters {
             // с вероятностью 50% удар в аватара будет отражён тайной силой 
             int chanceToHit = random.Next(0, 1);
             if (chanceToHit == 1) {
-                lifePoint -= sword.GetDamage(characterRace);
+                lifePoint -= sword.ToDamage(characterRace);
                 return true;
             }
             return false;
         }
 
-        public override bool Hit(Potion potion) {
+        public override bool Hit(Potion potion, CharacterRace characterRace) {
             // Аватар не может быть отравлен
             return false;
         }
 
         public override bool Hit(Wand wand, CharacterRace characterRace) {
-            lifePoint -= wand.GetHarm(characterRace);
+            lifePoint -= wand.ToDamage(characterRace);
             return true;
         }
         

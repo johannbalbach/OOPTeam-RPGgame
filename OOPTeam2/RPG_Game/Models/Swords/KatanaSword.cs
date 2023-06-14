@@ -16,15 +16,9 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
             };
         }
         
-        public KatanaSword() {
-            weight = KATANA_SWORD_WEIGHT;
-            agility = KATANA_SWORD_AGILITY;
-            quality = KATANA_SWORD_QUALITY;
-            attack = KATANA_SWORD_ATTACK;
-            possibleOwners = new List<CharacterRace> { 
-                CharacterRace.ElvesCharacter,
-                CharacterRace.HumanCharacter
-            };
+        public KatanaSword() : this (KATANA_SWORD_WEIGHT, KATANA_SWORD_AGILITY, 
+                KATANA_SWORD_QUALITY, KATANA_SWORD_ATTACK, true) {
+            
         }
 
         public override int CalculateDamage() {
@@ -34,14 +28,14 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
             return attack;
         }
 
-        public override int GetDamage(CharacterRace characterRace) {
+        public override int ToDamage(CharacterRace characterRace) {
             if (isAvailable && possibleOwners.Contains(characterRace)) {
                 return CalculateDamage();
             }
             return 0;
         }
 
-        public override void Boost() {
+        public override void Improve() {
             agility += KATANA_SWORD_AVERAGE_AGILITY;
             quality += KATANA_SWORD_AVERAGE_QUALITY;
         }

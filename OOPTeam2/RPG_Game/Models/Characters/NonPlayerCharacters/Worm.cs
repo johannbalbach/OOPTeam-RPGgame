@@ -2,7 +2,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters {
     public class Worm: NonPlayerCharacter {
         
         public Worm() {
-            text = new CharacterReply(TextEnum.AvatarText);
+            text = new CharacterReply();
         }
         
         public override string Talk() {

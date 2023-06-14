@@ -20,21 +20,13 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
             typePotion = TypePotion.EpicPotion;
         }
         
-        public EpicPotion() {
-            volume = EPIC_POTION_VOLUME;
-            description = EPIC_POTION_DESCRIPTION;
-            bonusPercent = EPIC_POTION_BONUS_PERCENT;
-            damage = EPIC_POTION_DAMAGE;
-            possibleOwners = new List<CharacterRace> { 
-                CharacterRace.HumanCharacter,
-                CharacterRace.AlienCharacter,
-                CharacterRace.ElvesCharacter,
-                CharacterRace.GnomeCharacter
-            };
-            typePotion = TypePotion.EpicPotion;
+
+        public EpicPotion() : this (EPIC_POTION_VOLUME, EPIC_POTION_DESCRIPTION, 
+            EPIC_POTION_BONUS_PERCENT, EPIC_POTION_DAMAGE) {
+
         }
 
-        public override int GetHurt(CharacterRace characterRace) {
+        public override int ToDamage(CharacterRace characterRace) {
             if (possibleOwners.Contains(characterRace) && IsEnoughVolume()) {
                 Reduce();
                 return damage * bonusPercent;
@@ -46,11 +38,15 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
             return volume >= EPIC_POTION_VOLUME;
         }
 
+        public override void Drop() {
+            volume = 0;
+        }
+
         public override void Reduce() {
             volume -= EPIC_POTION_VOLUME;
         }
         
-        public override void Increase() {
+        public override void Improve() {
             bonusPercent += EPIC_POTION_IMPROVING;
         }
     }

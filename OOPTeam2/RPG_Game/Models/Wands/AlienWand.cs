@@ -7,7 +7,7 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
     public class AlienWand: Wand {
         public bool isAvailableOnEarth { set; get; }
         
-        public AlienWand(int damage, string description, bool isAvailable, bool isAvailableOnEarth, double agility) {
+        public AlienWand(int damage, string description, double agility, bool isAvailable, bool isAvailableOnEarth) {
             this.damage = damage;
             this.description = description;
             this.isAvailable = isAvailable;
@@ -18,18 +18,12 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
             };
         }
         
-        public AlienWand() {
-            damage = ALIEN_WAND_DAMAGE;
-            description = ALIEN_WAND_DESCRIPTION;
-            agility = ALIEN_WAND_AGILITY;
-            isAvailable = true;
-            isAvailableOnEarth = true;
-            possibleOwners = new List<CharacterRace> { 
-                CharacterRace.AlienCharacter
-            };
+        public AlienWand() : this (ALIEN_WAND_DAMAGE, ALIEN_WAND_DESCRIPTION, ALIEN_WAND_AGILITY, 
+            true, true) {
+            
         }
         
-        public override int GetHarm(CharacterRace characterRace) {
+        public override int ToDamage(CharacterRace characterRace) {
             // при использовании палочки заклинание должно вызывать задержку 
             if (isAvailable && possibleOwners.Contains(characterRace)) {
                 return CalculateDamage();
