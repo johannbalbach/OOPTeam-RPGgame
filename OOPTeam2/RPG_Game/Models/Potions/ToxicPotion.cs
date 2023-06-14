@@ -1,4 +1,6 @@
-﻿using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
+﻿using System.Collections.Generic;
+using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
+using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
 
 namespace OOPTeam2.RPG_Game.Models.Potions {
     public class ToxicPotion: Potion {
@@ -7,15 +9,29 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
             this.description = description;
             this.isAvailable = isAvailable;
             this.damage = damage;
+            possibleOwners = new List<CharacterRace> { 
+                CharacterRace.HumanCharacter,
+                CharacterRace.AlienCharacter,
+                CharacterRace.ElvesCharacter,
+                CharacterRace.GnomeCharacter
+            };
+            typePotion = TypePotion.ToxicPotion;
         }
         
         public ToxicPotion() {
             volume = TOXIC_POTION_VOLUME;
             description = TOXIC_POTION_DESCRIPTION;
             damage = TOXIC_POTION_DAMAGE;
+            possibleOwners = new List<CharacterRace> { 
+                CharacterRace.HumanCharacter,
+                CharacterRace.AlienCharacter,
+                CharacterRace.ElvesCharacter,
+                CharacterRace.GnomeCharacter
+            };
+            typePotion = TypePotion.ToxicPotion;
         }
 
-        public override int GetHurt() {
+        public override int GetHurt(CharacterRace batterCharacterRace) {
             Reduce();
             return damage;
         }

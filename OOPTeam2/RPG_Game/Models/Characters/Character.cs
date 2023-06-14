@@ -10,7 +10,6 @@ namespace OOPTeam2.RPG_Game.Models.Characters {
         public Position position { get; set; }
         public int age { get; set; }
         public int lifePoint { get; set; }
-        /*protected const int HEALTH_REGENERATION = 1;*/
         protected const int INIT_HEALTH = 100;
 
         public abstract void Move(Position position, Direction direction);

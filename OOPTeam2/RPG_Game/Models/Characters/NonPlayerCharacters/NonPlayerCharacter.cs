@@ -6,7 +6,6 @@ using OOPTeam2.RPG_Game.Models.Wands;
 
 namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters{
     public class NonPlayerCharacter: Character {
-        private const int FREEZING_TIME = 5000;
         
         public NonPlayerCharacter() {
             lifePoint = INIT_HEALTH;
@@ -44,7 +43,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters{
         }
 
         public override string Talk() {
-            return "Hello, player!";
+            return "Hello, player! I'm NPC!";
         }
 
         public override void Sleep() {
@@ -52,8 +51,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters{
         }
 
         public override void Eat(Food food) {
-            // у NPC не растёт lifePoint за счёт еды
-            food.Eat();
+            // NPC не кушает еду, поэтому метод Eat остается пустым
         }
     }
 }

@@ -1,3 +1,6 @@
+using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
+
+
 namespace OOPTeam2.RPG_Game.Models.Foods {
 public class Meat: Food {
         public double kilos { get; set; }
@@ -11,5 +14,9 @@ public class Meat: Food {
                 kilos -= 0.1;
             }
         }
-}
+        
+        public override bool IsEatable(CharacterRace characterRace) {
+            return characterRace == CharacterRace.AlienCharacter || characterRace == CharacterRace.HumanCharacter;
+        }
+    }
 }

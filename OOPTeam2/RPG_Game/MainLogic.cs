@@ -17,6 +17,7 @@ namespace OOPTeam2.RPG_Game {
                 .WithAge(25)
                 .WithName("John")
                 .WithLifePoint(100)
+                .WithCharacterRace(CharacterRace.ElvesCharacter)
                 .WithInventory(new Inventory())
                 .WithPosition(new Position(0, 0))
                 .Build();

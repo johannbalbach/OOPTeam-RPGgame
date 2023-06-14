@@ -1,4 +1,6 @@
-﻿using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
+﻿using System.Collections.Generic;
+using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
+using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
 
 namespace OOPTeam2.RPG_Game.Models.Potions {
     public class EpicPotion: Potion {
@@ -10,6 +12,13 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
             this.isAvailable = isAvailable;
             this.bonusPercent = bonusPercent;
             this.damage = damage;
+            possibleOwners = new List<CharacterRace> { 
+                CharacterRace.HumanCharacter,
+                CharacterRace.AlienCharacter,
+                CharacterRace.ElvesCharacter,
+                CharacterRace.GnomeCharacter
+            };
+            typePotion = TypePotion.EpicPotion;
         }
         
         public EpicPotion() {
@@ -17,11 +26,23 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
             description = EPIC_POTION_DESCRIPTION;
             bonusPercent = EPIC_POTION_BONUS_PERCENT;
             damage = EPIC_POTION_DAMAGE;
+            possibleOwners = new List<CharacterRace> { 
+                CharacterRace.HumanCharacter,
+                CharacterRace.AlienCharacter,
+                CharacterRace.ElvesCharacter,
+                CharacterRace.GnomeCharacter
+            };
+            typePotion = TypePotion.EpicPotion;
         }
         
-        public override int GetHurt() {
-            Reduce();
-            return damage * bonusPercent;
+        
+        
+        public override int GetHurt(CharacterRace batterCharacterRace) {
+            if (possibleOwners.Contains(batterCharacterRace)) {
+                Reduce();
+                return damage * bonusPercent;
+            }
+            return 0;
         }
         
         public override void Reduce() {

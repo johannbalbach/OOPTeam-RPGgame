@@ -15,10 +15,12 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         public bool isEnemy { get; set; }
         public double speed { get; set; }
         public string skinId { get; set; }
+        public CharacterRace characterRace { get; set; }
 
         public GameCharacter() {
             inventory = new Inventory();
             lifePoint = INIT_HEALTH;
+            characterRace = CharacterRace.UnknownCharacter;
         }
 
         public GameCharacter(int age, string name) {
@@ -26,6 +28,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
             this.name = name;
             inventory = new Inventory();
             lifePoint = INIT_HEALTH;
+            characterRace = CharacterRace.UnknownCharacter;
         }
 
         public GameCharacter(GameCharacter target) {
@@ -39,6 +42,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
                 name = target.name;
                 position = target.position;
                 healthRegeneration = target.healthRegeneration;
+                characterRace = target.characterRace;
             }
         }
 
@@ -69,16 +73,13 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         }
         
         public override bool Hit(Potion potion) {
-            if (potion is HealingPotion) {
+            if (potion.typePotion == TypePotion.HealingPotion) {
                 lifePoint += ((HealingPotion) potion).valueHealing;
+            } else {
+                receivedDamage = potion.GetHurt(characterRace);
+                lifePoint -= receivedDamage; 
             }
-            else {
-                receivedDamage = potion.GetHurt();
-                lifePoint -= receivedDamage;    
-            }
-
             return true;
-
         }
 
         public override bool Hit(Wand wand) {
@@ -90,8 +91,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         
         private int CalculateReceivedDamage(Wand wand) {
             // палочку способна отражать только мантия 
-            int damage = wand.GetHarm() - 
-                         inventory.bags.defaultProtectiveSkin.GetValueProtection(inventory.bags.cloak);
+            int damage = wand.GetHarm() - inventory.GetCloakDefenseBonus();
             return Math.Max(0, damage);
         }
         
@@ -100,8 +100,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         }
         
         private int CalculateReceivedDamage(Sword sword) {
-            int damage = sword.GetDamage() - 
-                         inventory.bags.defaultProtectiveSkin.GetValueProtection(inventory.bags.chainmail);
+            int damage = sword.GetDamage() - inventory.GetChainmailDefenseBonus();
             return Math.Max(0, damage);
         }
         

@@ -1,4 +1,4 @@
-using System;
+using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 
 namespace OOPTeam2.RPG_Game.Models.Foods {
     public class Water: Food {
@@ -12,6 +12,10 @@ namespace OOPTeam2.RPG_Game.Models.Foods {
             if (volume > 0) {
                 volume--;
             }
+        }
+
+        public override bool IsEatable(CharacterRace characterRace) {
+            return characterRace == CharacterRace.WizardCharacter || characterRace == CharacterRace.HumanCharacter;
         }
     }
 }

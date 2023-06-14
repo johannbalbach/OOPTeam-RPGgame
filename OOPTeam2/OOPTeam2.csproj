@@ -101,7 +101,8 @@
     <Compile Include="RPG_Game\Models\Characters\Character.cs" />
     <Compile Include="RPG_Game\Models\Characters\Direction.cs" />
     <Compile Include="RPG_Game\Models\Characters\GameCharacters\AlienCharacter.cs" />
-    <Compile Include="RPG_Game\Models\Characters\GameCharacters\CnomeCharacter.cs" />
+    <Compile Include="RPG_Game\Models\Characters\GameCharacters\CharacterRace.cs" />
+    <Compile Include="RPG_Game\Models\Characters\GameCharacters\GnomeCharacter.cs" />
     <Compile Include="RPG_Game\Models\Characters\GameCharacters\ElvesCharacter.cs" />
     <Compile Include="RPG_Game\Models\Characters\GameCharacters\GameCharacter.cs" />
     <Compile Include="RPG_Game\Models\Characters\GameCharacters\GameCharacterBuilder.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="RPG_Game\Models\Potions\HealingPotion.cs" />
     <Compile Include="RPG_Game\Models\Potions\Potion.cs" />
     <Compile Include="RPG_Game\Models\Potions\ToxicPotion.cs" />
+    <Compile Include="RPG_Game\Models\Potions\TypePotion.cs" />
     <Compile Include="RPG_Game\Models\ProtectiveSkin.cs" />
     <Compile Include="RPG_Game\Models\Swords\KatanaSword.cs" />
     <Compile Include="RPG_Game\Models\Swords\LevithanSword.cs" />

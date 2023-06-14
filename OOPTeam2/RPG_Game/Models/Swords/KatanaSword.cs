@@ -19,7 +19,8 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
         
         public override int GetDamage() {
             if (isAvailable && agility > KATANA_SWORD_AVERAGE_AGILITY 
-                            && quality > KATANA_SWORD_AVERAGE_QUALITY && weight < KATANA_SWORD_AVERAGE_WEIGHT) {
+                            && quality > KATANA_SWORD_AVERAGE_QUALITY 
+                            && weight < KATANA_SWORD_AVERAGE_WEIGHT) {
                 return attack * KATANA_SWORD_BONUS_COEFFICIENT;
             }
             return attack;

@@ -18,7 +18,6 @@ namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters {
 
         public override bool Hit(Sword sword) {
             int chanceToHit = random.Next(0, 1);
-            
             if (chanceToHit == 1) {
                 lifePoint -= sword.GetDamage();
                 return true;

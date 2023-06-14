@@ -4,8 +4,10 @@ using OOPTeam2.RPG_Game.Models;
 
 namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
     public class OrksCharacter: GameCharacter {
+        private const CharacterRace orks = CharacterRace.OrksCharacter;
         private CharacterReply text = new CharacterReply(TextEnum.OrksText);
         private const int TIME_SLEEP = 7000;
+        
         public override string Talk() {
             return text.GetText();
         }
@@ -15,10 +17,9 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         }
         
         public override void Eat(Food food) {
-            if (food is Bread || food is Butter) {
-                return;
+            if (food.IsEatable(orks)) {
+                food.Eat();
             }
-            food.Eat();
         }
     }
 }

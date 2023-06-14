@@ -10,6 +10,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         private int lifePoint;
         private string name;
         private Position position;
+        private CharacterRace characterRace;
 
         public GameCharacterBuilder WithPlayTime(int playTime) {
             this.playTime = playTime;
@@ -50,6 +51,11 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
             this.name = name;
             return this;
         }
+        
+        public GameCharacterBuilder WithCharacterRace(CharacterRace characterRace) {
+            this.characterRace = characterRace;
+            return this;
+        }
 
         public GameCharacterBuilder WithPosition(Position position) {
             this.position = position;
@@ -73,6 +79,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
             gameCharacter.name = name;
             gameCharacter.position = position;
             gameCharacter.lifePoint = lifePoint;
+            gameCharacter.characterRace = characterRace;
             return gameCharacter;
         }
     }
