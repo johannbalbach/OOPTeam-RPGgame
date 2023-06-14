@@ -45,7 +45,6 @@ namespace OOPTeam2
 
         private void createMap()
         {
-
             map = new Map(new GameCharacter("Player", new Position(30, 0), 5, "male", "HumanCharacter", false, false));
             drawer = new Drawer(map);
             inputDispatcher = new InputDispatcher(map.player);
@@ -89,7 +88,7 @@ namespace OOPTeam2
 
         private void RenderWindow_MouseButtonPressed(object sender, SFML.Window.MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
+
         }
 
         private void DrawSurface_SizeChanged(object sender, EventArgs e)
