@@ -38,42 +38,39 @@ namespace OOPTeam2.RPG_Game.View
             window.SetView(new SFML.Graphics.View(playerPos, viewSize));
         }
 
-        private Sprite coordsToSystem(Sprite sprite)
+        private void coordsToSystem(Sprite sprite)
         {
             float deltaX = -sprite.Texture.Size.X / 2;
             float deltaY = -sprite.Texture.Size.Y;
             sprite.Position = new Vector2f(sprite.Position.X + deltaX, sprite.Position.Y + deltaY);
-            return sprite;
         }
 
-        private Sprite rotateCharacter(Sprite sprite, Direction direction)
+        private void applyDirectionToSprite(Sprite characterSprite, Sprite weaponSprite, Direction direction)
         {
             if (direction == Direction.Right)
             {
-                sprite.Scale = new Vector2f(-1, 1);
-                sprite.Position = new Vector2f(sprite.Position.X + sprite.Texture.Size.X, sprite.Position.Y);
+                characterSprite.Scale = new Vector2f(-1, 1);
+                characterSprite.Position = new Vector2f(characterSprite.Position.X + characterSprite.Texture.Size.X, characterSprite.Position.Y);
             }
-            return sprite;
+            if(direction == Direction.Left)
+            {
+                weaponSprite.Scale = new Vector2f(-1, 1);
+            }
+        }
+
+        private void configureCharacterSprite(Sprite characterSprite, Sprite weaponSprite, GameCharacter character)
+        {
+            characterSprite.Position = new Vector2f(character.position.x, character.position.y);
+            weaponSprite.Position = new Vector2f(character.position.x,
+                character.position.y - weaponSprite.Texture.Size.Y - characterSprite.Texture.Size.Y / 2 + 10);
+
+            coordsToSystem(characterSprite);
+            applyDirectionToSprite(characterSprite, weaponSprite, character.moveDirection); 
         }
 
         public void Draw()
         {
             updateViewPos();
-
-            Sprite playerCharacterSprite = new Sprite( pictureProvider.getSprite(map.player.managedCharacter.skinId));
-            playerCharacterSprite.Position = new Vector2f(map.player.managedCharacter.position.x, map.player.managedCharacter.position.y);
-            playerCharacterSprite = coordsToSystem(playerCharacterSprite);
-            playerCharacterSprite = rotateCharacter(playerCharacterSprite, map.player.managedCharacter.moveDirection);
-            window.Draw(playerCharacterSprite);
-
-            foreach (GameCharacter character in map.aliveObjects.Enemies)
-            {
-                Sprite sprite = new Sprite( pictureProvider.getSprite(character.skinId));
-                sprite.Position = new Vector2f(character.position.x, character.position.y);
-                sprite = coordsToSystem(sprite);
-                sprite = rotateCharacter(sprite, character.moveDirection);
-                window.Draw(sprite);
-            }
 
             foreach (var tile in map.staticObjects.stones)
             {
@@ -82,9 +79,25 @@ namespace OOPTeam2.RPG_Game.View
                 window.Draw(sprite);
             }
 
+            Sprite playerCharacterSprite = new Sprite( pictureProvider.getSprite(map.player.managedCharacter.skinId));
+            Sprite playerWeaponSprite = new Sprite(pictureProvider.getSprite("KatanaSword"));
+            configureCharacterSprite(playerCharacterSprite, playerWeaponSprite, map.player.managedCharacter);
+            window.Draw(playerWeaponSprite);
+            window.Draw(playerCharacterSprite);
+
+
+            foreach (GameCharacter character in map.aliveObjects.Enemies)
+            {
+                Sprite characterSprite = new Sprite( pictureProvider.getSprite(character.skinId));
+                Sprite weaponSprite = new Sprite(pictureProvider.getSprite("AlienWand"));
+                configureCharacterSprite(characterSprite, weaponSprite, character);
+                window.Draw(weaponSprite);
+                window.Draw(characterSprite);
+            }
+
             Sprite avatarSprite = pictureProvider.getSprite(map.avatarController.avatar.skinId);
             avatarSprite.Position = new Vector2f(map.avatarController.avatar.position.x, map.avatarController.avatar.position.y);
-            avatarSprite = coordsToSystem(avatarSprite);  
+            coordsToSystem(avatarSprite);  
             window.Draw(avatarSprite);
         }
     }

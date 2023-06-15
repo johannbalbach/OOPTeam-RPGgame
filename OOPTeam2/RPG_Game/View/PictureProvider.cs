@@ -24,6 +24,13 @@ namespace OOPTeam2.RPG_Game.View
             sprites.Add("Avatar", new Sprite(new Texture("Assets/AvatarTexture.png")));
 
             sprites.Add("Stone", new Sprite(new Texture("Assets/TileDirtTexture.png")));
+
+            sprites.Add("KatanaSword", new Sprite(new Texture("Assets/KatanaSwordTexture.png")));
+            sprites.Add("LevithanSword", new Sprite(new Texture("Assets/LevithanSwordTexture.png")));
+            sprites.Add("MaceSword", new Sprite(new Texture("Assets/MaceSwordTexture.png")));
+            sprites.Add("AlienWand", new Sprite(new Texture("Assets/AlienWandTexture.png")));
+            sprites.Add("ElvenWand", new Sprite(new Texture("Assets/ElvenWandTexture.png")));
+            sprites.Add("WizardWand", new Sprite(new Texture("Assets/WizardWandTexture.png")));
         }
 
         public Sprite getSprite(String key)
