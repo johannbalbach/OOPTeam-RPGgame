@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 
 namespace OOPTeam2.RPG_Game.Services.Objects
 {
-    public class Stone
+    public class Stone : StaticObject
     {
-        public Position position { get; set; }
-        public string drawID { get; private set; } = "Stone";
+        public Stone()
+        {
+            drawID = "Stone";
+        }
     }
 }

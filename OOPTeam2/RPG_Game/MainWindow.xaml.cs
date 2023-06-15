@@ -37,10 +37,13 @@ namespace OOPTeam2
             circle = new CircleShape(20) { FillColor = SFML.Graphics.Color.Magenta };
             CreateRenderWindow();
 
-            TimeSpan refreshRate = new TimeSpan(0, 0, 0, 0, 1000 / 60);
-            timer = new DispatcherTimer { Interval = refreshRate };
-            timer.Tick += Timer_Tick;
-            timer.Start();
+        private void createMap()
+        {
+            map = new Map(new GameCharacter(20, "Player"), Race.HumanCharacter);
+            drawer = new Drawer(map);
+            inputDispatcher = new InputDispatcher(map.player);
+            CreateRenderWindow();
+            Task.Run(Loop);
         }
 
         private void Timer_Tick(object sender, EventArgs e)
