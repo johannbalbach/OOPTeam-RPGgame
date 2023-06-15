@@ -21,12 +21,6 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
             
         }
         
-        /*public override void Hit(GameCharacter gameCharacter) {
-            // меч способна отражать только кольчуга
-            damage = ToDamage(gameCharacter.characterRace) - gameCharacter.inventory.GetChainmailDefenseBonus();
-            gameCharacter.handleDamage(damage);
-        }*/
-        
         public override int ToDamage(CharacterRace characterRace) {
             if (isAvailable && possibleOwners.Contains(characterRace)) {
                 return CalculateDamage();

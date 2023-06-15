@@ -51,11 +51,14 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         }
         
         public void UseMedicine() {
-            if (inventory.bags.medicalLeave.IsAvailable()) {
-                inventory.bags.medicalLeave.Use();
+            if (inventory.bags.UseMedicalLeaf()) {
                 RestoreHealth();   
                 NormalizeLifePoint();
             }
+        }
+
+        public string UseTree() {
+            return inventory.bags.UseTree();
         }
         
         public void HandleDamage(int damage) {

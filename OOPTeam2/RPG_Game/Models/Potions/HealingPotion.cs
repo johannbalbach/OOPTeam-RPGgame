@@ -29,7 +29,7 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
 
         public override int ToDamage(CharacterRace characterRace) {
             if (possibleOwners.Contains(characterRace) && IsEnoughVolume()) {
-                Reduce();
+                ReduceVolume();
                 return valueHealing;
             }
             return 0;
@@ -39,7 +39,7 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
             return volume >= HealingPotionDose;
         }
 
-        public override void Reduce() {
+        public override void ReduceVolume() {
             volume -= HealingPotionDose;
         }
 

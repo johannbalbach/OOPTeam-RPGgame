@@ -20,12 +20,6 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
                 KatanaSwordQuality, KatanaSwordAttack, true) {
             
         }
-        
-        /*public override void Hit(GameCharacter gameCharacter) {
-            // меч способна отражать только кольчуга
-            damage = ToDamage(gameCharacter.characterRace) - gameCharacter.inventory.GetChainmailDefenseBonus();
-            gameCharacter.handleDamage(damage);
-        }*/
 
         public override int CalculateDamage() {
             if (agility > KatanaSwordAverageAgility && quality > KatanaSwordAverageQuality) {

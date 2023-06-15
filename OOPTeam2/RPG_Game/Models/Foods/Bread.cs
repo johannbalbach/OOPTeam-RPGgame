@@ -8,8 +8,7 @@ namespace OOPTeam2.RPG_Game.Models.Foods {
             this.count = count;
         }
         
-        public Bread(int count, int power) {
-            this.count = count;
+        public Bread(int count, int power): this(count) {
             this.power = power;
         }
         

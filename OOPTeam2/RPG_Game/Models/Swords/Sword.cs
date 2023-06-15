@@ -15,7 +15,7 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
         public abstract int CalculateDamage();
         
         public override void Hit(GameCharacter targetCharacter, CharacterRace raceAttackingCharacter) {
-            // меч способна отражать только кольчуга
+            // The sword can only chain mail
             damage = ToDamage(raceAttackingCharacter) - targetCharacter.inventory.GetChainmailDefenseBonus();
             targetCharacter.HandleDamage(damage);
         }

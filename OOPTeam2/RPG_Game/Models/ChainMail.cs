@@ -2,6 +2,7 @@ using System;
 
 namespace OOPTeam2.RPG_Game.Models {
     public class ChainMail: ProtectiveSkin {
+        private const int InitialCountLayers = 1;
         public int count { set; get; }
         public int countLayers { set; get; }
         public DefaultProtectiveSkin defaultProtectiveSkin { set; get; }
@@ -13,10 +14,10 @@ namespace OOPTeam2.RPG_Game.Models {
         }
         
         public ChainMail() {
-            countLayers = 1;
+            countLayers = InitialCountLayers;
         }
         
-        public int Protect() {
+        public int GetProtectionLevel() {
             return countLayers;
         }
         
@@ -24,7 +25,7 @@ namespace OOPTeam2.RPG_Game.Models {
             count--;
         }
 
-        public void AddChinmail() {
+        public void AddChainMail() {
             count++;
         }
     }

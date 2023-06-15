@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using OOPTeam2.RPG_Game.Models.Characters;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 
 namespace OOPTeam2.RPG_Game.Models.Wands {

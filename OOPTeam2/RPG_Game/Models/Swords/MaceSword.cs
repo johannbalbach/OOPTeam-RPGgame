@@ -19,15 +19,9 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
                 MaceSwordQuality, MaceSwordAttack, true) {
             
         }
-        
-        /*public override void Hit(GameCharacter gameCharacter) {
-            // меч способна отражать только кольчуга
-            damage = ToDamage(gameCharacter.characterRace) - gameCharacter.inventory.GetChainmailDefenseBonus();
-            gameCharacter.handleDamage(damage);
-        }*/
-        
+
         public override int ToDamage(CharacterRace characterRace) {
-            // если предки персонажа (его раса) владели техникой меча, то урон увеличивается
+            // If the character’s ancestors (race) possess the sword technique, the damage is increased
             if (possibleOwners.Contains(characterRace) && isAvailable) {
                 return CalculateDamage();
             }
@@ -42,7 +36,7 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
         }
 
         public override void Drop() {
-            // если выкенешь меч, то потеряешь его навсегда
+            // If you forge a sword, you’ll lose it forever
             if (isAvailable) {
                 isAvailable = false;
             }

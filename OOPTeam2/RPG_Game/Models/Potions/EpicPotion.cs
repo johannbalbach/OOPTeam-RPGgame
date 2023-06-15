@@ -18,7 +18,6 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
                 CharacterRace.Gnome
             };
         }
-        
 
         public EpicPotion() : this (EpicPotionVolume, EpicPotionDescription, 
             EpicPotionBonusPercent, EpicPotionDamage) {
@@ -27,7 +26,7 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
 
         public override int ToDamage(CharacterRace characterRace) {
             if (possibleOwners.Contains(characterRace) && IsEnoughVolume()) {
-                Reduce();
+                ReduceVolume();
                 return damage * bonusPercent;
             }
             return 0;
@@ -41,7 +40,7 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
             volume = 0;
         }
 
-        public override void Reduce() {
+        public override void ReduceVolume() {
             volume -= EpicPotionVolume;
         }
         

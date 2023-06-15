@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using OOPTeam2.RPG_Game.Models.Characters;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
 
@@ -42,7 +41,7 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
             if (isAvailable) {
                 isAvailable = false;
             }
-            // при этом на Земле палочка продолжает работать
+            // The wand continues to work on Earth
         }
         
         public override void Improve() {
@@ -51,7 +50,7 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
             }
         }
         
-        // почему отсутствует getWandInfo()?
-        // по задумке в игре язык инопланетян неизвестен для остальных рас и игрока
+        // Why is getWandInfo() missing?
+        // As suggested in the game, the alien language is unknown to other races and players
     }
 }

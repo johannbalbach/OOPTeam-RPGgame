@@ -7,13 +7,14 @@ namespace OOPTeam2.RPG_Game.Models {
         GnomesText,
         AliensText,
         AvatarText,
+        Default
     }
     
     public class CharacterReply {
-        private TextEnum key;
+        private TextEnum characterType;
     
-        public CharacterReply(TextEnum key) {
-            this.key = key;
+        public CharacterReply(TextEnum characterType) {
+            this.characterType = characterType;
         }
 
         public CharacterReply() {
@@ -21,7 +22,7 @@ namespace OOPTeam2.RPG_Game.Models {
         }
         
         public string GetText() {
-            switch (key) {
+            switch (characterType) {
                 case TextEnum.ElvesText:
                     return "Our connection with nature runs deep. We are guardians of the forests, preserving the beauty and harmony of the natural world.";
                 case TextEnum.OrksText:

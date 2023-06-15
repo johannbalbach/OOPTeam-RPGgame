@@ -9,7 +9,7 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
         public string description { set; get; }
         public List<CharacterRace> possibleOwners { set; get; }
         
-        public abstract void Reduce();
+        public abstract void ReduceVolume();
         public abstract bool IsEnoughVolume();
 
         public override void Hit(GameCharacter targetCharacter, CharacterRace raceAttackingCharacter) {

@@ -30,9 +30,5 @@ namespace OOPTeam2.RPG_Game.Models {
             butter.volume++;
             sausage.size++;
         }
-
-        public void getReactOnEating(Food food) {
-            food.Consume();
-        }
     }
 }

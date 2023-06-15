@@ -1,15 +1,14 @@
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 
 namespace OOPTeam2.RPG_Game.Models.Foods {
-    public class Fruit: Food{
+    public class Fruit: Food {
         public int count { set; get; }
 
         public Fruit(int count) {
             this.count = count;
         }
         
-        public Fruit(int count, int power) {
-            this.count = count;
+        public Fruit(int count, int power) : this(count) {
             this.power = power;
         }
         

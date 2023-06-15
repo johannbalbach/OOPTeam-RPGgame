@@ -8,8 +8,7 @@ namespace OOPTeam2.RPG_Game.Models.Foods {
             this.beam = beam;
         }
 
-        public Flower(int beam, int power) {
-            this.beam = beam;
+        public Flower(int beam, int power): this(beam) {
             this.power = power;
         }
         

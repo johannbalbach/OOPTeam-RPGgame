@@ -8,8 +8,7 @@ namespace OOPTeam2.RPG_Game.Models.Foods {
             this.volume = volume;
         }
         
-        public Butter(int volume, int power) {
-            this.volume = volume;
+        public Butter(int volume, int power) : this(volume) {
             this.power = power;
         }
         

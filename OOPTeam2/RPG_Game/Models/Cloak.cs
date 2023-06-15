@@ -1,7 +1,7 @@
 namespace OOPTeam2.RPG_Game.Models {
     public class Cloak: ProtectiveSkin {
-        private const int BASE_PROTECTION = 1;
-        private const int PRO_PROTECTION = 2;
+        private const int BaseProtectionLevel = 1;
+        private const int ProProtectionLevel = 2;
         public bool isProVersion { set; get; }
         public bool isAvailable { set; get; }
         public int count { set; get; }
@@ -18,11 +18,11 @@ namespace OOPTeam2.RPG_Game.Models {
             
         }
         
-        public int Protect() {
+        public int GetProtectionLevel() {
             if (isProVersion) {
-                return PRO_PROTECTION;
+                return ProProtectionLevel;
             }
-            return BASE_PROTECTION;
+            return BaseProtectionLevel;
         }
         
         public void Use() {
