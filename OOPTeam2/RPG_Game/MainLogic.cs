@@ -5,6 +5,7 @@ using OOPTeam2.RPG_Game.Models;
 using OOPTeam2.RPG_Game.Models.Characters;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 using OOPTeam2.RPG_Game.Models.Potions;
+using OOPTeam2.RPG_Game.Models.Swords;
 using OOPTeam2.RPG_Game.Models.Wands;
 
 namespace OOPTeam2.RPG_Game {
@@ -34,9 +35,12 @@ namespace OOPTeam2.RPG_Game {
             Console.WriteLine(gameCharacter.lifePoint);
             gameCharacter.inventory.bags.chainmail.AddChinmail();
             gameCharacter.inventory.weapons.elvenWand.Improve();*/
-            Console.WriteLine(gameCharacter.Talk());
-            GameCharacter test = new HumanCharacter();
-            Console.WriteLine(test.Talk());
+            GameCharacter test = new OrksCharacter(); 
+            
+            Console.WriteLine(gameCharacter.lifePoint);
+            Sword sword = new MaceSword();
+            sword.Hit(gameCharacter, test.characterRace);
+            Console.WriteLine(gameCharacter.lifePoint);
         }
     }
 }

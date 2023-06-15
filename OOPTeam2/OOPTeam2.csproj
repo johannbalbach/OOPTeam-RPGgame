@@ -133,7 +133,6 @@
     <Compile Include="RPG_Game\Models\Potions\HealingPotion.cs" />
     <Compile Include="RPG_Game\Models\Potions\Potion.cs" />
     <Compile Include="RPG_Game\Models\Potions\ToxicPotion.cs" />
-    <Compile Include="RPG_Game\Models\Potions\TypePotion.cs" />
     <Compile Include="RPG_Game\Models\ProtectiveSkin.cs" />
     <Compile Include="RPG_Game\Models\Swords\KatanaSword.cs" />
     <Compile Include="RPG_Game\Models\Swords\LevithanSword.cs" />
@@ -144,6 +143,7 @@
     <Compile Include="RPG_Game\Models\Wands\ElvenWand.cs" />
     <Compile Include="RPG_Game\Models\Wands\Wand.cs" />
     <Compile Include="RPG_Game\Models\Wands\WizardWand.cs" />
+    <Compile Include="RPG_Game\Models\Weapon.cs" />
     <Compile Include="RPG_Game\Models\WeaponMediator.cs" />
     <Compile Include="RPG_Game\Services\Random.cs" />
     <Compile Include="RPG_Game\View\SfmlDrawingSurface.cs">

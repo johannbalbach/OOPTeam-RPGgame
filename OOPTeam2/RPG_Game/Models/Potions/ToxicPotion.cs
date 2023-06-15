@@ -15,7 +15,6 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
                 CharacterRace.ElvesCharacter,
                 CharacterRace.GnomeCharacter
             };
-            typePotion = TypePotion.ToxicPotion;
         }
         
         public ToxicPotion() : this (TOXIC_POTION_VOLUME, TOXIC_POTION_DESCRIPTION, TOXIC_POTION_DAMAGE) {

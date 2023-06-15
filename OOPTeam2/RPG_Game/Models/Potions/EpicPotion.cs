@@ -17,7 +17,6 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
                 CharacterRace.ElvesCharacter,
                 CharacterRace.GnomeCharacter
             };
-            typePotion = TypePotion.EpicPotion;
         }
         
 

@@ -1,10 +1,4 @@
-using System.Threading.Tasks;
-using System.Windows.Media.TextFormatting;
-using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 using OOPTeam2.RPG_Game.Models.Foods;
-using OOPTeam2.RPG_Game.Models.Potions;
-using OOPTeam2.RPG_Game.Models.Swords;
-using OOPTeam2.RPG_Game.Models.Wands;
 
 namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters{
     public class NonPlayerCharacter: Character {
@@ -29,21 +23,6 @@ namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters{
         
         public override Character Clone() {
             return new NonPlayerCharacter(this);
-        }
-
-        public override bool Hit(Potion potion, CharacterRace characterRace) {
-            lifePoint = 0;
-            return true;
-        }
-        
-        public override bool Hit(Sword sword, CharacterRace characterRace) {
-            lifePoint -= sword.ToDamage(characterRace);
-            return true;
-        }
-        
-        public override bool Hit(Wand wand, CharacterRace characterRace) {
-            lifePoint = 0;
-            return true;
         }
 
         public override string Talk() {

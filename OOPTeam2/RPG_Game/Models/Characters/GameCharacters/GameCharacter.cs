@@ -1,9 +1,5 @@
-using System;
 using System.Threading.Tasks;
 using OOPTeam2.RPG_Game.Models.Foods;
-using OOPTeam2.RPG_Game.Models.Potions;
-using OOPTeam2.RPG_Game.Models.Swords;
-using OOPTeam2.RPG_Game.Models.Wands;
 
 namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
     public class GameCharacter: Character {
@@ -61,32 +57,9 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
             }
         }
         
-        private void handleDamage(int damage) {
-            ApplyDamage(receivedDamage);
+        public void HandleDamage(int damage) {
+            ApplyDamage(damage);
             NormalizeLifePoint();
-        }
-
-        public override bool Hit(Sword sword, CharacterRace characterRace) {
-            // меч способна отражать только кольчуга
-            receivedDamage = sword.ToDamage(characterRace) - inventory.GetChainmailDefenseBonus();
-            handleDamage(receivedDamage);
-            return true;
-        }
-        
-        public override bool Hit(Potion potion, CharacterRace characterRace) {
-            if (potion.typePotion == TypePotion.HealingPotion) {
-                lifePoint += ((HealingPotion) potion).valueHealing;
-            } else {
-                receivedDamage = potion.ToDamage(characterRace);
-                handleDamage(receivedDamage);
-            }
-            return true;
-        }
-
-        public override bool Hit(Wand wand, CharacterRace characterRace) {
-            receivedDamage = wand.ToDamage(characterRace) - inventory.GetCloakDefenseBonus();
-            handleDamage(receivedDamage);
-            return true;
         }
 
         private void ApplyDamage(int damage) {

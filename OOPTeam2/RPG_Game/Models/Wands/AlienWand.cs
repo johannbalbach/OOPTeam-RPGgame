@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using OOPTeam2.RPG_Game.Models.Characters;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
 
@@ -22,9 +23,8 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
             true, true) {
             
         }
-        
+
         public override int ToDamage(CharacterRace characterRace) {
-            // при использовании палочки заклинание должно вызывать задержку 
             if (isAvailable && possibleOwners.Contains(characterRace)) {
                 return CalculateDamage();
             }

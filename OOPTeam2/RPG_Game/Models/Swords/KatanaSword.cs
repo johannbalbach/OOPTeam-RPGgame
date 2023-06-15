@@ -15,11 +15,17 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
                 CharacterRace.HumanCharacter
             };
         }
-        
+
         public KatanaSword() : this (KATANA_SWORD_WEIGHT, KATANA_SWORD_AGILITY, 
                 KATANA_SWORD_QUALITY, KATANA_SWORD_ATTACK, true) {
             
         }
+        
+        /*public override void Hit(GameCharacter gameCharacter) {
+            // меч способна отражать только кольчуга
+            damage = ToDamage(gameCharacter.characterRace) - gameCharacter.inventory.GetChainmailDefenseBonus();
+            gameCharacter.handleDamage(damage);
+        }*/
 
         public override int CalculateDamage() {
             if (agility > KATANA_SWORD_AVERAGE_AGILITY && quality > KATANA_SWORD_AVERAGE_QUALITY) {

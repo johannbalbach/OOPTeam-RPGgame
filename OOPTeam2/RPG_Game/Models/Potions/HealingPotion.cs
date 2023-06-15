@@ -16,12 +16,15 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
                 CharacterRace.ElvesCharacter,
                 CharacterRace.GnomeCharacter
             };
-            typePotion = TypePotion.HealingPotion;
         }
         
         public HealingPotion() : this (HEALING_POTION_VOLUME, 
             HEALING_POTION_DESCRIPTION, HEALING_POTION_VALUE_HEALING)  {
             
+        }
+
+        public override void Hit(GameCharacter gameCharacter, CharacterRace attackingCharacterRace) {
+            gameCharacter.lifePoint += ToDamage(attackingCharacterRace);
         }
 
         public override int ToDamage(CharacterRace characterRace) {
