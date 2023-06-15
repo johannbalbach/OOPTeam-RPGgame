@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
-using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
+using static OOPTeam2.RPG_Game.Models.InitialWeaponConstants;
 
 namespace OOPTeam2.RPG_Game.Models.Swords {
     public class MaceSword : Sword {
         public MaceSword(double weight, double agility, double quality, int attack, bool isAvailable) {
-            this.weight = weight;
-            this.agility = agility;
-            this.quality = quality;
-            this.attack = attack;
-            this.isAvailable = isAvailable;
-            possibleOwners = new List<CharacterRace> { 
+            Weight = weight;
+            Agility = agility;
+            Quality = quality;
+            Attack = attack;
+            IsAvailable = isAvailable;
+            PossibleOwners = new List<CharacterRace> { 
                 CharacterRace.Ork,
             };
         }
@@ -22,28 +22,28 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
 
         public override int ToDamage(CharacterRace characterRace) {
             // If the character’s ancestors (race) possess the sword technique, the damage is increased
-            if (possibleOwners.Contains(characterRace) && isAvailable) {
+            if (PossibleOwners.Contains(characterRace) && IsAvailable) {
                 return CalculateDamage();
             }
             return 0;
         }
 
         public override int CalculateDamage() {
-            if (quality > MaceSwordQuality) {
-                return attack * MaceSwordBonusCoefficient;
+            if (Quality > MaceSwordQuality) {
+                return Attack * MaceSwordBonusCoefficient;
             }
-            return attack;
+            return Attack;
         }
 
         public override void Drop() {
             // If you forge a sword, you’ll lose it forever
-            if (isAvailable) {
-                isAvailable = false;
+            if (IsAvailable) {
+                IsAvailable = false;
             }
         }
 
         public override void Improve() {
-            attack += MaceSwordBonusCoefficient;
+            Attack += MaceSwordBonusCoefficient;
         }
     }
 }

@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
-using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
+using static OOPTeam2.RPG_Game.Models.InitialWeaponConstants;
 
 namespace OOPTeam2.RPG_Game.Models.Swords {
     public class LevithanSword: Sword {
         public LevithanSword(double weight, double agility, double quality, int attack, bool isAvailable) {
-            this.weight = weight;
-            this.agility = agility;
-            this.quality = quality;
-            this.attack = attack;
-            this.isAvailable = isAvailable;
-            possibleOwners = new List<CharacterRace> { 
+            Weight = weight;
+            Agility = agility;
+            Quality = quality;
+            Attack = attack;
+            IsAvailable = isAvailable;
+            PossibleOwners = new List<CharacterRace> { 
                 CharacterRace.Gnome,
                 CharacterRace.Human
             };
@@ -22,27 +22,27 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
         }
         
         public override int ToDamage(CharacterRace characterRace) {
-            if (isAvailable && possibleOwners.Contains(characterRace)) {
+            if (IsAvailable && PossibleOwners.Contains(characterRace)) {
                 return CalculateDamage();
             }
             return 0;
         }
         
         public override int CalculateDamage() {
-            if (weight >= LevithanSwordBonusWeight) {
-                return attack * LevithanSwordBonusCoefficient;
+            if (Weight >= LevithanSwordBonusWeight) {
+                return Attack * LevithanSwordBonusCoefficient;
             }
-            return attack;
+            return Attack;
         }
 
         public override void Improve() {
-            quality += LevithanSwordBonusCoefficient;
-            weight -= LevithanSwordBonusWeight;
+            Quality += LevithanSwordBonusCoefficient;
+            Weight -= LevithanSwordBonusWeight;
         }
 
         public override void Drop() {
-            if (isAvailable) {
-                isAvailable = false;
+            if (IsAvailable) {
+                IsAvailable = false;
             }
         }
     }

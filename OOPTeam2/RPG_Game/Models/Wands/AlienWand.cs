@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
-using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
+using static OOPTeam2.RPG_Game.Models.InitialWeaponConstants;
 
 namespace OOPTeam2.RPG_Game.Models.Wands {
 
     public class AlienWand: Wand {
-        public bool isAvailableOnEarth { set; get; }
+        public bool IsAvailableOnEarth { set; get; }
         
         public AlienWand(int damage, string description, double agility, bool isAvailable, bool isAvailableOnEarth) {
-            this.damage = damage;
-            this.description = description;
-            this.isAvailable = isAvailable;
-            this.isAvailableOnEarth = isAvailableOnEarth;
-            this.agility = agility;
-            possibleOwners = new List<CharacterRace> { 
+            Damage = damage;
+            Description = description;
+            IsAvailable = isAvailable;
+            IsAvailableOnEarth = isAvailableOnEarth;
+            Agility = agility;
+            PossibleOwners = new List<CharacterRace> { 
                 CharacterRace.Alien
             };
         }
@@ -24,29 +24,29 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
         }
 
         public override int ToDamage(CharacterRace characterRace) {
-            if (isAvailable && possibleOwners.Contains(characterRace)) {
+            if (IsAvailable && PossibleOwners.Contains(characterRace)) {
                 return CalculateDamage();
             }
-            return damage;
+            return Damage;
         }
 
         private int CalculateDamage() {
-            if (isAvailableOnEarth) {
-                return damage * damage;
+            if (IsAvailableOnEarth) {
+                return Damage * Damage;
             }
-            return damage;
+            return Damage;
         }
 
         public override void Drop() {
-            if (isAvailable) {
-                isAvailable = false;
+            if (IsAvailable) {
+                IsAvailable = false;
             }
             // The wand continues to work on Earth
         }
         
         public override void Improve() {
-            if (isAvailableOnEarth) {
-                damage += AlienWandImprovePower;
+            if (IsAvailableOnEarth) {
+                Damage += AlienWandImprovePower;
             }
         }
         

@@ -4,16 +4,16 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
     public class WizardCharacter: GameCharacter { 
         
         public WizardCharacter() {
-            text = new CharacterReply(TextEnum.WizardsText);
-            characterRace = CharacterRace.Wizard;
+            Text = new CharacterReply(TextEnum.WizardsText);
+            CharacterRace = CharacterRace.Wizard;
         }
         
         public override string Talk() {
-            return text.GetText();
+            return Text.GetText();
         }
         
         public override void Eat(Food food) {
-            if (food.IsEatable(characterRace) && food.IsSufficientQuantity()) {
+            if (food.IsEatable(CharacterRace) && food.IsSufficientQuantity()) {
                 food.Consume();
             }
         }

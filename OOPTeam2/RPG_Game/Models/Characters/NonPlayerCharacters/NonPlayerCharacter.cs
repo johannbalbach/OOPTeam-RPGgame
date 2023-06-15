@@ -4,28 +4,24 @@ namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters{
     public class NonPlayerCharacter: Character {
         
         public NonPlayerCharacter() {
-            lifePoint = InitialHealth;
-            text = new CharacterReply();
+            LifePoint = InitialHealth;
+            Text = new CharacterReply();
         }
         
         public NonPlayerCharacter(NonPlayerCharacter source) : this () {
             if (source != null) {
-                age = source.age;
-                name = source.name;
-                position = source.position;
+                Age = source.Age;
+                Name = source.Name;
+                Position = source.Position;
             }
         }
-        
-        public override void Move(Position position, Direction direction) {
-            Step(position, direction);
-        }
-        
+
         public override Character Clone() {
             return new NonPlayerCharacter(this);
         }
 
         public override string Talk() {
-            return text.GetText();
+            return Text.GetText();
         }
 
         public override void Sleep() {

@@ -4,61 +4,57 @@ using OOPTeam2.RPG_Game.Models.Foods;
 namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
     public class GameCharacter: Character {
         private const int SleepTimeMilliseconds = 3000;
-        public int healthRegeneration { get; set; }
-        public int receivedDamage { get; set; }
-        public int playTime { get; set; }
-        public bool isEnemy { get; set; }
-        public double speed { get; set; }
-        public string skinId { get; set; }
-        public Inventory inventory { get; set; }
-        public CharacterRace characterRace { get; set; }
+        public int HealthRegeneration { get; set; }
+        public int ReceivedDamage { get; set; }
+        public int PlayTime { get; set; }
+        public bool IsEnemy { get; set; }
+        public double Speed { get; set; }
+        public string SkinId { get; set; }
+        public Inventory Inventory { get; set; }
+        public CharacterRace CharacterRace { get; set; }
 
         public GameCharacter() {
-            inventory = new Inventory();
-            lifePoint = InitialHealth;
-            characterRace = CharacterRace.Unknown;
-            text = new CharacterReply();
+            Inventory = new Inventory();
+            LifePoint = InitialHealth;
+            CharacterRace = CharacterRace.Unknown;
+            Text = new CharacterReply();
         }
 
         public GameCharacter(GameCharacter target) {
             if (target != null) {
-                playTime = target.playTime;
-                inventory = target.inventory;
-                isEnemy = target.isEnemy;
-                speed = target.speed;
-                skinId = target.skinId;
-                age = target.age;
-                name = target.name;
-                position = target.position;
-                healthRegeneration = target.healthRegeneration;
-                characterRace = target.characterRace;
-                lifePoint = target.lifePoint;
-                receivedDamage = target.receivedDamage;
-                text = target.text;
+                PlayTime = target.PlayTime;
+                Inventory = target.Inventory;
+                IsEnemy = target.IsEnemy;
+                Speed = target.Speed;
+                SkinId = target.SkinId;
+                Age = target.Age;
+                Name = target.Name;
+                Position = target.Position;
+                HealthRegeneration = target.HealthRegeneration;
+                CharacterRace = target.CharacterRace;
+                LifePoint = target.LifePoint;
+                ReceivedDamage = target.ReceivedDamage;
+                Text = target.Text;
             }
         }
 
         public override Character Clone() {
             return new GameCharacter(this);
         }
-        
-        public override void Move(Position position, Direction direction) {
-            Step(position, direction);
-        }
-        
+
         private void RestoreHealth() {
-            lifePoint += healthRegeneration;
+            LifePoint += HealthRegeneration;
         }
         
         public void UseMedicine() {
-            if (inventory.bags.UseMedicalLeaf()) {
+            if (Inventory.Bags.UseMedicalLeaf()) {
                 RestoreHealth();   
                 NormalizeLifePoint();
             }
         }
 
         public string UseTree() {
-            return inventory.bags.UseTree();
+            return Inventory.Bags.UseTree();
         }
         
         public void HandleDamage(int damage) {
@@ -68,18 +64,18 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
 
         private void ApplyDamage(int damage) {
             if (damage > 0) {
-                lifePoint -= damage;    
+                LifePoint -= damage;    
             }
         }
 
         public void CallAvatarForHelp() {
-            if (inventory.bags.IsAvailableCallAvatar()) {
-                lifePoint = InitialHealth;
+            if (Inventory.Bags.IsAvailableCallAvatar()) {
+                LifePoint = InitialHealth;
             }
         }
 
         public override string Talk() {
-            return text.GetText();
+            return Text.GetText();
         }
 
         public override async void Sleep() {
@@ -89,7 +85,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         public override void Eat(Food food) {
             if (food.IsSufficientQuantity()) {
                 food.Consume();
-                lifePoint += (healthRegeneration * food.power);
+                LifePoint += (HealthRegeneration * food.Power);
             }
         }
     }

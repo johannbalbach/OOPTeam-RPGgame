@@ -3,18 +3,18 @@ using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 namespace OOPTeam2.RPG_Game.Models.Foods {
 public class Meat: Food {
         private const double MinDose = 0.1;
-        public double kilos { get; set; }
+        public double Kilos { get; set; }
 
         public Meat(double kilos) {
-            this.kilos = kilos;
+            Kilos = kilos;
         }
         
         public Meat(double kilos, int power) : this (kilos) {
-            this.power = power;
+            Power = power;
         }
 
         public override void Consume() {
-            kilos -= MinDose;
+            Kilos -= MinDose;
         }
 
         public override bool IsEatable(CharacterRace characterRace) {
@@ -22,7 +22,7 @@ public class Meat: Food {
         }
         
         public override bool IsSufficientQuantity() {
-            return kilos >= MinDose;
+            return Kilos >= MinDose;
         }
     }
 }

@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
-using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
+using static OOPTeam2.RPG_Game.Models.InitialWeaponConstants;
 
 namespace OOPTeam2.RPG_Game.Models.Potions {
     public class HealingPotion: Potion {
-        public int valueHealing { set; get; }
+        public int ValueHealing { set; get; }
         
         public HealingPotion(int volume, string description, int valueHealing) {
-            this.volume = volume;
-            this.description = description;
-            this.valueHealing = valueHealing;
-            possibleOwners = new List<CharacterRace> { 
+            Volume = volume;
+            Description = description;
+            ValueHealing = valueHealing;
+            PossibleOwners = new List<CharacterRace> { 
                 CharacterRace.Human,
                 CharacterRace.Alien,
                 CharacterRace.Elf,
@@ -24,31 +24,31 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
         }
 
         public override void Hit(GameCharacter gameCharacter, CharacterRace attackingCharacterRace) {
-            gameCharacter.lifePoint += ToDamage(attackingCharacterRace);
+            gameCharacter.LifePoint += ToDamage(attackingCharacterRace);
         }
 
         public override int ToDamage(CharacterRace characterRace) {
-            if (possibleOwners.Contains(characterRace) && IsEnoughVolume()) {
+            if (PossibleOwners.Contains(characterRace) && IsEnoughVolume()) {
                 ReduceVolume();
-                return valueHealing;
+                return ValueHealing;
             }
             return 0;
         }
         
         public override bool IsEnoughVolume() {
-            return volume >= HealingPotionDose;
+            return Volume >= HealingPotionDose;
         }
 
         public override void ReduceVolume() {
-            volume -= HealingPotionDose;
+            Volume -= HealingPotionDose;
         }
 
         public override void Drop() {
-            volume = 0;
+            Volume = 0;
         }
 
         public override void Improve() {
-            volume += HealingPotionDose;
+            Volume += HealingPotionDose;
         }
     }
 }

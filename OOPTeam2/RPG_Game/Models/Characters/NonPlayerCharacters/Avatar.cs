@@ -2,16 +2,16 @@ namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters {
     public class Avatar: NonPlayerCharacter {
         
         public Avatar() {
-            lifePoint = int.MaxValue;
-            text = new CharacterReply(TextEnum.AvatarText);
+            LifePoint = int.MaxValue;
+            Text = new CharacterReply(TextEnum.AvatarText);
         }
         
         public override string Talk() {
-            return text.GetText();
+            return Text.GetText();
         }
 
         public void RestoreHealth() {
-            lifePoint = int.MaxValue;
+            LifePoint = int.MaxValue;
         }
     }
 }

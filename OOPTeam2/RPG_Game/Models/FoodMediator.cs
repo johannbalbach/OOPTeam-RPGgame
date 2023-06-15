@@ -2,33 +2,33 @@ using OOPTeam2.RPG_Game.Models.Foods;
 
 namespace OOPTeam2.RPG_Game.Models {
     public class FoodMediator {
-        private const int INIT_FOOD_COUNT = 3;
-        public Meat meat { get; set; }
-        public Bread bread { get; set; }
-        public Fruit fruit { get; set; }
-        public Flower flower { get; set; }
-        public Water water { get; set; }
-        public Butter butter { get; set; }
-        public Sausage sausage { get; set; }
+        private const int InitialFoodCount = 3;
+        public Meat Meat { get; set; }
+        public Bread Bread { get; set; }
+        public Fruit Fruit { get; set; }
+        public Flower Flower { get; set; }
+        public Water Water { get; set; }
+        public Butter Butter { get; set; }
+        public Sausage Sausage { get; set; }
         
         public FoodMediator() {
-            meat = new Meat(INIT_FOOD_COUNT);
-            bread = new Bread(INIT_FOOD_COUNT);
-            fruit = new Fruit(INIT_FOOD_COUNT);
-            flower = new Flower( INIT_FOOD_COUNT);
-            water = new Water(INIT_FOOD_COUNT);
-            butter = new Butter(INIT_FOOD_COUNT);
-            sausage = new Sausage(INIT_FOOD_COUNT);
+            Meat = new Meat(InitialFoodCount);
+            Bread = new Bread(InitialFoodCount);
+            Fruit = new Fruit(InitialFoodCount);
+            Flower = new Flower( InitialFoodCount);
+            Water = new Water(InitialFoodCount);
+            Butter = new Butter(InitialFoodCount);
+            Sausage = new Sausage(InitialFoodCount);
         }
         
         public void IncreaseFood() {
-            meat.kilos++;
-            bread.count++;
-            fruit.count++;
-            flower.beam++;
-            water.volume++;
-            butter.volume++;
-            sausage.size++;
+            Meat.Kilos++;
+            Bread.Count++;
+            Fruit.Count++;
+            Flower.Beam++;
+            Water.Volume++;
+            Butter.Volume++;
+            Sausage.Size++;
         }
     }
 }

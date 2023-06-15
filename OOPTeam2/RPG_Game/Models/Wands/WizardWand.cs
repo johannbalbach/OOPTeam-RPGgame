@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
-using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
+using static OOPTeam2.RPG_Game.Models.InitialWeaponConstants;
 using OOPTeam2.RPG_Game.Services;
 
 namespace OOPTeam2.RPG_Game.Models.Wands {
     public class WizardWand : Wand {
-        private SingletonRandomGenerator randomGenerator { set; get; }
+        private RandomGenerator RandomGenerator { set; get; }
 
         public WizardWand(int damage, double agility, string description, bool isAvailable) {
-            this.damage = damage;
-            this.description = description;
-            this.isAvailable = isAvailable;
-            this.agility = agility;
-            randomGenerator = SingletonRandomGenerator.GetInstance();
-            possibleOwners = new List<CharacterRace> { 
+            Damage = damage;
+            Description = description;
+            IsAvailable = isAvailable;
+            Agility = agility;
+            RandomGenerator = RandomGenerator.Instance;
+            PossibleOwners = new List<CharacterRace> { 
                 CharacterRace.Wizard
             };
         }
@@ -23,30 +23,30 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
         }
 
         public override int ToDamage(CharacterRace characterRace) {
-            if (isAvailable && possibleOwners.Contains(characterRace)) {
-                return damage * damage;
+            if (IsAvailable && PossibleOwners.Contains(characterRace)) {
+                return Damage * Damage;
             }
-            return damage / randomGenerator.Next(1, 4);
+            return Damage / RandomGenerator.Next(1, 4);
         }
 
         public void IncreaseAgility() {
-            agility += randomGenerator.Next(1, 10);
+            Agility += RandomGenerator.Next(1, 10);
         }
         
         public override void Drop() {
-            if (isAvailable) {
-                isAvailable = false;
+            if (IsAvailable) {
+                IsAvailable = false;
             }
         }
         
         public override void Improve() {
-            damage += WizardWandBonusMagic;
+            Damage += WizardWandBonusMagic;
         }
         
-        public string getWandInfo() {
-            return $"Power coefficient: {damage}\n" +
-                   $"Description: {description}\n" +
-                   $"Is available: {isAvailable}\n";
+        public string GetWandInfo() {
+            return $"Power coefficient: {Damage}\n" +
+                   $"Description: {Description}\n" +
+                   $"Is available: {IsAvailable}\n";
         }
     }
 }

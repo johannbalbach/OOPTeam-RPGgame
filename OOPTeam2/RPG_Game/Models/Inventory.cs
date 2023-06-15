@@ -1,19 +1,19 @@
 namespace OOPTeam2.RPG_Game.Models {
     public class Inventory {
-        public Bag bags { set; get; }
-        public WeaponMediator weapons { set; get; }
+        public Bag Bags { set; get; }
+        public WeaponMediator Weapons { set; get; }
         
         public Inventory() {
-            bags = new Bag(this);
-            weapons = new WeaponMediator(this);
+            Bags = new Bag(this);
+            Weapons = new WeaponMediator(this);
         }
 
         public int GetCloakDefenseBonus() {
-            return bags.defaultProtectiveSkin.GetValueProtection(bags.cloak);
+            return Bags.DefaultProtectiveSkin.GetValueProtection(Bags.Cloak);
         }
         
-        public int GetChainmailDefenseBonus() {
-            return bags.defaultProtectiveSkin.GetValueProtection(bags.chainmail);
+        public int GetChainMailDefenseBonus() {
+            return Bags.DefaultProtectiveSkin.GetValueProtection(Bags.Hauberk);
         }
     }
 }

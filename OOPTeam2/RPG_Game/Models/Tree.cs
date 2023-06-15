@@ -1,5 +1,3 @@
-using System;
-
 namespace OOPTeam2.RPG_Game.Models {
     public enum TreeLen {
         Small,
@@ -8,10 +6,10 @@ namespace OOPTeam2.RPG_Game.Models {
     }
     
     public class Tree {
-        public TreeLen treeLen { get; set; }
+        public TreeLen TreeLen { get; set; }
 
         public Tree(TreeLen treeLen) {
-            this.treeLen = treeLen;
+            TreeLen = treeLen;
         }
         
         public Tree() {
@@ -19,7 +17,7 @@ namespace OOPTeam2.RPG_Game.Models {
         }
         
         public string Use() {
-            switch (treeLen) {
+            switch (TreeLen) {
                 case TreeLen.Small:
                     return "You take small tree";
                 case TreeLen.Medium:

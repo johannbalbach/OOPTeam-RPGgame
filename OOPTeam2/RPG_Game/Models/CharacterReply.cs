@@ -6,8 +6,7 @@ namespace OOPTeam2.RPG_Game.Models {
         HumansText,
         GnomesText,
         AliensText,
-        AvatarText,
-        Default
+        AvatarText
     }
     
     public class CharacterReply {

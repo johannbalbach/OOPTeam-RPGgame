@@ -4,27 +4,27 @@ using OOPTeam2.RPG_Game.Models.Wands;
 
 namespace OOPTeam2.RPG_Game.Models {
     public class WeaponMediator {
-        public MaceSword maceSword { set; get; }
-        public LevithanSword levithanSword { set; get; }
-        public KatanaSword katanaSword { set; get; }
-        public HealingPotion healingPotion { set; get; }
-        public EpicPotion epicPotion { set; get; }
-        public ToxicPotion toxicPotion { set; get; }
-        public AlienWand alienWand { set; get; }
-        public ElvenWand elvenWand { set; get; }
-        public WizardWand wizardWand { set; get; }
+        public MaceSword MaceSword { set; get; }
+        public LevithanSword LevithanSword { set; get; }
+        public KatanaSword KatanaSword { set; get; }
+        public HealingPotion HealingPotion { set; get; }
+        public EpicPotion EpicPotion { set; get; }
+        public ToxicPotion ToxicPotion { set; get; }
+        public AlienWand AlienWand { set; get; }
+        public ElvenWand ElvenWand { set; get; }
+        public WizardWand WizardWand { set; get; }
 
         public WeaponMediator(Inventory inventory) {
-            maceSword = new MaceSword();
-            levithanSword = new LevithanSword();
-            katanaSword = new KatanaSword();
-            healingPotion = new HealingPotion();
-            toxicPotion = new ToxicPotion();
-            epicPotion = new EpicPotion();
-            alienWand = new AlienWand();
-            elvenWand = new ElvenWand();
-            wizardWand = new WizardWand();
-            inventory.weapons = this;
+            MaceSword = new MaceSword();
+            LevithanSword = new LevithanSword();
+            KatanaSword = new KatanaSword();
+            HealingPotion = new HealingPotion();
+            ToxicPotion = new ToxicPotion();
+            EpicPotion = new EpicPotion();
+            AlienWand = new AlienWand();
+            ElvenWand = new ElvenWand();
+            WizardWand = new WizardWand();
+            inventory.Weapons = this;
         }
     }
 }

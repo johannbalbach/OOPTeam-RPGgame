@@ -75,18 +75,18 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
 
         public GameCharacter Build() {
             GameCharacter gameCharacter = new GameCharacter();
-            gameCharacter.playTime = playTime;
-            gameCharacter.inventory = inventory;
-            gameCharacter.isEnemy = isEnemy;
-            gameCharacter.speed = speed;
-            gameCharacter.skinId = skinId;
-            gameCharacter.healthRegeneration = healthRegeneration;
-            gameCharacter.age = age;
-            gameCharacter.name = name;
-            gameCharacter.position = position;
-            gameCharacter.lifePoint = lifePoint;
-            gameCharacter.characterRace = characterRace;
-            gameCharacter.text = text;
+            gameCharacter.PlayTime = playTime;
+            gameCharacter.Inventory = inventory;
+            gameCharacter.IsEnemy = isEnemy;
+            gameCharacter.Speed = speed;
+            gameCharacter.SkinId = skinId;
+            gameCharacter.HealthRegeneration = healthRegeneration;
+            gameCharacter.Age = age;
+            gameCharacter.Name = name;
+            gameCharacter.Position = position;
+            gameCharacter.LifePoint = lifePoint;
+            gameCharacter.CharacterRace = characterRace;
+            gameCharacter.Text = text;
             return gameCharacter;
         }
     }

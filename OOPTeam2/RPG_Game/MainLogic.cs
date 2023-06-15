@@ -23,10 +23,10 @@ namespace OOPTeam2.RPG_Game {
                 .Build();
             
             GameCharacter test = new OrksCharacter();
-            Console.WriteLine(gameCharacter.lifePoint);
+            Console.WriteLine(gameCharacter.LifePoint);
             Weapon sword = new MaceSword();
-            sword.Hit(gameCharacter, test.characterRace);
-            Console.WriteLine(gameCharacter.lifePoint);
+            sword.Hit(gameCharacter, test.CharacterRace);
+            Console.WriteLine(gameCharacter.LifePoint);
         }
     }
 }

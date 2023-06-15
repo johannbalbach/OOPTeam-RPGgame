@@ -4,16 +4,16 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
     public class HumanCharacter: GameCharacter {
 
         public HumanCharacter() {
-            characterRace = CharacterRace.Human;
-            text = new CharacterReply(TextEnum.HumansText);
+            CharacterRace = CharacterRace.Human;
+            Text = new CharacterReply(TextEnum.HumansText);
         }
         
         public override string Talk() {
-            return text.GetText();
+            return Text.GetText();
         }
 
         public override void Eat(Food food) {
-            if (food.IsEatable(characterRace) && food.IsSufficientQuantity()) {
+            if (food.IsEatable(CharacterRace) && food.IsSufficientQuantity()) {
                 food.Consume();
             }
         }

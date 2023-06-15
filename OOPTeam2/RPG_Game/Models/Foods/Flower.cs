@@ -2,18 +2,18 @@ using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 
 namespace OOPTeam2.RPG_Game.Models.Foods {
     public class Flower: Food {
-        public int beam { set; get; }
+        public int Beam { set; get; }
 
         public Flower(int beam) {
-            this.beam = beam;
+            Beam = beam;
         }
 
         public Flower(int beam, int power): this(beam) {
-            this.power = power;
+            Power = power;
         }
         
         public override void Consume() {
-            beam--;
+            Beam--;
         }
         
         public override bool IsEatable(CharacterRace characterRace) {
@@ -21,7 +21,7 @@ namespace OOPTeam2.RPG_Game.Models.Foods {
         }
         
         public override bool IsSufficientQuantity() {
-            return beam > 0;
+            return Beam > 0;
         }
     }
 }

@@ -3,18 +3,18 @@ using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 namespace OOPTeam2.RPG_Game.Models.Foods {
     public class Sausage: Food {
         private const double MinDose = 0.1;
-        public double size { set; get; }
+        public double Size { set; get; }
 
         public Sausage(double size) {
-            this.size = size;
+            Size = size;
         }
         
         public Sausage(double size, int power) : this(size) {
-            this.power = power;
+            Power = power;
         }
 
         public override void Consume() { 
-            size -= MinDose;
+            Size -= MinDose;
         }
         
         public override bool IsEatable(CharacterRace characterRace) {
@@ -22,7 +22,7 @@ namespace OOPTeam2.RPG_Game.Models.Foods {
         }
         
         public override bool IsSufficientQuantity() {
-            return size >= MinDose;
+            return Size >= MinDose;
         }
     }
 }

@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
-using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
+using static OOPTeam2.RPG_Game.Models.InitialWeaponConstants;
 
 namespace OOPTeam2.RPG_Game.Models.Potions {
     
     public class ToxicPotion: Potion {
         public ToxicPotion(int volume, string description, int damage) {
-            this.volume = volume;
-            this.description = description;
-            this.damage = damage;
-            possibleOwners = new List<CharacterRace> { 
+            Volume = volume;
+            Description = description;
+            Damage = damage;
+            PossibleOwners = new List<CharacterRace> { 
                 CharacterRace.Human,
                 CharacterRace.Alien,
                 CharacterRace.Elf,
@@ -22,27 +22,27 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
         }
 
         public override int ToDamage(CharacterRace characterRace) {
-            if (possibleOwners.Contains(characterRace) && IsEnoughVolume()) {
+            if (PossibleOwners.Contains(characterRace) && IsEnoughVolume()) {
                 ReduceVolume();
-                return damage;
+                return Damage;
             }
             return 0;
         }
 
         public override bool IsEnoughVolume() {
-            return volume >= ToxicPotionVolume;
+            return Volume >= ToxicPotionVolume;
         }
         
         public override void Drop() {
-            volume = 0;
+            Volume = 0;
         }
         
         public override void Improve() {
-            volume += ToxicPotionDamageHealth;
+            Volume += ToxicPotionDamageHealth;
         }
 
         public override void ReduceVolume() {
-            volume -= ToxicPotionDamageHealth;
+            Volume -= ToxicPotionDamageHealth;
         }
     }
 }

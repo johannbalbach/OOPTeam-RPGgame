@@ -3,16 +3,15 @@ using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 
 namespace OOPTeam2.RPG_Game.Models.Wands {
     public abstract class Wand : Weapon  {
-        public int damage { set; get; }
-        public int receivedDamage { set; get; }
-        public double agility { set; get; }
-        public string description { set; get; }
-        public bool isAvailable { set; get; }
-        public List<CharacterRace> possibleOwners { set; get; }
+        public int ReceivedDamage { set; get; }
+        public double Agility { set; get; }
+        public string Description { set; get; }
+        public bool IsAvailable { set; get; }
+        public List<CharacterRace> PossibleOwners { set; get; }
 
         public override void Hit(GameCharacter targetCharacter, CharacterRace raceAttackingCharacter) {
-            receivedDamage = ToDamage(raceAttackingCharacter) - targetCharacter.inventory.GetCloakDefenseBonus();
-            targetCharacter.HandleDamage(receivedDamage);
+            ReceivedDamage = ToDamage(raceAttackingCharacter) - targetCharacter.Inventory.GetCloakDefenseBonus();
+            targetCharacter.HandleDamage(ReceivedDamage);
         }
     }
 }

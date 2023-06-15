@@ -116,7 +116,7 @@
     <Compile Include="RPG_Game\Models\Characters\Position.cs" />
     <Compile Include="RPG_Game\Models\ChainMail.cs" />
     <Compile Include="RPG_Game\Models\Cloak.cs" />
-    <Compile Include="RPG_Game\Models\InitWeaponConstants.cs" />
+    <Compile Include="RPG_Game\Models\InitialWeaponConstants.cs" />
     <Compile Include="RPG_Game\Models\DefaultProtectiveSkin.cs" />
     <Compile Include="RPG_Game\Models\FoodMediator.cs" />
     <Compile Include="RPG_Game\Models\Foods\Bread.cs" />

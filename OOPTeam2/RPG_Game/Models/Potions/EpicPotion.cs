@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
-using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
+using static OOPTeam2.RPG_Game.Models.InitialWeaponConstants;
 
 namespace OOPTeam2.RPG_Game.Models.Potions {
     public class EpicPotion: Potion {
-        public int bonusPercent { set; get; }
+        public int BonusPercent { set; get; }
         
         public EpicPotion(int volume, string description, int bonusPercent, int damage) {
-            this.volume = volume;
-            this.description = description;
-            this.bonusPercent = bonusPercent;
-            this.damage = damage;
-            possibleOwners = new List<CharacterRace> { 
+            Volume = volume;
+            Description = description;
+            BonusPercent = bonusPercent;
+            Damage = damage;
+            PossibleOwners = new List<CharacterRace> { 
                 CharacterRace.Human,
                 CharacterRace.Alien,
                 CharacterRace.Elf,
@@ -25,27 +25,27 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
         }
 
         public override int ToDamage(CharacterRace characterRace) {
-            if (possibleOwners.Contains(characterRace) && IsEnoughVolume()) {
+            if (PossibleOwners.Contains(characterRace) && IsEnoughVolume()) {
                 ReduceVolume();
-                return damage * bonusPercent;
+                return Damage * BonusPercent;
             }
             return 0;
         }
 
         public override bool IsEnoughVolume() {
-            return volume >= EpicPotionVolume;
+            return Volume >= EpicPotionVolume;
         }
 
         public override void Drop() {
-            volume = 0;
+            Volume = 0;
         }
 
         public override void ReduceVolume() {
-            volume -= EpicPotionVolume;
+            Volume -= EpicPotionVolume;
         }
         
         public override void Improve() {
-            bonusPercent += EpicPotionImproving;
+            BonusPercent += EpicPotionImproving;
         }
     }
 }

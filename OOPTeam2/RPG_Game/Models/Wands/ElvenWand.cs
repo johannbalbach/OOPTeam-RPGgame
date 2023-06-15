@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
-using static OOPTeam2.RPG_Game.Models.InitWeaponConstants;
+using static OOPTeam2.RPG_Game.Models.InitialWeaponConstants;
 
 namespace OOPTeam2.RPG_Game.Models.Wands {
     public class ElvenWand : Wand {
-        public int lifePercentage { set; get; }
+        public int LifePercentage { set; get; }
 
         public ElvenWand(int damage, string description, double agility, int lifePercentage, bool isAvailable) {
-            this.damage = damage;
-            this.description = description;
-            this.isAvailable = isAvailable;
-            this.agility = agility;
-            this.lifePercentage = lifePercentage;
-            possibleOwners = new List<CharacterRace> { 
+            Damage = damage;
+            Description = description;
+            IsAvailable = isAvailable;
+            Agility = agility;
+            LifePercentage = lifePercentage;
+            PossibleOwners = new List<CharacterRace> { 
                 CharacterRace.Elf
             };
         }
@@ -23,37 +23,37 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
         }
 
         public override int ToDamage(CharacterRace characterRace) {
-            if (isAvailable && possibleOwners.Contains(characterRace)) {
-                lifePercentage -= ElvenWandCoefficient;
+            if (IsAvailable && PossibleOwners.Contains(characterRace)) {
+                LifePercentage -= ElvenWandCoefficient;
                 return CalculateDamage();
             }
             return 0;
         }
         
         private int CalculateDamage() {
-            int adjustedDamage = damage * damage;
-            int adjustedLife = lifePercentage / ElvenWandCoefficient;
+            int adjustedDamage = Damage * Damage;
+            int adjustedLife = LifePercentage / ElvenWandCoefficient;
             return adjustedDamage / adjustedLife;
         }
         
         public override void Drop() {
-            if (isAvailable) {
-                isAvailable = false;    
+            if (IsAvailable) {
+                IsAvailable = false;    
             }
         }
 
         public override void Improve() {
-            if (isAvailable) {
-                lifePercentage += ElvenWandCoefficient;
+            if (IsAvailable) {
+                LifePercentage += ElvenWandCoefficient;
             }
         }
 
-        public string getWandInfo() {
-            return $"Power coefficient: {damage}\n" +
-                   $"Description: {description}\n" +
-                   $"Is available: {isAvailable}\n" +
-                   $"Agility: {agility}\n" +
-                   $"Life percentage: {lifePercentage}\n";
+        public string GetWandInfo() {
+            return $"Power coefficient: {Damage}\n" +
+                   $"Description: {Description}\n" +
+                   $"Is available: {IsAvailable}\n" +
+                   $"Agility: {Agility}\n" +
+                   $"Life percentage: {LifePercentage}\n";
         }
     }
 }

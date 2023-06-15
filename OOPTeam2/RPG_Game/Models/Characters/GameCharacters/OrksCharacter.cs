@@ -6,11 +6,11 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         private const int SleepTimeMilliseconds = 7000;
 
         public OrksCharacter() {
-            characterRace = CharacterRace.Ork;
-            text = new CharacterReply(TextEnum.OrksText);
+            CharacterRace = CharacterRace.Ork;
+            Text = new CharacterReply(TextEnum.OrksText);
         }
         public override string Talk() {
-            return text.GetText();
+            return Text.GetText();
         }
         
         public override async void Sleep() {
@@ -18,7 +18,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         }
         
         public override void Eat(Food food) {
-            if (food.IsEatable(characterRace) && food.IsSufficientQuantity()) {
+            if (food.IsEatable(CharacterRace) && food.IsSufficientQuantity()) {
                 food.Consume();
             }
         }

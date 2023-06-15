@@ -1,11 +1,11 @@
 namespace OOPTeam2.RPG_Game.Models {
     public class MedicalLeaf {
-        public int count { set; get; }
-        public int healthPoints { set; get; }
+        public int HealthPoints { set; get; }
+        private int Count;
 
         public MedicalLeaf(int count, int healthPoints) {
-            this.count = count;
-            this.healthPoints = healthPoints;
+            Count = count;
+            HealthPoints = healthPoints;
         }
         
         public MedicalLeaf() {
@@ -13,15 +13,15 @@ namespace OOPTeam2.RPG_Game.Models {
         }
         
         public bool IsAvailable() {
-            return count > 0;
+            return Count > 0;
         }
         
         public void Use() {
-            count--;
+            Count--;
         }
 
         public void PickUp(int count) {
-            this.count += count;
+            Count += count;
         }
     }
 }
