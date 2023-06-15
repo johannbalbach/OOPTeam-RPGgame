@@ -15,12 +15,12 @@ public class Meat: Food {
             this.power = power;
         }
 
-        public override void Eat() {
+        public override void Consume() {
             kilos -= MIN_DOSE;
         }
 
         public override bool IsEatable(CharacterRace characterRace) {
-            return characterRace == CharacterRace.AlienCharacter || characterRace == CharacterRace.HumanCharacter;
+            return characterRace == CharacterRace.Alien || characterRace == CharacterRace.Human;
         }
         
         public override bool IsSufficientQuantity() {

@@ -3,10 +3,10 @@ using OOPTeam2.RPG_Game.Models.Foods;
 
 namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
     public class AlienCharacter : GameCharacter {
-        private const int TIME_SLEEP = 500;
+        private const int SleepTimeMilliseconds = 500;
 
         public AlienCharacter() {
-            characterRace = CharacterRace.AlienCharacter;
+            characterRace = CharacterRace.Alien;
             text = new CharacterReply(TextEnum.AliensText);
         }
         
@@ -15,12 +15,12 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         }
         
         public override async void Sleep() {
-            await Task.Delay(TIME_SLEEP);
+            await Task.Delay(SleepTimeMilliseconds);
         }
 
         public override void Eat(Food food) {
             if (food.IsEatable(characterRace) && food.IsSufficientQuantity()) {
-                food.Eat();
+                food.Consume();
             }
         }
     }

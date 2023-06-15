@@ -11,6 +11,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         private string name;
         private Position position;
         private CharacterRace characterRace;
+        private CharacterReply text;
 
         public GameCharacterBuilder WithPlayTime(int playTime) {
             this.playTime = playTime;
@@ -19,6 +20,11 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
 
         public GameCharacterBuilder WithInventory(Inventory inventory) {
             this.inventory = inventory;
+            return this;
+        }
+        
+        public GameCharacterBuilder WithText(CharacterReply text) {
+            this.text = text;
             return this;
         }
 
@@ -80,6 +86,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
             gameCharacter.position = position;
             gameCharacter.lifePoint = lifePoint;
             gameCharacter.characterRace = characterRace;
+            gameCharacter.text = text;
             return gameCharacter;
         }
     }

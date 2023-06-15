@@ -3,20 +3,20 @@ using OOPTeam2.RPG_Game.Models.Foods;
 
 namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
     public class GameCharacter: Character {
-        private const int TIME_SLEEP = 3000;
+        private const int SleepTimeMilliseconds = 3000;
         public int healthRegeneration { get; set; }
         public int receivedDamage { get; set; }
         public int playTime { get; set; }
-        public Inventory inventory { get; set; }
         public bool isEnemy { get; set; }
         public double speed { get; set; }
         public string skinId { get; set; }
+        public Inventory inventory { get; set; }
         public CharacterRace characterRace { get; set; }
 
         public GameCharacter() {
             inventory = new Inventory();
-            lifePoint = INIT_HEALTH;
-            characterRace = CharacterRace.UnknownCharacter;
+            lifePoint = InitialHealth;
+            characterRace = CharacterRace.Unknown;
             text = new CharacterReply();
         }
 
@@ -34,6 +34,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
                 characterRace = target.characterRace;
                 lifePoint = target.lifePoint;
                 receivedDamage = target.receivedDamage;
+                text = target.text;
             }
         }
 
@@ -68,9 +69,9 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
             }
         }
 
-        public void FetchHelpingAvatar() {
+        public void CallAvatarForHelp() {
             if (inventory.bags.IsAvailableCallAvatar()) {
-                lifePoint = INIT_HEALTH;
+                lifePoint = InitialHealth;
             }
         }
 
@@ -79,12 +80,12 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         }
 
         public override async void Sleep() {
-            await Task.Delay(TIME_SLEEP);
+            await Task.Delay(SleepTimeMilliseconds);
         }
 
         public override void Eat(Food food) {
             if (food.IsSufficientQuantity()) {
-                food.Eat();
+                food.Consume();
                 lifePoint += (healthRegeneration * food.power);
             }
         }

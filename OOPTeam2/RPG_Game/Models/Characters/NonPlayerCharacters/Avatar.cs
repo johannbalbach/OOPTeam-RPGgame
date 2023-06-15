@@ -1,13 +1,8 @@
-using System;
-using OOPTeam2.RPG_Game.Services;
-
 namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters {
     public class Avatar: NonPlayerCharacter {
-        private SingletonRand random { set; get; }
-
+        
         public Avatar() {
-            lifePoint = Int32.MaxValue;
-            random = SingletonRand.GetInstance();
+            lifePoint = int.MaxValue;
             text = new CharacterReply(TextEnum.AvatarText);
         }
         
@@ -16,7 +11,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters {
         }
 
         public void RestoreHealth() {
-            lifePoint = Int32.MaxValue;
+            lifePoint = int.MaxValue;
         }
     }
 }

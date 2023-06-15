@@ -4,16 +4,15 @@ namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters{
     public class NonPlayerCharacter: Character {
         
         public NonPlayerCharacter() {
-            lifePoint = INIT_HEALTH;
+            lifePoint = InitialHealth;
             text = new CharacterReply();
         }
         
-        public NonPlayerCharacter(NonPlayerCharacter target) {
-            if (target != null) {
-                age = target.age;
-                name = target.name;
-                position = target.position;
-                text = new CharacterReply();
+        public NonPlayerCharacter(NonPlayerCharacter source) : this () {
+            if (source != null) {
+                age = source.age;
+                name = source.name;
+                position = source.position;
             }
         }
         
@@ -30,11 +29,11 @@ namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters{
         }
 
         public override void Sleep() {
-            // NPC не должен спать, поэтому метод Sleep остается пустым
+            // NPCs don't sleep, so the Sleep method remains empty.
         }
 
         public override void Eat(Food food) {
-            // NPC не кушает еду, поэтому метод Eat остается пустым
+            // NPCs don't eat food, so the Eat method remains empty.
         }
     }
 }

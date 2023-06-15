@@ -10,14 +10,14 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
             this.description = description;
             this.damage = damage;
             possibleOwners = new List<CharacterRace> { 
-                CharacterRace.HumanCharacter,
-                CharacterRace.AlienCharacter,
-                CharacterRace.ElvesCharacter,
-                CharacterRace.GnomeCharacter
+                CharacterRace.Human,
+                CharacterRace.Alien,
+                CharacterRace.Elf,
+                CharacterRace.Gnome
             };
         }
         
-        public ToxicPotion() : this (TOXIC_POTION_VOLUME, TOXIC_POTION_DESCRIPTION, TOXIC_POTION_DAMAGE) {
+        public ToxicPotion() : this (ToxicPotionVolume, ToxicPotionDescription, ToxicPotionDamage) {
             
         }
 
@@ -30,7 +30,7 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
         }
 
         public override bool IsEnoughVolume() {
-            return volume >= TOXIC_POTION_VOLUME;
+            return volume >= ToxicPotionVolume;
         }
         
         public override void Drop() {
@@ -38,11 +38,11 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
         }
         
         public override void Improve() {
-            volume += TOXIC_POTION_DAMAGE_HEALTH;
+            volume += ToxicPotionDamageHealth;
         }
 
         public override void Reduce() {
-            volume -= TOXIC_POTION_DAMAGE_HEALTH;
+            volume -= ToxicPotionDamageHealth;
         }
     }
 }

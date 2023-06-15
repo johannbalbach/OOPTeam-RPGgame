@@ -15,11 +15,11 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
             this.isAvailableOnEarth = isAvailableOnEarth;
             this.agility = agility;
             possibleOwners = new List<CharacterRace> { 
-                CharacterRace.AlienCharacter
+                CharacterRace.Alien
             };
         }
         
-        public AlienWand() : this (ALIEN_WAND_DAMAGE, ALIEN_WAND_DESCRIPTION, ALIEN_WAND_AGILITY, 
+        public AlienWand() : this (AlienWandDamage, AlienWandDescription, AlienWandAgility, 
             true, true) {
             
         }
@@ -47,7 +47,7 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
         
         public override void Improve() {
             if (isAvailableOnEarth) {
-                damage += ALIEN_WAND_IMPROVE_POWER;
+                damage += AlienWandImprovePower;
             }
         }
         

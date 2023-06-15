@@ -5,7 +5,7 @@ using OOPTeam2.RPG_Game.Services;
 namespace OOPTeam2.RPG_Game.Models {
     public class Bag {
         public FoodMediator foodMediator { set; get; }
-        private SingletonRand random { set; get; }
+        private SingletonRandomGenerator randomGenerator { set; get; }
         public DefaultProtectiveSkin defaultProtectiveSkin { set; get; }
         public Cloak cloak { set; get; }
         public ChainMail chainmail { set; get; }
@@ -20,11 +20,11 @@ namespace OOPTeam2.RPG_Game.Models {
             tree = new List<Tree>();
             medicalLeave = new MedicalLeaf();
             defaultProtectiveSkin = new DefaultProtectiveSkin();
-            random = SingletonRand.GetInstance();
+            randomGenerator = SingletonRandomGenerator.GetInstance();
         }
         
         public bool IsAvailableCallAvatar() {
-            int randomNumber = random.Next(0, 100);
+            int randomNumber = randomGenerator.Next(0, 100);
             return randomNumber % 3 == 0;
         }
 

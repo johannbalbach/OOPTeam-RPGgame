@@ -4,7 +4,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
     public class GnomeCharacter: GameCharacter {
         
         public GnomeCharacter() {
-            characterRace = CharacterRace.GnomeCharacter;
+            characterRace = CharacterRace.Gnome;
             text = new CharacterReply(TextEnum.GnomesText);
         }
         
@@ -14,7 +14,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         
         public override void Eat(Food food) {
             if (food.IsEatable(characterRace) && food.IsSufficientQuantity()) {
-                food.Eat();
+                food.Consume();
             }
         }
     }

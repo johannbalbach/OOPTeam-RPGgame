@@ -1,9 +1,4 @@
-using System.Dynamic;
-using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 using OOPTeam2.RPG_Game.Models.Foods;
-using OOPTeam2.RPG_Game.Models.Potions;
-using OOPTeam2.RPG_Game.Models.Swords;
-using OOPTeam2.RPG_Game.Models.Wands;
 
 namespace OOPTeam2.RPG_Game.Models.Characters {
     public abstract class Character {
@@ -13,7 +8,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters {
         public int lifePoint { get; set; }
         public CharacterReply text { get; set; }
         
-        protected const int INIT_HEALTH = 100;
+        protected const int InitialHealth = 100;
 
         public abstract void Move(Position position, Direction direction);
         public abstract string Talk();
@@ -39,8 +34,8 @@ namespace OOPTeam2.RPG_Game.Models.Characters {
         }
         
         protected void NormalizeLifePoint() {
-            if (lifePoint > INIT_HEALTH) {
-                lifePoint = INIT_HEALTH;
+            if (lifePoint > InitialHealth) {
+                lifePoint = InitialHealth;
             } else if (lifePoint < 0) {
                 lifePoint = 0;
             }

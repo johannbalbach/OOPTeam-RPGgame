@@ -1,17 +1,17 @@
 using System;
 
 namespace OOPTeam2.RPG_Game.Services {
-    public class SingletonRand {
-        private static SingletonRand instance = null;
+    public class SingletonRandomGenerator {
+        private static SingletonRandomGenerator instance = null;
         private static Random random;
 
-        private SingletonRand() {
+        private SingletonRandomGenerator() {
             random = new Random();
         }
 
-        public static SingletonRand GetInstance() {
+        public static SingletonRandomGenerator GetInstance() {
             if (instance == null) {
-                instance = new SingletonRand();
+                instance = new SingletonRandomGenerator();
             }
             return instance;
         }

@@ -10,14 +10,13 @@ namespace OOPTeam2.RPG_Game.Models.Characters {
             this.y = y;
         }
         
-        public void ChangePosition(Position position) {
-            x = position.x;
-            y = position.y;
+        public void ChangePosition(Position newPosition) {
+            x = newPosition.x;
+            y = newPosition.y;
         }
         
         public double GetDistance(Position position) {
             return Math.Sqrt((x - position.x) * (x - position.x) + (y - position.y) * (y - position.y));
         }
-        
     }
 }

@@ -13,18 +13,18 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
             this.agility = agility;
             this.lifePercentage = lifePercentage;
             possibleOwners = new List<CharacterRace> { 
-                CharacterRace.ElvesCharacter
+                CharacterRace.Elf
             };
         }
 
-        public ElvenWand() : this (ELVEN_WAND_DAMAGE, ELVEN_WAND_DESCRIPTION, ELVEN_WAND_AGILITY, 
-            ELVEN_WAND_CAPACITY, true) {
+        public ElvenWand() : this (ElvenWandDamage, ElvenWandDescription, ElvenWandAgility, 
+            ElvenWandCapacity, true) {
             
         }
 
         public override int ToDamage(CharacterRace characterRace) {
             if (isAvailable && possibleOwners.Contains(characterRace)) {
-                lifePercentage -= ELVEN_WAND_COEFFICIENT;
+                lifePercentage -= ElvenWandCoefficient;
                 return CalculateDamage();
             }
             return 0;
@@ -32,7 +32,7 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
         
         private int CalculateDamage() {
             int adjustedDamage = damage * damage;
-            int adjustedLife = lifePercentage / ELVEN_WAND_COEFFICIENT;
+            int adjustedLife = lifePercentage / ElvenWandCoefficient;
             return adjustedDamage / adjustedLife;
         }
         
@@ -44,7 +44,7 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
 
         public override void Improve() {
             if (isAvailable) {
-                lifePercentage += ELVEN_WAND_COEFFICIENT;
+                lifePercentage += ElvenWandCoefficient;
             }
         }
 

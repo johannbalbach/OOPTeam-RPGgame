@@ -1,11 +1,10 @@
-using System;
 using OOPTeam2.RPG_Game.Models.Foods;
 
 namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
     public class HumanCharacter: GameCharacter {
 
         public HumanCharacter() {
-            characterRace = CharacterRace.HumanCharacter;
+            characterRace = CharacterRace.Human;
             text = new CharacterReply(TextEnum.HumansText);
         }
         
@@ -15,7 +14,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
 
         public override void Eat(Food food) {
             if (food.IsEatable(characterRace) && food.IsSufficientQuantity()) {
-                food.Eat();
+                food.Consume();
             }
         }
     }

@@ -5,7 +5,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         
         public WizardCharacter() {
             text = new CharacterReply(TextEnum.WizardsText);
-            characterRace = CharacterRace.WizardCharacter;
+            characterRace = CharacterRace.Wizard;
         }
         
         public override string Talk() {
@@ -14,7 +14,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         
         public override void Eat(Food food) {
             if (food.IsEatable(characterRace) && food.IsSufficientQuantity()) {
-                food.Eat();
+                food.Consume();
             }
         }
     }

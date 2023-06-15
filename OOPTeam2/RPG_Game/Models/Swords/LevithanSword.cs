@@ -11,13 +11,13 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
             this.attack = attack;
             this.isAvailable = isAvailable;
             possibleOwners = new List<CharacterRace> { 
-                CharacterRace.GnomeCharacter,
-                CharacterRace.HumanCharacter
+                CharacterRace.Gnome,
+                CharacterRace.Human
             };
         }
         
-        public LevithanSword() : this (LEVITHAN_SWORD_WEIGHT, LEVITHAN_SWORD_AGILITY, 
-                LEVITHAN_SWORD_QUALITY, LEVITHAN_SWORD_ATTACK, true) {
+        public LevithanSword() : this (LevithanSwordWeight, LevithanSwordAgility, 
+                LevithanSwordQuality, LevithanSwordAttack, true) {
             
         }
         
@@ -35,15 +35,15 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
         }
         
         public override int CalculateDamage() {
-            if (weight >= LEVITHAN_SWORD_BONUS_WEIGHT) {
-                return attack * LEVITHAN_SWORD_BONUS_COEFFICIENT;
+            if (weight >= LevithanSwordBonusWeight) {
+                return attack * LevithanSwordBonusCoefficient;
             }
             return attack;
         }
 
         public override void Improve() {
-            quality += LEVITHAN_SWORD_BONUS_COEFFICIENT;
-            weight -= LEVITHAN_SWORD_BONUS_WEIGHT;
+            quality += LevithanSwordBonusCoefficient;
+            weight -= LevithanSwordBonusWeight;
         }
 
         public override void Drop() {

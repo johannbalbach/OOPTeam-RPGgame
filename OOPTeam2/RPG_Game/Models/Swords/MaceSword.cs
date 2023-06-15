@@ -11,12 +11,12 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
             this.attack = attack;
             this.isAvailable = isAvailable;
             possibleOwners = new List<CharacterRace> { 
-                CharacterRace.OrksCharacter,
+                CharacterRace.Ork,
             };
         }
 
-        public MaceSword() : this (MACE_SWORD_WEIGHT, MACE_SWORD_AGILITY, 
-                MACE_SWORD_QUALITY, MACE_SWORD_ATTACK, true) {
+        public MaceSword() : this (MaceSwordWeight, MaceSwordAgility, 
+                MaceSwordQuality, MaceSwordAttack, true) {
             
         }
         
@@ -35,8 +35,8 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
         }
 
         public override int CalculateDamage() {
-            if (quality > MACE_SWORD_QUALITY) {
-                return attack * MACE_SWORD_BONUS_COEFFICIENT;
+            if (quality > MaceSwordQuality) {
+                return attack * MaceSwordBonusCoefficient;
             }
             return attack;
         }
@@ -49,7 +49,7 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
         }
 
         public override void Improve() {
-            attack += MACE_SWORD_BONUS_COEFFICIENT;
+            attack += MaceSwordBonusCoefficient;
         }
     }
 }

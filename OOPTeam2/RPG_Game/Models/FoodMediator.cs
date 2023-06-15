@@ -32,7 +32,7 @@ namespace OOPTeam2.RPG_Game.Models {
         }
 
         public void getReactOnEating(Food food) {
-            food.Eat();
+            food.Consume();
         }
     }
 }

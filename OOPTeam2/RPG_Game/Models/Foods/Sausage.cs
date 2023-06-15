@@ -14,12 +14,12 @@ namespace OOPTeam2.RPG_Game.Models.Foods {
             this.power = power;
         }
 
-        public override void Eat() { 
+        public override void Consume() { 
             size -= MIN_DOSE;
         }
         
         public override bool IsEatable(CharacterRace characterRace) {
-            return characterRace == CharacterRace.GnomeCharacter || characterRace == CharacterRace.HumanCharacter;
+            return characterRace == CharacterRace.Gnome || characterRace == CharacterRace.Human;
         }
         
         public override bool IsSufficientQuantity() {

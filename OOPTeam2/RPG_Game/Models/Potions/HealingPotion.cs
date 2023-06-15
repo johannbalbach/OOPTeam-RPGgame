@@ -11,15 +11,15 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
             this.description = description;
             this.valueHealing = valueHealing;
             possibleOwners = new List<CharacterRace> { 
-                CharacterRace.HumanCharacter,
-                CharacterRace.AlienCharacter,
-                CharacterRace.ElvesCharacter,
-                CharacterRace.GnomeCharacter
+                CharacterRace.Human,
+                CharacterRace.Alien,
+                CharacterRace.Elf,
+                CharacterRace.Gnome
             };
         }
         
-        public HealingPotion() : this (HEALING_POTION_VOLUME, 
-            HEALING_POTION_DESCRIPTION, HEALING_POTION_VALUE_HEALING)  {
+        public HealingPotion() : this (HealingPotionVolume, 
+            HealingPotionDescription, HealingPotionValueHealing)  {
             
         }
 
@@ -36,11 +36,11 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
         }
         
         public override bool IsEnoughVolume() {
-            return volume >= HEALING_POTION_DOSE;
+            return volume >= HealingPotionDose;
         }
 
         public override void Reduce() {
-            volume -= HEALING_POTION_DOSE;
+            volume -= HealingPotionDose;
         }
 
         public override void Drop() {
@@ -48,7 +48,7 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
         }
 
         public override void Improve() {
-            volume += HEALING_POTION_DOSE;
+            volume += HealingPotionDose;
         }
     }
 }

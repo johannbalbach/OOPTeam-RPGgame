@@ -11,13 +11,13 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
             this.attack = attack;
             this.isAvailable = isAvailable;
             possibleOwners = new List<CharacterRace> { 
-                CharacterRace.ElvesCharacter,
-                CharacterRace.HumanCharacter
+                CharacterRace.Elf,
+                CharacterRace.Human
             };
         }
 
-        public KatanaSword() : this (KATANA_SWORD_WEIGHT, KATANA_SWORD_AGILITY, 
-                KATANA_SWORD_QUALITY, KATANA_SWORD_ATTACK, true) {
+        public KatanaSword() : this (KatanaSwordWeight, KatanaSwordAgility, 
+                KatanaSwordQuality, KatanaSwordAttack, true) {
             
         }
         
@@ -28,8 +28,8 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
         }*/
 
         public override int CalculateDamage() {
-            if (agility > KATANA_SWORD_AVERAGE_AGILITY && quality > KATANA_SWORD_AVERAGE_QUALITY) {
-                return attack * KATANA_SWORD_BONUS_COEFFICIENT;
+            if (agility > KatanaSwordAverageAgility && quality > KatanaSwordAverageQuality) {
+                return attack * KatanaSwordBonusCoefficient;
             }
             return attack;
         }
@@ -42,8 +42,8 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
         }
 
         public override void Improve() {
-            agility += KATANA_SWORD_AVERAGE_AGILITY;
-            quality += KATANA_SWORD_AVERAGE_QUALITY;
+            agility += KatanaSwordAverageAgility;
+            quality += KatanaSwordAverageQuality;
         }
 
         public override void Drop() {
