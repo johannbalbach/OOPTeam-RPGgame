@@ -10,7 +10,7 @@
     <Grid>
         <StackPanel Orientation="Vertical" Height="756">
             <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
-                <TextBlock VerticalAlignment="Center">Выбери нацию:</TextBlock>
+                <TextBlock VerticalAlignment="Center">Choose race:</TextBlock>
                 <ComboBox x:Name="chooseComboBox" Height="auto" Margin="5" SelectionChanged="chooseComboBox_SelectionChanged">
                     <ComboBoxItem>
                         <TextBlock Text="Human"/>

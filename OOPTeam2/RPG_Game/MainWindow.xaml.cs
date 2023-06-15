@@ -35,9 +35,10 @@ namespace OOPTeam2
         private static Drawer drawer;
         private static Map map;
         private static InputDispatcher inputDispatcher;
+        private static Race race;
 
         GameCharacterBuilder player = new GameCharacterBuilder()
-            .WithPosition(new Position(0, 0))
+            .WithPosition(new Position(100, 0))
             .WithName("player")
             .WithAge(0)
             .WithSkinId("HumanCharacter")
@@ -50,16 +51,16 @@ namespace OOPTeam2
             MainLogic mainLogic = new MainLogic();
             map = new Map(player.Build(), Race.HumanCharacter);
             drawer = new Drawer(map);
-            inputDispatcher = new InputDispatcher(map.player);
+            inputDispatcher = new InputDispatcher(map, drawer);
 
             CreateRenderWindow();
         }
 
         private void createMap()
         {
-            map = new Map(player.Build(), Race.HumanCharacter);
+            map = new Map(player.Build(), race);
             drawer = new Drawer(map);
-            inputDispatcher = new InputDispatcher(map.player);
+            inputDispatcher = new InputDispatcher(map, drawer);
             CreateRenderWindow();
             Task.Run(Loop);
         }
@@ -112,14 +113,28 @@ namespace OOPTeam2
             switch (chooseComboBox.SelectedIndex)
             {
                 case 0:
+                    race = Race.HumanCharacter;
+                    player = player.WithSkinId("HumanCharacter");
                     break;
                 case 1:
+                    race = Race.AlienCharacter;
+                    player = player.WithSkinId("AlienCharacter");
                     break;
                 case 2:
+                    race = Race.ElvesCharacter;
+                    player = player.WithSkinId("ElfCharacter");
                     break;
-                case 3: 
+                case 3:
+                    race = Race.GnomeCharacter;
+                    player = player.WithSkinId("GnomeCharacter");
                     break;
                 case 4:
+                    race = Race.OrksCharacter;
+                    player = player.WithSkinId("OrkCharacter");
+                    break;
+                case 5:
+                    race = Race.WandCharacter;
+                    player = player.WithSkinId("WandCharacter");
                     break;
                 default:
                     break;

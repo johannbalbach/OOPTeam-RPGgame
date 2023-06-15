@@ -8,6 +8,7 @@ using OOPTeam2.RPG_Game.Models.Wands;
 namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
     public class GameCharacter: Character {
         private const int TIME_SLEEP = 3000;
+        public Direction moveDirection { get; set; }
         public int healthRegeneration { get; set; }
         public int receivedDamage { get; set; }
         public int playTime { get; set; }
@@ -49,6 +50,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         
         public override void Move(Position position, Direction direction) {
             Step(position, direction);
+            moveDirection = direction;
         }
         
         private void RestoreHealth() {
@@ -68,7 +70,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
             NormalizeLifePoint();
            
         }
-        
+            
         public override void Hit(Potion potion) {
             if (potion is HealingPotion) {
                 lifePoint += ((HealingPotion) potion).valueHealing;

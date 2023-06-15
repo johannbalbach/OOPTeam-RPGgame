@@ -20,6 +20,7 @@ namespace OOPTeam2.RPG_Game.View
         private RenderWindow window;
         private Map map;
 
+
         public Drawer(Map map)
         {
             this.map = map;
@@ -45,20 +46,32 @@ namespace OOPTeam2.RPG_Game.View
             return sprite;
         }
 
+        private Sprite rotateCharacter(Sprite sprite, Direction direction)
+        {
+            if (direction == Direction.Right)
+            {
+                sprite.Scale = new Vector2f(-1, 1);
+                sprite.Position = new Vector2f(sprite.Position.X + sprite.Texture.Size.X, sprite.Position.Y);
+            }
+            return sprite;
+        }
+
         public void Draw()
         {
             updateViewPos();
 
-            Sprite playerCharacterSprite = pictureProvider.getSprite(map.player.managedCharacter.skinId);
+            Sprite playerCharacterSprite = new Sprite( pictureProvider.getSprite(map.player.managedCharacter.skinId));
             playerCharacterSprite.Position = new Vector2f(map.player.managedCharacter.position.x, map.player.managedCharacter.position.y);
             playerCharacterSprite = coordsToSystem(playerCharacterSprite);
+            playerCharacterSprite = rotateCharacter(playerCharacterSprite, map.player.managedCharacter.moveDirection);
             window.Draw(playerCharacterSprite);
 
             foreach (GameCharacter character in map.aliveObjects.Enemies)
             {
-                Sprite sprite = pictureProvider.getSprite(character.skinId);
+                Sprite sprite = new Sprite( pictureProvider.getSprite(character.skinId));
                 sprite.Position = new Vector2f(character.position.x, character.position.y);
                 sprite = coordsToSystem(sprite);
+                sprite = rotateCharacter(sprite, character.moveDirection);
                 window.Draw(sprite);
             }
 
