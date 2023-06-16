@@ -38,7 +38,6 @@ namespace OOPTeam2.RPG_Game.Services
 
                     //DirtyTalk();
                 }
-
             }
 
         }

@@ -15,6 +15,7 @@ namespace OOPTeam2.RPG_Game.Services
         public const int talkProbability = 10;
         public const int talkMax = 100;
         public const int avatarDistance = 70;
+        public const int INITIAL_HEALTH = 100;
 
         public static bool InDistance(Position player, Position managedCharacter)
         {

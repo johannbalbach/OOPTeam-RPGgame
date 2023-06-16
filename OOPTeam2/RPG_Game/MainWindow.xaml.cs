@@ -43,6 +43,7 @@ namespace OOPTeam2
             .WithName("player")
             .WithAge(0)
             .WithSkinId("HumanCharacter")
+            .WithCharacterRace(CharacterRace.Human)
             .WithIsEnemy(false)
             .WithInventory(new RPG_Game.Models.Inventory())
             .WithWeapon(new LevithanSword())

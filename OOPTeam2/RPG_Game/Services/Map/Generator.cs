@@ -114,7 +114,7 @@ namespace OOPTeam2.RPG_Game.Services
                 .WithCharacterRace(race)
                 .WithInventory(new Inventory())
                 .WithWeapon(currentWeapon)
-                .WithLifePoint(10);
+                .WithLifePoint(config.INITIAL_HEALTH);
 
             return enemy.Build();
         }
