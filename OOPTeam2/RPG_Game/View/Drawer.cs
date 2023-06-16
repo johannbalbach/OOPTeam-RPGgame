@@ -16,7 +16,7 @@ namespace OOPTeam2.RPG_Game.View
 {
     internal class Drawer
     {
-        private PictureProvider pictureProvider = new PictureProvider();
+        private PictureProvider pictureProvider = new PictureProvider();    
         private RenderWindow window;
         private Map map;
 
