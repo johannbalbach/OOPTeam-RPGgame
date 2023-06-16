@@ -10,12 +10,12 @@ namespace OOPTeam2.RPG_Game.Services.Map
 {
     internal class WorldGenerator
     {
-        private int worldSizeX = 100;
-        private int worldSizeY = 100;
+        private int worldSizeX = 300;
+        private int worldSizeY = 21;
         private int tileSize = 16;
 
-        private StaticObject staticObjects;
-        public WorldGenerator(StaticObject staticObjects)
+        private List<StaticObject> staticObjects;
+        public WorldGenerator(List<StaticObject> staticObjects)
         {
             this.staticObjects = staticObjects;
         }
@@ -27,8 +27,8 @@ namespace OOPTeam2.RPG_Game.Services.Map
                 for (int j = 0; j < worldSizeY; j++)
                 {
                     Stone stone = new Stone();
-                    stone.position = new Position(i * tileSize, j * tileSize);
-                    //staticObjects.stones.Add(stone);
+                    stone.Position = new Position(i * tileSize - (worldSizeX * tileSize)/2, j * tileSize);
+                    staticObjects.Add(stone);
                 }
             }
         }
