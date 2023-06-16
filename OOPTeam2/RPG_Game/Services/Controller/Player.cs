@@ -1,54 +1,39 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 using OOPTeam2.RPG_Game.Models.Characters;
+using OOPTeam2.RPG_Game.Services.Controller;
 
 namespace OOPTeam2.RPG_Game.Services
 {
-    public class Player
+    public class Player : GameCharacterController
     {
-        public GameCharacter managedCharacter { get; private set; }
-        public Race race { get; private set; }
-
         public Player(GameCharacter character, Race race)
         {
-            this.managedCharacter = character;
+            managedCharacter = character;
             this.race = race;
         }
-        private void DirtyTalk(int probability = config.talkProbability){
-            SingletonRand randomSingleton = SingletonRand.getInstance();
-            if (probability <= randomSingleton.Next(config.talkMax))
-            {
-                managedCharacter.Talk();
-            }
-        }
 
-        public void Update(GameCharacter enemy)
+        public override void Update(GameCharacter enemy)
         {
             if (config.InDistance(enemy.position, managedCharacter.position)){
                 //enemy.Hit();
-                this.DirtyTalk();
+                DirtyTalk();
             }
             else{
-                //Console.WriteLine("movePlayer");
-                this.DirtyTalk(config.talkProbability /10);
+                DirtyTalk(config.talkProbability /10);
             }
         }
         public void MoveLeft()
         {
             if (true)//границы карты
             {
-                managedCharacter.Move(managedCharacter.position, Direction.Left);
+                managedCharacter.move("left");
             }
         }
         public void MoveRight()
         {
             if (true)//границы карты
             {
-                managedCharacter.Move(managedCharacter.position, Direction.Right);
+                managedCharacter.move("right");
             }
         }
 

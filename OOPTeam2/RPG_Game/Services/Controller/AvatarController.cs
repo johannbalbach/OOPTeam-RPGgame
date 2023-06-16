@@ -16,7 +16,8 @@ namespace OOPTeam2.RPG_Game.Services
     {
         public Avatar avatar { get; private set; }
         private int angle = 0;
-        private int k = 1;
+        private const int healChance = 3;
+        private const int chanceMax = 10;
 
         public AvatarController(ref Avatar avatar)
         {
@@ -26,45 +27,30 @@ namespace OOPTeam2.RPG_Game.Services
         {
             avatar.position = NextPosition(player.position);
         }
-        public void Onclick(GameCharacter player)
+        public void OnBottom(GameCharacter player)
         {
-            player.lifePoint = 100;///INIT_HEALTH
+            SingletonRand rnd = SingletonRand.getInstance();
+
+            if (rnd.Next(chanceMax) <= healChance)
+            {
+                player.lifePoint = 100;//INIT_HEALTH
+            }
+            avatar.position = NextPosition(player.position);
         }
         private double Distance(Position a, Position b)
         {
             return Math.Sqrt(Math.Pow(b.x - a.x, 2) + Math.Pow(b.y - a.y, 2));  
         }
+
         private Position NextPosition(Position playerPosition)
         {
-            /*double radius = Distance(playerPosition, avatar.position);
-            double angle = Math.Atan2(playerPosition.y - avatar.position.y, playerPosition.x - avatar.position.x);*/
-
-            /*            if (angle > 135)
-            {
-                Console.WriteLine("1" + angle);
-                k = k * (-1);
-                angle += k;
-            }
-            else if (angle < 45)
-            {
-                Console.WriteLine("2"+ angle);
-                k = k * (-1);
-                angle += k;
-            }
-            else
-            {
-                Console.WriteLine("3" + angle);
-                angle += k;
-            }*/
-
             double radius = config.avatarDistance;
             angle++;
 
-            double x = playerPosition.x + (radius * Math.Cos(angle));
-            double y = playerPosition.y + (radius * Math.Sin(angle));
+            double x = playerPosition.x + (radius * Math.Cos(angle*180/Math.PI));
+            double y = playerPosition.y + (radius * Math.Sin(angle*180/Math.PI));
 
             return new Position(((int)x), ((int)y));
         }
-        private void Onclick() { }
     }
 }

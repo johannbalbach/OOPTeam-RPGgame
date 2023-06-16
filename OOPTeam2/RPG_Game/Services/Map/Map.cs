@@ -11,7 +11,7 @@ namespace OOPTeam2.RPG_Game.Services
     public class Map
     {
         public AliveObject aliveObjects { get; private set; } = new AliveObject();
-        public StaticObject staticObjects { get; private set; } = new StaticObject();
+        public List<StaticObject> staticObjects { get; private set; } = new List<StaticObject>();
         public Player player { get; private set; }
         public AvatarController avatarController { get; private set; }
 
@@ -25,7 +25,7 @@ namespace OOPTeam2.RPG_Game.Services
             //���������� �����, ������� ��������� AliveObjects � StaticObjects
 
             player = new Player(PlayerCharacter, race);
-            Avatar avatar = new Avatar(); // Avatar("avatar", Position(PlayerCharacter.position.x, PlayerCharacter.position.y + config.avatarDistance))
+            Avatar avatar = new Avatar();
             avatar.position = new Position(100, 130);
             avatarController = new AvatarController(ref avatar);
         }
