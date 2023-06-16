@@ -12,23 +12,21 @@ namespace OOPTeam2.RPG_Game.View
 {
     internal class InputDispatcher
     {
-        private Map map;
-        private Drawer drawer;
-        public InputDispatcher(Map map, Drawer drawer)
+        private Player player;
+        public InputDispatcher(Player player)
         {
-            this.map = map;
-            this.drawer = drawer;
+            this.player = player;
         }
 
         public void DispathcInput()
         {
             if (Keyboard.IsKeyPressed(Keyboard.Key.D) || Keyboard.IsKeyPressed(Keyboard.Key.Right))
             {
-                map.player.MoveRight();
+                player.MoveRight();
             }
             else if (Keyboard.IsKeyPressed(Keyboard.Key.A) || Keyboard.IsKeyPressed(Keyboard.Key.Left))
             {
-                map.player.MoveLeft();
+                player.MoveLeft();
             }
         }
     }

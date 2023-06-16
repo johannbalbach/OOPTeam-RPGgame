@@ -16,10 +16,9 @@ namespace OOPTeam2.RPG_Game.View
 {
     internal class Drawer
     {
-        private PictureProvider pictureProvider = new PictureProvider();
+        private PictureProvider pictureProvider = new PictureProvider();    
         private RenderWindow window;
         private Map map;
-
 
         public Drawer(Map map)
         {
@@ -84,7 +83,6 @@ namespace OOPTeam2.RPG_Game.View
             configureCharacterSprite(playerCharacterSprite, playerWeaponSprite, map.player.managedCharacter);
             window.Draw(playerWeaponSprite);
             window.Draw(playerCharacterSprite);
-
 
             foreach (GameCharacter character in map.aliveObjects.enemies)
             {
