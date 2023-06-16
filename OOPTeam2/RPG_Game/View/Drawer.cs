@@ -1,15 +1,7 @@
-﻿using OOPTeam2.RPG_Game.Services;
-using SFML.Graphics;
+﻿using SFML.Graphics;
 using SFML.System;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
 using OOPTeam2.RPG_Game.Models.Characters;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
-using OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters;
 using OOPTeam2.RPG_Game.Services.Map;
 
 namespace OOPTeam2.RPG_Game.View
@@ -80,6 +72,7 @@ namespace OOPTeam2.RPG_Game.View
 
             Sprite playerCharacterSprite = new Sprite(pictureProvider.getSprite(map.player.managedCharacter.SkinId));
             Sprite playerWeaponSprite = new Sprite(pictureProvider.getSprite(map.player.managedCharacter.Inventory.Weapons.CurrentWeapon.SkinId));
+
             configureCharacterSprite(playerCharacterSprite, playerWeaponSprite, map.player.managedCharacter);
             window.Draw(playerWeaponSprite);
             window.Draw(playerCharacterSprite);
@@ -88,6 +81,7 @@ namespace OOPTeam2.RPG_Game.View
             {
                 Sprite characterSprite = new Sprite(pictureProvider.getSprite(character.SkinId));
                 Sprite weaponSprite = new Sprite(pictureProvider.getSprite(character.Inventory.Weapons.CurrentWeapon.SkinId));
+
                 configureCharacterSprite(characterSprite, weaponSprite, character);
                 window.Draw(weaponSprite);
                 window.Draw(characterSprite);

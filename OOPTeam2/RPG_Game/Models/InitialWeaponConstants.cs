@@ -1,5 +1,5 @@
 namespace OOPTeam2.RPG_Game.Models {
-    public class InitialWeaponConstants {
+    public static class InitialWeaponConstants {
         public const double MaceSwordWeight = 6.3;
         public const double MaceSwordAgility = 0.3;
         public const int MaceSwordBonusCoefficient = 3;

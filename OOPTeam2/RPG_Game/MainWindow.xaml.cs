@@ -1,6 +1,5 @@
 ﻿using OOPTeam2.RPG_Game;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
-using OOPTeam2.RPG_Game.Services;
 using OOPTeam2.RPG_Game.View;
 using SFML.Graphics;
 using SFML.Window;
@@ -11,8 +10,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 using OOPTeam2.RPG_Game.Models.Characters;
-using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
-using OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters;
 using OOPTeam2.RPG_Game.Services.Map;
 using OOPTeam2.RPG_Game.Models.Swords;
 using OOPTeam2.RPG_Game.Models.Wands;
@@ -90,14 +87,8 @@ namespace OOPTeam2
 
             ContextSettings context = new ContextSettings { DepthBits = 24 };
             renderWindow = new RenderWindow(DrawSurface.Handle, context);
-            renderWindow.MouseButtonPressed += RenderWindow_MouseButtonPressed;
             renderWindow.SetActive(true);
             drawer.SetRenderWindow(renderWindow);
-        }
-
-        private void RenderWindow_MouseButtonPressed(object sender, SFML.Window.MouseButtonEventArgs e)
-        {
-
         }
 
         private void DrawSurface_SizeChanged(object sender, EventArgs e)
