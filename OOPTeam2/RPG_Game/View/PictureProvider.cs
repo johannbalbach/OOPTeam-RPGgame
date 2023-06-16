@@ -31,6 +31,10 @@ namespace OOPTeam2.RPG_Game.View
             sprites.Add("AlienWand", new Sprite(new Texture("Assets/AlienWandTexture.png")));
             sprites.Add("ElvenWand", new Sprite(new Texture("Assets/ElvenWandTexture.png")));
             sprites.Add("WizardWand", new Sprite(new Texture("Assets/WizardWandTexture.png")));
+
+            sprites.Add("EpicPotion", new Sprite(new Texture("Assets/EpicPotionTexture.png")));
+            sprites.Add("HealingPotion", new Sprite(new Texture("Assets/HealingPotionTexture.png")));
+            sprites.Add("ToxicPotion", new Sprite(new Texture("Assets/ToxicPotionTexture.png")));
         }
 
         public Sprite getSprite(String key)

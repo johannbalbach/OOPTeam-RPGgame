@@ -18,7 +18,7 @@ namespace OOPTeam2.RPG_Game.Services.Map
         private Generator generator = new Generator();
         private List<Bot> bots = new List<Bot>();
         private GameCharacter closestEnemy = new GameCharacter();
-        
+        private WorldGenerator worldGenerator;
 
         public Map(GameCharacter PlayerCharacter, Race race)
         {
@@ -27,7 +27,7 @@ namespace OOPTeam2.RPG_Game.Services.Map
             avatar.Position = new Position(100, 130);
             avatarController = new AvatarController(ref avatar);
 
-            WorldGenerator worldGenerator = new WorldGenerator(staticObjects);
+            worldGenerator = new WorldGenerator(staticObjects);
             worldGenerator.CreateWorld();
         }
 

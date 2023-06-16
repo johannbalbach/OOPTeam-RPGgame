@@ -3,29 +3,20 @@ using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 using OOPTeam2.RPG_Game.Services;
 using OOPTeam2.RPG_Game.View;
 using SFML.Graphics;
-using SFML.System;
 using SFML.Window;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 using OOPTeam2.RPG_Game.Models.Characters;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 using OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters;
 using OOPTeam2.RPG_Game.Services.Map;
 using OOPTeam2.RPG_Game.Models.Swords;
+using OOPTeam2.RPG_Game.Models.Wands;
+using OOPTeam2.RPG_Game.Models.Potions;
 
 namespace OOPTeam2
 {
@@ -37,6 +28,7 @@ namespace OOPTeam2
         private static Map map;
         private static InputDispatcher inputDispatcher;
         private static Race race;
+        private static bool windowIsOpen = true;
 
         GameCharacterBuilder player = new GameCharacterBuilder()
             .WithPosition(new Position(100, 0))
@@ -56,7 +48,7 @@ namespace OOPTeam2
             MainLogic mainLogic = new MainLogic();
             map = new Map(player.Build(), Race.HumanCharacter);
             drawer = new Drawer(map);
-            inputDispatcher = new InputDispatcher(map, drawer);
+            inputDispatcher = new InputDispatcher(map.player);
 
             CreateRenderWindow();
         }
@@ -65,14 +57,14 @@ namespace OOPTeam2
         {
             map = new Map(player.Build(), race);
             drawer = new Drawer(map);
-            inputDispatcher = new InputDispatcher(map, drawer);
+            inputDispatcher = new InputDispatcher(map.player);
             CreateRenderWindow();
             Task.Run(Loop);
         }
 
         private void Loop()
         {
-            while (true)
+            while (windowIsOpen)
             {
                 Dispatcher.Invoke(() =>
                 {
@@ -119,27 +111,39 @@ namespace OOPTeam2
             {
                 case 0:
                     race = Race.HumanCharacter;
-                    player = player.WithSkinId("HumanCharacter");
+                    player = player.WithSkinId("HumanCharacter")
+                                   .WithCharacterRace(CharacterRace.Human)
+                                   .WithWeapon(new LevithanSword());
                     break;
                 case 1:
                     race = Race.AlienCharacter;
-                    player = player.WithSkinId("AlienCharacter");
+                    player = player.WithSkinId("AlienCharacter")
+                                   .WithCharacterRace(CharacterRace.Alien)
+                                   .WithWeapon(new AlienWand());
                     break;
                 case 2:
                     race = Race.ElvesCharacter;
-                    player = player.WithSkinId("ElfCharacter");
+                    player = player.WithSkinId("ElfCharacter")
+                                   .WithCharacterRace(CharacterRace.Elf)
+                                   .WithWeapon(new HealingPotion());
                     break;
                 case 3:
                     race = Race.GnomeCharacter;
-                    player = player.WithSkinId("GnomeCharacter");
+                    player = player.WithSkinId("GnomeCharacter")
+                                   .WithCharacterRace(CharacterRace.Gnome)
+                                   .WithWeapon(new EpicPotion());
                     break;
                 case 4:
                     race = Race.OrksCharacter;
-                    player = player.WithSkinId("OrkCharacter");
+                    player = player.WithSkinId("OrkCharacter")
+                                   .WithCharacterRace(CharacterRace.Ork)
+                                   .WithWeapon(new MaceSword());
                     break;
                 case 5:
                     race = Race.WandCharacter;
-                    player = player.WithSkinId("WandCharacter");
+                    player = player.WithSkinId("WandCharacter")
+                                   .WithCharacterRace(CharacterRace.Wizard)
+                                   .WithWeapon(new WizardWand());
                     break;
                 default:
                     break;
@@ -149,7 +153,12 @@ namespace OOPTeam2
         private void createButton_Click(object sender, RoutedEventArgs e)
         {
             createMap();
-            createButton.IsEnabled = false; 
+            createButton.IsEnabled = false;
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            windowIsOpen = false;
         }
     }
 }
