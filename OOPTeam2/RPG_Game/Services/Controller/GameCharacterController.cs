@@ -1,9 +1,4 @@
 ﻿using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OOPTeam2.RPG_Game.Services.Controller
 {
@@ -21,7 +16,6 @@ namespace OOPTeam2.RPG_Game.Services.Controller
                 managedCharacter.Talk();
             }
         }
-        public virtual void Update(GameCharacter character, List<Bot> bots) { }
         public virtual void Update(GameCharacter character) { }
     }
 }

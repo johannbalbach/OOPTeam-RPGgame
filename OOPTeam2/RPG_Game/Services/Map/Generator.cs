@@ -1,8 +1,5 @@
-﻿using System;
-using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
+﻿using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 using OOPTeam2.RPG_Game.Models.Characters;
-using System.Runtime.InteropServices;
-using System.Xml.Linq;
 using OOPTeam2.RPG_Game.Models;
 using OOPTeam2.RPG_Game.Models.Swords;
 using OOPTeam2.RPG_Game.Models.Wands;

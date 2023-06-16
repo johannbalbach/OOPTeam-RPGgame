@@ -1,7 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 using OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters;
 using OOPTeam2.RPG_Game.Models.Characters;
@@ -42,7 +39,7 @@ namespace OOPTeam2.RPG_Game.Services.Map
             for (int i = 0; i < bots.Count; i++)
             {
                 Position playerPos = player.managedCharacter.Position;
-                bots[i].Update(player.managedCharacter, bots);
+                bots[i].Update(player.managedCharacter);
                 GameCharacter closestEnemy = new GameCharacter();
 
                 if ((playerPos.X - config.playerSize - config.attackDistance <= bots[i].managedCharacter.Position.X + config.playerSize)

@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Media.Media3D;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 using OOPTeam2.RPG_Game.Models.Characters;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters;
 
 namespace OOPTeam2.RPG_Game.Services

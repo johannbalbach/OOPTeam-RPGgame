@@ -23,17 +23,11 @@ namespace OOPTeam2.RPG_Game.Services
         }
         public void MoveLeft()
         {
-            if (true)
-            {
-                managedCharacter.Move(managedCharacter.Position, Direction.Left);
-            }
+             managedCharacter.Move(managedCharacter.Position, Direction.Left);
         }
         public void MoveRight()
         {
-            if (true)
-            {
-                managedCharacter.Move(managedCharacter.Position, Direction.Right);
-            }
+             managedCharacter.Move(managedCharacter.Position, Direction.Right);
         }
 
     }

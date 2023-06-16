@@ -1,9 +1,4 @@
 ﻿using OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OOPTeam2.RPG_Game.Services.Controller
 {
@@ -11,6 +6,7 @@ namespace OOPTeam2.RPG_Game.Services.Controller
     {
         public Worm worm { get; protected set; }
 
+        private int EarthLevel = -10;
         public WormController(Worm worm)
         {
             this.worm = worm;
@@ -18,7 +14,7 @@ namespace OOPTeam2.RPG_Game.Services.Controller
 
         protected override void turnLeft()
         {
-            if (currentIndex != 0) //проверка на уровень земли
+            if (currentIndex != 0 && worm.Position.Y < EarthLevel) //проверка на уровень земли
             {
                 --currentIndex;
             }
@@ -29,7 +25,7 @@ namespace OOPTeam2.RPG_Game.Services.Controller
         }
         protected override void turnRight()
         {
-            if (currentIndex != 7) //проверка на уровень земли
+            if (currentIndex != 7 && worm.Position.Y < EarthLevel) //проверка на уровень земли
             {
                 ++currentIndex;
             }
