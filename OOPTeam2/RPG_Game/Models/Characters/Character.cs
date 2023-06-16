@@ -1,5 +1,4 @@
 using OOPTeam2.RPG_Game.Models.Foods;
-using OOPTeam2.RPG_Game.Models.Potions;
 
 namespace OOPTeam2.RPG_Game.Models.Characters {
     public abstract class Character {
