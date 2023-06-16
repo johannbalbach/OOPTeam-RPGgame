@@ -17,16 +17,16 @@ namespace OOPTeam2.RPG_Game.Models.Characters {
         protected void Step(Position currentPosition, Direction direction) {
             switch (direction) {
                 case Direction.Left:
-                    currentPosition.x -= 1;
+                    currentPosition.X -= 1;
                     break;
                 case Direction.Right:
-                    currentPosition.x += 1;
+                    currentPosition.X += 1;
                     break;
                 case Direction.Top:
-                    currentPosition.y += 1;
+                    currentPosition.Y += 1;
                     break;
                 case Direction.Down:
-                    currentPosition.y -= 1;
+                    currentPosition.Y -= 1;
                     break;
             }
         }
