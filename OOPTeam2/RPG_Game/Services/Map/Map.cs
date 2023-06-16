@@ -27,8 +27,8 @@ namespace OOPTeam2.RPG_Game.Services.Map
             avatar.Position = new Position(100, 130);
             avatarController = new AvatarController(ref avatar);
 
-            WorldGenerator worldGenerator = new WorldGenerator(staticObjects);
-            worldGenerator.CreateWorld();
+            //WorldGenerator worldGenerator = new WorldGenerator(staticObjects);
+            //worldGenerator.CreateWorld();
         }
 
         public void Update()

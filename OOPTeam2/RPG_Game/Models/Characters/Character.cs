@@ -1,4 +1,5 @@
 using OOPTeam2.RPG_Game.Models.Foods;
+using OOPTeam2.RPG_Game.Models.Potions;
 
 namespace OOPTeam2.RPG_Game.Models.Characters {
     public abstract class Character {
@@ -8,7 +9,9 @@ namespace OOPTeam2.RPG_Game.Models.Characters {
         public int LifePoint { get; set; }
         public string SkinId { get; set; }
         public CharacterReply Text { get; set; }
-        
+        public Direction MoveDirection { get; set; }
+
+
         protected const int InitialHealth = 100;
         public abstract string Talk();
         public abstract void Sleep();
@@ -34,6 +37,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters {
         
         public void Move(Position newPosition, Direction direction) {
             Step(newPosition, direction);
+            MoveDirection = direction;
         }
         
         public void NormalizeLifePoint() {

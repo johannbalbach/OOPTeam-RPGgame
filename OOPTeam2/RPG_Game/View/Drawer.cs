@@ -60,32 +60,32 @@ namespace OOPTeam2.RPG_Game.View
 
         private void configureCharacterSprite(Sprite characterSprite, Sprite weaponSprite, GameCharacter character)
         {
-            characterSprite.Position = new Vector2f(character.position.x, character.position.y);
-            weaponSprite.Position = new Vector2f(character.position.x,
-                character.position.y - weaponSprite.Texture.Size.Y - characterSprite.Texture.Size.Y / 2 + 10);
+            characterSprite.Position = new Vector2f(character.Position.X, character.Position.Y);
+            weaponSprite.Position = new Vector2f(character.Position.X,
+                character.Position.Y - weaponSprite.Texture.Size.Y - characterSprite.Texture.Size.Y / 2 + 10);
 
             coordsToSystem(characterSprite);
-            applyDirectionToSprite(characterSprite, weaponSprite, character.moveDirection); 
+            applyDirectionToSprite(characterSprite, weaponSprite, character.MoveDirection); 
         }
 
         public void Draw()
         {
             updateViewPos();
 
-            Sprite playerCharacterSprite = pictureProvider.getSprite(map.player.managedCharacter.skinId);
-            playerCharacterSprite.Position = new Vector2f(map.player.managedCharacter.position.x, map.player.managedCharacter.position.y);
+            Sprite playerCharacterSprite = pictureProvider.getSprite(map.player.managedCharacter.SkinId);
+            playerCharacterSprite.Position = new Vector2f(map.player.managedCharacter.Position.X, map.player.managedCharacter.Position.Y);
             window.Draw(playerCharacterSprite);
 
 
             foreach (GameCharacter character in map.aliveObjects.Enemies)
             {
-                Sprite sprite = pictureProvider.getSprite(character.skinId);
-                sprite.Position = new Vector2f(character.position.x, character.position.y);
+                Sprite sprite = pictureProvider.getSprite(character.SkinId);
+                sprite.Position = new Vector2f(character.Position.X, character.Position.Y);
                 window.Draw(sprite);
             }
 
-            Sprite avatarSprite = pictureProvider.getSprite(map.avatarController.avatar.skinId);
-            avatarSprite.Position = new Vector2f(map.avatarController.avatar.position.x, map.avatarController.avatar.position.y);
+            Sprite avatarSprite = pictureProvider.getSprite(map.avatarController.avatar.SkinId);
+            avatarSprite.Position = new Vector2f(map.avatarController.avatar.Position.X, map.avatarController.avatar.Position.Y);
             window.Draw(avatarSprite);
         }
     }
