@@ -94,9 +94,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="RPG_Game\MainLogic.cs" />
+    <Compile Include="RPG_Game\Services\Controller\BackgroundCharacterController.cs" />
+    <Compile Include="RPG_Game\Services\Controller\ButterflyController.cs" />
+    <Compile Include="RPG_Game\Services\Controller\GameCharacterController.cs" />
     <Compile Include="RPG_Game\Services\Map\AliveObject.cs" />
     <Compile Include="RPG_Game\Services\Controller\Bot.cs" />
     <Compile Include="RPG_Game\Services\Controller\AvatarController.cs" />
+    <Compile Include="RPG_Game\Services\Map\defaultObjects\StaticObject.cs" />
     <Compile Include="RPG_Game\Services\Race.cs" />
     <Compile Include="RPG_Game\Services\config.cs" />
     <Compile Include="RPG_Game\Services\Random.cs" />
@@ -106,7 +110,7 @@
     <Compile Include="RPG_Game\Services\Map\defaultObjects\Food.cs" />
     <Compile Include="RPG_Game\Services\Map\defaultObjects\Stone.cs" />
     <Compile Include="RPG_Game\Services\Controller\Player.cs" />
-    <Compile Include="RPG_Game\Services\Map\StaticObject.cs" />
+    <Compile Include="RPG_Game\Services\Controller\WormController.cs" />
     <Compile Include="RPG_Game\View\Drawer.cs" />
     <Compile Include="RPG_Game\View\InputDispatcher.cs" />
     <Compile Include="RPG_Game\View\PictureProvider.cs" />

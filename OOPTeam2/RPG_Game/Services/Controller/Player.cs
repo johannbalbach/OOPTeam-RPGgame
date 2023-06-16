@@ -26,14 +26,14 @@ namespace OOPTeam2.RPG_Game.Services
         {
             if (true)//границы карты
             {
-                managedCharacter.move("left");
+                managedCharacter.Move(managedCharacter.position, Direction.Left);
             }
         }
         public void MoveRight()
         {
             if (true)//границы карты
             {
-                managedCharacter.move("right");
+                managedCharacter.Move(managedCharacter.position, Direction.Right);
             }
         }
 
