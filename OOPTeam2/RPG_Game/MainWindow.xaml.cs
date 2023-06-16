@@ -1,10 +1,15 @@
 ﻿using OOPTeam2.RPG_Game;
+using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
+using OOPTeam2.RPG_Game.Services;
+using OOPTeam2.RPG_Game.View;
 using SFML.Graphics;
+using SFML.System;
 using SFML.Window;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,44 +21,68 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-
-using Color = SFML.Graphics.Color;
+using OOPTeam2.RPG_Game.Models.Characters;
+using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
+using OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters;
+using OOPTeam2.RPG_Game.Services.Map;
 
 namespace OOPTeam2
 {
 
     public partial class MainWindow : System.Windows.Window
     {
-        static RenderWindow renderWindow;
-        private readonly CircleShape circle;
-        private readonly DispatcherTimer timer;
+        private static RenderWindow renderWindow;
+        private static Drawer drawer;
+        private static Map map;
+        private static InputDispatcher inputDispatcher;
+        private static Race race;
+
+        GameCharacterBuilder player = new GameCharacterBuilder()
+            .WithPosition(new Position(100, 0))
+            .WithName("player")
+            .WithAge(0)
+            .WithSkinId("HumanCharacter")
+            .WithIsEnemy(false);
 
         public MainWindow()
         {
             InitializeComponent();
 
             MainLogic mainLogic = new MainLogic();
+            map = new Map(player.Build(), Race.HumanCharacter);
+            drawer = new Drawer(map);
+            inputDispatcher = new InputDispatcher(map, drawer);
 
-            circle = new CircleShape(20) { FillColor = SFML.Graphics.Color.Magenta };
             CreateRenderWindow();
+        }
 
         private void createMap()
         {
-            map = new Map(new GameCharacter(20, "Player"), Race.HumanCharacter);
+            map = new Map(player.Build(), race);
             drawer = new Drawer(map);
-            inputDispatcher = new InputDispatcher(map.player);
+            inputDispatcher = new InputDispatcher(map, drawer);
             CreateRenderWindow();
             Task.Run(Loop);
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        private void Loop()
         {
-            renderWindow.DispatchEvents();
+            while (true)
+            {
+                Dispatcher.Invoke(() =>
+                {
+                    renderWindow.DispatchEvents();
+                    renderWindow.Clear(SFML.Graphics.Color.Black);
+                    inputDispatcher.DispathcInput();
+                    map.Update();
+                    drawer.Draw();
+                    renderWindow.Display();
+                });
 
-            renderWindow.Clear(SFML.Graphics.Color.Black);
-            renderWindow.Draw(circle);
-            renderWindow.Display();
+                Thread.Sleep(16);
+            }
         }
+
         private void CreateRenderWindow()
         {
             if (renderWindow != null)
@@ -66,6 +95,12 @@ namespace OOPTeam2
             renderWindow = new RenderWindow(DrawSurface.Handle, context);
             renderWindow.MouseButtonPressed += RenderWindow_MouseButtonPressed;
             renderWindow.SetActive(true);
+            drawer.SetRenderWindow(renderWindow);
+        }
+
+        private void RenderWindow_MouseButtonPressed(object sender, SFML.Window.MouseButtonEventArgs e)
+        {
+
         }
 
         private void DrawSurface_SizeChanged(object sender, EventArgs e)
@@ -73,9 +108,43 @@ namespace OOPTeam2
             CreateRenderWindow();
         }
 
-        private void RenderWindow_MouseButtonPressed(object sender, SFML.Window.MouseButtonEventArgs e)
+        private void chooseComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            circle.FillColor = Color.White;
+            switch (chooseComboBox.SelectedIndex)
+            {
+                case 0:
+                    race = Race.HumanCharacter;
+                    player = player.WithSkinId("HumanCharacter");
+                    break;
+                case 1:
+                    race = Race.AlienCharacter;
+                    player = player.WithSkinId("AlienCharacter");
+                    break;
+                case 2:
+                    race = Race.ElvesCharacter;
+                    player = player.WithSkinId("ElfCharacter");
+                    break;
+                case 3:
+                    race = Race.GnomeCharacter;
+                    player = player.WithSkinId("GnomeCharacter");
+                    break;
+                case 4:
+                    race = Race.OrksCharacter;
+                    player = player.WithSkinId("OrkCharacter");
+                    break;
+                case 5:
+                    race = Race.WandCharacter;
+                    player = player.WithSkinId("WandCharacter");
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void createButton_Click(object sender, RoutedEventArgs e)
+        {
+            createMap();
+            createButton.IsEnabled = false; 
         }
     }
 }

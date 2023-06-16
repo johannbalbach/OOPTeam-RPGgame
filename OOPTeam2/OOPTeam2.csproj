@@ -104,6 +104,7 @@
     <Compile Include="RPG_Game\Services\Controller\Bot.cs" />
     <Compile Include="RPG_Game\Services\Controller\AvatarController.cs" />
     <Compile Include="RPG_Game\Services\Map\defaultObjects\StaticObject.cs" />
+    <Compile Include="RPG_Game\Services\Map\WorldGenerator.cs" />
     <Compile Include="RPG_Game\Services\Race.cs" />
     <Compile Include="RPG_Game\Services\config.cs" />
     <Compile Include="RPG_Game\Services\Random.cs" />
