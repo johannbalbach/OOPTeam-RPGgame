@@ -210,6 +210,22 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\AlienCharacterTexture.png" />
+    <Resource Include="Assets\AlienWandTexture.png" />
+    <Resource Include="Assets\AvatarTexture.png" />
+    <Resource Include="Assets\ElvenWandTexture.png" />
+    <Resource Include="Assets\ElvesCharacterTexture.png" />
+    <Resource Include="Assets\GnomeCharacterTexture.png" />
+    <Resource Include="Assets\HumanCharacterTexture.png" />
+    <Resource Include="Assets\KatanaSwordTexture.png" />
+    <Resource Include="Assets\LevithanSwordTexture.png" />
+    <Resource Include="Assets\MaceSwordTexture.png" />
+    <Resource Include="Assets\OrksCharacterTexture.png" />
+    <Resource Include="Assets\TileDirtTexture.png" />
+    <Resource Include="Assets\WandCharacterTexture.png" />
+    <Resource Include="Assets\WizardWandTexture.png" />
+  </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

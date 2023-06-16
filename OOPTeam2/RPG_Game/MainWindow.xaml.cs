@@ -25,6 +25,7 @@ using OOPTeam2.RPG_Game.Models.Characters;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 using OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters;
 using OOPTeam2.RPG_Game.Services.Map;
+using OOPTeam2.RPG_Game.Models.Swords;
 
 namespace OOPTeam2
 {
@@ -42,7 +43,10 @@ namespace OOPTeam2
             .WithName("player")
             .WithAge(0)
             .WithSkinId("HumanCharacter")
-            .WithIsEnemy(false);
+            .WithIsEnemy(false)
+            .WithInventory(new RPG_Game.Models.Inventory())
+            .WithWeapon(new LevithanSword())
+            .WithLifePoint(1000);
 
         public MainWindow()
         {

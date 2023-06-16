@@ -18,20 +18,29 @@ namespace OOPTeam2.RPG_Game.Services
 
         public override void Update(GameCharacter player)
         {
-            if (config.InDistance(player.Position, managedCharacter.Position)){
-                //player.Hit();
-                //DirtyTalk();
-            }
-            else{
-                if (player.Position.X < managedCharacter.Position.X){
-                    managedCharacter.Move(managedCharacter.Position, Direction.Left);
+            if (managedCharacter.LifePoint != 0) 
+            {
+                if (config.InDistance(player.Position, managedCharacter.Position))
+                {
+                    managedCharacter.Inventory.Weapons.CurrentWeapon.Hit(player, managedCharacter.CharacterRace);
+                    //DirtyTalk();
                 }
-                else{
-                    managedCharacter.Move(managedCharacter.Position, Direction.Right);
+                else
+                {
+                    if (player.Position.X < managedCharacter.Position.X)
+                    {
+                        managedCharacter.Move(managedCharacter.Position, Direction.Left);
+                    }
+                    else
+                    {
+                        managedCharacter.Move(managedCharacter.Position, Direction.Right);
+                    }
+
+                    //DirtyTalk();
                 }
-                
-                //DirtyTalk();
+
             }
+
         }
     }
 }

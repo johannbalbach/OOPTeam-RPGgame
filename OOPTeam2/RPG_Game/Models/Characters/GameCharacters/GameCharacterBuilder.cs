@@ -72,6 +72,11 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
             this.lifePoint = lifePoint;
             return this;
         }
+        public GameCharacterBuilder WithWeapon(Weapon weapon)
+        {
+            inventory.Weapons.CurrentWeapon = weapon;
+            return this;
+        }
 
         public GameCharacter Build() {
             GameCharacter gameCharacter = new GameCharacter();

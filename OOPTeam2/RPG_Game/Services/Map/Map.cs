@@ -23,7 +23,7 @@ namespace OOPTeam2.RPG_Game.Services.Map
         public Map(GameCharacter PlayerCharacter, Race race)
         {
             player = new Player(PlayerCharacter, race);
-            Avatar avatar = new Avatar();
+            Avatar avatar = new Avatar("Avatar");
             avatar.Position = new Position(100, 130);
             avatarController = new AvatarController(ref avatar);
 

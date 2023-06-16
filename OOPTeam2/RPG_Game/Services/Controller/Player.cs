@@ -15,7 +15,7 @@ namespace OOPTeam2.RPG_Game.Services
         public override void Update(GameCharacter enemy)
         {
             if (config.InDistance(enemy.Position, managedCharacter.Position)){
-                //enemy.Hit();
+                managedCharacter.Inventory.Weapons.CurrentWeapon.Hit(enemy, managedCharacter.CharacterRace);
                 //DirtyTalk();
             }
             else{
