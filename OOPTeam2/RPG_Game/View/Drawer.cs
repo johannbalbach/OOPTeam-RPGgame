@@ -72,14 +72,18 @@ namespace OOPTeam2.RPG_Game.View
         {
             updateViewPos();
 
-            //foreach (var tile in map.staticObjects.stones)
-            //{
-            //    Sprite sprite = pictureProvider.getSprite(tile.drawID);
-            //    sprite.Position = new Vector2f(tile.position.x, tile.position.y);
-            //    window.Draw(sprite);
-            //}
+            foreach (var tile in map.staticObjects)
+            {
+                //if (Math.Abs(tile.Position.X - map.player.managedCharacter.Position.X) < 400 &&
+                //    Math.Abs(tile.Position.X - map.player.managedCharacter.Position.X) < 400)
+                //{
+                    Sprite sprite = pictureProvider.getSprite(tile.DrawID);
+                    sprite.Position = new Vector2f(tile.Position.X, tile.Position.Y);
+                    window.Draw(sprite);
+                //}
+            }
 
-            Sprite playerCharacterSprite = new Sprite( pictureProvider.getSprite(map.player.managedCharacter.SkinId));
+            Sprite playerCharacterSprite = new Sprite(pictureProvider.getSprite(map.player.managedCharacter.SkinId));
             Sprite playerWeaponSprite = new Sprite(pictureProvider.getSprite("KatanaSword"));
             configureCharacterSprite(playerCharacterSprite, playerWeaponSprite, map.player.managedCharacter);
             window.Draw(playerWeaponSprite);
@@ -94,10 +98,10 @@ namespace OOPTeam2.RPG_Game.View
                 window.Draw(weaponSprite);
                 window.Draw(characterSprite);
             }
-                
+
             Sprite avatarSprite = pictureProvider.getSprite(map.avatarController.avatar.SkinId);
             avatarSprite.Position = new Vector2f(map.avatarController.avatar.Position.X, map.avatarController.avatar.Position.Y);
-            coordsToSystem(avatarSprite);  
+            coordsToSystem(avatarSprite);
             window.Draw(avatarSprite);
         }
     }

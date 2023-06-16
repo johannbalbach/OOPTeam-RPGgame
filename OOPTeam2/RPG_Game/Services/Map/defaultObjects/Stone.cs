@@ -10,7 +10,7 @@ namespace OOPTeam2.RPG_Game.Services.Objects
     {
         public Stone()
         {
-            drawID = "Stone";
+            DrawID = "Stone";
         }
     }
 }

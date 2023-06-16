@@ -14,7 +14,7 @@ namespace OOPTeam2.RPG_Game.Services
 {
     public class AvatarController
     {
-        public Avatar avatar { get; private set; }
+        public Avatar avatar { get; private set; } 
         private int angle = 0;
         private const int healChance = 3;
         private const int chanceMax = 10;

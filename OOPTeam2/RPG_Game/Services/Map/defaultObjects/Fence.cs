@@ -12,7 +12,7 @@ namespace OOPTeam2.RPG_Game.Services.Objects
     {
         public Fence()
         {
-            drawID = "Fence";
+            DrawID = "Fence";
         }
 
     }

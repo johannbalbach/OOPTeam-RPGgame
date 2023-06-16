@@ -9,7 +9,7 @@ namespace OOPTeam2.RPG_Game.Services
 {
     public class StaticObject
     {
-        public Position position { get; set; }
-        public string drawID { get; protected set; }
+        public Position Position { get; set; }
+        public string DrawID { get; protected set; }
     }
 }
