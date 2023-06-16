@@ -35,7 +35,7 @@ namespace OOPTeam2.RPG_Game.Models {
         public const int HealingPotionVolume = 5;
         public const string HealingPotionDescription = "Cure Elixir";
         public const int HealingPotionValueHealing = 2;
-        public const int HealingPotionDose = 20;
+        public const int HealingPotionDose = 2;
         
         public const int AlienWandImprovePower = 10;
         public const string AlienWandDescription = "Arcane";

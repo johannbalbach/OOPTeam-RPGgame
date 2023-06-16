@@ -20,11 +20,11 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
         
         public HealingPotion() : this (HealingPotionVolume, 
             HealingPotionDescription, HealingPotionValueHealing)  {
-            
         }
 
         public override void Hit(GameCharacter gameCharacter, CharacterRace attackingCharacterRace) {
             gameCharacter.LifePoint += ToDamage(attackingCharacterRace);
+            gameCharacter.NormalizeLifePoint();
         }
 
         public override int ToDamage(CharacterRace characterRace) {

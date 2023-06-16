@@ -2,6 +2,7 @@
 using OOPTeam2.RPG_Game.Models;
 using OOPTeam2.RPG_Game.Models.Characters;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
+using OOPTeam2.RPG_Game.Models.Potions;
 using OOPTeam2.RPG_Game.Models.Swords;
 
 namespace OOPTeam2.RPG_Game {
@@ -26,6 +27,9 @@ namespace OOPTeam2.RPG_Game {
             Console.WriteLine(gameCharacter.LifePoint);
             Weapon sword = new MaceSword();
             sword.Hit(gameCharacter, test.CharacterRace);
+            Console.WriteLine(gameCharacter.LifePoint);
+            Weapon healingPotion = new HealingPotion();
+            healingPotion.Hit(gameCharacter, gameCharacter.CharacterRace);
             Console.WriteLine(gameCharacter.LifePoint);
         }
     }

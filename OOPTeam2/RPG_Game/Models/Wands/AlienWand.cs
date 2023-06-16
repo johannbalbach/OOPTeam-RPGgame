@@ -41,7 +41,7 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
             if (IsAvailable) {
                 IsAvailable = false;
             }
-            // The wand continues to work on Earth
+            // The wand continues to work on Earth after it is dropped
         }
         
         public override void Improve() {

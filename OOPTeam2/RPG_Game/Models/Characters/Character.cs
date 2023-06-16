@@ -35,7 +35,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters {
             Step(newPosition, direction);
         }
         
-        protected void NormalizeLifePoint() {
+        public void NormalizeLifePoint() {
             if (LifePoint > InitialHealth) {
                 LifePoint = InitialHealth;
             } else if (LifePoint < 0) {
