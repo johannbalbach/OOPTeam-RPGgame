@@ -86,7 +86,7 @@ namespace OOPTeam2.RPG_Game.View
             window.Draw(playerCharacterSprite);
 
 
-            foreach (GameCharacter character in map.aliveObjects.Enemies)
+            foreach (GameCharacter character in map.aliveObjects.enemies)
             {
                 Sprite characterSprite = new Sprite(pictureProvider.getSprite(character.SkinId));
                 Sprite weaponSprite = new Sprite(pictureProvider.getSprite(character.Inventory.Weapons.CurrentWeapon.SkinId));

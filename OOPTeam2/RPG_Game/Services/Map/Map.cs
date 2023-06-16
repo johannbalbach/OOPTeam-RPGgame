@@ -17,10 +17,9 @@ namespace OOPTeam2.RPG_Game.Services.Map
 
         private Generator generator = new Generator();
         private List<Bot> bots = new List<Bot>();
-        private GameCharacter closestEnemy = new GameCharacter();
         
 
-        public Map(GameCharacter PlayerCharacter, Race race)
+        public Map(GameCharacter PlayerCharacter, CharacterRace race)
         {
             player = new Player(PlayerCharacter, race);
             Avatar avatar = new Avatar("Avatar");
@@ -33,17 +32,18 @@ namespace OOPTeam2.RPG_Game.Services.Map
 
         public void Update()
         {
-            GameCharacter enemy = generator.SpawnEnemyExcept(player.managedCharacter.Position, player.race);
+            GameCharacter enemy = generator.SpawnEnemyExcept(player.managedCharacter.Position, player.managedCharacter.CharacterRace);
             if (enemy != null)
             {
-                aliveObjects.Enemies.Add(enemy);
+                aliveObjects.enemies.Add(enemy);
                 Bot bot = new Bot(ref enemy);
                 bots.Add(bot);
             }
             for (int i = 0; i < bots.Count; i++)
             {
                 Position playerPos = player.managedCharacter.Position;
-                bots[i].Update(player.managedCharacter);
+                bots[i].Update(player.managedCharacter, bots);
+                GameCharacter closestEnemy = new GameCharacter();
 
                 if ((playerPos.X - config.playerSize - config.attackDistance <= bots[i].managedCharacter.Position.X + config.playerSize)
                     || (playerPos.X + config.playerSize + config.attackDistance >= bots[i].managedCharacter.Position.X - config.playerSize))

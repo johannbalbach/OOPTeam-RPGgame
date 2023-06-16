@@ -12,14 +12,13 @@ namespace OOPTeam2.RPG_Game.Services
 {
     public class Generator
     {
-        public GameCharacter nonSpawnCharacter;//??
         public Generator() { }//?? nonSpawn
 
         private const int enemySpawnChance = 1;
         private const int npcSpawnChance = 1;
         private const int randomMax = 100;
 
-        public GameCharacter SpawnEnemyExcept(Position position, Race race)
+        public GameCharacter SpawnEnemyExcept(Position position, CharacterRace race)
         {
             SingletonRand rnd = SingletonRand.GetInstance();
             if (rnd.Next(randomMax) <= enemySpawnChance)

@@ -6,10 +6,9 @@ namespace OOPTeam2.RPG_Game.Services
 {
     public class Player : GameCharacterController
     {
-        public Player(GameCharacter character, Race race)
+        public Player(GameCharacter character, CharacterRace race)
         {
             managedCharacter = character;
-            this.race = race;
         }
 
         public override void Update(GameCharacter enemy)

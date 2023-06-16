@@ -36,7 +36,7 @@ namespace OOPTeam2
         private static Drawer drawer;
         private static Map map;
         private static InputDispatcher inputDispatcher;
-        private static Race race;
+        private static CharacterRace race;
 
         GameCharacterBuilder player = new GameCharacterBuilder()
             .WithPosition(new Position(100, 0))
@@ -54,7 +54,7 @@ namespace OOPTeam2
             InitializeComponent();
 
             MainLogic mainLogic = new MainLogic();
-            map = new Map(player.Build(), Race.HumanCharacter);
+            map = new Map(player.Build(), CharacterRace.Human);
             drawer = new Drawer(map);
             inputDispatcher = new InputDispatcher(map, drawer);
 
@@ -118,27 +118,27 @@ namespace OOPTeam2
             switch (chooseComboBox.SelectedIndex)
             {
                 case 0:
-                    race = Race.HumanCharacter;
+                    race = CharacterRace.Human;
                     player = player.WithSkinId("HumanCharacter");
                     break;
                 case 1:
-                    race = Race.AlienCharacter;
+                    race = CharacterRace.Alien;
                     player = player.WithSkinId("AlienCharacter");
                     break;
                 case 2:
-                    race = Race.ElvesCharacter;
+                    race = CharacterRace.Elf;
                     player = player.WithSkinId("ElfCharacter");
                     break;
                 case 3:
-                    race = Race.GnomeCharacter;
+                    race = CharacterRace.Gnome;
                     player = player.WithSkinId("GnomeCharacter");
                     break;
                 case 4:
-                    race = Race.OrksCharacter;
+                    race = CharacterRace.Ork;
                     player = player.WithSkinId("OrkCharacter");
                     break;
                 case 5:
-                    race = Race.WandCharacter;
+                    race = CharacterRace.Wizard;
                     player = player.WithSkinId("WandCharacter");
                     break;
                 default:

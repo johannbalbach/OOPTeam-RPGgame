@@ -10,7 +10,6 @@ namespace OOPTeam2.RPG_Game.Services.Controller
     public class GameCharacterController
     {
         public GameCharacter managedCharacter { get; protected set; }
-        public Race race { get; protected set; }
 
         public GameCharacterController() { }
 
@@ -22,7 +21,7 @@ namespace OOPTeam2.RPG_Game.Services.Controller
                 managedCharacter.Talk();
             }
         }
+        public virtual void Update(GameCharacter character, List<Bot> bots) { }
         public virtual void Update(GameCharacter character) { }
-
     }
 }

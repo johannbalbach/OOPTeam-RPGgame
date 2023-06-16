@@ -13,7 +13,7 @@ using OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters;
 namespace OOPTeam2.RPG_Game.Services
 {
     public class AvatarController
-    {
+    {   
         public Avatar avatar { get; private set; } 
         private int angle = 0;
         private const int healChance = 3;

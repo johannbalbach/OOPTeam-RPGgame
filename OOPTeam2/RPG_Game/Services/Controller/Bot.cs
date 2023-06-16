@@ -16,7 +16,7 @@ namespace OOPTeam2.RPG_Game.Services
             managedCharacter = character;
         }
 
-        public override void Update(GameCharacter player)
+        public override void Update(GameCharacter player, List<Bot> bots)
         {
             if (managedCharacter.LifePoint != 0) 
             {
@@ -39,7 +39,11 @@ namespace OOPTeam2.RPG_Game.Services
                     //DirtyTalk();
                 }
             }
-
+            else
+            {
+                Console.WriteLine("deleted");
+                Console.WriteLine(bots.Remove(this).ToString());
+            }
         }
     }
 }
