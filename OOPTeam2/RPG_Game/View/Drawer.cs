@@ -61,8 +61,8 @@ namespace OOPTeam2.RPG_Game.View
         private void configureCharacterSprite(Sprite characterSprite, Sprite weaponSprite, GameCharacter character)
         {
             characterSprite.Position = new Vector2f(character.Position.X, character.Position.Y);
-            //weaponSprite.Position = new Vector2f(character.Position.X,
-            //    character.Position.Y - weaponSprite.Texture.Size.Y - characterSprite.Texture.Size.Y / 2 + 10);
+            weaponSprite.Position = new Vector2f(character.Position.X,
+                character.Position.Y - weaponSprite.Texture.Size.Y - characterSprite.Texture.Size.Y / 2 + 10);
 
             coordsToSystem(characterSprite);
             applyDirectionToSprite(characterSprite, weaponSprite, character.MoveDirection); 
@@ -72,21 +72,32 @@ namespace OOPTeam2.RPG_Game.View
         {
             updateViewPos();
 
-            Sprite playerCharacterSprite = pictureProvider.getSprite(map.player.managedCharacter.SkinId);
-            playerCharacterSprite.Position = new Vector2f(map.player.managedCharacter.Position.X, map.player.managedCharacter.Position.Y);
-            configureCharacterSprite(playerCharacterSprite, new Sprite(), map.player.managedCharacter);
+            //foreach (var tile in map.staticObjects.stones)
+            //{
+            //    Sprite sprite = pictureProvider.getSprite(tile.drawID);
+            //    sprite.Position = new Vector2f(tile.position.x, tile.position.y);
+            //    window.Draw(sprite);
+            //}
+
+            Sprite playerCharacterSprite = new Sprite( pictureProvider.getSprite(map.player.managedCharacter.SkinId));
+            Sprite playerWeaponSprite = new Sprite(pictureProvider.getSprite("KatanaSword"));
+            configureCharacterSprite(playerCharacterSprite, playerWeaponSprite, map.player.managedCharacter);
+            window.Draw(playerWeaponSprite);
             window.Draw(playerCharacterSprite);
 
 
             foreach (GameCharacter character in map.aliveObjects.Enemies)
             {
-                Sprite sprite = pictureProvider.getSprite(character.SkinId);
-                sprite.Position = new Vector2f(character.Position.X, character.Position.Y);
-                window.Draw(sprite);
+                Sprite characterSprite = new Sprite( pictureProvider.getSprite(character.SkinId));
+                Sprite weaponSprite = new Sprite(pictureProvider.getSprite("AlienWand"));
+                configureCharacterSprite(characterSprite, weaponSprite, character);
+                window.Draw(weaponSprite);
+                window.Draw(characterSprite);
             }
-
+                
             Sprite avatarSprite = pictureProvider.getSprite(map.avatarController.avatar.SkinId);
             avatarSprite.Position = new Vector2f(map.avatarController.avatar.Position.X, map.avatarController.avatar.Position.Y);
+            coordsToSystem(avatarSprite);  
             window.Draw(avatarSprite);
         }
     }

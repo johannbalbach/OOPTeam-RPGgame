@@ -16,10 +16,10 @@ namespace OOPTeam2.RPG_Game.Services
         {
             if (config.InDistance(enemy.Position, managedCharacter.Position)){
                 //enemy.Hit();
-                DirtyTalk();
+                //DirtyTalk();
             }
             else{
-                DirtyTalk(config.talkProbability /10);
+                //DirtyTalk(config.talkProbability /10);
             }
         }
         public void MoveLeft()

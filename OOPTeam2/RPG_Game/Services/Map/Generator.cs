@@ -3,6 +3,7 @@ using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 using OOPTeam2.RPG_Game.Models.Characters;
 using System.Runtime.InteropServices;
 using System.Xml.Linq;
+using OOPTeam2.RPG_Game.Models;
 
 namespace OOPTeam2.RPG_Game.Services
 {
@@ -13,7 +14,7 @@ namespace OOPTeam2.RPG_Game.Services
 
         private const int enemySpawnChance = 1;
         private const int npcSpawnChance = 1;
-        private const int randomMax = 10000000;
+        private const int randomMax = 100;
 
         public GameCharacter SpawnEnemyExcept(Position position, Race race)
         {
@@ -86,6 +87,8 @@ namespace OOPTeam2.RPG_Game.Services
             enemy.WithName(name);
             enemy.WithAge(age);
             enemy.WithSkinId(skinIndex);
+            enemy.WithText(new CharacterReply(TextEnum.ElvesText))
+                 .WithCharacterRace(CharacterRace.Elf);
             return enemy.Build();
         }
     }

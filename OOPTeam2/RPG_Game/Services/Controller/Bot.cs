@@ -20,7 +20,7 @@ namespace OOPTeam2.RPG_Game.Services
         {
             if (config.InDistance(player.Position, managedCharacter.Position)){
                 //player.Hit();
-                DirtyTalk();
+                //DirtyTalk();
             }
             else{
                 if (player.Position.X < managedCharacter.Position.X){
@@ -30,7 +30,7 @@ namespace OOPTeam2.RPG_Game.Services
                     managedCharacter.Move(managedCharacter.Position, Direction.Right);
                 }
                 
-                DirtyTalk();
+                //DirtyTalk();
             }
         }
     }
