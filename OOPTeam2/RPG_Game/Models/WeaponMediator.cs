@@ -5,6 +5,7 @@ using OOPTeam2.RPG_Game.Models.Wands;
 namespace OOPTeam2.RPG_Game.Models {
     public class WeaponMediator {
         public MaceSword MaceSword { set; get; }
+        public Weapon CurrentWeapon { set; get; }
         public LevithanSword LevithanSword { set; get; }
         public KatanaSword KatanaSword { set; get; }
         public HealingPotion HealingPotion { set; get; }

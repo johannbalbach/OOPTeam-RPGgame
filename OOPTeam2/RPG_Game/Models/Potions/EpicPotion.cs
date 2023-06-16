@@ -6,11 +6,11 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
     public class EpicPotion: Potion {
         public int BonusPercent { set; get; }
         
-        public EpicPotion(int volume, string description, int bonusPercent, int damage) {
+        public EpicPotion(int volume, int bonusPercent, int damage) {
             Volume = volume;
-            Description = description;
             BonusPercent = bonusPercent;
             Damage = damage;
+            SkinId = EpicPotionSkinId;
             PossibleOwners = new List<CharacterRace> { 
                 CharacterRace.Human,
                 CharacterRace.Alien,
@@ -19,8 +19,7 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
             };
         }
 
-        public EpicPotion() : this (EpicPotionVolume, EpicPotionDescription, 
-            EpicPotionBonusPercent, EpicPotionDamage) {
+        public EpicPotion() : this (EpicPotionVolume, EpicPotionBonusPercent, EpicPotionDamage) {
 
         }
 

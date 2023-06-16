@@ -10,6 +10,7 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
             Quality = quality;
             Attack = attack;
             IsAvailable = isAvailable;
+            SkinId = KatanaSwordSkinId;
             PossibleOwners = new List<CharacterRace> { 
                 CharacterRace.Elf,
                 CharacterRace.Human

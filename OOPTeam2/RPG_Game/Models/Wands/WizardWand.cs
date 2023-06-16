@@ -7,18 +7,18 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
     public class WizardWand : Wand {
         private SingletonRand RandomGenerator { set; get; }
 
-        public WizardWand(int damage, double agility, string description, bool isAvailable) {
+        public WizardWand(int damage, double agility, bool isAvailable) {
             Damage = damage;
-            Description = description;
             IsAvailable = isAvailable;
             Agility = agility;
             RandomGenerator = SingletonRand.GetInstance();
+            SkinId = WizardWandSkinId;
             PossibleOwners = new List<CharacterRace> { 
                 CharacterRace.Wizard
             };
         }
         
-        public WizardWand() : this (WizardWandDamage, WizardWandAgility, WizardWandDescription, true) {
+        public WizardWand() : this (WizardWandDamage, WizardWandAgility, true) {
             
         }
 
@@ -45,7 +45,6 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
         
         public string GetWandInfo() {
             return $"Power coefficient: {Damage}\n" +
-                   $"Description: {Description}\n" +
                    $"Is available: {IsAvailable}\n";
         }
     }

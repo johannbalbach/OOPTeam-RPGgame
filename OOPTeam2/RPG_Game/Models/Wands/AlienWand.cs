@@ -7,18 +7,18 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
     public class AlienWand: Wand {
         public bool IsAvailableOnEarth { set; get; }
         
-        public AlienWand(int damage, string description, double agility, bool isAvailable, bool isAvailableOnEarth) {
+        public AlienWand(int damage, double agility, bool isAvailable, bool isAvailableOnEarth) {
             Damage = damage;
-            Description = description;
             IsAvailable = isAvailable;
             IsAvailableOnEarth = isAvailableOnEarth;
             Agility = agility;
+            SkinId = AlienWandSkinId;
             PossibleOwners = new List<CharacterRace> { 
                 CharacterRace.Alien
             };
         }
         
-        public AlienWand() : this (AlienWandDamage, AlienWandDescription, AlienWandAgility, 
+        public AlienWand() : this (AlienWandDamage, AlienWandAgility, 
             true, true) {
             
         }

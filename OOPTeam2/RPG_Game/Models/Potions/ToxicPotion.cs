@@ -5,10 +5,10 @@ using static OOPTeam2.RPG_Game.Models.InitialWeaponConstants;
 namespace OOPTeam2.RPG_Game.Models.Potions {
     
     public class ToxicPotion: Potion {
-        public ToxicPotion(int volume, string description, int damage) {
+        public ToxicPotion(int volume, int damage) {
             Volume = volume;
-            Description = description;
             Damage = damage;
+            SkinId = ToxicPotionSkinId;
             PossibleOwners = new List<CharacterRace> { 
                 CharacterRace.Human,
                 CharacterRace.Alien,
@@ -17,7 +17,7 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
             };
         }
         
-        public ToxicPotion() : this (ToxicPotionVolume, ToxicPotionDescription, ToxicPotionDamage) {
+        public ToxicPotion() : this (ToxicPotionVolume, ToxicPotionDamage) {
             
         }
 

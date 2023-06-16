@@ -6,10 +6,10 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
     public class HealingPotion: Potion {
         public int ValueHealing { set; get; }
         
-        public HealingPotion(int volume, string description, int valueHealing) {
+        public HealingPotion(int volume, int valueHealing) {
             Volume = volume;
-            Description = description;
             ValueHealing = valueHealing;
+            SkinId = HealingPotionSkinId;
             PossibleOwners = new List<CharacterRace> { 
                 CharacterRace.Human,
                 CharacterRace.Alien,
@@ -18,8 +18,7 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
             };
         }
         
-        public HealingPotion() : this (HealingPotionVolume, 
-            HealingPotionDescription, HealingPotionValueHealing)  {
+        public HealingPotion() : this (HealingPotionVolume, HealingPotionValueHealing)  {
         }
 
         public override void Hit(GameCharacter gameCharacter, CharacterRace attackingCharacterRace) {

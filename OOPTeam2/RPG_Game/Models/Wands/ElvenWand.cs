@@ -6,18 +6,18 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
     public class ElvenWand : Wand {
         public int LifePercentage { set; get; }
 
-        public ElvenWand(int damage, string description, double agility, int lifePercentage, bool isAvailable) {
+        public ElvenWand(int damage, double agility, int lifePercentage, bool isAvailable) {
             Damage = damage;
-            Description = description;
             IsAvailable = isAvailable;
             Agility = agility;
+            SkinId = ElvenWandSkinId;
             LifePercentage = lifePercentage;
             PossibleOwners = new List<CharacterRace> { 
                 CharacterRace.Elf
             };
         }
 
-        public ElvenWand() : this (ElvenWandDamage, ElvenWandDescription, ElvenWandAgility, 
+        public ElvenWand() : this (ElvenWandDamage, ElvenWandAgility, 
             ElvenWandCapacity, true) {
             
         }
@@ -50,7 +50,6 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
 
         public string GetWandInfo() {
             return $"Power coefficient: {Damage}\n" +
-                   $"Description: {Description}\n" +
                    $"Is available: {IsAvailable}\n" +
                    $"Agility: {Agility}\n" +
                    $"Life percentage: {LifePercentage}\n";
