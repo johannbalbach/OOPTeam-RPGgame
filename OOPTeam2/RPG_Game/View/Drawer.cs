@@ -52,7 +52,7 @@ namespace OOPTeam2.RPG_Game.View
                 characterSprite.Scale = new Vector2f(-1, 1);
                 characterSprite.Position = new Vector2f(characterSprite.Position.X + characterSprite.Texture.Size.X, characterSprite.Position.Y);
             }
-            if(direction == Direction.Left)
+            if (direction == Direction.Left)
             {
                 weaponSprite.Scale = new Vector2f(-1, 1);
             }
@@ -65,7 +65,7 @@ namespace OOPTeam2.RPG_Game.View
                 character.Position.Y - weaponSprite.Texture.Size.Y - characterSprite.Texture.Size.Y / 2 + 10);
 
             coordsToSystem(characterSprite);
-            applyDirectionToSprite(characterSprite, weaponSprite, character.MoveDirection); 
+            applyDirectionToSprite(characterSprite, weaponSprite, character.MoveDirection);
         }
 
         public void Draw()
@@ -74,17 +74,13 @@ namespace OOPTeam2.RPG_Game.View
 
             foreach (var tile in map.staticObjects)
             {
-                //if (Math.Abs(tile.Position.X - map.player.managedCharacter.Position.X) < 400 &&
-                //    Math.Abs(tile.Position.X - map.player.managedCharacter.Position.X) < 400)
-                //{
-                    Sprite sprite = pictureProvider.getSprite(tile.DrawID);
-                    sprite.Position = new Vector2f(tile.Position.X, tile.Position.Y);
-                    window.Draw(sprite);
-                //}
+                Sprite sprite = pictureProvider.getSprite(tile.DrawID);
+                sprite.Position = new Vector2f(tile.Position.X, tile.Position.Y);
+                window.Draw(sprite);
             }
 
             Sprite playerCharacterSprite = new Sprite(pictureProvider.getSprite(map.player.managedCharacter.SkinId));
-            Sprite playerWeaponSprite = new Sprite(pictureProvider.getSprite("KatanaSword"));
+            Sprite playerWeaponSprite = new Sprite(pictureProvider.getSprite(map.player.managedCharacter.Inventory.Weapons.CurrentWeapon.SkinId));
             configureCharacterSprite(playerCharacterSprite, playerWeaponSprite, map.player.managedCharacter);
             window.Draw(playerWeaponSprite);
             window.Draw(playerCharacterSprite);
@@ -92,8 +88,8 @@ namespace OOPTeam2.RPG_Game.View
 
             foreach (GameCharacter character in map.aliveObjects.Enemies)
             {
-                Sprite characterSprite = new Sprite( pictureProvider.getSprite(character.SkinId));
-                Sprite weaponSprite = new Sprite(pictureProvider.getSprite("AlienWand"));
+                Sprite characterSprite = new Sprite(pictureProvider.getSprite(character.SkinId));
+                Sprite weaponSprite = new Sprite(pictureProvider.getSprite(character.Inventory.Weapons.CurrentWeapon.SkinId));
                 configureCharacterSprite(characterSprite, weaponSprite, character);
                 window.Draw(weaponSprite);
                 window.Draw(characterSprite);
