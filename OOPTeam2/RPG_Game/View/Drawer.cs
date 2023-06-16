@@ -11,6 +11,7 @@ namespace OOPTeam2.RPG_Game.View
         private PictureProvider pictureProvider = new PictureProvider();    
         private RenderWindow window;
         private Map map;
+        private int handPosition = 10;
 
         public Drawer(Map map)
         {
@@ -53,7 +54,7 @@ namespace OOPTeam2.RPG_Game.View
         {
             characterSprite.Position = new Vector2f(character.Position.X, character.Position.Y);
             weaponSprite.Position = new Vector2f(character.Position.X,
-                character.Position.Y - weaponSprite.Texture.Size.Y - characterSprite.Texture.Size.Y / 2 + 10);
+                character.Position.Y - weaponSprite.Texture.Size.Y - characterSprite.Texture.Size.Y / 2 + handPosition);
 
             coordsToSystem(characterSprite);
             applyDirectionToSprite(characterSprite, weaponSprite, character.MoveDirection);
@@ -79,12 +80,15 @@ namespace OOPTeam2.RPG_Game.View
 
             foreach (GameCharacter character in map.aliveObjects.enemies)
             {
-                Sprite characterSprite = new Sprite(pictureProvider.getSprite(character.SkinId));
-                Sprite weaponSprite = new Sprite(pictureProvider.getSprite(character.Inventory.Weapons.CurrentWeapon.SkinId));
+                if (character.LifePoint > 0)
+                {
+                    Sprite characterSprite = new Sprite(pictureProvider.getSprite(character.SkinId));
+                    Sprite weaponSprite = new Sprite(pictureProvider.getSprite(character.Inventory.Weapons.CurrentWeapon.SkinId));
 
-                configureCharacterSprite(characterSprite, weaponSprite, character);
-                window.Draw(weaponSprite);
-                window.Draw(characterSprite);
+                    configureCharacterSprite(characterSprite, weaponSprite, character);
+                    window.Draw(weaponSprite);
+                    window.Draw(characterSprite);
+                }
             }
 
             Sprite avatarSprite = pictureProvider.getSprite(map.avatarController.avatar.SkinId);
