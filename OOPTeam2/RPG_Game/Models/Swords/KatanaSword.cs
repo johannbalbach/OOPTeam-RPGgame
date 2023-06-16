@@ -16,7 +16,6 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
                 CharacterRace.Human
             };
         }
-
         public KatanaSword() : this (KatanaSwordWeight, KatanaSwordAgility, 
                 KatanaSwordQuality, KatanaSwordAttack, true) {
             
