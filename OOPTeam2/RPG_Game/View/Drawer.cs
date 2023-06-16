@@ -20,7 +20,6 @@ namespace OOPTeam2.RPG_Game.View
         private RenderWindow window;
         private Map map;
 
-
         public Drawer(Map map)
         {
             this.map = map;
@@ -84,7 +83,6 @@ namespace OOPTeam2.RPG_Game.View
             configureCharacterSprite(playerCharacterSprite, playerWeaponSprite, map.player.managedCharacter);
             window.Draw(playerWeaponSprite);
             window.Draw(playerCharacterSprite);
-
 
             foreach (GameCharacter character in map.aliveObjects.enemies)
             {
