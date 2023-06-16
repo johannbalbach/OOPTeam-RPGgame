@@ -14,7 +14,7 @@ namespace OOPTeam2.RPG_Game.Services
 
         public override void Update(GameCharacter enemy)
         {
-            if (config.InDistance(enemy.position, managedCharacter.position)){
+            if (config.InDistance(enemy.Position, managedCharacter.Position)){
                 //enemy.Hit();
                 DirtyTalk();
             }
@@ -24,16 +24,16 @@ namespace OOPTeam2.RPG_Game.Services
         }
         public void MoveLeft()
         {
-            if (true)//границы карты
+            if (true)
             {
-                managedCharacter.Move(managedCharacter.position, Direction.Left);
+                managedCharacter.Move(managedCharacter.Position, Direction.Left);
             }
         }
         public void MoveRight()
         {
-            if (true)//границы карты
+            if (true)
             {
-                managedCharacter.Move(managedCharacter.position, Direction.Right);
+                managedCharacter.Move(managedCharacter.Position, Direction.Right);
             }
         }
 

@@ -18,8 +18,8 @@ namespace OOPTeam2.RPG_Game.Services
 
         public static bool InDistance(Position player, Position managedCharacter)
         {
-            if ((managedCharacter.x - config.botSize - config.attackDistance >= player.x + config.playerSize)
-                || (managedCharacter.x + config.botSize + config.attackDistance <= player.x - config.playerSize))
+            if ((managedCharacter.X - config.botSize - config.attackDistance >= player.X + config.playerSize)
+                || (managedCharacter.X + config.botSize + config.attackDistance <= player.X - config.playerSize))
             {
                 return false;
             }  
@@ -30,7 +30,7 @@ namespace OOPTeam2.RPG_Game.Services
         }
         public static bool InDistance(Position exception, int x)
         {
-            if ((exception.x - config.playerSize - config.attackDistance >= x + config.botSize) || (exception.x + config.playerSize + config.attackDistance <= x - config.botSize))
+            if ((exception.X - config.playerSize - config.attackDistance >= x + config.botSize) || (exception.X + config.playerSize + config.attackDistance <= x - config.botSize))
             {
                 return false;
             }

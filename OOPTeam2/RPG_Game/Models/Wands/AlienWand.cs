@@ -1,40 +1,56 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
+using static OOPTeam2.RPG_Game.Models.InitialWeaponConstants;
 
 namespace OOPTeam2.RPG_Game.Models.Wands {
+
     public class AlienWand: Wand {
-        private const int IMPROVE_POWER = 10;
-        public bool isAvailableOnEarth { set; get; }
+        public bool IsAvailableOnEarth { set; get; }
         
-        public AlienWand(int damage, string description, bool isAvailable, bool isAvailableOnEarth, double agility) {
-            this.damage = damage;
-            this.description = description;
-            this.isAvailable = isAvailable;
-            this.isAvailableOnEarth = isAvailableOnEarth;
-            this.agility = agility;
+        public AlienWand(int damage, string description, double agility, bool isAvailable, bool isAvailableOnEarth) {
+            Damage = damage;
+            Description = description;
+            IsAvailable = isAvailable;
+            IsAvailableOnEarth = isAvailableOnEarth;
+            Agility = agility;
+            PossibleOwners = new List<CharacterRace> { 
+                CharacterRace.Alien
+            };
         }
         
-        public override int GetHarm() {
-            // при использовании палочки заклинание должно вызывать задержку 
-            if (isAvailable && isAvailableOnEarth) {
-                return damage * damage;
+        public AlienWand() : this (AlienWandDamage, AlienWandDescription, AlienWandAgility, 
+            true, true) {
+            
+        }
+
+        public override int ToDamage(CharacterRace characterRace) {
+            if (IsAvailable && PossibleOwners.Contains(characterRace)) {
+                return CalculateDamage();
             }
-            return damage;
+            return Damage;
         }
-        
+
+        private int CalculateDamage() {
+            if (IsAvailableOnEarth) {
+                return Damage * Damage;
+            }
+            return Damage;
+        }
+
         public override void Drop() {
-            if (isAvailable) {
-                isAvailable = false;
+            if (IsAvailable) {
+                IsAvailable = false;
             }
-            // при этом на Земле палочка продолжает работать
+            // The wand continues to work on Earth after it is dropped
         }
         
         public override void Improve() {
-            if (isAvailableOnEarth) {
-                damage += IMPROVE_POWER;
+            if (IsAvailableOnEarth) {
+                Damage += AlienWandImprovePower;
             }
         }
         
-        // почему отсутствует getWandInfo()?
-        // по задумке в игре язык инопланетян неизвестен для остальных рас и игрока
+        // Why is getWandInfo() missing?
+        // As suggested in the game, the alien language is unknown to other races and players
     }
 }

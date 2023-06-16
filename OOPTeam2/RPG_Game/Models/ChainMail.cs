@@ -1,32 +1,30 @@
-using System;
-
 namespace OOPTeam2.RPG_Game.Models {
     public class ChainMail: ProtectiveSkin {
-        public int count { set; get; }
-        public int countLayers { set; get; }
-        public DefaultProtectiveSkin defaultProtectiveSkin { set; get; }
+        private const int InitialCountLayers = 1;
+        public int CountChainMail { set; get; }
+        public int CountLayers { set; get; }
+        public DefaultProtectiveSkin DefaultProtectiveSkin { set; get; }
 
-        public ChainMail(int countLayers, int count, DefaultProtectiveSkin defaultProtectiveSkin) {
-            this.countLayers = countLayers;
-            this.defaultProtectiveSkin = defaultProtectiveSkin;
-            this.count = count;
+        public ChainMail(int countLayers, int countChainMail, DefaultProtectiveSkin defaultProtectiveSkin) {
+            CountLayers = countLayers;
+            DefaultProtectiveSkin = defaultProtectiveSkin;
+            CountChainMail = countChainMail;
         }
         
         public ChainMail() {
-            countLayers = 1;
+            CountLayers = InitialCountLayers;
         }
         
-        public int Protect() {
-            return countLayers;
+        public int GetProtectionLevel() {
+            return CountLayers;
         }
         
         public void Use() {
-            count--;
+            CountChainMail--;
         }
 
-        public void AddChinmail() {
-            count++;
+        public void AddChainMail() {
+            CountChainMail++;
         }
-        
     }
 }

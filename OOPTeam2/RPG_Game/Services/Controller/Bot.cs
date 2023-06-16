@@ -18,16 +18,16 @@ namespace OOPTeam2.RPG_Game.Services
 
         public override void Update(GameCharacter player)
         {
-            if (config.InDistance(player.position, managedCharacter.position)){
+            if (config.InDistance(player.Position, managedCharacter.Position)){
                 //player.Hit();
                 DirtyTalk();
             }
             else{
-                if (player.position.x < managedCharacter.position.x){
-                    managedCharacter.Move(managedCharacter.position, Direction.Left);
+                if (player.Position.X < managedCharacter.Position.X){
+                    managedCharacter.Move(managedCharacter.Position, Direction.Left);
                 }
                 else{
-                    managedCharacter.Move(managedCharacter.position, Direction.Right);
+                    managedCharacter.Move(managedCharacter.Position, Direction.Right);
                 }
                 
                 DirtyTalk();
@@ -35,6 +35,3 @@ namespace OOPTeam2.RPG_Game.Services
         }
     }
 }
-
-//Map'у
-//Генератор челиков

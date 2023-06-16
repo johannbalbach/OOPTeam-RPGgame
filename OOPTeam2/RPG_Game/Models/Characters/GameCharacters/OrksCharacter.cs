@@ -3,20 +3,24 @@ using OOPTeam2.RPG_Game.Models.Foods;
 
 namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
     public class OrksCharacter: GameCharacter {
-        private const int TIME_SLEEP = 7000;
+        private const int SleepTimeMilliseconds = 7000;
+
+        public OrksCharacter() {
+            CharacterRace = CharacterRace.Ork;
+            Text = new CharacterReply(TextEnum.OrksText);
+        }
         public override string Talk() {
-            return "Me crush puny humans! Orcs strong! Orcs conquer all!";
+            return Text.GetText();
         }
         
         public override async void Sleep() {
-            await Task.Delay(TIME_SLEEP);
+            await Task.Delay(SleepTimeMilliseconds);
         }
         
         public override void Eat(Food food) {
-            if (food is Bread || food is Butter) {
-                return;
+            if (food.IsEatable(CharacterRace) && food.IsSufficientQuantity()) {
+                food.Consume();
             }
-            food.Eat();
         }
     }
 }

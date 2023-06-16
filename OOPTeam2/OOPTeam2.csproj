@@ -59,6 +59,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="SFML.Audio, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SFML.Audio.2.5.0\lib\netstandard2.0\SFML.Audio.dll</HintPath>
     </Reference>
@@ -115,16 +118,18 @@
     <Compile Include="RPG_Game\View\InputDispatcher.cs" />
     <Compile Include="RPG_Game\View\PictureProvider.cs" />
     <Compile Include="RPG_Game\Models\Bag.cs" />
+    <Compile Include="RPG_Game\Models\CharacterReply.cs" />
     <Compile Include="RPG_Game\Models\Characters\Character.cs" />
     <Compile Include="RPG_Game\Models\Characters\Direction.cs" />
     <Compile Include="RPG_Game\Models\Characters\GameCharacters\AlienCharacter.cs" />
-    <Compile Include="RPG_Game\Models\Characters\GameCharacters\CnomeCharacter.cs" />
+    <Compile Include="RPG_Game\Models\Characters\GameCharacters\CharacterRace.cs" />
+    <Compile Include="RPG_Game\Models\Characters\GameCharacters\GnomeCharacter.cs" />
     <Compile Include="RPG_Game\Models\Characters\GameCharacters\ElvesCharacter.cs" />
     <Compile Include="RPG_Game\Models\Characters\GameCharacters\GameCharacter.cs" />
     <Compile Include="RPG_Game\Models\Characters\GameCharacters\GameCharacterBuilder.cs" />
     <Compile Include="RPG_Game\Models\Characters\GameCharacters\HumanCharacter.cs" />
     <Compile Include="RPG_Game\Models\Characters\GameCharacters\OrksCharacter.cs" />
-    <Compile Include="RPG_Game\Models\Characters\GameCharacters\WandCharacter.cs" />
+    <Compile Include="RPG_Game\Models\Characters\GameCharacters\WizardCharacter.cs" />
     <Compile Include="RPG_Game\Models\Characters\NonPlayerCharacters\Avatar.cs" />
     <Compile Include="RPG_Game\Models\Characters\NonPlayerCharacters\Butterfly.cs" />
     <Compile Include="RPG_Game\Models\Characters\NonPlayerCharacters\NonPlayerCharacter.cs" />
@@ -132,6 +137,7 @@
     <Compile Include="RPG_Game\Models\Characters\Position.cs" />
     <Compile Include="RPG_Game\Models\ChainMail.cs" />
     <Compile Include="RPG_Game\Models\Cloak.cs" />
+    <Compile Include="RPG_Game\Models\InitialWeaponConstants.cs" />
     <Compile Include="RPG_Game\Models\DefaultProtectiveSkin.cs" />
     <Compile Include="RPG_Game\Models\FoodMediator.cs" />
     <Compile Include="RPG_Game\Models\Foods\Bread.cs" />
@@ -158,7 +164,9 @@
     <Compile Include="RPG_Game\Models\Wands\ElvenWand.cs" />
     <Compile Include="RPG_Game\Models\Wands\Wand.cs" />
     <Compile Include="RPG_Game\Models\Wands\WizardWand.cs" />
+    <Compile Include="RPG_Game\Models\Weapon.cs" />
     <Compile Include="RPG_Game\Models\WeaponMediator.cs" />
+    <Compile Include="RPG_Game\Services\Random.cs" />
     <Compile Include="RPG_Game\View\SfmlDrawingSurface.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -193,6 +201,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Config\app.config" />
+    <None Include="Config\packages.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

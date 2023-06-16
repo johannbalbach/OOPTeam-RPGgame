@@ -17,7 +17,7 @@ namespace OOPTeam2.RPG_Game.Services
 
         public GameCharacter SpawnEnemyExcept(Position position, Race race)
         {
-            SingletonRand rnd = SingletonRand.getInstance();
+            SingletonRand rnd = SingletonRand.GetInstance();
             if (rnd.Next(randomMax) <= enemySpawnChance)
             {
                 int age = rnd.Next(0, 100);
@@ -67,8 +67,8 @@ namespace OOPTeam2.RPG_Game.Services
         private Position SpawnPlace(Position exception)
         {
             int x, y;
-            y = exception.y;
-            SingletonRand rnd = SingletonRand.getInstance();
+            y = exception.Y;
+            SingletonRand rnd = SingletonRand.GetInstance();
 
             x = rnd.Next(1, 2000);//границы поля
             while (config.InDistance(exception, x))

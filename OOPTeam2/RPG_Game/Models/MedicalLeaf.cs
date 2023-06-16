@@ -1,25 +1,27 @@
 namespace OOPTeam2.RPG_Game.Models {
     public class MedicalLeaf {
-        public int count { set; get; }
-        public int healthPoints { set; get; }
+        public int HealthPoints { set; get; }
+        private int Count;
 
         public MedicalLeaf(int count, int healthPoints) {
-            this.count = count;
-            this.healthPoints = healthPoints;
+            Count = count;
+            HealthPoints = healthPoints;
         }
         
         public MedicalLeaf() {
             
         }
         
+        public bool IsAvailable() {
+            return Count > 0;
+        }
+        
         public void Use() {
-            if (count > 0) {
-                count--;
-            }
+            Count--;
         }
 
         public void PickUp(int count) {
-            this.count += count;
+            Count += count;
         }
     }
 }

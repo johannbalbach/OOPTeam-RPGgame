@@ -29,12 +29,12 @@ namespace OOPTeam2.RPG_Game.Services.Controller
 
         public void Update()
         {
-            character.position = NextPosition();
+            character.Position = NextPosition();
         }
 
         protected Position NextPosition()
         {
-            SingletonRand rnd = SingletonRand.getInstance();
+            SingletonRand rnd = SingletonRand.GetInstance();
             if (rnd.Next(randomMax) <= turnChance)
             {
                 turnRight();
@@ -44,8 +44,8 @@ namespace OOPTeam2.RPG_Game.Services.Controller
                 turnLeft();
             }
 
-            int x = character.position.x + directions[currentIndex, 0];
-            int y = character.position.y + directions[currentIndex, 1];
+            int x = character.Position.X + directions[currentIndex, 0];
+            int y = character.Position.Y + directions[currentIndex, 1];
 
             return new Position(x, y);
         }

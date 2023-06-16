@@ -1,31 +1,51 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
+using static OOPTeam2.RPG_Game.Models.InitialWeaponConstants;
 
 namespace OOPTeam2.RPG_Game.Models.Potions {
     public class EpicPotion: Potion {
-        private const int BONUS = 10;
-        public int bonusPercent { set; get; }
+        public int BonusPercent { set; get; }
         
-        public EpicPotion(int volume, string description, bool isAvailable, int bonusPercent, int damage) {
-            this.volume = volume;
-            this.description = description;
-            this.isAvailable = isAvailable;
-            this.bonusPercent = bonusPercent;
-            this.damage = damage;
+        public EpicPotion(int volume, string description, int bonusPercent, int damage) {
+            Volume = volume;
+            Description = description;
+            BonusPercent = bonusPercent;
+            Damage = damage;
+            PossibleOwners = new List<CharacterRace> { 
+                CharacterRace.Human,
+                CharacterRace.Alien,
+                CharacterRace.Elf,
+                CharacterRace.Gnome
+            };
         }
-        
-        public override int GetHurt() {
-            Reduce();
-            return damage * bonusPercent;
+
+        public EpicPotion() : this (EpicPotionVolume, EpicPotionDescription, 
+            EpicPotionBonusPercent, EpicPotionDamage) {
+
         }
-        
-        public override void Reduce() {
-            if (volume >= BONUS) {
-                volume -= BONUS;
+
+        public override int ToDamage(CharacterRace characterRace) {
+            if (PossibleOwners.Contains(characterRace) && IsEnoughVolume()) {
+                ReduceVolume();
+                return Damage * BonusPercent;
             }
+            return 0;
+        }
+
+        public override bool IsEnoughVolume() {
+            return Volume >= EpicPotionVolume;
+        }
+
+        public override void Drop() {
+            Volume = 0;
+        }
+
+        public override void ReduceVolume() {
+            Volume -= EpicPotionVolume;
         }
         
-        public override void Increase() {
-            bonusPercent += BONUS;
+        public override void Improve() {
+            BonusPercent += EpicPotionImproving;
         }
     }
 }

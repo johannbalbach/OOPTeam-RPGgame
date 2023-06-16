@@ -1,16 +1,27 @@
 using System.Threading.Tasks;
+using OOPTeam2.RPG_Game.Models.Foods;
 
 namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
     public class ElvesCharacter: GameCharacter {
-        private const int TIME_SLEEP = 5000;
+        private const int SleepTimeMilliseconds = 3500;
+
+        public ElvesCharacter() {
+            CharacterRace = CharacterRace.Elf;
+            Text = new CharacterReply(TextEnum.ElvesText);
+        }
         
         public override string Talk() {
-            return
-                "Our connection with nature runs deep. We are guardians of the forests, preserving the beauty and harmony of the natural world.";
+            return Text.GetText();
         }
         
         public override async void Sleep() {
-            await Task.Delay(TIME_SLEEP);
+            await Task.Delay(SleepTimeMilliseconds);
+        }
+        
+        public override void Eat(Food food) {
+            if (food.IsEatable(CharacterRace) && food.IsSufficientQuantity()) {
+                food.Consume();
+            }
         }
     }
 }

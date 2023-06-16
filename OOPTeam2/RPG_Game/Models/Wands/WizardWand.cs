@@ -1,48 +1,52 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
+using OOPTeam2.RPG_Game.Services;
+using static OOPTeam2.RPG_Game.Models.InitialWeaponConstants;
 
 namespace OOPTeam2.RPG_Game.Models.Wands {
     public class WizardWand : Wand {
-        private int BONUS_MAGIC = 10;
-        private Random random;
-        public double waitingTimeUsing { set; get; }
+        private SingletonRand RandomGenerator { set; get; }
+
+        public WizardWand(int damage, double agility, string description, bool isAvailable) {
+            Damage = damage;
+            Description = description;
+            IsAvailable = isAvailable;
+            Agility = agility;
+            RandomGenerator = SingletonRand.GetInstance();
+            PossibleOwners = new List<CharacterRace> { 
+                CharacterRace.Wizard
+            };
+        }
         
-        public WizardWand(int damage, double agility, string description, bool isAvailable, double waitingTimeUsing) {
-            this.damage = damage;
-            this.description = description;
-            this.isAvailable = isAvailable;
-            this.waitingTimeUsing = waitingTimeUsing;
-            this.agility = agility;
-            random = new Random();
+        public WizardWand() : this (WizardWandDamage, WizardWandAgility, WizardWandDescription, true) {
+            
         }
 
-        public override int GetHarm() {
-            if (isAvailable) {
-                return damage * damage;
+        public override int ToDamage(CharacterRace characterRace) {
+            if (IsAvailable && PossibleOwners.Contains(characterRace)) {
+                return Damage * Damage;
             }
-            return damage / random.Next(1, 4);
+            return Damage / RandomGenerator.Next(1, 4);
         }
-        
+
         public void IncreaseAgility() {
-            agility += random.Next(1, 10);
+            Agility += RandomGenerator.Next(1, 10);
         }
         
         public override void Drop() {
-            // если волшебная палочка были выброшена, магия персонажа изменяется от воли судьбы 
-            if (isAvailable) {
-                int randomValue = random.Next(0, 100);
-                BONUS_MAGIC = randomValue;
+            if (IsAvailable) {
+                IsAvailable = false;
             }
         }
         
         public override void Improve() {
-            damage += BONUS_MAGIC;
+            Damage += WizardWandBonusMagic;
         }
         
-        public string getWandInfo() {
-            return $"Power coefficient: {damage}\n" +
-                   $"Description: {description}\n" +
-                   $"Is available: {isAvailable}\n" +
-                   $"Waiting time using: {waitingTimeUsing}\n";
+        public string GetWandInfo() {
+            return $"Power coefficient: {Damage}\n" +
+                   $"Description: {Description}\n" +
+                   $"Is available: {IsAvailable}\n";
         }
     }
 }

@@ -16,7 +16,7 @@ namespace OOPTeam2.RPG_Game.Services.Controller
 
         protected void DirtyTalk(int probability = config.talkProbability)
         {
-            SingletonRand randomSingleton = SingletonRand.getInstance();
+            SingletonRand randomSingleton = SingletonRand.GetInstance();
             if (randomSingleton.Next(config.talkMax) <= probability)
             {
                 managedCharacter.Talk();

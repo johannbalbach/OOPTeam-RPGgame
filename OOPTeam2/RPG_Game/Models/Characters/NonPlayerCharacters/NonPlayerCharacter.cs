@@ -1,56 +1,35 @@
-using System.Threading.Tasks;
 using OOPTeam2.RPG_Game.Models.Foods;
-using OOPTeam2.RPG_Game.Models.Potions;
-using OOPTeam2.RPG_Game.Models.Swords;
-using OOPTeam2.RPG_Game.Models.Wands;
 
 namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters{
     public class NonPlayerCharacter: Character {
-        public string skinId { get; set; }
-
+        
         public NonPlayerCharacter() {
-            lifePoint = INIT_HEALTH;
+            LifePoint = InitialHealth;
+            Text = new CharacterReply();
         }
         
-        public NonPlayerCharacter(NonPlayerCharacter target) {
-            if (target != null) {
-                age = target.age;
-                name = target.name;
-                position = target.position;
+        public NonPlayerCharacter(NonPlayerCharacter source) : this () {
+            if (source != null) {
+                Age = source.Age;
+                Name = source.Name;
+                Position = source.Position;
             }
         }
-        
-        public override void Move(Position position, Direction direction) {
-            Step(position, direction);
-        }
-        
+
         public override Character Clone() {
             return new NonPlayerCharacter(this);
         }
 
-        public override void Hit(Potion potion) {
-            lifePoint = 0;
-        }
-        
-        public override void Hit(Sword sword) {
-            lifePoint -= sword.GetDamage();
-        }
-        
-        public override void Hit(Wand wand) {
-            lifePoint = 0;
-        }
-
         public override string Talk() {
-            return "Hello, player!";
+            return Text.GetText();
         }
 
         public override void Sleep() {
-            // NPC не должен спать, поэтому метод Sleep остается пустым
+            // NPCs don't sleep, so the Sleep method remains empty.
         }
 
         public override void Eat(Food food) {
-            // у NPC не растёт lifePoint за счёт еды
-            food.Eat();
+            // NPCs don't eat food, so the Eat method remains empty.
         }
     }
 }

@@ -22,17 +22,15 @@ namespace OOPTeam2.RPG_Game.Services
 
         public Map(GameCharacter PlayerCharacter, Race race)
         {
-            //���������� �����, ������� ��������� AliveObjects � StaticObjects
-
             player = new Player(PlayerCharacter, race);
             Avatar avatar = new Avatar();
-            avatar.position = new Position(100, 130);
+            avatar.Position = new Position(100, 130);
             avatarController = new AvatarController(ref avatar);
         }
 
         public void Update()
         {
-            GameCharacter enemy = generator.SpawnEnemyExcept(player.managedCharacter.position, player.race);
+            GameCharacter enemy = generator.SpawnEnemyExcept(player.managedCharacter.Position, player.race);
             if (enemy != null)
             {
                 aliveObjects.Enemies.Add(enemy);
@@ -41,11 +39,11 @@ namespace OOPTeam2.RPG_Game.Services
             }
             for (int i = 0; i < bots.Count; i++)
             {
-                Position playerPos = player.managedCharacter.position;
+                Position playerPos = player.managedCharacter.Position;
                 bots[i].Update(player.managedCharacter);
 
-                if ((playerPos.x - config.playerSize - config.attackDistance <= bots[i].managedCharacter.position.x + config.playerSize)
-                    || (playerPos.x + config.playerSize + config.attackDistance >= bots[i].managedCharacter.position.x - config.playerSize))
+                if ((playerPos.X - config.playerSize - config.attackDistance <= bots[i].managedCharacter.Position.X + config.playerSize)
+                    || (playerPos.X + config.playerSize + config.attackDistance >= bots[i].managedCharacter.Position.X - config.playerSize))
                 {
                     closestEnemy = bots[i].managedCharacter;
                 }

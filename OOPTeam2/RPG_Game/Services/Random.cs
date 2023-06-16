@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
 namespace OOPTeam2.RPG_Game.Services
 {
     public class SingletonRand
     {
-        private static SingletonRand instance = null;
-        private static Random _rnd;
+        private static SingletonRand instance;
+        private static Random random;
 
         private SingletonRand()
         {
-            _rnd = new Random();
+            random = new Random();
         }
 
-        public static SingletonRand getInstance()
+        public static SingletonRand GetInstance()
         {
             if (instance == null)
             {
@@ -30,13 +26,13 @@ namespace OOPTeam2.RPG_Game.Services
             //lock (_sync)
             {
                 if (v1 != int.MinValue && v2 != int.MinValue){
-                    return _rnd.Next(v1, v2);
+                    return random.Next(v1, v2);
                 }
                 else if(v1 != int.MinValue){
-                    return _rnd.Next(v1);
+                    return random.Next(v1);
                 }
                 else
-                    return _rnd.Next();
+                    return random.Next();
             }
         }
     }

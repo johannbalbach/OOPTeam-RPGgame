@@ -8,9 +8,10 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         private int healthRegeneration;
         private int age;
         private int lifePoint;
-        
         private string name;
         private Position position;
+        private CharacterRace characterRace;
+        private CharacterReply text;
 
         public GameCharacterBuilder WithPlayTime(int playTime) {
             this.playTime = playTime;
@@ -19,6 +20,11 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
 
         public GameCharacterBuilder WithInventory(Inventory inventory) {
             this.inventory = inventory;
+            return this;
+        }
+        
+        public GameCharacterBuilder WithText(CharacterReply text) {
+            this.text = text;
             return this;
         }
 
@@ -51,6 +57,11 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
             this.name = name;
             return this;
         }
+        
+        public GameCharacterBuilder WithCharacterRace(CharacterRace characterRace) {
+            this.characterRace = characterRace;
+            return this;
+        }
 
         public GameCharacterBuilder WithPosition(Position position) {
             this.position = position;
@@ -64,16 +75,18 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
 
         public GameCharacter Build() {
             GameCharacter gameCharacter = new GameCharacter();
-            gameCharacter.playTime = playTime;
-            gameCharacter.inventory = inventory;
-            gameCharacter.isEnemy = isEnemy;
-            gameCharacter.speed = speed;
-            gameCharacter.skinId = skinId;
-            gameCharacter.healthRegeneration = healthRegeneration;
-            gameCharacter.age = age;
-            gameCharacter.name = name;
-            gameCharacter.position = position;
-            gameCharacter.lifePoint = lifePoint;
+            gameCharacter.PlayTime = playTime;
+            gameCharacter.Inventory = inventory;
+            gameCharacter.IsEnemy = isEnemy;
+            gameCharacter.Speed = speed;
+            gameCharacter.SkinId = skinId;
+            gameCharacter.HealthRegeneration = healthRegeneration;
+            gameCharacter.Age = age;
+            gameCharacter.Name = name;
+            gameCharacter.Position = position;
+            gameCharacter.LifePoint = lifePoint;
+            gameCharacter.CharacterRace = characterRace;
+            gameCharacter.Text = text;
             return gameCharacter;
         }
     }

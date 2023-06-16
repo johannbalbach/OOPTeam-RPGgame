@@ -1,29 +1,49 @@
-﻿namespace OOPTeam2.RPG_Game.Models.Swords {
+﻿using System.Collections.Generic;
+using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
+using static OOPTeam2.RPG_Game.Models.InitialWeaponConstants;
+
+namespace OOPTeam2.RPG_Game.Models.Swords {
     public class MaceSword : Sword {
-        private const int BONUS_COEFFICIENT = 3;
-        private const double AVERAGE_QUALITY = 0.7;
-        
         public MaceSword(double weight, double agility, double quality, int attack, bool isAvailable) {
-            this.weight = weight;
-            this.agility = agility;
-            this.quality = quality;
-            this.attack = attack;
-            this.isAvailable = isAvailable;
+            Weight = weight;
+            Agility = agility;
+            Quality = quality;
+            Attack = attack;
+            IsAvailable = isAvailable;
+            PossibleOwners = new List<CharacterRace> { 
+                CharacterRace.Ork,
+            };
         }
-        
-        public override int GetDamage() {
-            // если предки персонажа (его раса) владели техникой меча, то урон увеличивается
-            if (isAvailable && quality > AVERAGE_QUALITY) {
-                return attack * BONUS_COEFFICIENT;
+
+        public MaceSword() : this (MaceSwordWeight, MaceSwordAgility, 
+                MaceSwordQuality, MaceSwordAttack, true) {
+            
+        }
+
+        public override int ToDamage(CharacterRace characterRace) {
+            // If the character’s ancestors (race) possess the sword technique, the damage is increased
+            if (PossibleOwners.Contains(characterRace) && IsAvailable) {
+                return CalculateDamage();
             }
-            return attack;
+            return 0;
         }
-        
+
+        public override int CalculateDamage() {
+            if (Quality > MaceSwordQuality) {
+                return Attack * MaceSwordBonusCoefficient;
+            }
+            return Attack;
+        }
+
         public override void Drop() {
-            // если выкенешь меч, то потеряешь его навсегда
-            if (isAvailable) {
-                isAvailable = false;
+            // If you forge a sword, you’ll lose it forever
+            if (IsAvailable) {
+                IsAvailable = false;
             }
+        }
+
+        public override void Improve() {
+            Attack += MaceSwordBonusCoefficient;
         }
     }
 }

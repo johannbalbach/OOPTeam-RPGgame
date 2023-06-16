@@ -1,29 +1,49 @@
-﻿namespace OOPTeam2.RPG_Game.Models.Swords {
+﻿using System.Collections.Generic;
+using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
+using static OOPTeam2.RPG_Game.Models.InitialWeaponConstants;
+
+namespace OOPTeam2.RPG_Game.Models.Swords {
     public class KatanaSword : Sword {
-        private const int BONUS_COEFFICIENT = 4;
-        private const double AVERAGE_AGILITY = 0.5;
-        private const double AVERAGE_QUALITY = 0.65;
-        private const int AVERAGE_WEIGHT = 5;
-        
         public KatanaSword(double weight, double agility, double quality, int attack, bool isAvailable) {
-            this.weight = weight;
-            this.agility = agility;
-            this.quality = quality;
-            this.attack = attack;
-            this.isAvailable = isAvailable;
+            Weight = weight;
+            Agility = agility;
+            Quality = quality;
+            Attack = attack;
+            IsAvailable = isAvailable;
+            PossibleOwners = new List<CharacterRace> { 
+                CharacterRace.Elf,
+                CharacterRace.Human
+            };
         }
-        
-        public override int GetDamage() {
-            if (isAvailable && agility > AVERAGE_AGILITY && quality > AVERAGE_QUALITY && weight < AVERAGE_WEIGHT) {
-                return attack * BONUS_COEFFICIENT;
+
+        public KatanaSword() : this (KatanaSwordWeight, KatanaSwordAgility, 
+                KatanaSwordQuality, KatanaSwordAttack, true) {
+            
+        }
+
+        public override int CalculateDamage() {
+            if (Agility > KatanaSwordAverageAgility && Quality > KatanaSwordAverageQuality) {
+                return Attack * KatanaSwordBonusCoefficient;
             }
-            return attack;
+            return Attack;
+        }
+
+        public override int ToDamage(CharacterRace characterRace) {
+            if (IsAvailable && PossibleOwners.Contains(characterRace)) {
+                return CalculateDamage();
+            }
+            return 0;
+        }
+
+        public override void Improve() {
+            Agility += KatanaSwordAverageAgility;
+            Quality += KatanaSwordAverageQuality;
         }
 
         public override void Drop() {
-            // Если выкенешь меч, то потеряешь его навсегда
-            // Но если выкинешь снова - ТО ВОЗЬМЕШЬ ЕГО СНОВА!
-            isAvailable = !isAvailable;
+            if (IsAvailable) {
+                IsAvailable = false;
+            }
         }
     }
 }

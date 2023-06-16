@@ -25,21 +25,21 @@ namespace OOPTeam2.RPG_Game.Services
         }
         public void Update(GameCharacter player)
         {
-            avatar.position = NextPosition(player.position);
+            avatar.Position = NextPosition(player.Position);
         }
         public void OnBottom(GameCharacter player)
         {
-            SingletonRand rnd = SingletonRand.getInstance();
+            SingletonRand rnd = SingletonRand.GetInstance();
 
             if (rnd.Next(chanceMax) <= healChance)
             {
-                player.lifePoint = 100;//INIT_HEALTH
+                player.LifePoint = 100;//INIT_HEALTH
             }
-            avatar.position = NextPosition(player.position);
+            avatar.Position = NextPosition(player.Position);
         }
         private double Distance(Position a, Position b)
         {
-            return Math.Sqrt(Math.Pow(b.x - a.x, 2) + Math.Pow(b.y - a.y, 2));  
+            return Math.Sqrt(Math.Pow(b.X - a.X, 2) + Math.Pow(b.Y - a.Y, 2));  
         }
 
         private Position NextPosition(Position playerPosition)
@@ -47,8 +47,8 @@ namespace OOPTeam2.RPG_Game.Services
             double radius = config.avatarDistance;
             angle++;
 
-            double x = playerPosition.x + (radius * Math.Cos(angle*180/Math.PI));
-            double y = playerPosition.y + (radius * Math.Sin(angle*180/Math.PI));
+            double x = playerPosition.X + (radius * Math.Cos(angle*180/Math.PI));
+            double y = playerPosition.Y + (radius * Math.Sin(angle*180/Math.PI));
 
             return new Position(((int)x), ((int)y));
         }

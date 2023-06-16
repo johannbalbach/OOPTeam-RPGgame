@@ -1,49 +1,46 @@
-using System.Dynamic;
 using OOPTeam2.RPG_Game.Models.Foods;
-using OOPTeam2.RPG_Game.Models.Potions;
-using OOPTeam2.RPG_Game.Models.Swords;
-using OOPTeam2.RPG_Game.Models.Wands;
 
 namespace OOPTeam2.RPG_Game.Models.Characters {
     public abstract class Character {
-        public string name { get; set; }
-        public Position position { get; set; }
-        public int age { get; set; }
-        public int lifePoint { get; set; }
-        /*protected const int HEALTH_REGENERATION = 1;*/
-        protected const int INIT_HEALTH = 100;
-
-        public abstract void Move(Position position, Direction direction);
-        public abstract void Hit(Potion potion);
-        public abstract void Hit(Sword sword);
-        public abstract void Hit(Wand wand);
+        public string Name { get; set; }
+        public Position Position { get; set; }
+        public int Age { get; set; }
+        public int LifePoint { get; set; }
+        public string SkinId { get; set; }
+        public CharacterReply Text { get; set; }
+        
+        protected const int InitialHealth = 100;
         public abstract string Talk();
         public abstract void Sleep();
         public abstract void Eat(Food food);
         public abstract Character Clone();
         
-        protected void Step(Position position, Direction direction) {
+        protected void Step(Position currentPosition, Direction direction) {
             switch (direction) {
                 case Direction.Left:
-                    position.x -= 1;
+                    currentPosition.X -= 1;
                     break;
                 case Direction.Right:
-                    position.x += 1;
+                    currentPosition.X += 1;
                     break;
                 case Direction.Top:
-                    position.y += 1;
+                    currentPosition.Y += 1;
                     break;
                 case Direction.Down:
-                    position.y -= 1;
+                    currentPosition.Y -= 1;
                     break;
             }
         }
         
-        protected void NormalizeLifePoint() {
-            if (lifePoint > INIT_HEALTH) {
-                lifePoint = INIT_HEALTH;
-            } else if (lifePoint < 0) {
-                lifePoint = 0;
+        public void Move(Position newPosition, Direction direction) {
+            Step(newPosition, direction);
+        }
+        
+        public void NormalizeLifePoint() {
+            if (LifePoint > InitialHealth) {
+                LifePoint = InitialHealth;
+            } else if (LifePoint < 0) {
+                LifePoint = 0;
             }
         }
     }
