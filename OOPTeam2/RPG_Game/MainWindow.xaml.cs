@@ -35,7 +35,7 @@ namespace OOPTeam2
             .WithCharacterRace(CharacterRace.Human)
             .WithIsEnemy(false)
             .WithInventory(new RPG_Game.Models.Inventory())
-            .WithWeapon(new LevithanSword())
+            .WithWeapon(new LevitanSword())
             .WithLifePoint(1000);
 
         public MainWindow()
@@ -104,7 +104,7 @@ namespace OOPTeam2
                     race = CharacterRace.Human;
                     player = player.WithSkinId("HumanCharacter")
                                    .WithCharacterRace(CharacterRace.Human)
-                                   .WithWeapon(new LevithanSword());
+                                   .WithWeapon(new LevitanSword());
                     break;
                 case 1:
                     race = CharacterRace.Alien;

@@ -53,7 +53,7 @@ namespace OOPTeam2.RPG_Game.Services
                         skinIndex = "HumanCharacter";
                         characterRace = CharacterRace.Human;
                         characterReply = TextEnum.HumansText;
-                        currentWeapon = new LevithanSword();
+                        currentWeapon = new LevitanSword();
                         break;
                     case 3:
                         name = "OrkEnemy";

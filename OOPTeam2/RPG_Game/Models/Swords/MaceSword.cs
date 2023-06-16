@@ -21,7 +21,7 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
             
         }
 
-        public override int ToDamage(CharacterRace characterRace) {
+        protected override int ToDamage(CharacterRace characterRace) {
             // If the character’s ancestors (race) possess the sword technique, the damage is increased
             if (PossibleOwners.Contains(characterRace) && IsAvailable) {
                 return CalculateDamage();

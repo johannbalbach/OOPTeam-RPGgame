@@ -156,7 +156,7 @@
     <Compile Include="RPG_Game\Models\Potions\ToxicPotion.cs" />
     <Compile Include="RPG_Game\Models\ProtectiveSkin.cs" />
     <Compile Include="RPG_Game\Models\Swords\KatanaSword.cs" />
-    <Compile Include="RPG_Game\Models\Swords\LevithanSword.cs" />
+    <Compile Include="RPG_Game\Models\Swords\LevitanSword.cs" />
     <Compile Include="RPG_Game\Models\Swords\MaceSword.cs" />
     <Compile Include="RPG_Game\Models\Swords\Sword.cs" />
     <Compile Include="RPG_Game\Models\Tree.cs" />

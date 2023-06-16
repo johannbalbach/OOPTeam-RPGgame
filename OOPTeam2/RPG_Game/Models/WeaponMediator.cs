@@ -6,7 +6,7 @@ namespace OOPTeam2.RPG_Game.Models {
     public class WeaponMediator {
         public MaceSword MaceSword { set; get; }
         public Weapon CurrentWeapon { set; get; }
-        public LevithanSword LevithanSword { set; get; }
+        public LevitanSword LevitanSword { set; get; }
         public KatanaSword KatanaSword { set; get; }
         public HealingPotion HealingPotion { set; get; }
         public EpicPotion EpicPotion { set; get; }
@@ -17,7 +17,7 @@ namespace OOPTeam2.RPG_Game.Models {
 
         public WeaponMediator(Inventory inventory) {
             MaceSword = new MaceSword();
-            LevithanSword = new LevithanSword();
+            LevitanSword = new LevitanSword();
             KatanaSword = new KatanaSword();
             HealingPotion = new HealingPotion();
             ToxicPotion = new ToxicPotion();

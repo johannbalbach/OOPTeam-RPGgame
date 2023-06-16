@@ -23,7 +23,7 @@ namespace OOPTeam2.RPG_Game.Models.Wands {
             
         }
 
-        public override int ToDamage(CharacterRace characterRace) {
+        protected override int ToDamage(CharacterRace characterRace) {
             if (IsAvailable && PossibleOwners.Contains(characterRace)) {
                 return CalculateDamage();
             }

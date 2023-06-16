@@ -9,6 +9,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
             CharacterRace = CharacterRace.Ork;
             Text = new CharacterReply(TextEnum.OrkText);
         }
+        
         public override string Talk() {
             return Text.GetText();
         }

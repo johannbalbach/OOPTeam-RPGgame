@@ -26,7 +26,7 @@ namespace OOPTeam2.RPG_Game.Models.Potions {
             gameCharacter.NormalizeLifePoint();
         }
 
-        public override int ToDamage(CharacterRace characterRace) {
+        protected override int ToDamage(CharacterRace characterRace) {
             if (PossibleOwners.Contains(characterRace) && IsEnoughVolume()) {
                 ReduceVolume();
                 return ValueHealing;

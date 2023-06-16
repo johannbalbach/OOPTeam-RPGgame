@@ -58,7 +58,6 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
         
         public void HandleDamage(int damage) {
             ApplyDamage(damage);
-
             NormalizeLifePoint();
         }
 

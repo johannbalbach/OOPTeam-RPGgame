@@ -3,8 +3,8 @@ using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 using static OOPTeam2.RPG_Game.Models.InitialWeaponConstants;
 
 namespace OOPTeam2.RPG_Game.Models.Swords {
-    public class LevithanSword: Sword {
-        public LevithanSword(double weight, double agility, double quality, int attack, bool isAvailable) {
+    public class LevitanSword: Sword {
+        public LevitanSword(double weight, double agility, double quality, int attack, bool isAvailable) {
             Weight = weight;
             Agility = agility;
             Quality = quality;
@@ -17,12 +17,12 @@ namespace OOPTeam2.RPG_Game.Models.Swords {
             };
         }
         
-        public LevithanSword() : this (LevithanSwordWeight, LevithanSwordAgility, 
+        public LevitanSword() : this (LevithanSwordWeight, LevithanSwordAgility, 
                 LevithanSwordQuality, LevithanSwordAttack, true) {
             
         }
         
-        public override int ToDamage(CharacterRace characterRace) {
+        protected override int ToDamage(CharacterRace characterRace) {
             if (IsAvailable && PossibleOwners.Contains(characterRace)) {
                 return CalculateDamage();
             }
