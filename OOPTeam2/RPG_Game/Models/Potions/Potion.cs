@@ -3,9 +3,9 @@ using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 
 namespace OOPTeam2.RPG_Game.Models.Potions {
     public abstract class Potion: Weapon {
-        public int Volume { set; get; }
-        public int ReceivedDamage { set; get; }
-        public List<CharacterRace> PossibleOwners { set; get; }
+        protected int Volume { set; get; }
+        private int ReceivedDamage { set; get; }
+        protected List<CharacterRace> PossibleOwners { set; get; }
         
         public abstract void ReduceVolume();
         public abstract bool IsEnoughVolume();

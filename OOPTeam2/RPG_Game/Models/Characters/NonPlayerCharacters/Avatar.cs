@@ -1,8 +1,8 @@
 namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters {
     public class Avatar: NonPlayerCharacter {
         
-        public Avatar(string SkinId) : this() {
-            this.SkinId = SkinId;
+        public Avatar(string skinId) : this() {
+            SkinId = skinId;
         }
 
         public Avatar() {

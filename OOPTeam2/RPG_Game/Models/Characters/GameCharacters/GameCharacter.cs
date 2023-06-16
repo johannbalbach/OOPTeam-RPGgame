@@ -5,7 +5,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
     public class GameCharacter: Character {
         private const int SleepTimeMilliseconds = 3000;
         public int HealthRegeneration { get; set; }
-        public int ReceivedDamage { get; set; }
+        private int ReceivedDamage { get; set; }
         public int PlayTime { get; set; }
         public bool IsEnemy { get; set; }
         public double Speed { get; set; }

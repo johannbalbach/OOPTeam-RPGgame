@@ -4,7 +4,7 @@ using static OOPTeam2.RPG_Game.Models.InitialWeaponConstants;
 
 namespace OOPTeam2.RPG_Game.Models.Wands {
     public class ElvenWand : Wand {
-        public int LifePercentage { set; get; }
+        private int LifePercentage { set; get; }
 
         public ElvenWand(int damage, double agility, int lifePercentage, bool isAvailable) {
             Damage = damage;

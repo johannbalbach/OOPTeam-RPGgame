@@ -128,7 +128,7 @@
     <Compile Include="RPG_Game\Models\Characters\GameCharacters\GameCharacter.cs" />
     <Compile Include="RPG_Game\Models\Characters\GameCharacters\GameCharacterBuilder.cs" />
     <Compile Include="RPG_Game\Models\Characters\GameCharacters\HumanCharacter.cs" />
-    <Compile Include="RPG_Game\Models\Characters\GameCharacters\OrksCharacter.cs" />
+    <Compile Include="RPG_Game\Models\Characters\GameCharacters\OrkCharacter.cs" />
     <Compile Include="RPG_Game\Models\Characters\GameCharacters\WizardCharacter.cs" />
     <Compile Include="RPG_Game\Models\Characters\NonPlayerCharacters\Avatar.cs" />
     <Compile Include="RPG_Game\Models\Characters\NonPlayerCharacters\Butterfly.cs" />

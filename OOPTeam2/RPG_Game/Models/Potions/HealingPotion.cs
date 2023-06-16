@@ -4,7 +4,7 @@ using static OOPTeam2.RPG_Game.Models.InitialWeaponConstants;
 
 namespace OOPTeam2.RPG_Game.Models.Potions {
     public class HealingPotion: Potion {
-        public int ValueHealing { set; get; }
+        private int ValueHealing { set; get; }
         
         public HealingPotion(int volume, int valueHealing) {
             Volume = volume;

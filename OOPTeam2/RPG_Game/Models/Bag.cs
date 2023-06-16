@@ -8,8 +8,8 @@ namespace OOPTeam2.RPG_Game.Models {
         public DefaultProtectiveSkin DefaultProtectiveSkin { set; get; }
         public Cloak Cloak { set; get; }
         public ChainMail Hauberk { set; get; }
-        public List<Tree> Trees { set; get; }
-        public MedicalLeaf MedicalLeaf { set; get; }
+        private List<Tree> Trees { set; get; }
+        private MedicalLeaf MedicalLeaf { set; get; }
 
         public Bag(Inventory inventory) {
             inventory.Bags = this;

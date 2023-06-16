@@ -2,12 +2,12 @@ using System.Threading.Tasks;
 using OOPTeam2.RPG_Game.Models.Foods;
 
 namespace OOPTeam2.RPG_Game.Models.Characters.GameCharacters {
-    public class OrksCharacter: GameCharacter {
+    public class OrkCharacter: GameCharacter {
         private const int SleepTimeMilliseconds = 7000;
 
-        public OrksCharacter() {
+        public OrkCharacter() {
             CharacterRace = CharacterRace.Ork;
-            Text = new CharacterReply(TextEnum.OrksText);
+            Text = new CharacterReply(TextEnum.OrkText);
         }
         public override string Talk() {
             return Text.GetText();

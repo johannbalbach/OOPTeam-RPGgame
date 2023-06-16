@@ -5,7 +5,7 @@ using static OOPTeam2.RPG_Game.Models.InitialWeaponConstants;
 namespace OOPTeam2.RPG_Game.Models.Wands {
 
     public class AlienWand: Wand {
-        public bool IsAvailableOnEarth { set; get; }
+        private bool IsAvailableOnEarth { set; get; }
         
         public AlienWand(int damage, double agility, bool isAvailable, bool isAvailableOnEarth) {
             Damage = damage;

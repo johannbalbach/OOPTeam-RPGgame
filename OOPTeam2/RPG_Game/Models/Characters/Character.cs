@@ -9,9 +9,8 @@ namespace OOPTeam2.RPG_Game.Models.Characters {
         public string SkinId { get; set; }
         public CharacterReply Text { get; set; }
         public Direction MoveDirection { get; set; }
-
-
         protected const int InitialHealth = 100;
+        
         public abstract string Talk();
         public abstract void Sleep();
         public abstract void Eat(Food food);

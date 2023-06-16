@@ -1,8 +1,8 @@
 namespace OOPTeam2.RPG_Game.Models {
     public class ChainMail: ProtectiveSkin {
         private const int InitialCountLayers = 1;
-        public int CountChainMail { set; get; }
-        public int CountLayers { set; get; }
+        private int CountChainMail { set; get; }
+        private int CountLayers { set; get; }
         public DefaultProtectiveSkin DefaultProtectiveSkin { set; get; }
 
         public ChainMail(int countLayers, int countChainMail, DefaultProtectiveSkin defaultProtectiveSkin) {

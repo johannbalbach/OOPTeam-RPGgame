@@ -1,7 +1,7 @@
 namespace OOPTeam2.RPG_Game.Models {
     public enum TextEnum {
         ElvesText,
-        OrksText,
+        OrkText,
         WizardsText,
         HumansText,
         GnomesText,
@@ -25,7 +25,7 @@ namespace OOPTeam2.RPG_Game.Models {
             switch (characterType) {
                 case TextEnum.ElvesText:
                     return "Our connection with nature runs deep. We are guardians of the forests, preserving the beauty and harmony of the natural world.";
-                case TextEnum.OrksText:
+                case TextEnum.OrkText:
                     return "Me crush puny humans! Orcs strong! Orcs conquer all!";
                 case TextEnum.WizardsText:
                     return "I harness the arcane forces to bend reality to my will. Magic flows through my veins like a river of power.";

@@ -6,7 +6,7 @@ namespace OOPTeam2.RPG_Game.Models {
     }
     
     public class Tree {
-        public TreeLen TreeLen { get; set; }
+        private TreeLen TreeLen { get; set; }
 
         public Tree(TreeLen treeLen) {
             TreeLen = treeLen;

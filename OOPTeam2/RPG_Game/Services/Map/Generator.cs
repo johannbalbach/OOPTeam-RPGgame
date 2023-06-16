@@ -59,7 +59,7 @@ namespace OOPTeam2.RPG_Game.Services
                         name = "OrkEnemy";
                         skinIndex = "OrkCharacter";
                         characterRace = CharacterRace.Ork;
-                        characterReply = TextEnum.OrksText;
+                        characterReply = TextEnum.OrkText;
                         currentWeapon = new MaceSword();
                         break;
                     case 4:

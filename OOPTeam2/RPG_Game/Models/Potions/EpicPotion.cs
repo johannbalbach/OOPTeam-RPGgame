@@ -4,7 +4,7 @@ using static OOPTeam2.RPG_Game.Models.InitialWeaponConstants;
 
 namespace OOPTeam2.RPG_Game.Models.Potions {
     public class EpicPotion: Potion {
-        public int BonusPercent { set; get; }
+        private int BonusPercent { set; get; }
         
         public EpicPotion(int volume, int bonusPercent, int damage) {
             Volume = volume;
