@@ -4,6 +4,7 @@ namespace OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters {
         public Avatar() {
             LifePoint = int.MaxValue;
             Text = new CharacterReply(TextEnum.AvatarText);
+            SkinId = "Avatar";
         }
         
         public override string Talk() {

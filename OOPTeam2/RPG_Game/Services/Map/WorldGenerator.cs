@@ -28,7 +28,7 @@ namespace OOPTeam2.RPG_Game.Services.Map
                 {
                     Stone stone = new Stone();
                     stone.position = new Position(i * tileSize, j * tileSize);
-                    staticObjects.stones.Add(stone);
+                    //staticObjects.stones.Add(stone);
                 }
             }
         }

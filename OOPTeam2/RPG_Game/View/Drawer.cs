@@ -61,8 +61,8 @@ namespace OOPTeam2.RPG_Game.View
         private void configureCharacterSprite(Sprite characterSprite, Sprite weaponSprite, GameCharacter character)
         {
             characterSprite.Position = new Vector2f(character.Position.X, character.Position.Y);
-            weaponSprite.Position = new Vector2f(character.Position.X,
-                character.Position.Y - weaponSprite.Texture.Size.Y - characterSprite.Texture.Size.Y / 2 + 10);
+            //weaponSprite.Position = new Vector2f(character.Position.X,
+            //    character.Position.Y - weaponSprite.Texture.Size.Y - characterSprite.Texture.Size.Y / 2 + 10);
 
             coordsToSystem(characterSprite);
             applyDirectionToSprite(characterSprite, weaponSprite, character.MoveDirection); 
@@ -74,6 +74,7 @@ namespace OOPTeam2.RPG_Game.View
 
             Sprite playerCharacterSprite = pictureProvider.getSprite(map.player.managedCharacter.SkinId);
             playerCharacterSprite.Position = new Vector2f(map.player.managedCharacter.Position.X, map.player.managedCharacter.Position.Y);
+            configureCharacterSprite(playerCharacterSprite, new Sprite(), map.player.managedCharacter);
             window.Draw(playerCharacterSprite);
 
 
