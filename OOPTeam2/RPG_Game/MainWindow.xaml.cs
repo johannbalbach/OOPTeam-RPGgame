@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
-using OOPTeam2.RPG_Game.Models.Characters;
+using OOPTeam2.RPG_Game.Models;
 using OOPTeam2.RPG_Game.Services.Map;
 using OOPTeam2.RPG_Game.Models.Swords;
 using OOPTeam2.RPG_Game.Models.Wands;
@@ -41,8 +41,7 @@ namespace OOPTeam2
         public MainWindow()
         {
             InitializeComponent();
-
-            MainLogic mainLogic = new MainLogic();
+            
             map = new Map(player.Build(), CharacterRace.Human);
             drawer = new Drawer(map);
             inputDispatcher = new InputDispatcher(map.player);

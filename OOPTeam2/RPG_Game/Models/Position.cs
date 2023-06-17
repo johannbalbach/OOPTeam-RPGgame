@@ -1,6 +1,6 @@
 using System;
 
-namespace OOPTeam2.RPG_Game.Models.Characters {
+namespace OOPTeam2.RPG_Game.Models {
     public class Position {
         public int X { get; set; }
         public int Y { get; set; }

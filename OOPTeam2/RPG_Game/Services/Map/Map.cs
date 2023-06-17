@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using OOPTeam2.RPG_Game.Models.Characters.GameCharacters;
 using OOPTeam2.RPG_Game.Models.Characters.NonPlayerCharacters;
-using OOPTeam2.RPG_Game.Models.Characters;
+using OOPTeam2.RPG_Game.Models;
 
 namespace OOPTeam2.RPG_Game.Services.Map
 {

@@ -1,4 +1,4 @@
-﻿using OOPTeam2.RPG_Game.Models.Characters;
+﻿using OOPTeam2.RPG_Game.Models;
 using OOPTeam2.RPG_Game.Services.Objects;
 using System.Collections.Generic;
  

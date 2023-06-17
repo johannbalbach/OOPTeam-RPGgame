@@ -1,4 +1,4 @@
-﻿using OOPTeam2.RPG_Game.Models.Characters;
+﻿using OOPTeam2.RPG_Game.Models;
 
 namespace OOPTeam2.RPG_Game.Services
 {

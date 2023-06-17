@@ -96,7 +96,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="RPG_Game\MainLogic.cs" />
+    <Compile Include="RPG_Game\Models\Direction.cs" />
+    <Compile Include="RPG_Game\Models\Position.cs" />
     <Compile Include="RPG_Game\Services\Controller\BackgroundCharacterController.cs" />
     <Compile Include="RPG_Game\Services\Controller\ButterflyController.cs" />
     <Compile Include="RPG_Game\Services\Controller\GameCharacterController.cs" />
@@ -120,7 +121,6 @@
     <Compile Include="RPG_Game\Models\Bag.cs" />
     <Compile Include="RPG_Game\Models\CharacterReply.cs" />
     <Compile Include="RPG_Game\Models\Characters\Character.cs" />
-    <Compile Include="RPG_Game\Models\Characters\Direction.cs" />
     <Compile Include="RPG_Game\Models\Characters\GameCharacters\AlienCharacter.cs" />
     <Compile Include="RPG_Game\Models\Characters\GameCharacters\CharacterRace.cs" />
     <Compile Include="RPG_Game\Models\Characters\GameCharacters\GnomeCharacter.cs" />
@@ -134,7 +134,6 @@
     <Compile Include="RPG_Game\Models\Characters\NonPlayerCharacters\Butterfly.cs" />
     <Compile Include="RPG_Game\Models\Characters\NonPlayerCharacters\NonPlayerCharacter.cs" />
     <Compile Include="RPG_Game\Models\Characters\NonPlayerCharacters\Worm.cs" />
-    <Compile Include="RPG_Game\Models\Characters\Position.cs" />
     <Compile Include="RPG_Game\Models\ChainMail.cs" />
     <Compile Include="RPG_Game\Models\Cloak.cs" />
     <Compile Include="RPG_Game\Models\InitialWeaponConstants.cs" />
